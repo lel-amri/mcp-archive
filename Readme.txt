@@ -1,4 +1,4 @@
-Minecraft mod creator pack v1.0
+Minecraft mod creator pack v1.1
 ===============================
 
 1) Prepare the files:
@@ -27,3 +27,7 @@ Notes:
 The "test_game.bat" file uses the "Start.class" file to start the game. This will make sure the game will not
 use your "%APPDATA%\.minecraft" folder, but instead use this folder for all saves. So any bugs in the modified
 game will not corrupt your worlds.
+
+History:
+1.1 - Fixed TNT bug
+1.0 - First release

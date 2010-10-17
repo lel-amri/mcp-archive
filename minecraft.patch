@@ -1,6 +1,6 @@
 diff -U 3 minecraft.src\aa.java patches\aa.java
---- minecraft.src\aa.java	Sun Oct 17 06:33:24 2010
-+++ patches\aa.java	Sun Oct 17 06:10:36 2010
+--- minecraft.src\aa.java	Sun Oct 17 19:04:15 2010
++++ patches\aa.java	Sun Oct 17 09:44:22 2010
 @@ -28,7 +28,7 @@
          f = 1;
          try
@@ -11,8 +11,8 @@ diff -U 3 minecraft.src\aa.java patches\aa.java
              int j1 = (b / 16) * 16;
              bufferedimage.getRGB(i1, j1, 16, 16, j, 0, 16);
 diff -U 3 minecraft.src\ab.java patches\ab.java
---- minecraft.src\ab.java	Sun Oct 17 06:33:24 2010
-+++ patches\ab.java	Sat Oct 16 01:11:53 2010
+--- minecraft.src\ab.java	Sun Oct 17 19:04:15 2010
++++ patches\ab.java	Sun Oct 17 09:44:22 2010
 @@ -192,8 +192,7 @@
          ho1.a();
      }
@@ -24,8 +24,8 @@ diff -U 3 minecraft.src\ab.java patches\ab.java
          a((dx)kh, d1, d2, d3, f, f1);
      }
 diff -U 3 minecraft.src\ac.java patches\ac.java
---- minecraft.src\ac.java	Sun Oct 17 06:33:24 2010
-+++ patches\ac.java	Sat Oct 16 01:12:05 2010
+--- minecraft.src\ac.java	Sun Oct 17 19:04:15 2010
++++ patches\ac.java	Sun Oct 17 09:44:22 2010
 @@ -25,7 +25,7 @@
          double d = dm1.ah + (dm1.ak - dm1.ah) * (double)f;
          double d1 = dm1.ai + (dm1.al - dm1.ai) * (double)f;
@@ -36,8 +36,8 @@ diff -U 3 minecraft.src\ac.java patches\ac.java
          float f4 = eo.a(-f2 * 0.01745329F - 3.141593F);
          float f5 = -eo.b(-f1 * 0.01745329F);
 diff -U 3 minecraft.src\af.java patches\af.java
---- minecraft.src\af.java	Sun Oct 17 06:33:24 2010
-+++ patches\af.java	Sat Oct 16 02:25:53 2010
+--- minecraft.src\af.java	Sun Oct 17 19:04:15 2010
++++ patches\af.java	Sun Oct 17 09:44:22 2010
 @@ -8,9 +8,9 @@
  public interface af
  {
@@ -51,8 +51,8 @@ diff -U 3 minecraft.src\af.java patches\af.java
      public abstract void b(cn cn, ga ga);
  
 diff -U 3 minecraft.src\al.java patches\al.java
---- minecraft.src\al.java	Sun Oct 17 06:33:24 2010
-+++ patches\al.java	Sat Oct 16 01:19:02 2010
+--- minecraft.src\al.java	Sun Oct 17 19:04:15 2010
++++ patches\al.java	Sun Oct 17 09:44:22 2010
 @@ -94,9 +94,9 @@
          if(a == js.a)
              list = cn1.b(((kh) (null)), cf.b((float)i + f, j, (float)k + f, (float)(i + 1) - f, (double)j + 0.25D, (float)(k + 1) - f));
@@ -66,8 +66,8 @@ diff -U 3 minecraft.src\al.java patches\al.java
              flag1 = true;
          if(flag1 && !flag)
 diff -U 3 minecraft.src\ao.java patches\ao.java
---- minecraft.src\ao.java	Sun Oct 17 06:33:24 2010
-+++ patches\ao.java	Sat Oct 16 01:19:28 2010
+--- minecraft.src\ao.java	Sun Oct 17 19:04:15 2010
++++ patches\ao.java	Sun Oct 17 09:44:22 2010
 @@ -113,13 +113,13 @@
          {
              i++;
@@ -88,8 +88,8 @@ diff -U 3 minecraft.src\ao.java patches\ao.java
          java.util.List list = ag.b(((kh) (this)), au.a(an, ao, ap).b(1.0D, 1.0D, 1.0D));
          double d1 = 0.0D;
 diff -U 3 minecraft.src\az.java patches\az.java
---- minecraft.src\az.java	Sun Oct 17 06:33:24 2010
-+++ patches\az.java	Sat Oct 16 01:19:38 2010
+--- minecraft.src\az.java	Sun Oct 17 19:04:16 2010
++++ patches\az.java	Sun Oct 17 09:44:22 2010
 @@ -110,7 +110,7 @@
                          try
                          {
@@ -100,8 +100,8 @@ diff -U 3 minecraft.src\az.java patches\az.java
                                  cn1
                              });
 diff -U 3 minecraft.src\bc.java patches\bc.java
---- minecraft.src\bc.java	Sun Oct 17 06:33:24 2010
-+++ patches\bc.java	Sat Oct 16 02:30:48 2010
+--- minecraft.src\bc.java	Sun Oct 17 19:04:16 2010
++++ patches\bc.java	Sun Oct 17 09:44:22 2010
 @@ -695,7 +695,7 @@
          ho ho1 = ho.a;
          float f1 = ly1.c(a, i1, j1, k1);
@@ -184,8 +184,8 @@ diff -U 3 minecraft.src\bc.java patches\bc.java
          f6 = ly1.c(a, i1, j1, k1 - 1);
          if(fw1.bh > 0.0D)
 diff -U 3 minecraft.src\bf.java patches\bf.java
---- minecraft.src\bf.java	Sun Oct 17 06:33:24 2010
-+++ patches\bf.java	Sun Oct 17 06:10:36 2010
+--- minecraft.src\bf.java	Sun Oct 17 19:04:16 2010
++++ patches\bf.java	Sun Oct 17 09:44:22 2010
 @@ -40,6 +40,7 @@
  
      public void run()
@@ -271,8 +271,8 @@ diff -U 3 minecraft.src\bf.java patches\bf.java
          byte abyte0[] = new byte[4096];
          java.io.DataInputStream datainputstream = new DataInputStream(url.openStream());
 diff -U 3 minecraft.src\bm.java patches\bm.java
---- minecraft.src\bm.java	Sun Oct 17 06:33:24 2010
-+++ patches\bm.java	Sat Oct 16 01:27:13 2010
+--- minecraft.src\bm.java	Sun Oct 17 19:04:16 2010
++++ patches\bm.java	Sun Oct 17 09:44:22 2010
 @@ -17,13 +17,13 @@
      {
      }
@@ -290,8 +290,8 @@ diff -U 3 minecraft.src\bm.java patches\bm.java
          dataoutputstream.writeInt(a);
          dataoutputstream.writeInt(b);
 diff -U 3 minecraft.src\bn.java patches\bn.java
---- minecraft.src\bn.java	Sun Oct 17 06:33:25 2010
-+++ patches\bn.java	Sat Oct 16 23:37:54 2010
+--- minecraft.src\bn.java	Sun Oct 17 19:04:16 2010
++++ patches\bn.java	Sun Oct 17 09:44:22 2010
 @@ -147,7 +147,7 @@
                              org.lwjgl.opengl.GL11.glScalef(f1, f1, f1);
                              org.lwjgl.opengl.GL11.glTranslatef((float)h / 2.0F, (float)g / 2.0F, (float)h / 2.0F);
@@ -302,8 +302,8 @@ diff -U 3 minecraft.src\bn.java patches\bn.java
                          if(i3 == 0 && ly.q[i4])
                          {
 diff -U 3 minecraft.src\bu.java patches\bu.java
---- minecraft.src\bu.java	Sun Oct 17 06:33:25 2010
-+++ patches\bu.java	Sat Oct 16 01:27:59 2010
+--- minecraft.src\bu.java	Sun Oct 17 19:04:16 2010
++++ patches\bu.java	Sun Oct 17 09:44:22 2010
 @@ -146,29 +146,27 @@
          f.d.a(0.0625F);
      }
@@ -340,8 +340,8 @@ diff -U 3 minecraft.src\bu.java patches\bu.java
          a((dm)kh, d, d1, d2, f1, f2);
      }
 diff -U 3 minecraft.src\bw.java patches\bw.java
---- minecraft.src\bw.java	Sun Oct 17 06:33:25 2010
-+++ patches\bw.java	Sat Oct 16 01:28:12 2010
+--- minecraft.src\bw.java	Sun Oct 17 19:04:16 2010
++++ patches\bw.java	Sun Oct 17 09:44:22 2010
 @@ -120,8 +120,7 @@
          org.lwjgl.opengl.GL11.glColor3f(f2, f2, f2);
      }
@@ -353,8 +353,8 @@ diff -U 3 minecraft.src\bw.java patches\bw.java
          a((jc)kh, d1, d2, d3, f, f1);
      }
 diff -U 3 minecraft.src\by.java patches\by.java
---- minecraft.src\by.java	Sun Oct 17 06:33:25 2010
-+++ patches\by.java	Sun Oct 17 01:41:21 2010
+--- minecraft.src\by.java	Sun Oct 17 19:04:16 2010
++++ patches\by.java	Sun Oct 17 09:44:22 2010
 @@ -1,39 +1,12 @@
 -// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
 -// Jad home page: http://www.kpdus.com/jad.html
@@ -406,8 +406,8 @@ diff -U 3 minecraft.src\by.java patches\by.java
 +  }
  }
 diff -U 3 minecraft.src\bz.java patches\bz.java
---- minecraft.src\bz.java	Sun Oct 17 06:33:25 2010
-+++ patches\bz.java	Sat Oct 16 23:39:54 2010
+--- minecraft.src\bz.java	Sun Oct 17 19:04:16 2010
++++ patches\bz.java	Sun Oct 17 09:44:22 2010
 @@ -26,7 +26,7 @@
          j = true;
      }
@@ -438,8 +438,8 @@ diff -U 3 minecraft.src\bz.java patches\bz.java
          dataoutputstream.writeInt(a);
          dataoutputstream.writeShort(b);
 diff -U 3 minecraft.src\ch.java patches\ch.java
---- minecraft.src\ch.java	Sun Oct 17 06:33:25 2010
-+++ patches\ch.java	Sat Oct 16 01:29:42 2010
+--- minecraft.src\ch.java	Sun Oct 17 19:04:16 2010
++++ patches\ch.java	Sun Oct 17 09:44:22 2010
 @@ -29,7 +29,7 @@
          h = true;
      }
@@ -459,8 +459,8 @@ diff -U 3 minecraft.src\ch.java patches\ch.java
          dataoutputstream.writeDouble(a);
          dataoutputstream.writeDouble(b);
 diff -U 3 minecraft.src\cn.java patches\cn.java
---- minecraft.src\cn.java	Sun Oct 17 06:33:25 2010
-+++ patches\cn.java	Sat Oct 16 23:46:38 2010
+--- minecraft.src\cn.java	Sun Oct 17 19:04:16 2010
++++ patches\cn.java	Sun Oct 17 09:44:22 2010
 @@ -72,7 +72,7 @@
          if(file3.exists())
              try
@@ -550,8 +550,8 @@ diff -U 3 minecraft.src\cn.java patches\cn.java
  
      public void a(long l1)
 diff -U 3 minecraft.src\cp.java patches\cp.java
---- minecraft.src\cp.java	Sun Oct 17 06:33:26 2010
-+++ patches\cp.java	Sat Oct 16 01:33:42 2010
+--- minecraft.src\cp.java	Sun Oct 17 19:04:16 2010
++++ patches\cp.java	Sun Oct 17 09:44:23 2010
 @@ -38,8 +38,7 @@
          org.lwjgl.opengl.GL11.glPopMatrix();
      }
@@ -563,8 +563,8 @@ diff -U 3 minecraft.src\cp.java patches\cp.java
          a((dc)kh, d1, d2, d3, f, f1);
      }
 diff -U 3 minecraft.src\cx.java patches\cx.java
---- minecraft.src\cx.java	Sun Oct 17 06:33:26 2010
-+++ patches\cx.java	Sun Oct 17 06:10:36 2010
+--- minecraft.src\cx.java	Sun Oct 17 19:04:16 2010
++++ patches\cx.java	Sun Oct 17 09:44:23 2010
 @@ -32,7 +32,7 @@
          try
          {
@@ -575,8 +575,8 @@ diff -U 3 minecraft.src\cx.java patches\cx.java
              do
              {
 diff -U 3 minecraft.src\d.java patches\d.java
---- minecraft.src\d.java	Sun Oct 17 06:33:26 2010
-+++ patches\d.java	Sat Oct 16 01:34:11 2010
+--- minecraft.src\d.java	Sun Oct 17 19:04:16 2010
++++ patches\d.java	Sun Oct 17 09:44:23 2010
 @@ -46,12 +46,12 @@
          return i << 24 | c << 16 | c1 << 8 | c2;
      }
@@ -593,8 +593,8 @@ diff -U 3 minecraft.src\d.java patches\d.java
          return a((dd)ge, f, f1);
      }
 diff -U 3 minecraft.src\db.java patches\db.java
---- minecraft.src\db.java	Sun Oct 17 06:33:26 2010
-+++ patches\db.java	Sat Oct 16 01:34:28 2010
+--- minecraft.src\db.java	Sun Oct 17 19:04:16 2010
++++ patches\db.java	Sun Oct 17 09:44:23 2010
 @@ -19,7 +19,7 @@
      {
          try
@@ -605,8 +605,8 @@ diff -U 3 minecraft.src\db.java patches\db.java
          catch(java.io.IOException ioexception) { }
          byte byte0 = 100;
 diff -U 3 minecraft.src\de.java patches\de.java
---- minecraft.src\de.java	Sun Oct 17 06:33:26 2010
-+++ patches\de.java	Sun Oct 17 06:10:36 2010
+--- minecraft.src\de.java	Sun Oct 17 19:04:17 2010
++++ patches\de.java	Sun Oct 17 09:44:23 2010
 @@ -50,18 +50,8 @@
          }
          if(i == 14 && a.length() > 0)
@@ -674,8 +674,8 @@ diff -U 3 minecraft.src\de.java patches\de.java
      }
  }
 diff -U 3 minecraft.src\dj.java patches\dj.java
---- minecraft.src\dj.java	Sun Oct 17 06:33:26 2010
-+++ patches\dj.java	Sat Oct 16 01:37:06 2010
+--- minecraft.src\dj.java	Sun Oct 17 19:04:17 2010
++++ patches\dj.java	Sun Oct 17 09:44:23 2010
 @@ -30,8 +30,7 @@
          org.lwjgl.opengl.GL11.glPopMatrix();
      }
@@ -687,8 +687,8 @@ diff -U 3 minecraft.src\dj.java patches\dj.java
          a((ff)kh, d1, d2, d3, f, f1);
      }
 diff -U 3 minecraft.src\dn.java patches\dn.java
---- minecraft.src\dn.java	Sun Oct 17 06:33:26 2010
-+++ patches\dn.java	Sat Oct 16 01:37:16 2010
+--- minecraft.src\dn.java	Sun Oct 17 19:04:17 2010
++++ patches\dn.java	Sun Oct 17 09:44:23 2010
 @@ -153,8 +153,7 @@
      {
      }
@@ -700,8 +700,8 @@ diff -U 3 minecraft.src\dn.java patches\dn.java
          a((ge)kh, d1, d2, d3, f, f1);
      }
 diff -U 3 minecraft.src\dofix.java patches\dofix.java
---- minecraft.src\dofix.java	Sun Oct 17 06:33:26 2010
-+++ patches\dofix.java	Sun Oct 17 06:39:31 2010
+--- minecraft.src\dofix.java	Sun Oct 17 19:04:17 2010
++++ patches\dofix.java	Sun Oct 17 09:44:23 2010
 @@ -1,13 +1,13 @@
  // Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
  // Jad home page: http://www.kpdus.com/jad.html
@@ -750,10 +750,9 @@ diff -U 3 minecraft.src\dofix.java patches\dofix.java
      {
          dataoutputstream.writeShort(a);
          dataoutputstream.writeInt(b);
-Only in patches: dofix.java.bak
 diff -U 3 minecraft.src\du.java patches\du.java
---- minecraft.src\du.java	Sun Oct 17 06:33:26 2010
-+++ patches\du.java	Sat Oct 16 01:37:52 2010
+--- minecraft.src\du.java	Sun Oct 17 19:04:17 2010
++++ patches\du.java	Sun Oct 17 09:44:23 2010
 @@ -16,12 +16,12 @@
      {
      }
@@ -770,8 +769,8 @@ diff -U 3 minecraft.src\du.java patches\du.java
          dataoutputstream.writeLong(a);
      }
 diff -U 3 minecraft.src\dw.java patches\dw.java
---- minecraft.src\dw.java	Sun Oct 17 06:33:26 2010
-+++ patches\dw.java	Sat Oct 16 01:38:02 2010
+--- minecraft.src\dw.java	Sun Oct 17 19:04:17 2010
++++ patches\dw.java	Sun Oct 17 09:44:23 2010
 @@ -148,7 +148,7 @@
          java.lang.System.out.println((new StringBuilder()).append(b.size()).append(" recipes").toString());
      }
@@ -782,8 +781,8 @@ diff -U 3 minecraft.src\dw.java patches\dw.java
          java.lang.String s = "";
          int i = 0;
 diff -U 3 minecraft.src\dy.java patches\dy.java
---- minecraft.src\dy.java	Sun Oct 17 06:33:26 2010
-+++ patches\dy.java	Sat Oct 16 01:38:44 2010
+--- minecraft.src\dy.java	Sun Oct 17 19:04:17 2010
++++ patches\dy.java	Sun Oct 17 09:44:23 2010
 @@ -21,13 +21,13 @@
          a = abyte0;
      }
@@ -801,8 +800,8 @@ diff -U 3 minecraft.src\dy.java patches\dy.java
          int i = datainput.readInt();
          a = new byte[i];
 diff -U 3 minecraft.src\dz.java patches\dz.java
---- minecraft.src\dz.java	Sun Oct 17 06:33:26 2010
-+++ patches\dz.java	Sat Oct 16 01:38:54 2010
+--- minecraft.src\dz.java	Sun Oct 17 19:04:17 2010
++++ patches\dz.java	Sun Oct 17 09:44:23 2010
 @@ -23,13 +23,13 @@
          b = j;
      }
@@ -820,8 +819,8 @@ diff -U 3 minecraft.src\dz.java patches\dz.java
          dataoutputstream.writeInt(a);
          dataoutputstream.writeShort(b);
 diff -U 3 minecraft.src\e.java patches\e.java
---- minecraft.src\e.java	Sun Oct 17 06:33:26 2010
-+++ patches\e.java	Sun Oct 17 06:10:36 2010
+--- minecraft.src\e.java	Sun Oct 17 19:04:17 2010
++++ patches\e.java	Sun Oct 17 09:44:23 2010
 @@ -113,10 +113,10 @@
              for(int l1 = -byte1 * i1; l1 <= byte1 * i1; l1 += ((int) (byte1)))
              {
@@ -853,8 +852,8 @@ diff -U 3 minecraft.src\e.java patches\e.java
  
          }
 diff -U 3 minecraft.src\ee.java patches\ee.java
---- minecraft.src\ee.java	Sun Oct 17 06:33:26 2010
-+++ patches\ee.java	Sun Oct 17 06:10:36 2010
+--- minecraft.src\ee.java	Sun Oct 17 19:04:17 2010
++++ patches\ee.java	Sun Oct 17 09:44:23 2010
 @@ -31,7 +31,7 @@
          a(f);
          org.lwjgl.opengl.GL11.glPushMatrix();
@@ -874,8 +873,8 @@ diff -U 3 minecraft.src\ee.java patches\ee.java
          org.lwjgl.opengl.GL11.glDisable(2929);
          j();
 diff -U 3 minecraft.src\eh.java patches\eh.java
---- minecraft.src\eh.java	Sun Oct 17 06:33:26 2010
-+++ patches\eh.java	Sat Oct 16 01:29:54 2010
+--- minecraft.src\eh.java	Sun Oct 17 19:04:17 2010
++++ patches\eh.java	Sun Oct 17 09:44:23 2010
 @@ -34,12 +34,12 @@
          lb1.a(this);
      }
@@ -892,8 +891,8 @@ diff -U 3 minecraft.src\eh.java patches\eh.java
          dataoutputstream.write(g ? 1 : 0);
      }
 diff -U 3 minecraft.src\ei.java patches\ei.java
---- minecraft.src\ei.java	Sun Oct 17 06:33:26 2010
-+++ patches\ei.java	Sat Oct 16 01:39:40 2010
+--- minecraft.src\ei.java	Sun Oct 17 19:04:17 2010
++++ patches\ei.java	Sun Oct 17 09:44:23 2010
 @@ -42,8 +42,7 @@
          org.lwjgl.opengl.GL11.glPopMatrix();
      }
@@ -905,8 +904,8 @@ diff -U 3 minecraft.src\ei.java patches\ei.java
          a((ao)kh, d, d1, d2, f, f1);
      }
 diff -U 3 minecraft.src\el.java patches\el.java
---- minecraft.src\el.java	Sun Oct 17 06:33:27 2010
-+++ patches\el.java	Sat Oct 16 01:38:39 2010
+--- minecraft.src\el.java	Sun Oct 17 19:04:17 2010
++++ patches\el.java	Sun Oct 17 09:44:23 2010
 @@ -17,9 +17,9 @@
          a = null;
      }
@@ -938,8 +937,8 @@ diff -U 3 minecraft.src\el.java patches\el.java
          dataoutput.writeByte(((int) (el1.a())));
          if(el1.a() == 0)
 diff -U 3 minecraft.src\ep.java patches\ep.java
---- minecraft.src\ep.java	Sun Oct 17 06:33:27 2010
-+++ patches\ep.java	Sat Oct 16 01:40:17 2010
+--- minecraft.src\ep.java	Sun Oct 17 19:04:17 2010
++++ patches\ep.java	Sun Oct 17 09:44:23 2010
 @@ -17,6 +17,10 @@
  
      protected java.io.InputStream openInputStream()
@@ -953,8 +952,8 @@ diff -U 3 minecraft.src\ep.java patches\ep.java
      }
  }
 diff -U 3 minecraft.src\eq.java patches\eq.java
---- minecraft.src\eq.java	Sun Oct 17 06:33:27 2010
-+++ patches\eq.java	Sat Oct 16 01:40:33 2010
+--- minecraft.src\eq.java	Sun Oct 17 19:04:17 2010
++++ patches\eq.java	Sun Oct 17 09:44:23 2010
 @@ -25,19 +25,17 @@
          return (eo.a(f1) + 1.0F) * f2;
      }
@@ -979,8 +978,8 @@ diff -U 3 minecraft.src\eq.java patches\eq.java
          a((mz)kh, d1, d2, d3, f, f1);
      }
 diff -U 3 minecraft.src\er.java patches\er.java
---- minecraft.src\er.java	Sun Oct 17 06:33:27 2010
-+++ patches\er.java	Sun Oct 17 01:41:43 2010
+--- minecraft.src\er.java	Sun Oct 17 19:04:17 2010
++++ patches\er.java	Sun Oct 17 09:44:23 2010
 @@ -1,93 +1,42 @@
 -// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
 -// Jad home page: http://www.kpdus.com/jad.html
@@ -1116,8 +1115,8 @@ diff -U 3 minecraft.src\er.java patches\er.java
 +  }
  }
 diff -U 3 minecraft.src\ew.java patches\ew.java
---- minecraft.src\ew.java	Sun Oct 17 06:33:27 2010
-+++ patches\ew.java	Sat Oct 16 01:41:31 2010
+--- minecraft.src\ew.java	Sun Oct 17 19:04:17 2010
++++ patches\ew.java	Sun Oct 17 09:44:23 2010
 @@ -36,7 +36,7 @@
              java.lang.Class class1 = (java.lang.Class)a.get(((java.lang.Object) (s)));
              if(class1 != null)
@@ -1192,8 +1191,8 @@ diff -U 3 minecraft.src\ew.java patches\ew.java
      }
  }
 diff -U 3 minecraft.src\ey.java patches\ey.java
---- minecraft.src\ey.java	Sun Oct 17 06:33:27 2010
-+++ patches\ey.java	Sat Oct 16 01:42:09 2010
+--- minecraft.src\ey.java	Sun Oct 17 19:04:17 2010
++++ patches\ey.java	Sun Oct 17 09:44:23 2010
 @@ -54,16 +54,16 @@
              df.a(d);
              int j = d.get(0);
@@ -1235,8 +1234,8 @@ diff -U 3 minecraft.src\ey.java patches\ey.java
                  int k = ((java.lang.Integer)b.get(((java.lang.Object) (s)))).intValue();
                  a(bufferedimage1, k);
 diff -U 3 minecraft.src\ez.java patches\ez.java
---- minecraft.src\ez.java	Sun Oct 17 06:33:27 2010
-+++ patches\ez.java	Sat Oct 16 01:42:23 2010
+--- minecraft.src\ez.java	Sun Oct 17 19:04:17 2010
++++ patches\ez.java	Sun Oct 17 09:44:23 2010
 @@ -33,7 +33,7 @@
          g = (byte)(int)((ge1.ar * 256F) / 360F);
      }
@@ -1256,8 +1255,8 @@ diff -U 3 minecraft.src\ez.java patches\ez.java
          dataoutputstream.writeInt(a);
          dataoutputstream.writeByte(((int) (b)));
 diff -U 3 minecraft.src\f.java patches\f.java
---- minecraft.src\f.java	Sun Oct 17 06:33:27 2010
-+++ patches\f.java	Sat Oct 16 01:42:31 2010
+--- minecraft.src\f.java	Sun Oct 17 19:04:17 2010
++++ patches\f.java	Sun Oct 17 09:44:23 2010
 @@ -21,12 +21,12 @@
          a = f1;
      }
@@ -1274,8 +1273,8 @@ diff -U 3 minecraft.src\f.java patches\f.java
          a = datainput.readFloat();
      }
 diff -U 3 minecraft.src\fa.java patches\fa.java
---- minecraft.src\fa.java	Sun Oct 17 06:33:27 2010
-+++ patches\fa.java	Sun Oct 17 01:41:54 2010
+--- minecraft.src\fa.java	Sun Oct 17 19:04:17 2010
++++ patches\fa.java	Sun Oct 17 09:44:23 2010
 @@ -1,43 +1,8 @@
 -// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
 -// Jad home page: http://www.kpdus.com/jad.html
@@ -1327,8 +1326,8 @@ diff -U 3 minecraft.src\fa.java patches\fa.java
 +	 e; // unknown
  }
 diff -U 3 minecraft.src\fb.java patches\fb.java
---- minecraft.src\fb.java	Sun Oct 17 06:33:27 2010
-+++ patches\fb.java	Sat Oct 16 01:42:38 2010
+--- minecraft.src\fb.java	Sun Oct 17 19:04:17 2010
++++ patches\fb.java	Sun Oct 17 09:44:23 2010
 @@ -21,7 +21,7 @@
          return bn1.a(a) >= bn2.a(a) ? 1 : -1;
      }
@@ -1339,8 +1338,8 @@ diff -U 3 minecraft.src\fb.java patches\fb.java
          return a((bn)obj, (bn)obj1);
      }
 diff -U 3 minecraft.src\ff.java patches\ff.java
---- minecraft.src\ff.java	Sun Oct 17 06:33:27 2010
-+++ patches\ff.java	Sat Oct 16 12:46:37 2010
+--- minecraft.src\ff.java	Sun Oct 17 19:04:17 2010
++++ patches\ff.java	Sun Oct 17 09:44:23 2010
 @@ -24,7 +24,7 @@
          ad = true;
          a(0.98F, 0.98F);
@@ -1351,8 +1350,8 @@ diff -U 3 minecraft.src\ff.java patches\ff.java
          ao = 0.0D;
          ap = 0.0D;
 diff -U 3 minecraft.src\fg.java patches\fg.java
---- minecraft.src\fg.java	Sun Oct 17 06:33:27 2010
-+++ patches\fg.java	Sat Oct 16 01:42:49 2010
+--- minecraft.src\fg.java	Sun Oct 17 19:04:17 2010
++++ patches\fg.java	Sun Oct 17 09:44:23 2010
 @@ -29,7 +29,7 @@
          d = i1;
      }
@@ -1372,8 +1371,8 @@ diff -U 3 minecraft.src\fg.java patches\fg.java
          dataoutputstream.write(e);
          dataoutputstream.writeInt(a);
 diff -U 3 minecraft.src\fl.java patches\fl.java
---- minecraft.src\fl.java	Sun Oct 17 06:33:27 2010
-+++ patches\fl.java	Sun Oct 17 06:10:36 2010
+--- minecraft.src\fl.java	Sun Oct 17 19:04:17 2010
++++ patches\fl.java	Sun Oct 17 09:44:24 2010
 @@ -12,8 +12,8 @@
  
      public fl(net.minecraft.client.Minecraft minecraft, java.lang.String s)
@@ -1385,8 +1384,8 @@ diff -U 3 minecraft.src\fl.java patches\fl.java
          start();
      }
 diff -U 3 minecraft.src\fm.java patches\fm.java
---- minecraft.src\fm.java	Sun Oct 17 06:33:27 2010
-+++ patches\fm.java	Sun Oct 17 06:10:36 2010
+--- minecraft.src\fm.java	Sun Oct 17 19:04:17 2010
++++ patches\fm.java	Sun Oct 17 09:44:24 2010
 @@ -16,8 +16,8 @@
  
      public fm(java.awt.Component component, java.awt.Canvas canvas, net.minecraft.client.MinecraftApplet minecraftapplet, int i, int j, boolean flag, java.awt.Frame frame)
@@ -1398,8 +1397,8 @@ diff -U 3 minecraft.src\fm.java patches\fm.java
  
      public void a(go go)
 diff -U 3 minecraft.src\fn.java patches\fn.java
---- minecraft.src\fn.java	Sun Oct 17 06:33:27 2010
-+++ patches\fn.java	Sat Oct 16 01:27:12 2010
+--- minecraft.src\fn.java	Sun Oct 17 19:04:17 2010
++++ patches\fn.java	Sun Oct 17 09:44:24 2010
 @@ -60,7 +60,7 @@
          return ((java.lang.Integer)b.get(((java.lang.Object) (((java.lang.Object)this).getClass())))).intValue();
      }
@@ -1501,8 +1500,8 @@ diff -U 3 minecraft.src\fn.java patches\fn.java
      }
  }
 diff -U 3 minecraft.src\fp.java patches\fp.java
---- minecraft.src\fp.java	Sun Oct 17 06:33:27 2010
-+++ patches\fp.java	Sun Oct 17 06:10:36 2010
+--- minecraft.src\fp.java	Sun Oct 17 19:04:17 2010
++++ patches\fp.java	Sun Oct 17 09:44:24 2010
 @@ -15,9 +15,9 @@
  
      public fp(net.minecraft.client.Minecraft minecraft, java.lang.Thread thread)
@@ -1515,8 +1514,8 @@ diff -U 3 minecraft.src\fp.java patches\fp.java
  
      public void windowClosing(java.awt.event.WindowEvent windowevent)
 diff -U 3 minecraft.src\fs.java patches\fs.java
---- minecraft.src\fs.java	Sun Oct 17 06:33:27 2010
-+++ patches\fs.java	Sat Oct 16 01:44:58 2010
+--- minecraft.src\fs.java	Sun Oct 17 19:04:17 2010
++++ patches\fs.java	Sun Oct 17 09:44:24 2010
 @@ -13,8 +13,8 @@
  
      fs(dw dw1)
@@ -1537,8 +1536,8 @@ diff -U 3 minecraft.src\fs.java patches\fs.java
          return a((bv)obj, (bv)obj1);
      }
 diff -U 3 minecraft.src\fz.java patches\fz.java
---- minecraft.src\fz.java	Sun Oct 17 06:33:27 2010
-+++ patches\fz.java	Sat Oct 16 01:45:39 2010
+--- minecraft.src\fz.java	Sun Oct 17 19:04:17 2010
++++ patches\fz.java	Sun Oct 17 09:44:24 2010
 @@ -30,8 +30,8 @@
      private fz()
      {
@@ -1560,8 +1559,8 @@ diff -U 3 minecraft.src\fz.java patches\fz.java
              ex1 = a(class1.getSuperclass());
              m.put(((java.lang.Object) (class1)), ((java.lang.Object) (ex1)));
 diff -U 3 minecraft.src\g.java patches\g.java
---- minecraft.src\g.java	Sun Oct 17 06:33:27 2010
-+++ patches\g.java	Sun Oct 17 06:10:36 2010
+--- minecraft.src\g.java	Sun Oct 17 19:04:17 2010
++++ patches\g.java	Sun Oct 17 09:44:24 2010
 @@ -16,8 +16,8 @@
  
      public g(net.minecraft.client.MinecraftApplet minecraftapplet, java.awt.Component component, java.awt.Canvas canvas, net.minecraft.client.MinecraftApplet minecraftapplet1, int i, int j, boolean flag)
@@ -1573,8 +1572,8 @@ diff -U 3 minecraft.src\g.java patches\g.java
  
      public void a(go go)
 diff -U 3 minecraft.src\gc.java patches\gc.java
---- minecraft.src\gc.java	Sun Oct 17 06:33:27 2010
-+++ patches\gc.java	Sun Oct 17 06:10:36 2010
+--- minecraft.src\gc.java	Sun Oct 17 19:04:17 2010
++++ patches\gc.java	Sun Oct 17 09:44:24 2010
 @@ -47,48 +47,26 @@
          }
      }
@@ -1644,8 +1643,8 @@ diff -U 3 minecraft.src\gc.java patches\gc.java
  
      public void a(int j, int k, float f)
 diff -U 3 minecraft.src\ge.java patches\ge.java
---- minecraft.src\ge.java	Sun Oct 17 06:33:27 2010
-+++ patches\ge.java	Sat Oct 16 01:48:19 2010
+--- minecraft.src\ge.java	Sun Oct 17 19:04:17 2010
++++ patches\ge.java	Sun Oct 17 09:44:24 2010
 @@ -102,7 +102,7 @@
  
      protected boolean c(kh kh1)
@@ -1690,8 +1689,8 @@ diff -U 3 minecraft.src\ge.java patches\ge.java
      }
  
 diff -U 3 minecraft.src\gk.java patches\gk.java
---- minecraft.src\gk.java	Sun Oct 17 06:33:27 2010
-+++ patches\gk.java	Sat Oct 16 01:48:29 2010
+--- minecraft.src\gk.java	Sun Oct 17 19:04:17 2010
++++ patches\gk.java	Sun Oct 17 09:44:24 2010
 @@ -71,8 +71,7 @@
          org.lwjgl.opengl.GL11.glPopMatrix();
      }
@@ -1703,8 +1702,8 @@ diff -U 3 minecraft.src\gk.java patches\gk.java
          a((kg)kh, d, d1, d2, f, f1);
      }
 diff -U 3 minecraft.src\gl.java patches\gl.java
---- minecraft.src\gl.java	Sun Oct 17 06:33:27 2010
-+++ patches\gl.java	Sat Oct 16 01:48:33 2010
+--- minecraft.src\gl.java	Sun Oct 17 19:04:17 2010
++++ patches\gl.java	Sun Oct 17 09:44:24 2010
 @@ -28,7 +28,7 @@
              return bn1.a(((kh) (a))) >= bn2.a(((kh) (a))) ? -1 : 1;
      }
@@ -1715,8 +1714,8 @@ diff -U 3 minecraft.src\gl.java patches\gl.java
          return a((bn)obj, (bn)obj1);
      }
 diff -U 3 minecraft.src\gm.java patches\gm.java
---- minecraft.src\gm.java	Sun Oct 17 06:33:27 2010
-+++ patches\gm.java	Sat Oct 16 01:48:41 2010
+--- minecraft.src\gm.java	Sun Oct 17 19:04:17 2010
++++ patches\gm.java	Sun Oct 17 09:44:24 2010
 @@ -19,7 +19,7 @@
          return i == 0 && mv1.a;
      }
@@ -1727,8 +1726,8 @@ diff -U 3 minecraft.src\gm.java patches\gm.java
          return a((mv)ge, i);
      }
 diff -U 3 minecraft.src\gn.java patches\gn.java
---- minecraft.src\gn.java	Sun Oct 17 06:33:27 2010
-+++ patches\gn.java	Sat Oct 16 01:48:53 2010
+--- minecraft.src\gn.java	Sun Oct 17 19:04:18 2010
++++ patches\gn.java	Sun Oct 17 09:44:24 2010
 @@ -21,12 +21,12 @@
          a = l;
      }
@@ -1745,8 +1744,8 @@ diff -U 3 minecraft.src\gn.java patches\gn.java
          a = datainput.readLong();
      }
 diff -U 3 minecraft.src\gp.java patches\gp.java
---- minecraft.src\gp.java	Sun Oct 17 06:33:27 2010
-+++ patches\gp.java	Sat Oct 16 01:49:03 2010
+--- minecraft.src\gp.java	Sun Oct 17 19:04:18 2010
++++ patches\gp.java	Sun Oct 17 09:44:24 2010
 @@ -36,7 +36,7 @@
          h = ev1 != null ? ev1.c : 0;
      }
@@ -1766,8 +1765,8 @@ diff -U 3 minecraft.src\gp.java patches\gp.java
          dataoutputstream.writeInt(a);
          dataoutputstream.writeUTF(b);
 diff -U 3 minecraft.src\gq.java patches\gq.java
---- minecraft.src\gq.java	Sun Oct 17 06:33:27 2010
-+++ patches\gq.java	Sat Oct 16 01:49:15 2010
+--- minecraft.src\gq.java	Sun Oct 17 19:04:18 2010
++++ patches\gq.java	Sun Oct 17 09:44:24 2010
 @@ -42,12 +42,12 @@
          org.lwjgl.opengl.GL11.glScalef(f3 * f4, (1.0F / f3) * f4, f3 * f4);
      }
@@ -1784,8 +1783,8 @@ diff -U 3 minecraft.src\gq.java patches\gq.java
          return a((ma)ge, i);
      }
 diff -U 3 minecraft.src\gt.java patches\gt.java
---- minecraft.src\gt.java	Sun Oct 17 06:33:27 2010
-+++ patches\gt.java	Sat Oct 16 01:49:28 2010
+--- minecraft.src\gt.java	Sun Oct 17 19:04:18 2010
++++ patches\gt.java	Sun Oct 17 09:44:24 2010
 @@ -21,12 +21,12 @@
          a = s;
      }
@@ -1802,8 +1801,8 @@ diff -U 3 minecraft.src\gt.java patches\gt.java
          dataoutputstream.writeUTF(a);
      }
 diff -U 3 minecraft.src\gy.java patches\gy.java
---- minecraft.src\gy.java	Sun Oct 17 06:33:27 2010
-+++ patches\gy.java	Sun Oct 17 06:42:12 2010
+--- minecraft.src\gy.java	Sun Oct 17 19:04:18 2010
++++ patches\gy.java	Sun Oct 17 09:44:24 2010
 @@ -9,6 +9,7 @@
  import java.net.InetAddress;
  import java.net.Socket;
@@ -1842,10 +1841,9 @@ diff -U 3 minecraft.src\gy.java patches\gy.java
          if(obj != null)
          {
              obj.bd = kj1.b;
-Only in patches: gy.java.bak
 diff -U 3 minecraft.src\h.java patches\h.java
---- minecraft.src\h.java	Sun Oct 17 06:33:27 2010
-+++ patches\h.java	Sun Oct 17 06:10:36 2010
+--- minecraft.src\h.java	Sun Oct 17 19:04:18 2010
++++ patches\h.java	Sun Oct 17 09:44:24 2010
 @@ -13,8 +13,8 @@
  
      public h(net.minecraft.client.MinecraftApplet minecraftapplet)
@@ -1857,8 +1855,8 @@ diff -U 3 minecraft.src\h.java patches\h.java
  
      public synchronized void addNotify()
 diff -U 3 minecraft.src\ha.java patches\ha.java
---- minecraft.src\ha.java	Sun Oct 17 06:33:27 2010
-+++ patches\ha.java	Sat Oct 16 01:52:13 2010
+--- minecraft.src\ha.java	Sun Oct 17 19:04:18 2010
++++ patches\ha.java	Sun Oct 17 09:44:24 2010
 @@ -37,7 +37,7 @@
          g = (byte)(int)(dx1.ap * 128D);
      }
@@ -1878,8 +1876,8 @@ diff -U 3 minecraft.src\ha.java patches\ha.java
          dataoutputstream.writeInt(a);
          dataoutputstream.writeShort(h);
 diff -U 3 minecraft.src\hf.java patches\hf.java
---- minecraft.src\hf.java	Sun Oct 17 06:33:27 2010
-+++ patches\hf.java	Sat Oct 16 01:52:21 2010
+--- minecraft.src\hf.java	Sun Oct 17 19:04:18 2010
++++ patches\hf.java	Sun Oct 17 09:44:24 2010
 @@ -23,13 +23,13 @@
          b = i;
      }
@@ -1897,8 +1895,8 @@ diff -U 3 minecraft.src\hf.java patches\hf.java
          dataoutputstream.writeInt(a);
          dataoutputstream.writeByte(b);
 diff -U 3 minecraft.src\hk.java patches\hk.java
---- minecraft.src\hk.java	Sun Oct 17 06:33:27 2010
-+++ patches\hk.java	Sat Oct 16 01:52:55 2010
+--- minecraft.src\hk.java	Sun Oct 17 19:04:18 2010
++++ patches\hk.java	Sun Oct 17 09:44:24 2010
 @@ -17,8 +17,8 @@
  
      public hk(ep ep1, java.net.URL url, java.io.InputStream inputstream)
@@ -1923,8 +1921,8 @@ diff -U 3 minecraft.src\hk.java patches\hk.java
          {
              byte byte0 = abyte0[i + k] ^= ((byte) (c >> 8));
 diff -U 3 minecraft.src\hm.java patches\hm.java
---- minecraft.src\hm.java	Sun Oct 17 06:33:27 2010
-+++ patches\hm.java	Sat Oct 16 01:53:10 2010
+--- minecraft.src\hm.java	Sun Oct 17 19:04:18 2010
++++ patches\hm.java	Sun Oct 17 09:44:24 2010
 @@ -21,7 +21,7 @@
          a = ((java.util.Map) (new HashMap()));
      }
@@ -1944,8 +1942,8 @@ diff -U 3 minecraft.src\hm.java patches\hm.java
          a.clear();
          el el1;
 diff -U 3 minecraft.src\hp.java patches\hp.java
---- minecraft.src\hp.java	Sun Oct 17 06:33:27 2010
-+++ patches\hp.java	Sat Oct 16 01:53:19 2010
+--- minecraft.src\hp.java	Sun Oct 17 19:04:18 2010
++++ patches\hp.java	Sun Oct 17 09:44:24 2010
 @@ -25,14 +25,14 @@
          a = i;
      }
@@ -1964,8 +1962,8 @@ diff -U 3 minecraft.src\hp.java patches\hp.java
          dataoutputstream.writeInt(a);
          dataoutputstream.writeUTF(b);
 diff -U 3 minecraft.src\hw.java patches\hw.java
---- minecraft.src\hw.java	Sun Oct 17 06:33:28 2010
-+++ patches\hw.java	Sat Oct 16 01:53:29 2010
+--- minecraft.src\hw.java	Sun Oct 17 19:04:18 2010
++++ patches\hw.java	Sun Oct 17 09:44:24 2010
 @@ -52,8 +52,7 @@
          org.lwjgl.opengl.GL11.glPopMatrix();
      }
@@ -1977,8 +1975,8 @@ diff -U 3 minecraft.src\hw.java patches\hw.java
          a((jd)kh, d1, d2, d3, f, f1);
      }
 diff -U 3 minecraft.src\ia.java patches\ia.java
---- minecraft.src\ia.java	Sun Oct 17 06:33:28 2010
-+++ patches\ia.java	Sun Oct 17 06:10:36 2010
+--- minecraft.src\ia.java	Sun Oct 17 19:04:18 2010
++++ patches\ia.java	Sun Oct 17 09:44:24 2010
 @@ -28,11 +28,11 @@
          g = 0.0F;
          h = 0.0F;
@@ -1996,8 +1994,8 @@ diff -U 3 minecraft.src\ia.java patches\ia.java
      }
  
 diff -U 3 minecraft.src\ic.java patches\ic.java
---- minecraft.src\ic.java	Sun Oct 17 06:33:28 2010
-+++ patches\ic.java	Sat Oct 16 01:54:10 2010
+--- minecraft.src\ic.java	Sun Oct 17 19:04:18 2010
++++ patches\ic.java	Sun Oct 17 09:44:24 2010
 @@ -106,9 +106,9 @@
  
      static 
@@ -2013,8 +2011,8 @@ diff -U 3 minecraft.src\ic.java patches\ic.java
      }
  }
 diff -U 3 minecraft.src\iffix.java patches\iffix.java
---- minecraft.src\iffix.java	Sun Oct 17 06:33:28 2010
-+++ patches\iffix.java	Fri Oct 15 21:06:23 2010
+--- minecraft.src\iffix.java	Sun Oct 17 19:04:18 2010
++++ patches\iffix.java	Sun Oct 17 09:44:24 2010
 @@ -1,14 +1,14 @@
  // Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
  // Jad home page: http://www.kpdus.com/jad.html
@@ -2034,8 +2032,8 @@ diff -U 3 minecraft.src\iffix.java patches\iffix.java
          super(i, j, gb.n);
          a(0.0F, 0.0F, 0.0F, 1.0F, 0.125F, 1.0F);
 diff -U 3 minecraft.src\ih.java patches\ih.java
---- minecraft.src\ih.java	Sun Oct 17 06:33:28 2010
-+++ patches\ih.java	Sun Oct 17 06:10:36 2010
+--- minecraft.src\ih.java	Sun Oct 17 19:04:18 2010
++++ patches\ih.java	Sun Oct 17 09:44:24 2010
 @@ -5,40 +5,11 @@
  
  import net.minecraft.client.Minecraft;
@@ -2084,8 +2082,8 @@ diff -U 3 minecraft.src\ih.java patches\ih.java
 +	e; // unknown
  }
 diff -U 3 minecraft.src\ii.java patches\ii.java
---- minecraft.src\ii.java	Sun Oct 17 06:33:28 2010
-+++ patches\ii.java	Sat Oct 16 01:55:08 2010
+--- minecraft.src\ii.java	Sun Oct 17 19:04:18 2010
++++ patches\ii.java	Sun Oct 17 09:44:24 2010
 @@ -7,6 +7,7 @@
  import java.io.DataOutputStream;
  import java.io.IOException;
@@ -2104,8 +2102,8 @@ diff -U 3 minecraft.src\ii.java patches\ii.java
          d = new Object();
          h = true;
 diff -U 3 minecraft.src\ij.java patches\ij.java
---- minecraft.src\ij.java	Sun Oct 17 06:33:28 2010
-+++ patches\ij.java	Sat Oct 16 01:55:15 2010
+--- minecraft.src\ij.java	Sun Oct 17 19:04:18 2010
++++ patches\ij.java	Sun Oct 17 09:44:24 2010
 @@ -21,12 +21,12 @@
          a = s;
      }
@@ -2122,8 +2120,8 @@ diff -U 3 minecraft.src\ij.java patches\ij.java
          dataoutputstream.writeUTF(a);
      }
 diff -U 3 minecraft.src\in.java patches\in.java
---- minecraft.src\in.java	Sun Oct 17 06:33:28 2010
-+++ patches\in.java	Sat Oct 16 01:55:25 2010
+--- minecraft.src\in.java	Sun Oct 17 19:04:18 2010
++++ patches\in.java	Sun Oct 17 09:44:24 2010
 @@ -72,8 +72,7 @@
          org.lwjgl.opengl.GL11.glPopMatrix();
      }
@@ -2135,8 +2133,8 @@ diff -U 3 minecraft.src\in.java patches\in.java
          a((ob)ic, d, d1, d2, f);
      }
 diff -U 3 minecraft.src\io.java patches\io.java
---- minecraft.src\io.java	Sun Oct 17 06:33:28 2010
-+++ patches\io.java	Sat Oct 16 01:55:33 2010
+--- minecraft.src\io.java	Sun Oct 17 19:04:18 2010
++++ patches\io.java	Sun Oct 17 09:44:24 2010
 @@ -21,12 +21,12 @@
          a = i;
      }
@@ -2153,8 +2151,8 @@ diff -U 3 minecraft.src\io.java patches\io.java
          a = datainput.readInt();
      }
 diff -U 3 minecraft.src\iq.java patches\iq.java
---- minecraft.src\iq.java	Sun Oct 17 06:33:28 2010
-+++ patches\iq.java	Sun Oct 17 06:10:36 2010
+--- minecraft.src\iq.java	Sun Oct 17 19:04:18 2010
++++ patches\iq.java	Sun Oct 17 09:44:24 2010
 @@ -318,7 +318,7 @@
              org.lwjgl.opengl.GL11.glClear(16640);
              org.lwjgl.opengl.GL11.glEnable(2884);
@@ -2181,8 +2179,8 @@ diff -U 3 minecraft.src\iq.java patches\iq.java
              bq1.a(((kh) (bi1)), f1);
              if(h.x != null && ((dm) (bi1)).a(gb.f))
 diff -U 3 minecraft.src\is.java patches\is.java
---- minecraft.src\is.java	Sun Oct 17 06:33:28 2010
-+++ patches\is.java	Sat Oct 16 01:56:17 2010
+--- minecraft.src\is.java	Sun Oct 17 19:04:18 2010
++++ patches\is.java	Sun Oct 17 09:44:24 2010
 @@ -15,7 +15,7 @@
          g = true;
      }
@@ -2202,8 +2200,8 @@ diff -U 3 minecraft.src\is.java patches\is.java
          super.a(dataoutputstream);
          dataoutputstream.writeByte(((int) (b)));
 diff -U 3 minecraft.src\ix.java patches\ix.java
---- minecraft.src\ix.java	Sun Oct 17 06:33:28 2010
-+++ patches\ix.java	Sat Oct 16 01:56:25 2010
+--- minecraft.src\ix.java	Sun Oct 17 19:04:18 2010
++++ patches\ix.java	Sun Oct 17 09:44:24 2010
 @@ -21,12 +21,12 @@
          a = byte0;
      }
@@ -2220,8 +2218,8 @@ diff -U 3 minecraft.src\ix.java patches\ix.java
          a = datainput.readByte();
      }
 diff -U 3 minecraft.src\jc.java patches\jc.java
---- minecraft.src\jc.java	Sun Oct 17 06:33:28 2010
-+++ patches\jc.java	Sat Oct 16 13:40:04 2010
+--- minecraft.src\jc.java	Sun Oct 17 19:04:18 2010
++++ patches\jc.java	Sun Oct 17 09:44:24 2010
 @@ -84,7 +84,7 @@
          if(j == 3)
              f6 -= c(b.z);
@@ -2231,9 +2229,21 @@ diff -U 3 minecraft.src\jc.java patches\jc.java
          float f8 = -0.00625F;
          au.c(f4 - f1 - f8, f5 - f2 - f8, f6 - f3 - f8, f4 + f1 + f8, f5 + f2 + f8, f6 + f3 + f8);
      }
+diff -U 3 minecraft.src\jd.java patches\jd.java
+--- minecraft.src\jd.java	Sun Oct 17 19:04:18 2010
++++ patches\jd.java	Sun Oct 17 19:12:58 2010
+@@ -21,7 +21,7 @@
+     public jd(cn cn1, float f, float f1, float f2)
+     {
+         this(cn1);
+-        a(f, f1, f2);
++        a((double)f, (double)f1, (double)f2);
+         float f3 = (float)(java.lang.Math.random() * 3.1415927410125732D * 2D);
+         an = -eo.a((f3 * 3.141593F) / 180F) * 0.02F;
+         ao = 0.20000000298023224D;
 diff -U 3 minecraft.src\jf.java patches\jf.java
---- minecraft.src\jf.java	Sun Oct 17 06:33:28 2010
-+++ patches\jf.java	Sat Oct 16 01:56:35 2010
+--- minecraft.src\jf.java	Sun Oct 17 19:04:18 2010
++++ patches\jf.java	Sun Oct 17 09:44:24 2010
 @@ -59,7 +59,7 @@
          return g <= jf1.g ? 0 : 1;
      }
@@ -2244,8 +2254,8 @@ diff -U 3 minecraft.src\jf.java patches\jf.java
          return a((jf)obj);
      }
 diff -U 3 minecraft.src\ji.java patches\ji.java
---- minecraft.src\ji.java	Sun Oct 17 06:33:28 2010
-+++ patches\ji.java	Sat Oct 16 01:56:46 2010
+--- minecraft.src\ji.java	Sun Oct 17 19:04:18 2010
++++ patches\ji.java	Sun Oct 17 09:44:24 2010
 @@ -18,14 +18,14 @@
      {
      }
@@ -2264,8 +2274,8 @@ diff -U 3 minecraft.src\ji.java patches\ji.java
          dataoutputstream.writeInt(a);
          dataoutputstream.writeInt(b);
 diff -U 3 minecraft.src\jl.java patches\jl.java
---- minecraft.src\jl.java	Sun Oct 17 06:33:28 2010
-+++ patches\jl.java	Sat Oct 16 01:56:52 2010
+--- minecraft.src\jl.java	Sun Oct 17 19:04:18 2010
++++ patches\jl.java	Sun Oct 17 09:44:24 2010
 @@ -31,7 +31,7 @@
          f = (byte)(int)((kh1.ar * 256F) / 360F);
      }
@@ -2285,8 +2295,8 @@ diff -U 3 minecraft.src\jl.java patches\jl.java
          dataoutputstream.writeInt(a);
          dataoutputstream.writeInt(b);
 diff -U 3 minecraft.src\jp.java patches\jp.java
---- minecraft.src\jp.java	Sun Oct 17 06:33:28 2010
-+++ patches\jp.java	Sat Oct 16 01:57:04 2010
+--- minecraft.src\jp.java	Sun Oct 17 19:04:18 2010
++++ patches\jp.java	Sun Oct 17 09:44:24 2010
 @@ -106,7 +106,7 @@
  
      private aj e(nm nm1, int k, int l, int i1)
@@ -2297,8 +2307,8 @@ diff -U 3 minecraft.src\jp.java patches\jp.java
          for(int k1 = 0; k1 < 4; k1++)
          {
 diff -U 3 minecraft.src\js.java patches\js.java
---- minecraft.src\js.java	Sun Oct 17 06:33:28 2010
-+++ patches\js.java	Sun Oct 17 01:42:00 2010
+--- minecraft.src\js.java	Sun Oct 17 19:04:18 2010
++++ patches\js.java	Sun Oct 17 09:44:24 2010
 @@ -1,39 +1,6 @@
 -// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
 -// Jad home page: http://www.kpdus.com/jad.html
@@ -2344,8 +2354,8 @@ diff -U 3 minecraft.src\js.java patches\js.java
 +	c; // players
  }
 diff -U 3 minecraft.src\ju.java patches\ju.java
---- minecraft.src\ju.java	Sun Oct 17 06:33:28 2010
-+++ patches\ju.java	Sat Oct 16 01:57:25 2010
+--- minecraft.src\ju.java	Sun Oct 17 19:04:18 2010
++++ patches\ju.java	Sun Oct 17 09:44:24 2010
 @@ -16,12 +16,12 @@
      {
      }
@@ -2362,8 +2372,8 @@ diff -U 3 minecraft.src\ju.java patches\ju.java
          dataoutputstream.writeInt(a);
      }
 diff -U 3 minecraft.src\jx.java patches\jx.java
---- minecraft.src\jx.java	Sun Oct 17 06:33:28 2010
-+++ patches\jx.java	Sat Oct 16 01:57:23 2010
+--- minecraft.src\jx.java	Sun Oct 17 19:04:18 2010
++++ patches\jx.java	Sun Oct 17 09:44:24 2010
 @@ -15,14 +15,14 @@
          g = true;
      }
@@ -2382,8 +2392,8 @@ diff -U 3 minecraft.src\jx.java patches\jx.java
          super.a(dataoutputstream);
          dataoutputstream.writeByte(((int) (e)));
 diff -U 3 minecraft.src\k.java patches\k.java
---- minecraft.src\k.java	Sun Oct 17 06:33:28 2010
-+++ patches\k.java	Sat Oct 16 01:57:31 2010
+--- minecraft.src\k.java	Sun Oct 17 19:04:19 2010
++++ patches\k.java	Sun Oct 17 09:44:24 2010
 @@ -12,8 +12,8 @@
  
      k(ia ia1, int i, java.lang.Class class1, java.lang.Class aclass[])
@@ -2395,8 +2405,8 @@ diff -U 3 minecraft.src\k.java patches\k.java
  
      protected mt a(cn cn1, int i, int j)
 diff -U 3 minecraft.src\ka.java patches\ka.java
---- minecraft.src\ka.java	Sun Oct 17 06:33:28 2010
-+++ patches\ka.java	Sat Oct 16 01:57:40 2010
+--- minecraft.src\ka.java	Sun Oct 17 19:04:19 2010
++++ patches\ka.java	Sun Oct 17 09:44:24 2010
 @@ -18,14 +18,14 @@
      {
      }
@@ -2415,8 +2425,8 @@ diff -U 3 minecraft.src\ka.java patches\ka.java
          dataoutputstream.writeInt(a);
          dataoutputstream.writeInt(b);
 diff -U 3 minecraft.src\kc.java patches\kc.java
---- minecraft.src\kc.java	Sun Oct 17 06:33:28 2010
-+++ patches\kc.java	Sat Oct 16 01:57:46 2010
+--- minecraft.src\kc.java	Sun Oct 17 19:04:19 2010
++++ patches\kc.java	Sun Oct 17 09:44:24 2010
 @@ -15,8 +15,8 @@
  
      public kc(cx cx1, int i, int j)
@@ -2428,8 +2438,8 @@ diff -U 3 minecraft.src\kc.java patches\kc.java
      }
  
 diff -U 3 minecraft.src\kd.java patches\kd.java
---- minecraft.src\kd.java	Sun Oct 17 06:33:28 2010
-+++ patches\kd.java	Sat Oct 16 01:57:59 2010
+--- minecraft.src\kd.java	Sun Oct 17 19:04:19 2010
++++ patches\kd.java	Sun Oct 17 09:44:24 2010
 @@ -25,7 +25,7 @@
          java.awt.image.BufferedImage bufferedimage;
          try
@@ -2440,8 +2450,8 @@ diff -U 3 minecraft.src\kd.java patches\kd.java
          catch(java.io.IOException ioexception)
          {
 diff -U 3 minecraft.src\kg.java patches\kg.java
---- minecraft.src\kg.java	Sun Oct 17 06:33:28 2010
-+++ patches\kg.java	Sat Oct 16 01:58:26 2010
+--- minecraft.src\kg.java	Sun Oct 17 19:04:19 2010
++++ patches\kg.java	Sun Oct 17 09:44:24 2010
 @@ -105,13 +105,13 @@
          {
              i++;
@@ -2462,8 +2472,8 @@ diff -U 3 minecraft.src\kg.java patches\kg.java
          java.util.List list = ag.b(((kh) (this)), au.a(an, ao, ap).b(1.0D, 1.0D, 1.0D));
          double d1 = 0.0D;
 diff -U 3 minecraft.src\kh.java patches\kh.java
---- minecraft.src\kh.java	Sun Oct 17 06:33:28 2010
-+++ patches\kh.java	Sat Oct 16 01:58:42 2010
+--- minecraft.src\kh.java	Sun Oct 17 19:04:19 2010
++++ patches\kh.java	Sun Oct 17 09:44:24 2010
 @@ -733,7 +733,7 @@
  
      protected abstract void a(hm hm1);
@@ -2483,8 +2493,8 @@ diff -U 3 minecraft.src\kh.java patches\kh.java
          ki ki1 = new ki();
          float af2[] = af1;
 diff -U 3 minecraft.src\ki.java patches\ki.java
---- minecraft.src\ki.java	Sun Oct 17 06:33:28 2010
-+++ patches\ki.java	Sat Oct 16 01:58:51 2010
+--- minecraft.src\ki.java	Sun Oct 17 19:04:19 2010
++++ patches\ki.java	Sun Oct 17 09:44:24 2010
 @@ -20,7 +20,7 @@
          a = ((java.util.List) (new ArrayList()));
      }
@@ -2504,8 +2514,8 @@ diff -U 3 minecraft.src\ki.java patches\ki.java
          b = datainput.readByte();
          int i = datainput.readInt();
 diff -U 3 minecraft.src\kj.java patches\kj.java
---- minecraft.src\kj.java	Sun Oct 17 06:33:28 2010
-+++ patches\kj.java	Sat Oct 16 01:58:59 2010
+--- minecraft.src\kj.java	Sun Oct 17 19:04:19 2010
++++ patches\kj.java	Sun Oct 17 09:44:24 2010
 @@ -20,7 +20,7 @@
      {
      }
@@ -2525,8 +2535,8 @@ diff -U 3 minecraft.src\kj.java patches\kj.java
          dataoutputstream.writeInt(a);
          dataoutputstream.writeByte(e);
 diff -U 3 minecraft.src\kp.java patches\kp.java
---- minecraft.src\kp.java	Sun Oct 17 06:33:28 2010
-+++ patches\kp.java	Sat Oct 16 01:59:07 2010
+--- minecraft.src\kp.java	Sun Oct 17 19:04:19 2010
++++ patches\kp.java	Sun Oct 17 09:44:24 2010
 @@ -14,7 +14,7 @@
      {
      }
@@ -2546,8 +2556,8 @@ diff -U 3 minecraft.src\kp.java patches\kp.java
          super.a(dataoutputstream);
          dataoutputstream.writeByte(((int) (b)));
 diff -U 3 minecraft.src\kr.java patches\kr.java
---- minecraft.src\kr.java	Sun Oct 17 06:33:28 2010
-+++ patches\kr.java	Sat Oct 16 01:59:14 2010
+--- minecraft.src\kr.java	Sun Oct 17 19:04:19 2010
++++ patches\kr.java	Sun Oct 17 09:44:24 2010
 @@ -21,12 +21,12 @@
          a = d;
      }
@@ -2564,8 +2574,8 @@ diff -U 3 minecraft.src\kr.java patches\kr.java
          a = datainput.readDouble();
      }
 diff -U 3 minecraft.src\kt.java patches\kt.java
---- minecraft.src\kt.java	Sun Oct 17 06:33:28 2010
-+++ patches\kt.java	Sat Oct 16 01:59:23 2010
+--- minecraft.src\kt.java	Sun Oct 17 19:04:19 2010
++++ patches\kt.java	Sun Oct 17 09:44:24 2010
 @@ -76,8 +76,7 @@
          org.lwjgl.opengl.GL11.glPopMatrix();
      }
@@ -2577,8 +2587,8 @@ diff -U 3 minecraft.src\kt.java patches\kt.java
          a((oc)kh, d1, d2, d3, f, f1);
      }
 diff -U 3 minecraft.src\kx.java patches\kx.java
---- minecraft.src\kx.java	Sun Oct 17 06:33:28 2010
-+++ patches\kx.java	Sat Oct 16 02:00:09 2010
+--- minecraft.src\kx.java	Sun Oct 17 19:04:19 2010
++++ patches\kx.java	Sun Oct 17 09:44:24 2010
 @@ -32,27 +32,27 @@
      private kx()
      {
@@ -2638,8 +2648,8 @@ diff -U 3 minecraft.src\kx.java patches\kx.java
              ak1 = a(class1.getSuperclass());
              o.put(((java.lang.Object) (class1)), ((java.lang.Object) (ak1)));
 diff -U 3 minecraft.src\kz.java patches\kz.java
---- minecraft.src\kz.java	Sun Oct 17 06:33:28 2010
-+++ patches\kz.java	Sun Oct 17 00:03:59 2010
+--- minecraft.src\kz.java	Sun Oct 17 19:04:19 2010
++++ patches\kz.java	Sun Oct 17 09:44:24 2010
 @@ -16,15 +16,16 @@
  
      kz(cc cc1, java.lang.String s, hb hb1)
@@ -2689,8 +2699,8 @@ diff -U 3 minecraft.src\kz.java patches\kz.java
      }
  }
 diff -U 3 minecraft.src\lb.java patches\lb.java
---- minecraft.src\lb.java	Sun Oct 17 06:33:28 2010
-+++ patches\lb.java	Sat Oct 16 01:37:38 2010
+--- minecraft.src\lb.java	Sun Oct 17 19:04:19 2010
++++ patches\lb.java	Sun Oct 17 09:44:24 2010
 @@ -73,7 +73,7 @@
          b(((fn) (jl)));
      }
@@ -2701,8 +2711,8 @@ diff -U 3 minecraft.src\lb.java patches\lb.java
          b(((fn) (do1)));
      }
 diff -U 3 minecraft.src\lc.java patches\lc.java
---- minecraft.src\lc.java	Sun Oct 17 06:33:28 2010
-+++ patches\lc.java	Sat Oct 16 02:01:01 2010
+--- minecraft.src\lc.java	Sun Oct 17 19:04:19 2010
++++ patches\lc.java	Sun Oct 17 09:44:24 2010
 @@ -17,8 +17,8 @@
  
      public lc(gs gs1, int i, int j, int k, int l, int i1)
@@ -2714,8 +2724,8 @@ diff -U 3 minecraft.src\lc.java patches\lc.java
          b = j;
          c = k;
 diff -U 3 minecraft.src\ld.java patches\ld.java
---- minecraft.src\ld.java	Sun Oct 17 06:33:28 2010
-+++ patches\ld.java	Sat Oct 16 02:01:09 2010
+--- minecraft.src\ld.java	Sun Oct 17 19:04:19 2010
++++ patches\ld.java	Sun Oct 17 09:44:24 2010
 @@ -18,14 +18,14 @@
      {
      }
@@ -2734,8 +2744,8 @@ diff -U 3 minecraft.src\ld.java patches\ld.java
          dataoutputstream.writeShort(a);
          dataoutputstream.writeByte(b);
 diff -U 3 minecraft.src\le.java patches\le.java
---- minecraft.src\le.java	Sun Oct 17 06:33:28 2010
-+++ patches\le.java	Sun Oct 17 00:54:32 2010
+--- minecraft.src\le.java	Sun Oct 17 19:04:19 2010
++++ patches\le.java	Sun Oct 17 09:44:24 2010
 @@ -53,8 +53,10 @@
      {
          java.io.File file;
@@ -2767,8 +2777,8 @@ diff -U 3 minecraft.src\le.java patches\le.java
          return null;
      }
 diff -U 3 minecraft.src\lh.java patches\lh.java
---- minecraft.src\lh.java	Sun Oct 17 06:33:28 2010
-+++ patches\lh.java	Sat Oct 16 02:03:39 2010
+--- minecraft.src\lh.java	Sun Oct 17 19:04:19 2010
++++ patches\lh.java	Sun Oct 17 09:44:24 2010
 @@ -11,8 +11,8 @@
  
      lh(ad ad1)
@@ -2780,8 +2790,8 @@ diff -U 3 minecraft.src\lh.java patches\lh.java
  
      public void run()
 diff -U 3 minecraft.src\li.java patches\li.java
---- minecraft.src\li.java	Sun Oct 17 06:33:29 2010
-+++ patches\li.java	Sat Oct 16 02:03:47 2010
+--- minecraft.src\li.java	Sun Oct 17 19:04:19 2010
++++ patches\li.java	Sun Oct 17 09:44:24 2010
 @@ -21,7 +21,7 @@
          j = true;
      }
@@ -2801,8 +2811,8 @@ diff -U 3 minecraft.src\li.java patches\li.java
          dataoutputstream.writeInt(a);
          dataoutputstream.write(b);
 diff -U 3 minecraft.src\lj.java patches\lj.java
---- minecraft.src\lj.java	Sun Oct 17 06:33:29 2010
-+++ patches\lj.java	Sat Oct 16 02:03:54 2010
+--- minecraft.src\lj.java	Sun Oct 17 19:04:19 2010
++++ patches\lj.java	Sun Oct 17 09:44:24 2010
 @@ -12,9 +12,9 @@
  
      lj(lo lo1, ee ee, gh gh, int i, int j, int k, int l)
@@ -2815,8 +2825,8 @@ diff -U 3 minecraft.src\lj.java patches\lj.java
  
      public boolean a(ev ev1)
 diff -U 3 minecraft.src\lk.java patches\lk.java
---- minecraft.src\lk.java	Sun Oct 17 06:33:29 2010
-+++ patches\lk.java	Sat Oct 16 02:04:01 2010
+--- minecraft.src\lk.java	Sun Oct 17 19:04:19 2010
++++ patches\lk.java	Sun Oct 17 09:44:24 2010
 @@ -12,8 +12,8 @@
  
      lk(ad ad1, java.io.File file, java.lang.String s)
@@ -2828,8 +2838,8 @@ diff -U 3 minecraft.src\lk.java patches\lk.java
  
      protected aw a(java.io.File file)
 diff -U 3 minecraft.src\lo.java patches\lo.java
---- minecraft.src\lo.java	Sun Oct 17 06:33:29 2010
-+++ patches\lo.java	Sun Oct 17 06:10:35 2010
+--- minecraft.src\lo.java	Sun Oct 17 19:04:19 2010
++++ patches\lo.java	Sun Oct 17 09:44:24 2010
 @@ -77,7 +77,7 @@
          float f5 = (float)(i1 + 51) - l;
          float f6 = (float)((j1 + 75) - 50) - m;
@@ -2849,8 +2859,8 @@ diff -U 3 minecraft.src\lo.java patches\lo.java
      }
  }
 diff -U 3 minecraft.src\lq.java patches\lq.java
---- minecraft.src\lq.java	Sun Oct 17 06:33:29 2010
-+++ patches\lq.java	Sat Oct 16 01:56:17 2010
+--- minecraft.src\lq.java	Sun Oct 17 19:04:19 2010
++++ patches\lq.java	Sun Oct 17 09:44:24 2010
 @@ -23,12 +23,12 @@
          g = false;
      }
@@ -2867,8 +2877,8 @@ diff -U 3 minecraft.src\lq.java patches\lq.java
          dataoutputstream.writeInt(a);
      }
 diff -U 3 minecraft.src\ls.java patches\ls.java
---- minecraft.src\ls.java	Sun Oct 17 06:33:29 2010
-+++ patches\ls.java	Sat Oct 16 02:14:52 2010
+--- minecraft.src\ls.java	Sun Oct 17 19:04:19 2010
++++ patches\ls.java	Sun Oct 17 09:44:24 2010
 @@ -21,12 +21,12 @@
          a = word0;
      }
@@ -2885,8 +2895,8 @@ diff -U 3 minecraft.src\ls.java patches\ls.java
          a = datainput.readShort();
      }
 diff -U 3 minecraft.src\lt.java patches\lt.java
---- minecraft.src\lt.java	Sun Oct 17 06:33:29 2010
-+++ patches\lt.java	Sat Oct 16 02:15:05 2010
+--- minecraft.src\lt.java	Sun Oct 17 19:04:19 2010
++++ patches\lt.java	Sun Oct 17 09:44:24 2010
 @@ -30,7 +30,7 @@
          g = new int[768];
          try
@@ -2897,8 +2907,8 @@ diff -U 3 minecraft.src\lt.java patches\lt.java
              bufferedimage.getRGB(0, 0, 256, 256, ai, 0, 256);
              for(int j = 0; j < 256; j++)
 diff -U 3 minecraft.src\lu.java patches\lu.java
---- minecraft.src\lu.java	Sun Oct 17 06:33:29 2010
-+++ patches\lu.java	Sun Oct 17 06:10:35 2010
+--- minecraft.src\lu.java	Sun Oct 17 19:04:19 2010
++++ patches\lu.java	Sun Oct 17 09:44:24 2010
 @@ -115,7 +115,7 @@
          org.lwjgl.opengl.GL11.glEnable(32826);
          org.lwjgl.opengl.GL11.glPushMatrix();
@@ -2917,10 +2927,9 @@ diff -U 3 minecraft.src\lu.java patches\lu.java
          org.lwjgl.opengl.GL11.glDisable(32826);
          if(org.lwjgl.input.Keyboard.isKeyDown(61))
          {
-Only in patches: lw.java.bak
 diff -U 3 minecraft.src\ly.java patches\ly.java
---- minecraft.src\ly.java	Sun Oct 17 06:33:29 2010
-+++ patches\ly.java	Sat Oct 16 02:15:26 2010
+--- minecraft.src\ly.java	Sun Oct 17 19:04:19 2010
++++ patches\ly.java	Sun Oct 17 09:44:24 2010
 @@ -583,12 +583,12 @@
          aB = (new mi(60)).c(0.6F).a(g);
          aC = (new ku(61, false)).c(3.5F).a(i);
@@ -2938,8 +2947,8 @@ diff -U 3 minecraft.src\ly.java patches\ly.java
          aL = (new al(70, u.bb, js.b)).c(0.5F).a(i);
          aM = (new fw(71, gb.e)).c(5F).a(j);
 diff -U 3 minecraft.src\m.java patches\m.java
---- minecraft.src\m.java	Sun Oct 17 06:33:29 2010
-+++ patches\m.java	Sat Oct 16 02:15:38 2010
+--- minecraft.src\m.java	Sun Oct 17 19:04:19 2010
++++ patches\m.java	Sun Oct 17 09:44:24 2010
 @@ -26,7 +26,7 @@
  
      }
@@ -2959,8 +2968,8 @@ diff -U 3 minecraft.src\m.java patches\m.java
          dataoutputstream.writeInt(a);
          dataoutputstream.writeShort(b.length);
 diff -U 3 minecraft.src\mc.java patches\mc.java
---- minecraft.src\mc.java	Sun Oct 17 06:33:29 2010
-+++ patches\mc.java	Sat Oct 16 02:15:51 2010
+--- minecraft.src\mc.java	Sun Oct 17 19:04:19 2010
++++ patches\mc.java	Sun Oct 17 09:44:24 2010
 @@ -18,14 +18,12 @@
          super.a(((ge) (am1)), d, d1, d2, f, f1);
      }
@@ -2979,8 +2988,8 @@ diff -U 3 minecraft.src\mc.java patches\mc.java
          a((am)kh, d, d1, d2, f, f1);
      }
 diff -U 3 minecraft.src\me.java patches\me.java
---- minecraft.src\me.java	Sun Oct 17 06:33:29 2010
-+++ patches\me.java	Sat Oct 16 02:16:00 2010
+--- minecraft.src\me.java	Sun Oct 17 19:04:19 2010
++++ patches\me.java	Sun Oct 17 09:44:24 2010
 @@ -21,7 +21,7 @@
          double d = dm1.ah + (dm1.ak - dm1.ah) * (double)f;
          double d1 = dm1.ai + (dm1.al - dm1.ai) * (double)f;
@@ -2991,8 +3000,8 @@ diff -U 3 minecraft.src\me.java patches\me.java
          float f4 = eo.a(-f2 * 0.01745329F - 3.141593F);
          float f5 = -eo.b(-f1 * 0.01745329F);
 diff -U 3 minecraft.src\mh.java patches\mh.java
---- minecraft.src\mh.java	Sun Oct 17 06:33:29 2010
-+++ patches\mh.java	Sat Oct 16 02:16:09 2010
+--- minecraft.src\mh.java	Sun Oct 17 19:04:19 2010
++++ patches\mh.java	Sun Oct 17 09:44:24 2010
 @@ -23,14 +23,14 @@
          i = true;
      }
@@ -3011,8 +3020,8 @@ diff -U 3 minecraft.src\mh.java patches\mh.java
          dataoutputstream.writeFloat(e);
          dataoutputstream.writeFloat(f);
 diff -U 3 minecraft.src\mk.java patches\mk.java
---- minecraft.src\mk.java	Sun Oct 17 06:33:29 2010
-+++ patches\mk.java	Sat Oct 16 01:54:45 2010
+--- minecraft.src\mk.java	Sun Oct 17 19:04:19 2010
++++ patches\mk.java	Sun Oct 17 09:44:24 2010
 @@ -15,12 +15,12 @@
      private int e;
      private int f;
@@ -3030,8 +3039,8 @@ diff -U 3 minecraft.src\mk.java patches\mk.java
          b = cn1;
          c = i;
 diff -U 3 minecraft.src\na.java patches\na.java
---- minecraft.src\na.java	Sun Oct 17 06:33:29 2010
-+++ patches\na.java	Sat Oct 16 02:16:21 2010
+--- minecraft.src\na.java	Sun Oct 17 19:04:19 2010
++++ patches\na.java	Sun Oct 17 09:44:24 2010
 @@ -22,7 +22,7 @@
          j = true;
      }
@@ -3051,8 +3060,8 @@ diff -U 3 minecraft.src\na.java patches\na.java
          dataoutputstream.writeInt(a);
          dataoutputstream.writeInt(b);
 diff -U 3 minecraft.src\nc.java patches\nc.java
---- minecraft.src\nc.java	Sun Oct 17 06:33:29 2010
-+++ patches\nc.java	Sun Oct 17 06:10:35 2010
+--- minecraft.src\nc.java	Sun Oct 17 19:04:19 2010
++++ patches\nc.java	Sun Oct 17 09:44:24 2010
 @@ -17,20 +17,20 @@
  
      nc(mn mn1, net.minecraft.client.Minecraft minecraft, java.lang.String s, int i)
@@ -3085,8 +3094,8 @@ diff -U 3 minecraft.src\nc.java patches\nc.java
      }
  }
 diff -U 3 minecraft.src\ne.java patches\ne.java
---- minecraft.src\ne.java	Sun Oct 17 06:33:29 2010
-+++ patches\ne.java	Sat Oct 16 02:17:24 2010
+--- minecraft.src\ne.java	Sun Oct 17 19:04:19 2010
++++ patches\ne.java	Sun Oct 17 09:44:24 2010
 @@ -25,12 +25,12 @@
              return;
      }
@@ -3103,8 +3112,8 @@ diff -U 3 minecraft.src\ne.java patches\ne.java
          a = datainput.readUTF();
      }
 diff -U 3 minecraft.src\nh.java patches\nh.java
---- minecraft.src\nh.java	Sun Oct 17 06:33:29 2010
-+++ patches\nh.java	Sat Oct 16 02:17:30 2010
+--- minecraft.src\nh.java	Sun Oct 17 19:04:19 2010
++++ patches\nh.java	Sun Oct 17 09:44:24 2010
 @@ -11,8 +11,8 @@
  
      nh(ii ii1)
@@ -3116,8 +3125,8 @@ diff -U 3 minecraft.src\nh.java patches\nh.java
  
      public void run()
 diff -U 3 minecraft.src\ni.java patches\ni.java
---- minecraft.src\ni.java	Sun Oct 17 06:33:29 2010
-+++ patches\ni.java	Sun Oct 17 00:32:00 2010
+--- minecraft.src\ni.java	Sun Oct 17 19:04:19 2010
++++ patches\ni.java	Sun Oct 17 09:44:24 2010
 @@ -11,8 +11,8 @@
  
      ni(ii ii1, java.lang.String s)
@@ -3153,8 +3162,8 @@ diff -U 3 minecraft.src\ni.java patches\ni.java
      }
  }
 diff -U 3 minecraft.src\nj.java patches\nj.java
---- minecraft.src\nj.java	Sun Oct 17 06:33:29 2010
-+++ patches\nj.java	Sun Oct 17 06:03:12 2010
+--- minecraft.src\nj.java	Sun Oct 17 19:04:19 2010
++++ patches\nj.java	Sun Oct 17 09:44:24 2010
 @@ -171,7 +171,7 @@
      public boolean a(dm dm1, cn cn1, ev ev1, int i1, int j1, int k1, int l1)
      {
@@ -3165,8 +3174,8 @@ diff -U 3 minecraft.src\nj.java patches\nj.java
      }
  
 diff -U 3 minecraft.src\nk.java patches\nk.java
---- minecraft.src\nk.java	Sun Oct 17 06:33:29 2010
-+++ patches\nk.java	Sun Oct 17 00:33:15 2010
+--- minecraft.src\nk.java	Sun Oct 17 19:04:19 2010
++++ patches\nk.java	Sun Oct 17 09:44:24 2010
 @@ -11,8 +11,8 @@
  
      nk(ii ii1, java.lang.String s)
@@ -3201,8 +3210,8 @@ diff -U 3 minecraft.src\nk.java patches\nk.java
      }
  }
 diff -U 3 minecraft.src\ns.java patches\ns.java
---- minecraft.src\ns.java	Sun Oct 17 06:33:29 2010
-+++ patches\ns.java	Sat Oct 16 02:19:03 2010
+--- minecraft.src\ns.java	Sun Oct 17 19:04:20 2010
++++ patches\ns.java	Sun Oct 17 09:44:24 2010
 @@ -19,7 +19,7 @@
          return i == 0 && !bo1.a;
      }
@@ -3213,8 +3222,8 @@ diff -U 3 minecraft.src\ns.java patches\ns.java
          return a((bo)ge, i);
      }
 diff -U 3 minecraft.src\nv.java patches\nv.java
---- minecraft.src\nv.java	Sun Oct 17 06:33:29 2010
-+++ patches\nv.java	Sun Oct 17 06:02:50 2010
+--- minecraft.src\nv.java	Sun Oct 17 19:04:20 2010
++++ patches\nv.java	Sun Oct 17 09:44:24 2010
 @@ -59,19 +59,10 @@
              j = j + 1 & 3;
          if(k == 14 && h.a[j].length() > 0)
@@ -3240,8 +3249,8 @@ diff -U 3 minecraft.src\nv.java patches\nv.java
  
      public void a(int k, int l, float f)
 diff -U 3 minecraft.src\ny.java patches\ny.java
---- minecraft.src\ny.java	Sun Oct 17 06:33:29 2010
-+++ patches\ny.java	Sat Oct 16 02:20:29 2010
+--- minecraft.src\ny.java	Sun Oct 17 19:04:20 2010
++++ patches\ny.java	Sun Oct 17 09:44:24 2010
 @@ -39,7 +39,7 @@
          }
      }
@@ -3261,8 +3270,8 @@ diff -U 3 minecraft.src\ny.java patches\ny.java
          dataoutputstream.writeInt(a);
          dataoutputstream.writeShort(b);
 diff -U 3 minecraft.src\nz.java patches\nz.java
---- minecraft.src\nz.java	Sun Oct 17 06:33:29 2010
-+++ patches\nz.java	Sat Oct 16 02:20:34 2010
+--- minecraft.src\nz.java	Sun Oct 17 19:04:20 2010
++++ patches\nz.java	Sun Oct 17 09:44:24 2010
 @@ -21,7 +21,7 @@
          org.lwjgl.opengl.GL11.glScalef(f, f, f);
      }
@@ -3273,8 +3282,8 @@ diff -U 3 minecraft.src\nz.java patches\nz.java
          a((hl)ge, f1);
      }
 diff -U 3 minecraft.src\oc.java patches\oc.java
---- minecraft.src\oc.java	Sun Oct 17 06:33:29 2010
-+++ patches\oc.java	Sat Oct 16 02:20:45 2010
+--- minecraft.src\oc.java	Sun Oct 17 19:04:20 2010
++++ patches\oc.java	Sun Oct 17 09:44:24 2010
 @@ -520,7 +520,7 @@
                  d2++;
              if(d12 > 0.0D)
@@ -3285,8 +3294,8 @@ diff -U 3 minecraft.src\oc.java patches\oc.java
          {
              return null;
 diff -U 3 minecraft.src\of.java patches\of.java
---- minecraft.src\of.java	Sun Oct 17 06:33:29 2010
-+++ patches\of.java	Sat Oct 16 02:22:57 2010
+--- minecraft.src\of.java	Sun Oct 17 19:04:20 2010
++++ patches\of.java	Sun Oct 17 09:44:24 2010
 @@ -52,10 +52,10 @@
              f.b = 0.0F;
              f.a = 0.0F;
@@ -3303,8 +3312,8 @@ diff -U 3 minecraft.src\of.java patches\of.java
              f.b = f1;
              f.a = f2;
 diff -U 3 minecraft.src\oh.java patches\oh.java
---- minecraft.src\oh.java	Sun Oct 17 06:33:29 2010
-+++ patches\oh.java	Sat Oct 16 02:23:13 2010
+--- minecraft.src\oh.java	Sun Oct 17 19:04:20 2010
++++ patches\oh.java	Sun Oct 17 09:44:24 2010
 @@ -21,12 +21,12 @@
          a = s;
      }
@@ -3321,8 +3330,8 @@ diff -U 3 minecraft.src\oh.java patches\oh.java
          dataoutputstream.writeUTF(a);
      }
 diff -U 3 minecraft.src\ok.java patches\ok.java
---- minecraft.src\ok.java	Sun Oct 17 06:33:29 2010
-+++ patches\ok.java	Sat Oct 16 02:23:13 2010
+--- minecraft.src\ok.java	Sun Oct 17 19:04:20 2010
++++ patches\ok.java	Sun Oct 17 09:44:24 2010
 @@ -38,12 +38,12 @@
          }
      }
@@ -3339,8 +3348,8 @@ diff -U 3 minecraft.src\ok.java patches\ok.java
          return a((ax)ge, i);
      }
 diff -U 3 minecraft.src\r.java patches\r.java
---- minecraft.src\r.java	Sun Oct 17 06:33:29 2010
-+++ patches\r.java	Sat Oct 16 02:23:22 2010
+--- minecraft.src\r.java	Sun Oct 17 19:04:20 2010
++++ patches\r.java	Sun Oct 17 09:44:24 2010
 @@ -43,8 +43,7 @@
          org.lwjgl.opengl.GL11.glPopMatrix();
      }
@@ -3352,8 +3361,8 @@ diff -U 3 minecraft.src\r.java patches\r.java
          a((bd)ic, d, d1, d2, f);
      }
 diff -U 3 minecraft.src\s.java patches\s.java
---- minecraft.src\s.java	Sun Oct 17 06:33:29 2010
-+++ patches\s.java	Sat Oct 16 02:23:31 2010
+--- minecraft.src\s.java	Sun Oct 17 19:04:20 2010
++++ patches\s.java	Sun Oct 17 09:44:24 2010
 @@ -25,7 +25,7 @@
          h = true;
      }
@@ -3372,9 +3381,10 @@ diff -U 3 minecraft.src\s.java patches\s.java
      {
          dataoutputstream.writeDouble(a);
          dataoutputstream.writeDouble(b);
+Only in minecraft.src: Start.java
 diff -U 3 minecraft.src\x.java patches\x.java
---- minecraft.src\x.java	Sun Oct 17 06:33:29 2010
-+++ patches\x.java	Sun Oct 17 00:58:02 2010
+--- minecraft.src\x.java	Sun Oct 17 19:04:20 2010
++++ patches\x.java	Sun Oct 17 09:44:24 2010
 @@ -22,59 +22,67 @@
      {
      }
