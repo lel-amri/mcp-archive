@@ -1,4 +1,4 @@
-Minecraft mod creator pack v1.1
+Minecraft mod creator pack v1.2
 ===============================
 
 1) Prepare the files:
@@ -28,6 +28,12 @@ The "test_game.bat" file uses the "Start.class" file to start the game. This wil
 use your "%APPDATA%\.minecraft" folder, but instead use this folder for all saves. So any bugs in the modified
 game will not corrupt your worlds.
 
+If you have any problems using this toolpack, put the mcp.log file that the decompile.bat generated into a
+zip-file and send it to me (post it in the minecraft forum):
+
+http://www.minecraftforum.net/viewtopic.php?f=25&t=58464
+
 History:
+1.2 - Redirect output of all tools to a logfile
 1.1 - Fixed TNT bug
 1.0 - First release
