@@ -282,7 +282,6 @@ diff -U 3 minecraft_server.src\bm.java patches\bm.java
      }
  
      public void run()
-Only in patches: bn.java
 diff -U 3 minecraft_server.src\bo.java patches\bo.java
 --- minecraft_server.src\bo.java	Sun Oct 17 06:33:30 2010
 +++ patches\bo.java	Sat Oct 16 16:53:48 2010

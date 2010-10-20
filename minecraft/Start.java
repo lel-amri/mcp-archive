@@ -11,13 +11,15 @@ public class Start
 
 	public static void main(String[] args)
 	{
+		String folder = "../jars/";
+
 		try
 		{
 			// set new minecraft data folder to prevent it from using the .minecraft folder
 			// this makes it a portable version
 			Field f = net.minecraft.client.Minecraft.class.getDeclaredField("W");
 			Field.setAccessible(new Field[] { f }, true);
-			f.set(null, new File("."));
+			f.set(null, new File(folder));
 		}
 		catch (Exception e)
 		{
