@@ -1,60 +1,61 @@
 @echo off
-echo -=#=- >logs\mcp.log
-echo UNPACKING MINECRAFT.JAR
-tools\unzip -o jars\bin\minecraft.jar * -d temp\minecraft >>logs\mcp.log
-echo -=#=- >>logs\mcp.log
-echo UNPACKING MINECRAFT_SERVER.JAR
-tools\unzip -o jars\minecraft_server.jar * -d temp\minecraft_server >>logs\mcp.log
-echo -=#=- >>logs\mcp.log
-echo DECOMPILING MINECRAFT.JAR
-tools\jad -f -dead -ff -safe -stat -v -o -s .java -d sources\minecraft temp\minecraft\*.class 2>>logs\mcp.log
-echo -=#=- >>logs\mcp.log
-echo DECOMPILING MINECRAFT_SERVER.JAR
-tools\jad -f -dead -ff -safe -stat -v -o -s .java -d sources\minecraft_server temp\minecraft_server\*.class 2>>logs\mcp.log
-echo -=#=- >>logs\mcp.log
-echo APPLYING FILE FIXES
-del temp\minecraft\META-INF\MOJANG_C.DSA 2>NUL:
-del temp\minecraft\META-INF\MOJANG_C.SF 2>NUL:
-del sources\minecraft\dofix.java 2>NUL:
-ren sources\minecraft\do.java dofix.java
-del sources\minecraft\iffix.java 2>NUL:
-ren sources\minecraft\if.java iffix.java
-del sources\minecraft_server\dofix.java 2>NUL:
-ren sources\minecraft_server\do.java dofix.java
-del sources\minecraft_server\iffix.java 2>NUL:
-ren sources\minecraft_server\if.java iffix.java
-echo APPLYING SOURCECODE FIXES
-tools\applydiff -u -i ..\..\patches\minecraft.patch -d sources\minecraft >>logs\mcp.log
-echo -=#=- >>logs\mcp.log
-tools\applydiff -u -i ..\..\patches\minecraft_server.patch -d sources\minecraft_server >>logs\mcp.log
-echo -=#=- >>logs\mcp.log
-dir /b sources\minecraft >>logs\mcp.log
-echo -=#=- >>logs\mcp.log
-dir /b sources\minecraft_server >>logs\mcp.log
-echo -=#=- >>logs\mcp.log
 
-echo -=#=- >logs\mcp2.log
-echo PREPARING FOLDERS FOR FIXED VERSION
-mkdir sources\minecraft_fixed 2>nul:
-copy sources\minecraft\*.java sources\minecraft_fixed\ >>logs\mcp2.log
-mkdir sources\minecraft_server_fixed 2>nul:
-copy sources\minecraft_server\*.java sources\minecraft_server_fixed\ >>logs\mcp2.log
-del sources\minecraft_server\bn.java 2>NUL:
-echo DECOMPILING MINECRAFT.JAR
-tools\jad -f -dead -ff -safe -stat -v -o -s .java -d sources\minecraft_fixed temp\minecraft\net\minecraft\client\*.class 2>>logs\mcp2.log
-echo -=#=- >>logs\mcp2.log
-echo DECOMPILING MINECRAFT_SERVER.JAR
-tools\jad -f -dead -ff -safe -stat -v -o -s .java -d sources\minecraft_server_fixed temp\minecraft_server\net\minecraft\server\*.class 2>>logs\mcp2.log
-echo -=#=- >>logs\mcp2.log
-echo APPLYING SOURCECODE FIXES
-tools\applydiff -u -i ..\..\patches\minecraft.upgrade.patch -d sources\minecraft_fixed >>logs\mcp2.log
-echo -=#=- >>logs\mcp2.log
-tools\applydiff -u -i ..\..\patches\minecraft_server.upgrade.patch -d sources\minecraft_server_fixed >>logs\mcp2.log
-echo -=#=- >>logs\mcp2.log
-dir /b sources\minecraft_fixed >>logs\mcp2.log
-echo -=#=- >>logs\mcp2.log
-dir /b sources\minecraft_server_fixed >>logs\mcp2.log
-echo -=#=- >>logs\mcp2.log
+set MCPDIR=%CD%
+set MCPLOG=%MCPDIR%\logs\minecraft.log
+set MCPTOOLS=%MCPDIR%\tools
+set MCPRG=java -cp %MCPTOOLS%\retroguard.jar RetroGuard
+set MCPUNZIP=%MCPTOOLS%\unzip.exe
+set MCPJR=%MCPTOOLS%\jadretro.exe
+set MCPJAD=%MCPTOOLS%\jad.exe
+set MCPPATCH=%MCPTOOLS%\applydiff.exe
 
-echo DONE
+set MCJAR=%MCPDIR%\jars\bin\minecraft.jar
+set MCSJAR=%MCPDIR%\jars\minecraft_server.jar
+
+set MCRGJAR=%MCPDIR%\temp\minecraft_rg.jar
+set MCRGSCRIPT=%MCPDIR%\conf\minecraft.rgs
+set MCRGLOG=%MCPDIR%\logs\minecraft_rg.log
+
+set MCTEMP=%MCPDIR%\temp\minecraft
+
+set MCJADOUT=%MCPDIR%\sources\minecraft
+
+set MCPATCH=%MCPDIR%\patches\minecraft.patch
+
+echo === Minecraft Coder Pack 1.4 === >%MCPLOG%
+echo === Minecraft Coder Pack 1.4 ===
+
+echo MCP 1.4 running in %MCPDIR%
+
+if exist "%MCJAR%" (
+    echo *** minecraft.jar was found, processing >>%MCPLOG%
+    
+    echo Deobfuscating minecraft.jar
+    echo *** Deobfuscating minecraft.jar >>%MCPLOG%
+    %MCPRG% %MCJAR% %MCRGJAR% %MCRGSCRIPT% %MCRGLOG%
+    
+    echo Unpacking minecraft.jar
+    echo *** Unpacking minecraft.jar >>%MCPLOG%
+    %MCPUNZIP% -o %MCRGJAR% * -d %MCTEMP% >>%MCPLOG%
+    del /f /q %MCTEMP%\META-INF\MOJANG_C.*
+
+    echo Fixing minecraft classes
+    echo *** Fixing minecraft classes >>%MCPLOG%
+    %MCPJR% -b %MCTEMP% >>%MCPLOG% 2>NUL:
+
+    echo Decompiling minecraft classes
+    echo *** Decompiling minecraft classes >>%MCPLOG%
+    %MCPJAD% -b -d %MCJADOUT% -dead -o -r -s .java -stat -v %MCTEMP%\*.class 2>>%MCPLOG%
+    %MCPJAD% -b -d %MCJADOUT% -dead -o -s .java -stat -v %MCTEMP%\net\minecraft\client\*.class 2>>%MCPLOG%
+
+    echo Patching minecraft sources
+    echo *** Patching minecraft sources >>%MCPLOG%
+    %MCPPATCH% -u -i %MCPATCH% -d %MCJADOUT% >>%MCPLOG%
+
+) else (
+    echo Minecraft.jar was not found.
+    echo Minecraft.jar was not found >>%MCPLOG%
+)
+
+echo === MCP 1.4 decompile script finished ===
 pause

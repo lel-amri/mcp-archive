@@ -4,20 +4,20 @@
 import java.io.File;
 import java.lang.reflect.Field;
 
-import net.minecraft.client.Minecraft; 
+//import Minecraft;
 
 public class Start
 {
 
 	public static void main(String[] args)
 	{
-		String folder = "../jars/";
+		String folder = "jars";
 
 		try
 		{
 			// set new minecraft data folder to prevent it from using the .minecraft folder
 			// this makes it a portable version
-			Field f = net.minecraft.client.Minecraft.class.getDeclaredField("W");
+			Field f = Minecraft.class.getDeclaredField("dataFolder");
 			Field.setAccessible(new Field[] { f }, true);
 			f.set(null, new File(folder));
 		}
@@ -28,14 +28,14 @@ public class Start
 		}
 		
 		// start minecraft game application
-		net.minecraft.client.Minecraft.main(args);
+		Minecraft.main(args);
 		
 		// enumerate all threads in this process
 		Thread[] threads = new Thread[256];
 		int count = java.lang.Thread.enumerate(threads);
 		
 		// find the minecraft main thread
-		net.minecraft.client.Minecraft mc;
+		Minecraft mc;
 		for(int i = 0; i < count; ++i)
 		{
 			// compare thread name to find the main thread
@@ -46,7 +46,7 @@ public class Start
 					// get access to minecraft main thread object
 					Field f = Thread.class.getDeclaredField("target");
 					Field.setAccessible(new Field[] { f }, true);
-					mc = (net.minecraft.client.Minecraft)f.get(threads[i]);
+					mc = (Minecraft)f.get(threads[i]);
 				}
 				catch (Exception e)
 				{
