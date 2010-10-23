@@ -1,8 +1,10 @@
 @echo off
 
+set MCPVERSION=1.5
+
 set MCPDIR=%CD%
 
-set MCBIN=%MCPDIR%\bin
+set MCBIN=%MCPDIR%\bin\minecraft
 
 set MCTEMP=%MCPDIR%\temp\minecraft
 
@@ -15,6 +17,6 @@ set MCCP=%MCBIN%;%MCTEMP%;%MCJI%;%MCJGL%;%MCJGLU%
 
 set MCNAT=%MCPDIR%\jars\bin\natives
 
-echo === Minecraft Coder Pack 1.4 ===
+echo === Minecraft Coder Pack %MCPVERSION% ===
 
-java -Xmx1024M -Xms1024M -cp %MCCP% -Dorg.lwjgl.librarypath=%MCNAT% -Dnet.java.games.input.librarypath=%MCNAT% Start
+java -Xmx1024M -Xms1024M -cp "%MCCP%" "-Dorg.lwjgl.librarypath=%MCNAT%" "-Dnet.java.games.input.librarypath=%MCNAT%" Start
