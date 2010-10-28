@@ -1,4 +1,4 @@
-Minecraft mod creator pack v1.5
+Minecraft mod creator pack v1.6
 ===============================
 
 CLASSES COMPILED WITH THIS VERSION OF THE SOURCECODE ARE NOT COMPATIBLE WITH THE ORIGINAL *.JAR FILES !!!
@@ -39,6 +39,9 @@ Notes:
   use your "%APPDATA%\.minecraft" folder, but instead use the "jars" folder for all saves. So any bugs in the modified
   game will not corrupt your normal worlds.
 
+* The class eo will be compiled with only one function in it. The original class is renamed to MathHelper, but
+  the soundsystem need a class called eo with the function b in it to work properly.
+
 * If you have any problems using this toolpack, put the "logs\*.log" files that the scripts generated into a
   zip-file and send it to me (post it in the minecraft forum):
   http://www.minecraftforum.net/viewtopic.php?f=25&t=58464
@@ -73,7 +76,8 @@ Credits:
 * fotoply - Helped me to improve the batch files.
 * Sage Pourpre - His thread in the forums inspired me to create this toolpack.
 * Tei - Was the first one to reply in my forum thread and inspired me to create the deobfuscation.
-* Cadde - helping to create the de-obfuscation table
+* Cadde - helping to create the de-obfuscation table.
+* ProfMobius - for creating some cool scripts that allow renaming of method names.
 * Everybody who contributed to the great google spreadsheet or who created some mods (I've got them all :).
 and, last not least
 * Notch - For creating a game that is just awesome, I hope he does not feel offended by our decompiling efforts.
@@ -82,14 +86,16 @@ Please, Notch, support our ambitions to mod your game. I know people who bought 
 Roadmap:
 These are the plans for the next releases of this package. These plans might change eventually, but for the moment
 that is what I want to do next.
-1.6 - Create some scripts that allow you to patch existing mods to be compatible with the recompiled game
-1.7 - Create a nice Starter that will also allow you to select the mods and/or texture packs you like to use
-1.8 - Update everything to support the Halloween update after release
-1.9 - Create a script that will create a modified minecraft.jar and minecraft_server.jar to replace the originals
-2.0 - New scripts that will automatically fix the most annoying bugs, like the texture fix or the crash fixes
-2.1 - (I don't know yet, you might want to make suggestions the the forum thread)
+1.7 - Create scripts that will apply the method name mappings from the spreadsheet
+2.0 - Create some scripts that allow you to patch existing mods to be compatible with the recompiled game
+2.1 - Create a nice Starter that will also allow you to select the mods and/or texture packs you like to use
+2.2 - Update everything to support the Halloween update after release
+2.3 - Create a script that will create a modified minecraft.jar and minecraft_server.jar to replace the originals
+2.4 - New scripts that will automatically fix the most annoying bugs, like the texture fix or the crash fixes
+3.0 - (I don't know yet, you might want to make suggestions the the forum thread)
 
 History:
+1.6 - All classes have meaningful names now, the class name mappings and the field name mappings are applied
 1.5 - Extend the scripts to also support decompiling, recompiling and testing the minecraft_server.jar file
 1.4 - Using a deobfuscator to rename all fields and methods and jadretro to fix some decompile bugs
 1.3 - Added upgrade scripts to decompile and recompile Minecraft.class, MinecraftApplet.class and MinecraftServer.class

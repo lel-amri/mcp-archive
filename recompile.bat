@@ -19,6 +19,7 @@ set MCJGLU=%MCJARS%\lwjgl_util.jar
 set MCCP=%MCJAR%;%MCJI%;%MCJGL%;%MCJGLU%
 
 set MCSTART=patches\Start.java
+set MCEO=patches\eo.java
 
 echo === Minecraft Coder Pack %MCPVERSION% === >"%MCPLOG%"
 
@@ -32,6 +33,7 @@ javac -g -verbose -cp "%MCCP%" -sourcepath "%MCSRC%" -d "%MCBIN%" %MCSRC%\*.java
 echo Compiling Minecraft Start Class
 echo *** Compiling Minecraft Starter >>"%MCPLOG%"
 javac -g -verbose -cp "%MCBIN%" -d "%MCBIN%" %MCSTART% 2>>"%MCPLOG%"
+javac -g -verbose -cp "%MCBIN%" -d "%MCBIN%" %MCEO% 2>>"%MCPLOG%"
 
 echo Compiling Minecraft Server
 echo *** Compiling Minecraft Server >>"%MCPLOG%"
