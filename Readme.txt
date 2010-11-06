@@ -1,10 +1,12 @@
-Minecraft mod creator pack v1.6
-===============================
+Minecraft mod creator pack 2.0 for Minecraft 1.2.1_01
+=====================================================
 
-CLASSES COMPILED WITH THIS VERSION OF THE SOURCECODE ARE NOT COMPATIBLE WITH THE ORIGINAL *.JAR FILES !!!
+Welcome to the first release of MCP for post-Halloween Minecraft versions.
 
-I know this is a lot to read, but please don't complain about anything before you've read this completely!
+CLASSES COMPILED WITH THIS VERSION OF THE TOOLPACK ARE NOT COMPATIBLE WITH THE ORIGINAL *.JAR FILES !!!
 
+How to use:
+===========
 1) Prepare the files:
 - Copy the "minecraft_server.jar" file into the "jars" folder.
 - Copy the folders "bin" and "resources" from your "%APPDATA$\.minecraft" folder into the "jars" folder.
@@ -22,13 +24,17 @@ I know this is a lot to read, but please don't complain about anything before yo
 - To test the modified game, start the "test_game.bat" script
 - To test the modified server, start the "test_server.bat" script
 
-6) Warning
+WARNINGS:
+=========
 - Make sure that you backup the modified sources before you run "decompile.bat" again or all changes will be lost!
 - The "cleanup.bat" file will delete most of the generated files and sources. Be careful with this one :)
 
-Now have fun and create some cool mods.
-
 Notes:
+======
+* Do not use this to release complete packages of minecraft jar, class or java files. They are copyrighted
+  material by Notch and mods should only contain small changes to some classes, never complete sets that
+  can be used by people who did not buy the game to play it.
+
 * Make sure that the bin folder of the JDK is in the PATH environment variable, this is necessary for the
   recompile scripts to work properly.
 
@@ -39,7 +45,7 @@ Notes:
   use your "%APPDATA%\.minecraft" folder, but instead use the "jars" folder for all saves. So any bugs in the modified
   game will not corrupt your normal worlds.
 
-* The class eo will be compiled with only one function in it. The original class is renamed to MathHelper, but
+* The class "fb" will be compiled with only one function in it. The original class is renamed to MathHelper, but
   the soundsystem need a class called eo with the function b in it to work properly.
 
 * If you have any problems using this toolpack, put the "logs\*.log" files that the scripts generated into a
@@ -50,14 +56,6 @@ Notes:
   Look in the "conf\minecraft.rgs" and "conf\minecraft_server.rgs" files for a complete mapping of the names. These
   can be changed, but the resulting "*.class" files after recompile will not be compatible with the patches of this
   package anymore.
-
-* If you want to help to improve the names for classes, methods and fields, just copy the "minecraft.rgs" and
-  "minecraft_server.rgs" files and make your changes in the copied file. You can send me the changes you made
-  and I will eventually merge them in future versions of the package.
-  http://www.minecraftforum.net/viewtopic.php?f=25&t=58464
-
-* Remeber that the compiled "*.class" files of this package are NOT compatible with an original minecraft.jar file. So
-  you can't easily create mods with this for other users at the moment. I will take care of this in a later version.
 
 * All fields and methods have unique names now, so if you reference field "field_1234" in any posts in the forum I will
   know exactly which field in the whole sourcecode you're talking about. This could also be useful for further analysis
@@ -71,30 +69,35 @@ Notes:
   game :) The known bugs, like missing sound effects or the backspace bug in the text entry gui, are fixed with this
   release.
 
-Credits:
-* Searge - Created this nice package.
-* fotoply - Helped me to improve the batch files.
-* Sage Pourpre - His thread in the forums inspired me to create this toolpack.
-* Tei - Was the first one to reply in my forum thread and inspired me to create the deobfuscation.
-* Cadde - helping to create the de-obfuscation table.
-* ProfMobius - for creating some cool scripts that allow renaming of method names.
-* Everybody who contributed to the great google spreadsheet or who created some mods (I've got them all :).
-and, last not least
-* Notch - For creating a game that is just awesome, I hope he does not feel offended by our decompiling efforts.
-Please, Notch, support our ambitions to mod your game. I know people who bought it just because of some great mods.
+* Remeber that the compiled "*.class" files of this package are NOT compatible with an original minecraft.jar file. So
+  you can't easily create mods with this for other users at the moment. We will take care of this in a later version.
 
-Roadmap:
-These are the plans for the next releases of this package. These plans might change eventually, but for the moment
-that is what I want to do next.
-1.7 - Create scripts that will apply the method name mappings from the spreadsheet
-2.0 - Create some scripts that allow you to patch existing mods to be compatible with the recompiled game
-2.1 - Create a nice Starter that will also allow you to select the mods and/or texture packs you like to use
-2.2 - Update everything to support the Halloween update after release
-2.3 - Create a script that will create a modified minecraft.jar and minecraft_server.jar to replace the originals
-2.4 - New scripts that will automatically fix the most annoying bugs, like the texture fix or the crash fixes
-3.0 - (I don't know yet, you might want to make suggestions the the forum thread)
+
+Credits:
+========
+Searge       - Creator of MCP and the one who fixes all compile errors in the decompiled sourcecode.
+ProfMobius   - Creator of the renaming scripts and helped for re-obfuscation RGS generation and
+               procedures. Ported the scripts to Linux.
+IngisKahn    - Creator of the bytecode compare tool that helps us to update the mappings quickly after
+               new minecraft versions are released and worked on the de-obfuscation spreadsheet.
+Generic      - Works on improving IngisKahn's bytecode compare tool and added some important features for
+               us to retroguard.
+fotoply      - Helped to improve the batch files.
+Cadde        - Works on the de-obfuscation spreadsheet.
+Vaprtek      - Works on the de-obfuscation spreadsheet. Also knows how to make pet creepers.
+gronk        - Script support.
+n00bish      - Linux script maintenance.
+Sage Pourpre - His thread in the forums inspired me to create this toolpack in the first place.
+Tei          - Supported the MCP project since the first version was released.
+and of course:
+- Everybody who contributed to the great google spreadsheet or who created some mods (I've got them all :).
+- NOTCH for creating a game that is just awesome, I hope he does not feel offended by our decompiling efforts.
+        Please, Notch, support our ambitions to mod your game. I know people who bought it just because of
+        some great mods.
 
 History:
+========
+2.0 - Major updates to MCP and support for post-Halloween versions of Minecraft
 1.6 - All classes have meaningful names now, the class name mappings and the field name mappings are applied
 1.5 - Extend the scripts to also support decompiling, recompiling and testing the minecraft_server.jar file
 1.4 - Using a deobfuscator to rename all fields and methods and jadretro to fix some decompile bugs
@@ -102,3 +105,58 @@ History:
 1.2 - Redirect output of all tools to a logfile
 1.1 - Fixed TNT bug
 1.0 - First release
+
+Roadmap:
+========
+2.1  - Add the other cool new features that were left out in release 2.0 but are almost ready to use. These include
+       Linux support, (hopefully) OSX support, re-obfuscation to make mods compatible with the original jar files,
+       updates to all name mappings in the de-obfuscation tables and much more
+2.2+ - New awesome features, improvements and updates :)
+
+_________________________________________________________________________________________________________________
+_________________________________________________________________________________________________________________
+________,.--:=r=.._______________________________________________________________________________,,...___________
+_ -:'`      :^)-.!..[``P:  ___________________________________________________________  ,.=~r?`[:_i=.    `'~-._ _
+_ .         :=)~.|:.|  [j  ___________________________________________________________  l|  [3 .:,[:.         ! _
+_   :       :.[ .|:.(  [| ______________________________________________________________[|=^): [_ | .         ! _
+__          :~)=.i..j  []  ___________________________________________________________  )|:')  [ _|;.         ! _
+_ .         :.)..i._|;.)|  ___________________________________________________________  [!:=[` |: | .         ! _
+_ )   _     :.[ .!  | .[|  ___________________________________________________________  )j:^[` (: | .         ! _
+_   :_      <=l:.____ . |  ___________________________________________________________  [!:``   :.|:.       . ! _
+_ ._ _ __ __:..;.|,.) .[j  ___________________________________________________________  [!3`T``l:.  .      `  ! _
+____ [,...-+=c=f7l`!-( _____.~~~~~~~~._____=~~~~~~~/_____,>====~<.y=.__y~~~~~~~~~~=~.._ ```[j)=[=[.;,,_   _|'`` _
+____ [ -~= ( '=r::::~( _____!<.      L____F      .=._ ,c   ;>~~<.   [_ F<.   .>~~<.   ".__ (.......!.( ..  | ____
+____ [`) [ !   !^) !') ______ [ JL   (___F Z.   ( ___/   ./ ____ ". J___ L   ? ___J.   J _ |-l ,.(   !-| )-| ____
+____ ) !`    (  ```[ ( _____ :. [[   J__F /]   .L___F   .F _______"L L__J    [____/    / _ | )~~~~ r-  !~! | ____
+____ [ . . [_) (___|_( _____ | :L!   J.F / L   J __[    | _________   _ [   =+~~=l   ;/ __ |'[^^^( [ :'. ::( ____
+____ [..     (.;.i.) ( ______L ? :.   * / J.   [__ L    L______________:L   ;...=+=^` ____ (`["[ l [`` ! ! | ____
+____ )..   ....  !.. ( _____J. L_ L    / _[   :L__ [    [_________,.__ |   .L_____________ (   .       !   | ____
+____ )..   --. --..!-( _____[ :.__|   / _.L   J ___"c   ?.______,/.;F _L   J._____________ [_[___  __     _| ____
+____ )~)~r  -)~r - ( ( __:tT   ":LJ  / r^`     ")___ \.   7*==^`.;* r^`     "tL___________ ! (   ,,[   ._].|_____
+___ _z;! : = ( ( : !=( __'^^^^^^"  ^^  *^^^^^^^^`____   "*~~~~^`  __"^^^^^^^^" ___________ ;.)   ( ( ..!.!.| ____
+____F"*:P*si_(^^======.____________________________________________________________________j.....[.( !,.ztSP\ ___
+_ _!      7*.)      L L___________________________________________________________________: J      :?x>'`    l___
+__[ ;~.! ; :=l .-<--~~[___________________________________________________________________|,J  .__ !. :.  _,_ . _
+ I :`~.  `\[ (.J-=    [___________________________________________________________________|    ._L_)~\./  ..==`. 
+-.;`'=._ .L!;)-+--=-=-l___________________________________________________________________|___;__[_;=[\    ,>=`  
+_   =-: `` _ --:...-...___________________________________________________________________  :_:  ._[   \=^  .-!  
+_  ` -  L______-.-  ..-___________________________________________________________________: !    ._____ -' _ -' _
+_____    _________________________________________________________________________________        ______ '  _____
+
+
+    d8b   db  .d88b.  db   d8b   db   d888888b d888888b   d888888b .d8888. 
+    888o  88 .8P  Y8. 88   I8I   88     `88'   `~~88~~'     `88'   88'  YP 
+    88V8o 88 88    88 88   I8I   88      88       88         88    `8bo.   
+    88 V8o88 88    88 Y8   I8I   88      88       88         88      `Y8b. 
+    88  V888 `8b  d8' `8b d8'8b d8'     .88.      88        .88.   db   8D 
+    VP   V8P  `Y88P'   `8b8' `8d8'    Y888888P    YP      Y888888P `8888Y' 
+                                                                           
+                                                                           
+  db    db  .d88b.  db    db d8888b.  .o88b. d8888b.  .d8b.  d88888b d888888b 
+  `8b  d8' .8P  Y8. 88    88 88  `8D d8P  Y8 88  `8D d8' `8b 88'     `~~88~~' 
+   `8bd8'  88    88 88    88 88oobY' 8P      88oobY' 88ooo88 88ooo      88    
+     88    88    88 88    88 88`8b   8b      88`8b   88~~~88 88~~~      88    
+     88    `8b  d8' 88b  d88 88 `88. Y8b  d8 88 `88. 88   88 88         88    
+     YP     `Y88P'  ~Y8888P' 88   YD  `Y88P' 88   YD YP   YP YP         YP 
+
+======================================================================================================================

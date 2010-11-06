@@ -1,25 +1,20 @@
-// PUBLIC DOMAIN
-// created by Searge
-
 import java.io.File;
 import java.lang.reflect.Field;
 
-//import Minecraft;
+import net.minecraft.client.Minecraft; 
 
 public class Start
 {
 
 	public static void main(String[] args)
 	{
-		String folder = "jars";
-
 		try
 		{
 			// set new minecraft data folder to prevent it from using the .minecraft folder
 			// this makes it a portable version
-			Field f = Minecraft.class.getDeclaredField("dataFolder");
+			Field f = Minecraft.class.getDeclaredField("dataFolder_00");
 			Field.setAccessible(new Field[] { f }, true);
-			f.set(null, new File(folder));
+			f.set(null, new File("jars"));
 		}
 		catch (Exception e)
 		{
@@ -35,7 +30,7 @@ public class Start
 		int count = java.lang.Thread.enumerate(threads);
 		
 		// find the minecraft main thread
-		Minecraft mc;
+		Minecraft mc = null;
 		for(int i = 0; i < count; ++i)
 		{
 			// compare thread name to find the main thread
@@ -57,8 +52,7 @@ public class Start
 			}
 		}
 		
-		// the variable mc now holds a reference to the minecraft main core class, anything
-        // should be accessible from there... have fun :)
+		// the variable mc now holds a reference to the minecraft main thread object, have fun :)
 	}
 	
 }

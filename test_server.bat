@@ -1,14 +1,13 @@
 @echo off
 
-set MCPVERSION=1.5
+java -help > NUL 2> NUL
+if errorlevel 1 (
+    echo Unable to locate java.exe. Please verify that it is in the PATH.
+    pause
+    exit /b
+)
 
-set MCPDIR=%CD%
+call setup.bat %1
 
-set MCBIN=%MCPDIR%\bin
-
-set MCCP=%MCBIN%\minecraft_server
-
-echo === Minecraft Coder Pack %MCPVERSION% ===
-
-cd "%MCBIN%"
-java -Xmx1024M -Xms1024M -cp "%MCCP%" MinecraftServer
+cd "%MCPBINDIR%"
+java -Xmx1024M -Xms1024M -cp "%MCSBIN%" net.minecraft.server.MinecraftServer
