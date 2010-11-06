@@ -18,11 +18,11 @@ echo === Minecraft Coder Pack %MCPVERSION% === >"%MCPCOMPLOG%"
 echo Compiling Minecraft
 
 echo *** Compiling Minecraft >>"%MCPCOMPLOG%"
-javac -g -verbose -cp "%MCCP%" -sourcepath "%MCJADOUT%" -d "%MCBIN%" %MCSRC1%\*.java %MCSRC2%\*.java %MCSTART% 2>>"%MCPCOMPLOG%"
+javac -g -verbose -cp "%MCCP%" -sourcepath "%MCJADOUT%" -d "%MCBIN%" %MCSRC1%\*.java %MCSRC2%\*.java "%MCSTART%" 2>>"%MCPCOMPLOG%"
 
 echo Compiling Minecraft Start Class
 echo *** Compiling Minecraft Starter >>"%MCPCOMPLOG%"
-javac -g -verbose -sourcepath "%MCJADOUT%" -d "%MCBIN%" %MCSNDFIX% 2>>"%MCPCOMPLOG%"
+javac -g -verbose -sourcepath "%MCJADOUT%" -d "%MCBIN%" "%MCSNDFIX%" 2>>"%MCPCOMPLOG%"
 
 echo Compiling Minecraft Server
 echo *** Compiling Minecraft Server >>"%MCPCOMPLOG%"

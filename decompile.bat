@@ -9,9 +9,9 @@ if errorlevel 1 (
 
 call setup.bat %1
 
-if NOT EXIST %MCPTEMPDIR% mkdir %MCPTEMPDIR%
-if NOT EXIST %MCPSOURCESDIR% mkdir %MCPSOURCESDIR%
-if NOT EXIST %MCPLOGDIR% mkdir %MCPLOGDIR%
+if NOT EXIST "%MCPTEMPDIR%" mkdir "%MCPTEMPDIR%"
+if NOT EXIST "%MCPSOURCESDIR%" mkdir "%MCPSOURCESDIR%"
+if NOT EXIST "%MCPLOGDIR%" mkdir "%MCPLOGDIR%"
 
 echo === Minecraft Coder Pack %MCPVERSION% === >"%MCPLOG%"
 
@@ -84,11 +84,11 @@ if exist "%MCSJAR%" (
     echo Minecraft_server.jar was not found >>"%MCPLOG%"
 )
 
-    if exist %MCPSPLASHES% copy %MCPSPLASHES% %MCSPLASHES%
+    if exist "%MCPSPLASHES%" copy "%MCPSPLASHES%" "%MCSPLASHES%"
     
     echo Renaming methods and fields
     echo *** Renaming methods and fields >>"%MCPLOG%"
-	%MCPRENAMER% -R -c %MCPCONFDIR%\renamer.conf
+	"%MCPRENAMER%" -R -c "%MCPCONFDIR%\renamer.conf"
 
 echo === MCP %MCPVERSION% decompile script finished ===
 pause
