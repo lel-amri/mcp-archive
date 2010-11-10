@@ -88,7 +88,7 @@ if exist "%MCSJAR%" (
     
     echo Renaming methods and fields
     echo *** Renaming methods and fields >>"%MCPLOG%"
-	"%MCPRENAMER%" -R -c "%MCPCONFDIR%\renamer.conf"
+    "%MCPRENAMER%" -R -c "%MCPCONFDIR%\renamer.conf"
 
 echo === MCP %MCPVERSION% decompile script finished ===
 pause

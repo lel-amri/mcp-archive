@@ -10,3 +10,5 @@ if errorlevel 1 (
 call setup.bat %1
 
 java -Xmx1024M -Xms1024M -cp "%MCTESTCP%" "-Dorg.lwjgl.librarypath=%MCNAT%" "-Dnet.java.games.input.librarypath=%MCNAT%" Start
+
+pause

@@ -1,5 +1,5 @@
-Minecraft mod creator pack 2.0 for Minecraft 1.2.1_01
-=====================================================
+Minecraft mod creator pack 2.1 for Minecraft 1.2.2
+==================================================
 
 Welcome to the first release of MCP for post-Halloween Minecraft versions.
 
@@ -97,6 +97,7 @@ and of course:
 
 History:
 ========
+2.1 - Updated to support Minecraft 1.2.2
 2.0 - Major updates to MCP and support for post-Halloween versions of Minecraft
 1.6 - All classes have meaningful names now, the class name mappings and the field name mappings are applied
 1.5 - Extend the scripts to also support decompiling, recompiling and testing the minecraft_server.jar file
@@ -108,10 +109,10 @@ History:
 
 Roadmap:
 ========
-2.1  - Add the other cool new features that were left out in release 2.0 but are almost ready to use. These include
+2.2  - Add the other cool new features that were left out in release 2.0 but are almost ready to use. These include
        Linux support, (hopefully) OSX support, re-obfuscation to make mods compatible with the original jar files,
        updates to all name mappings in the de-obfuscation tables and much more
-2.2+ - New awesome features, improvements and updates :)
+2.3+ - New awesome features, improvements and updates :)
 
 _________________________________________________________________________________________________________________
 _________________________________________________________________________________________________________________
