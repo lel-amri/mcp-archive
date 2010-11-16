@@ -1,5 +1,8 @@
 @echo off
 
+call setup.bat %1
+call findjdk.bat PATH
+
 javac -help > NUL 2> NUL
 if errorlevel 1 (
     echo Unable to locate javac.exe. Please verify that it is in the PATH.
@@ -7,8 +10,6 @@ if errorlevel 1 (
     pause
     exit /b
 )
-
-call setup.bat %1
 
 mkdir "%MCBIN%" 2>NUL:
 mkdir "%MCSBIN%" 2>NUL:

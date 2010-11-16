@@ -1,9 +1,22 @@
-Minecraft mod creator pack 2.1 for Minecraft 1.2.2
+Minecraft mod creator pack 2.2 for Minecraft 1.2.2
 ==================================================
 
-Welcome to the first release of MCP for post-Halloween Minecraft versions.
+This is the first release of MCP that provides a way to convert compiled classes to a format that
+is compatible with the original minecraft jar files. We call it re-obfuscation. It is still a feature
+in beta state, but if you provide us with feedback about it we can soon make a final release.
 
-CLASSES COMPILED WITH THIS VERSION OF THE TOOLPACK ARE NOT COMPATIBLE WITH THE ORIGINAL *.JAR FILES !!!
+Prerequisites:
+==============
+1.) Install Java SDK Standard Edition (short JDK). 
+    Link: http://www.oracle.com/technetwork/java/javase/downloads/
+
+2.) Add the paths to your JDK and JRE bin folders to the Environment Variable PATH. 
+
+    Description where to find the variable:
+    http://www.java.com/en/download/help/path.xml
+
+    Example for Windows users of what you have to add to the variable (entries are seperated by ; )
+    C:\Program Files\Java\jdk1.6.0_22\bin;C:\Program Files\Java\jre6\bin
 
 How to use:
 ===========
@@ -24,6 +37,20 @@ How to use:
 - To test the modified game, start the "test_game.bat" script
 - To test the modified server, start the "test_server.bat" script
 
+6) Obfuscation
+- Decompile the code, modify and recompile.
+- Open "conf\server_obfuscation.txt" and "conf\client_obfuscation.txt".
+- Put the name of the classes you want to be obfuscated, one per line. If you create new classes, they have to be specified as well.
+  The name of the classes are the clear ones (Block, BlockDoor, etc).
+  One example would be :
+  BlockDoor
+  Block
+  Entity
+  ChunkProviderGenerate
+  MyNewAwesomeClass
+- Start "reobf.bat" to start the reobfuscation step.
+- Your obfuscated classes are now available in "final_out\minecraft" and "final_out\minecraft_server", ready to be injected in MC.
+
 WARNINGS:
 =========
 - Make sure that you backup the modified sources before you run "decompile.bat" again or all changes will be lost!
@@ -35,9 +62,6 @@ Notes:
   material by Notch and mods should only contain small changes to some classes, never complete sets that
   can be used by people who did not buy the game to play it.
 
-* Make sure that the bin folder of the JDK is in the PATH environment variable, this is necessary for the
-  recompile scripts to work properly.
-
 * Make sure you use the original minecraft.jar and minecraft_server.jar files. If you have already modded them
   they will NOT work with the patches in these scripts.
 
@@ -45,7 +69,7 @@ Notes:
   use your "%APPDATA%\.minecraft" folder, but instead use the "jars" folder for all saves. So any bugs in the modified
   game will not corrupt your normal worlds.
 
-* The class "fb" will be compiled with only one function in it. The original class is renamed to MathHelper, but
+* The class "fg" will be compiled with only one function in it. The original class is renamed to MathHelper, but
   the soundsystem need a class called eo with the function b in it to work properly.
 
 * If you have any problems using this toolpack, put the "logs\*.log" files that the scripts generated into a
@@ -53,31 +77,17 @@ Notes:
   http://www.minecraftforum.net/viewtopic.php?f=25&t=58464
   
 * This version of the mod creator package uses a deobfuscator to change all field and method names in the sources.
-  Look in the "conf\minecraft.rgs" and "conf\minecraft_server.rgs" files for a complete mapping of the names. These
-  can be changed, but the resulting "*.class" files after recompile will not be compatible with the patches of this
-  package anymore.
-
-* All fields and methods have unique names now, so if you reference field "field_1234" in any posts in the forum I will
-  know exactly which field in the whole sourcecode you're talking about. This could also be useful for further analysis
-  of the code, because everybody using this package will also be able to locate the field or method easily.
-
-* In version 1.5 the naming convention for the de-obfuscator has changed. All renamed field will contain the original
-  name in the new, unique name. So a field "f" will become "field_1234_f" and a method "int c(double)" will become
-  "int func_4321_c(double)". This will make it easier to understand how the original names were before de-obfuscation.
+  Look in the "conf\minecraft.rgs" and "conf\minecraft_server.rgs" files for a complete mapping of the names.
 
 * There are currently no known bugs in the recompiled game or server, except those that were already in the original
   game :) The known bugs, like missing sound effects or the backspace bug in the text entry gui, are fixed with this
   release.
 
-* Remeber that the compiled "*.class" files of this package are NOT compatible with an original minecraft.jar file. So
-  you can't easily create mods with this for other users at the moment. We will take care of this in a later version.
-
 
 Credits:
 ========
 Searge       - Creator of MCP and the one who fixes all compile errors in the decompiled sourcecode.
-ProfMobius   - Creator of the renaming scripts and helped for re-obfuscation RGS generation and
-               procedures. Ported the scripts to Linux.
+ProfMobius   - Creator of the renaming codes and re-obfuscation procedures. Helped to port scripts on Linux.
 IngisKahn    - Creator of the bytecode compare tool that helps us to update the mappings quickly after
                new minecraft versions are released and worked on the de-obfuscation spreadsheet.
 Generic      - Works on improving IngisKahn's bytecode compare tool and added some important features for
@@ -97,6 +107,7 @@ and of course:
 
 History:
 ========
+2.2 - The reobfuscation beta test release. Still for Minecraft 1.2.2
 2.1 - Updated to support Minecraft 1.2.2
 2.0 - Major updates to MCP and support for post-Halloween versions of Minecraft
 1.6 - All classes have meaningful names now, the class name mappings and the field name mappings are applied
@@ -109,10 +120,9 @@ History:
 
 Roadmap:
 ========
-2.2  - Add the other cool new features that were left out in release 2.0 but are almost ready to use. These include
-       Linux support, (hopefully) OSX support, re-obfuscation to make mods compatible with the original jar files,
-       updates to all name mappings in the de-obfuscation tables and much more
-2.3+ - New awesome features, improvements and updates :)
+2.3  - Add the other cool new features that were left out in release 2.0 but are almost ready to use. These include
+       Linux support, (hopefully) OSX support, updates to all name mappings in the de-obfuscation tables and much more
+2.4+ - New awesome features, improvements and updates :)
 
 _________________________________________________________________________________________________________________
 _________________________________________________________________________________________________________________

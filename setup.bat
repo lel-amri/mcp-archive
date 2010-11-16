@@ -1,4 +1,4 @@
-set MCPVERSION=2.1
+set MCPVERSION=2.2
 set MCVERSION=%1
 
 echo *** Minecraft Coder Pack Version %MCPVERSION% ***
@@ -24,6 +24,7 @@ set MCPJAD=%MCPTOOLSDIR%\jad.exe
 set MCPPATCH=%MCPTOOLSDIR%\applydiff.exe
 set MCPRENAMER=%MCPTOOLSDIR%\renamer.exe
 set MCPREPACK=%MCPTOOLSDIR%\repackage.exe
+set MCPOBFUSC=%MCPTOOLSDIR%\obfuscathon.exe
 
 set MCJAR=%MCPJARSDIR%\bin\minecraft.jar
 set MCSJAR=%MCPJARSDIR%\minecraft_server.jar
@@ -68,8 +69,10 @@ set MCSPLASHES=%MCPTEMPDIR%\minecraft\title\splashes.txt
 set MCTESTCP=%MCBIN%;%MCTEMP%;%MCJI%;%MCJGL%;%MCJGLU%
 set MCNAT=%MCPJARSDIR%\bin\natives
 
-set MCREOBSCRIPT=%MCPDIR%\conf\minecraft_rev.rgs
-set MCSREOBSCRIPT=%MCPDIR%\conf\minecraft_server_rev.rgs
+set MCREOBSCRIPT=%MCPDIR%\conf\minecraft_rev.saffx
+set MCSREOBSCRIPT=%MCPDIR%\conf\minecraft_server_rev.saffx
+set MCREOBDIR=%MCPDIR%\final_out\minecraft
+set MCSREOBDIR=%MCPDIR%\final_out\minecraft_server
 
 set MCPREOBJAR=%MCPTEMPDIR%\minecraft_preob.jar
 set MCSPREOBJAR=%MCPTEMPDIR%\minecraft_server_preob.jar

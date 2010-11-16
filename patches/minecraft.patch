@@ -722,7 +722,7 @@ diff -r -U 3 minecraft\net\minecraft\src\GuiEditSign.java patched\net\minecraft\
 -        toString();
 -        JVM INSTR aastore ;
 -_L2:
-+        if(" !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_'abcdefghijklmnopqrstuvwxyz{|}~\u2302\307\374\351\342\344\340\345\347\352\353\350\357\356\354\304\305\311\346\306\364\366\362\373\371\377\326\334\370\243\330\327\u0192\341\355\363\372\361\321\252\272\277\256\254\275\274\241\253\273".indexOf(c) >= 0 & field_1002_h.field_826_a[field_1000_j].length() < 15)
++        if(" !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_'abcdefghijklmnopqrstuvwxyz{|}~\u2302\307\374\351\342\344\340\345\347\352\353\350\357\356\354\304\305\311\346\306\364\366\362\373\371\377\326\334\370\243\330\327\u0192\341\355\363\372\361\321\252\272\277\256\254\275\274\241\253\273".indexOf(c) >= 0 && field_1002_h.field_826_a[field_1000_j].length() < 15)
 +        {
 +        	field_1002_h.field_826_a[field_1000_j] += c;
 +        }

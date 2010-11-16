@@ -1,13 +1,14 @@
 @echo off
 
+call setup.bat %1
+call findjdk.bat PATH
+
 java -help > NUL 2> NUL
 if errorlevel 1 (
     echo Unable to locate java.exe. Please verify that it is in the PATH.
     pause
     exit /b
 )
-
-call setup.bat %1
 
 if NOT EXIST "%MCPTEMPDIR%" mkdir "%MCPTEMPDIR%"
 if NOT EXIST "%MCPSOURCESDIR%" mkdir "%MCPSOURCESDIR%"
@@ -88,7 +89,7 @@ if exist "%MCSJAR%" (
     
     echo Renaming methods and fields
     echo *** Renaming methods and fields >>"%MCPLOG%"
-    "%MCPRENAMER%" -R -c "%MCPCONFDIR%\renamer.conf"
+    "%MCPRENAMER%" -R -c "%MCPCONFDIR%\renamer.conf" >>"%MCPLOG%"
 
 echo === MCP %MCPVERSION% decompile script finished ===
 pause
