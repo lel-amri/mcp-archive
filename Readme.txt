@@ -1,5 +1,5 @@
-Minecraft mod creator pack 2.2 for Minecraft 1.2.2
-==================================================
+Minecraft mod creator pack 2.2a for Minecraft 1.2.2
+===================================================
 
 This is the first release of MCP that provides a way to convert compiled classes to a format that
 is compatible with the original minecraft jar files. We call it re-obfuscation. It is still a feature
@@ -107,16 +107,18 @@ and of course:
 
 History:
 ========
-2.2 - The reobfuscation beta test release. Still for Minecraft 1.2.2
-2.1 - Updated to support Minecraft 1.2.2
-2.0 - Major updates to MCP and support for post-Halloween versions of Minecraft
-1.6 - All classes have meaningful names now, the class name mappings and the field name mappings are applied
-1.5 - Extend the scripts to also support decompiling, recompiling and testing the minecraft_server.jar file
-1.4 - Using a deobfuscator to rename all fields and methods and jadretro to fix some decompile bugs
-1.3 - Added upgrade scripts to decompile and recompile Minecraft.class, MinecraftApplet.class and MinecraftServer.class
-1.2 - Redirect output of all tools to a logfile
-1.1 - Fixed TNT bug
-1.0 - First release
+2.2a - Bugfix release to improve the re-obfuscation tools
+2.2  - The reobfuscation beta test release. Still for Minecraft 1.2.2
+2.1  - Updated to support Minecraft 1.2.2
+2.0a - Bugfix release
+2.0  - Major updates to MCP and support for post-Halloween versions of Minecraft
+1.6  - All classes have meaningful names now, the class name mappings and the field name mappings are applied
+1.5  - Extend the scripts to also support decompiling, recompiling and testing the minecraft_server.jar file
+1.4  - Using a deobfuscator to rename all fields and methods and jadretro to fix some decompile bugs
+1.3  - Added upgrade scripts to decompile and recompile Minecraft.class, MinecraftApplet.class and MinecraftServer.class
+1.2  - Redirect output of all tools to a logfile
+1.1  - Fixed TNT bug
+1.0  - First release
 
 Roadmap:
 ========

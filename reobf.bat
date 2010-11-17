@@ -5,11 +5,12 @@ call setup.bat %1
 rmdir /q /s "%MCREOBDIR%" 2>NUL:
 rmdir /q /s "%MCSREOBDIR%" 2>NUL:
 
-if NOT EXIST "%MCPTEMPDIR%" mkdir "%MCPTEMPDIR%"
+if NOT EXIST "%MCPTEMPDIR%"    mkdir "%MCPTEMPDIR%"
 if NOT EXIST "%MCPSOURCESDIR%" mkdir "%MCPSOURCESDIR%"
-if NOT EXIST "%MCPLOGDIR%" mkdir "%MCPLOGDIR%"
-if NOT EXIST "%MCREOBDIR%" mkdir "%MCREOBDIR%"
-if NOT EXIST "%MCSREOBDIR%" mkdir "%MCSREOBDIR%"
+if NOT EXIST "%MCPLOGDIR%"     mkdir "%MCPLOGDIR%"
+if NOT EXIST "%MCREOBDIR%\net\minecraft\client" mkdir "%MCREOBDIR%\net\minecraft\client"
+if NOT EXIST "%MCREOBDIR%\net\minecraft\isom" mkdir "%MCREOBDIR%\net\minecraft\isom"
+if NOT EXIST "%MCSREOBDIR%\net\minecraft\server" mkdir "%MCSREOBDIR%\net\minecraft\server"
 
 echo === Minecraft Coder Pack %MCPVERSION% === >"%MCPREOBLOG%"
 

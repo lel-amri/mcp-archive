@@ -1,9 +1,9 @@
 "PLEASE DO NOT SORT THE FIELD MAP, IT WILL BREAK THE SCRIPTS",,,,,,Can be completed with v1.2.x data. Leave the class and field columns empty.
 Game,,,Server,,,Changed
 Class,Field,Name,Class,Field,Name,Name,Notes
-a,a,field_1718_a,a,a,field_1016_a,x,The x coordinate of this point
-a,b,field_1717_b,a,b,field_1015_b,y,The y coordinate of this point
-a,c,field_1716_c,a,c,field_1014_c,z,The z coordinate of this point
+a,a,field_1718_a,a,a,field_1016_a,xCoord,The x coordinate of this point
+a,b,field_1717_b,a,b,field_1015_b,yCoord,The y coordinate of this point
+a,c,field_1716_c,a,c,field_1014_c,zCoord,The z coordinate of this point
 a,d,field_1715_d,a,d,field_1013_d,hash,A hash of the coordinates used to identify this point
 a,e,field_1714_e,a,e,field_1012_e,index,The index of this point in its assigned path
 a,f,field_1713_f,a,f,field_1011_f,totalPathDistance,The distance along the path to this point
@@ -17,9 +17,9 @@ ad,e,field_1789_e,*,*,*,dataFolder,The data folder.
 ae,a,field_885_a,ar,a,field_765_a,plantBlockId,The ID of the plant block used in this plant generator.
 ah,a,field_1781_a,*,*,*,soundName
 ah,b,field_1780_b,*,*,*,soundUrl
-aj,a,field_1776_a,aw,a,field_1055_a,x,X coordinate of Vec3D
-aj,b,field_1775_b,aw,b,field_1054_b,y,Y coordinate of Vec3D
-aj,c,field_1779_c,aw,c,field_1058_c,z,Z coordinate of Vec3D
+aj,a,field_1776_a,aw,a,field_1055_a,xCoord,X coordinate of Vec3D
+aj,b,field_1775_b,aw,b,field_1054_b,yCoord,Y coordinate of Vec3D
+aj,c,field_1779_c,aw,c,field_1058_c,zCoord,Z coordinate of Vec3D
 aj,d,field_1778_d,aw,d,field_1057_d,vectorList,ArrayList of all created vectors
 aj,e,field_1777_e,aw,e,field_1056_e,nextVector,"Next empty index in the vectorList. We don't ever seem to remove vectors from the list, however."
 al,a,field_467_a,ax,a,field_664_a,triggerMobType,The mob type that can trigger this pressure plate. 
@@ -373,8 +373,8 @@ ga,e,field_1536_e,im,e,field_690_e,data,Chunk data
 ga,f,field_1535_f,im,f,field_689_f,skylightMap,Light map for sky. See class le (client) or eo (server).
 ga,g,field_1534_g,im,g,field_688_g,blocklightMap,Light map for blocks. See class le (client) or eo (server).
 ga,h,field_1533_h,im,h,field_687_h,heightMap,Byte array containing height map for the chunk.
-ga,j,field_1531_j,im,j,field_685_j,xPos,The x coordinate of the chunk.
-ga,k,field_1530_k,im,k,field_684_k,zPos,The z coordinate of the chunk.
+ga,j,field_1531_j,im,j,field_685_j,xPosition,The x coordinate of the chunk.
+ga,k,field_1530_k,im,k,field_684_k,zPosition,The z coordinate of the chunk.
 ga,n,field_1527_n,im,n,field_681_n,isTerrainPopulated,Boolean value indicating if the terrain is populated.
 ga,m,field_1528_m,im,m,field_682_m,entities,List of lists of the entities in the chunk. It is 8 lists partitioned along the Y axis.
 ga,o,field_1526_o,im,o,field_680_o,isModified,Set to true if the chunk has been modified and needs to be updated internally.
@@ -459,9 +459,9 @@ hs,c,field_838_c,ah,c,field_503_c,lowerChest,Inventory object corresponding to d
 ic,a,field_820_a,as,e,field_481_e,nameToClassMap,A HashMap storing string names of classes mapping to the actual java.lang.Class type.
 ic,b,field_819_b,as,f,field_480_f,classToNameMap,A HashMap storing the classes and mapping to the string names (reverse of nameToClassMap).
 ic,e,field_824_e,as,a,field_479_a,worldObj,The reference to the world.
-ic,f,field_823_f,as,b,field_478_b,x,The x coordinate of the tile entity.
-ic,g,field_822_g,as,c,field_483_c,y,The y coordinate of the tile entity.
-ic,h,field_821_h,as,d,field_482_d,z,The z coordinate of the tile entity.
+ic,f,field_823_f,as,b,field_478_b,xCoord,The x coordinate of the tile entity.
+ic,g,field_822_g,as,c,field_483_c,yCoord,The y coordinate of the tile entity.
+ic,h,field_821_h,as,d,field_482_d,zCoord,The z coordinate of the tile entity.
 ie,a,field_966_a,*,*,*,updateCounter2,"Also counts the number of updates, not certain as to why yet."
 ie,h,field_967_h,*,*,*,updateCounter,Counts the number of screen updates.
 ih,a,field_1480_a,*,*,*,linux
@@ -536,9 +536,9 @@ ja,i,field_963_i,*,*,*,message2,Second line of text.
 ja,j,field_962_j,*,*,*,worldNumber,World number to be deleted.
 jd,a,field_689_a,fw,a,field_446_a,fuse,How long the fuse is
 jf,f,field_1363_f,bv,f,field_1020_f,nextTickEntryID,The id number for the next tick entry
-jf,a,field_1361_a,bv,a,field_1018_a,x,X position this tick is occuring at
-jf,b,field_1360_b,bv,b,field_1017_b,y,Y position this tick is occuring at
-jf,c,field_1366_c,bv,c,field_1023_c,z,Z position this tick is occuring at
+jf,a,field_1361_a,bv,a,field_1018_a,xCoord,X position this tick is occuring at
+jf,b,field_1360_b,bv,b,field_1017_b,yCoord,Y position this tick is occuring at
+jf,c,field_1366_c,bv,c,field_1023_c,zCoord,Z position this tick is occuring at
 jf,e,field_1364_e,bv,e,field_1021_e,scheduledTime,Time this tick is scheduled to occur at
 jf,d,field_1365_d,bv,d,field_1022_d,blockID,blockID of the scheduled tick (ensures when the tick occurs its still for this block)
 jf,g,field_1362_g,bv,g,field_1019_g,tickEntryID,The id of the tick entry
@@ -744,15 +744,15 @@ mm,e,field_1121_e,*,*,*,xPos,Left border of the slot in pixel from the left bord
 mm,f,field_1120_f,*,*,*,yPos,Upper border of the slot in pixel from the upper border of the window.
 mn,a,field_952_a,*,*,*,clientHandler,A reference to the NetClientHandler.
 mn,h,field_953_h,*,*,*,cancelled,True if the connection attempt has been cancelled.
-mo,i,field_944_i,*,*,*,value,The value of this slider control.
+mo,i,field_944_i,*,*,*,sliderValue,The value of this slider control.
 mo,j,field_943_j,*,*,*,dragging,Is this slider control being dragged.
 mo,l,field_942_l,*,*,*,idFloat,Additional ID for this slider control.
 mu,a,field_1109_a,gt,a,field_844_a,data,Byte array of data stored in this holder. Possibly a light map or some chunk data. Data is accessed in 4-bit pieces.
 mv,a,field_759_a,gu,a,field_397_a,rideable,"Set to true if this pig has a saddle, false otherwise."
 mw,a,field_818_a,*,*,*,stackResult,A list of one item containing the result of the crafting formula
-mx,a,field_1106_a,*,*,*,hash,The hash code of this entry
-mx,b,field_1105_b,*,*,*,value,The object stored in this entry
-mx,c,field_1108_c,*,*,*,next,The next entry in this slot
+mx,a,field_1106_a,*,*,*,hashEntry,The hash code of this entry
+mx,b,field_1105_b,*,*,*,valueEntry,The object stored in this entry
+mx,c,field_1108_c,*,*,*,nextEntry,The next entry in this slot
 mx,d,field_1107_d,*,*,*,slotHash,The id of the hash slot computed from the hash
 mz,i,field_754_i,*,*,*,timeUntilNextEgg,The time until the next egg is spawned.
 n,a,field_1620_a,*,*,*,craftMatrix,The crafting matrix inventory.
@@ -819,9 +819,9 @@ og,a,field_449_a,il,a,field_646_a,chanceToEncourageFire,The chance this block wi
 oh,a,field_582_a,io,a,field_41_a,reason,Displayed to the client when the connection terminates.
 oj,a,field_332_a,ix,a,field_275_a,healAmount,The amount this food item heals the player.
 om,d,field_4219_d,ie,d,field_4305_d,lightBrightnessTable,Light to brightness conversion table
-v,a,field_1188_a,af,a,field_935_a,x
-v,b,field_1187_b,af,b,field_934_b,y
-v,c,field_1190_c,af,c,field_937_c,z
+v,a,field_1188_a,af,a,field_935_a,xCoord
+v,b,field_1187_b,af,b,field_934_b,yCoord
+v,c,field_1190_c,af,c,field_937_c,zCoord
 v,d,field_1189_d,af,d,field_936_d,permutations
 *,*,*,ai,a,field_1060_a,command,The command string.
 *,*,*,ai,b,field_1059_b,commandListener,The CommandListener object associated with this command.

@@ -12,11 +12,11 @@ aj (Vec3D),func_1249_b,,*,rotateAroundY,Rotates the vector around the y axis by 
 aj (Vec3D),func_1250_b,aw (Vec3D),func_763_b,getIntermediateWithYValue,"Returns a new vector with y value equal to the second parameter, along the line between this vector and the passed in vector, or null if not possible."
 aj (Vec3D),func_1251_c,aw (Vec3D),func_767_a,distanceTo,"Euclidean distance between this and the specified vector, returned as double."
 aj (Vec3D),func_1252_b,aw (Vec3D),func_758_b,normalize,Normalizes the vector to a length of 1 (except if it is the zero vector)
-aj (Vec3D),func_1253_c,aw (Vec3D),func_765_c,length,Returns the length of the vector.
+aj (Vec3D),func_1253_c,aw (Vec3D),func_765_c,lengthVector,Returns the length of the vector.
 aj (Vec3D),func_1254_e,aw (Vec3D),func_756_e,setComponents,"Sets the x,y,z components of the vector as specified."
 aj (Vec3D),func_1255_d,aw (Vec3D),func_759_d,squareDistanceTo,"The square of the Euclidean distance between this and the vector of x,y,z components passed in."
 aj (Vec3D),func_1256_c,aw (Vec3D),func_762_c,getIntermediateWithZValue,"Returns a new vector with z value equal to the second parameter, along the line between this vector and the passed in vector, or null if not possible."
-aj (Vec3D),func_1257_c,aw (Vec3D),func_757_c,add,"Adds the specified x,y,z vector components to this vector and returns the resulting vector. Does not change this vector."
+aj (Vec3D),func_1257_c,aw (Vec3D),func_757_c,addVector,"Adds the specified x,y,z vector components to this vector and returns the resulting vector. Does not change this vector."
 aj (Vec3D),func_1258_a,,*,rotateAroundX,Rotates the vector around the x axis by the specified angle.
 aj (Vec3D),func_1259_a,aw (Vec3D),func_761_a,initialize,Initializes the next empty vector slot in the list to 0.
 aj (Vec3D),func_1260_a,aw (Vec3D),func_760_a,createVectorHelper,"Static method for creating a new Vec3D given the three x,y,z values. This is only called from the other static method which creates and places it in the list."
@@ -36,7 +36,7 @@ bd (TileEntityMobSpawner),func_481_b,,func_188_b,writeToNBT,Writes a tile entity
 bd (TileEntityMobSpawner),func_482_a,,func_186_a,readFromNBT,Reads a tile entity from NBT.
 bd (TileEntityMobSpawner),func_483_c,,func_196_d,updateDelay,Sets the delay before a new spawn (base delay of 200 + random number up to 600).
 be (OpenGlCapsChecker),func_1213_a,,*,checkARBOcclusion,Checks if we support OpenGL occlusion.
-bf (ThreadDownloadResources),func_1208_b,,*,close,Called when Minecraft is closing down.
+bf (ThreadDownloadResources),func_1208_b,,*,closeMinecraft,Called when Minecraft is closing down.
 bf (ThreadDownloadResources),func_1209_a,,*,loadResource,Loads a resource and passes it to Minecraft to install.
 bf (ThreadDownloadResources),func_1210_a,,*,reloadResources,Reloads the resource folder and passes the resources to Minecraft to install.
 bf (ThreadDownloadResources),func_1211_a,,*,downloadAndInstallResource,Downloads the resource and saves it to disk then installs it.
@@ -64,7 +64,7 @@ bs (ItemTool),func_198_a,,*,getDamageVsEntity,Returns the damage against a given
 bs (ItemTool),func_202_a,,*,hitEntity,Current implementations of this method in child classes do not use the entry argument beside ev. They just raise the damage on the stack.
 bs (ItemTool),func_203_a,,func_75_a,hitBlock,Current implementations of this method in child classes do not use the entry argument beside ev. They just raise the damage on the stack.
 bs (ItemTool),func_204_a,,func_79_a,getStrVsBlock,"Returns the strength of the stack against a given block. 1.0F base, (Quality+1)*2 if correct blocktype, 1.5F if sword"
-bv (CraftingRecipe),func_1182_a,,*,matches,Returns true if the passed in array of item ids matches the recipe
+bv (CraftingRecipe),func_1182_a,,*,matchRecipe,Returns true if the passed in array of item ids matches the recipe
 bv (CraftingRecipe),func_1183_b,,*,createResult,Returns a new item stack that this recipe makes
 bv (CraftingRecipe),func_1184_a,,*,getRecipeSize,Returns the size of the recipe area
 bv (CraftingRecipe),func_1185_a,,*,matches,Returns true if a specific recipe location matches
@@ -73,12 +73,12 @@ cf (AxisAlignedBB),func_1161_b,dg (AxisAlignedBB),func_693_b,getBoundingBoxFromP
 cf (AxisAlignedBB),func_1164_b,,*,getAverageEdgeLength,Returns the average length of the edges of the bounding box.
 cf (AxisAlignedBB),func_1165_c,dg (AxisAlignedBB),func_695_c,setBounds,"Sets the bounds of the bounding box. Args: minX, minY, minZ, maxX, maxY, maxZ"
 cf (AxisAlignedBB),func_1168_a,dg (AxisAlignedBB),func_698_a,getBoundingBox,"Returns a bounding box with the specified bounds. Args: minX, minY, minZ, maxX, maxY, maxZ"
-cf (AxisAlignedBB),func_1170_a,dg (AxisAlignedBB),func_700_a,add,"Adds the coordinates to the bounding box extending it if the point lies outside the current ranges. Args: x, y, z"
+cf (AxisAlignedBB),func_1170_a,dg (AxisAlignedBB),func_700_a,addCoord,"Adds the coordinates to the bounding box extending it if the point lies outside the current ranges. Args: x, y, z"
 cf (AxisAlignedBB),func_1174_d,dg (AxisAlignedBB),func_702_d,offset,"Offsets the current bounding box by the specified coordinates. Args: x, y, z"
 cf (AxisAlignedBB),func_1177_b,dg (AxisAlignedBB),func_708_b,expands,"Returns a bounding box expanded by the specified vector (if negative numbers are given it will shrink). Args: x, y, z"
 cf (AxisAlignedBB),func_1178_a,dg (AxisAlignedBB),func_704_a,intersectsWith,Returns whether the given bounding box intersects with this one. Args: axisAlignedBB
 cf (AxisAlignedBB),func_1166_c,dg (AxisAlignedBB),func_696_c,getOffsetBoundingBox,"Returns a bounding box offseted by the specified vector (if negative numbers are given it will shrink). Args: x, y, z"
-cf (AxisAlignedBB),func_1171_b,dg (AxisAlignedBB),func_699_b,set,Sets the bounding box to the same bounds as the bounding box passed in. Args: axisAlignedBB
+cf (AxisAlignedBB),func_1171_b,dg (AxisAlignedBB),func_699_b,setBB,Sets the bounding box to the same bounds as the bounding box passed in. Args: axisAlignedBB
 cf (AxisAlignedBB),func_1167_a,dg (AxisAlignedBB),func_697_a,isVecInYZ,Checks if the specified vector is within the YZ dimensions of the bounding box. Args: Vec3D
 cf (AxisAlignedBB),func_1175_b,dg (AxisAlignedBB),func_705_b,isVecInXZ,Checks if the specified vector is within the XZ dimensions of the bounding box. Args: Vec3D
 cf (AxisAlignedBB),func_1176_c,dg (AxisAlignedBB),func_707_c,isVecInXY,Checks if the specified vector is within the XY dimensions of the bounding box. Args: Vec3D
@@ -167,8 +167,8 @@ dw (CraftingManager),func_1119_a,,*,craft,Given an array of item ids it produces
 dw (CraftingManager),func_1120_a,,*,getInstance,Returns the static instance of this class
 dw (CraftingManager),func_1121_a,*,*,addRecipe,Adds a recipe. See spreadsheet on first page for details.
 dy (NBTTagByteArray),func_733_a,,func_379_a,getType,Gets the type byte for the tag.
-dy (NBTTagByteArray),func_735_a,,func_381_a,write,Writes the tag to the given DataOutput.
-dy (NBTTagByteArray),func_736_a,,func_382_a,read,Reads the tag from the given DataInput.
+dy (NBTTagByteArray),func_735_a,,func_381_a,writeTag,Writes the tag to the given DataOutput.
+dy (NBTTagByteArray),func_736_a,,func_382_a,readTag,Reads the tag from the given DataInput.
 eb (SoundPool),func_1117_a,,*,addSound,Adds a sound to this sound pool.
 ee (GuiContainer),func_588_a,,*,getSlotAtPosition,Returns the slot at the given coordinates or null if there is none.
 el (NBTBase),func_731_b,,func_377_b,getTagName,"Returns the string name of a tag with the specified type, or ""UNKNOWN"" if invalid."
@@ -189,7 +189,7 @@ eo (MathHelper),func_1113_c,,func_586_c,sqrt_float
 eu (InventoryPlayer),func_468_c,,func_82_a,getStackInSlot,Returns the stack in slot i
 eu (InventoryPlayer),func_469_c,,*,getSizeInventory,Returns the number of slots in the inventory.
 eu (InventoryPlayer),func_470_e,,func_202_d,getInventoryStackLimit,"Returns the maximum stack size for a inventory slot. Seems to always be 64, possibly will be extended. *Isn't this more of a set than a get?*"
-eu (InventoryPlayer),func_471_d,,*,getName,Returns the name of the inventory.
+eu (InventoryPlayer),func_471_d,,*,getInvName,Returns the name of the inventory.
 eu (InventoryPlayer),func_472_a,,func_206_a,setInventorySlotContents,Sets the given item stack to the specified slot in the inventory (can be crafting or armor sections).
 eu (InventoryPlayer),func_473_a,,*,decrStackSize,Decrease the size of the stack in slot (first int arg) by the amount of the second int arg. Returns the new stack.
 eu (InventoryPlayer),func_493_a,,func_200_a,writeToNBT,"Writes the inventory out as a list of compound tags. This is where the slot indices are used (+100 for armor, +80 for crafting)."
@@ -223,16 +223,16 @@ ev (ItemStack),func_1101_b,,func_579_a,damageItem,"Raise the damage on the item 
 ev (ItemStack),func_1102_e,,func_578_d,copy,Returns a new stack with the same properties.
 ey (RenderEngine),func_1070_a,,*,getTexture
 ey (RenderEngine),func_1076_b,,*,bindTexture
-fi (MCHashTable),func_1052_b,,func_553_d,remove,Removes the specified object from the map and returns it
+fi (MCHashTable),func_1052_b,,func_553_d,removeObject,Removes the specified object from the map and returns it
 fi (MCHashTable),func_1053_a,,func_547_a,insert,Adds an object to a slot
 fi (MCHashTable),func_1054_c,,func_557_e,removeEntry,Removes the specified entry from the map and returns it
 fi (MCHashTable),func_1055_e,,func_545_g,computeHash,Makes the passed in integer suitable for hashing by a number of shifts
 fi (MCHashTable),func_1056_d,,func_546_f,getHash,Returns the hash code for a key
 fi (MCHashTable),func_1057_a,,func_550_a,lookup,Returns the object associated to a key
-fi (MCHashTable),func_1058_a,,func_551_a,clear,Removes all entries from the map
+fi (MCHashTable),func_1058_a,,func_551_a,clearMap,Removes all entries from the map
 fi (MCHashTable),func_1059_a,,func_549_a,copyTo,Copies the hash slots to a new array
 fi (MCHashTable),func_1060_f,,func_552_h,grow,Increases the number of hash slots
-fi (MCHashTable),func_1061_a,,func_554_a,add,Adds a key and associated value to this map
+fi (MCHashTable),func_1061_a,,func_554_a,addKey,Adds a key and associated value to this map
 fi (MCHashTable),func_1062_a,,func_555_a,getSlotIndex,Computes the index of the slot for the hash and slot count passed in.  
 fk (GuiButton),func_558_a,,*,getHoverState,"Returns 0 if the button is disabled, 1 if the mouse is NOT hovering over this button and 2 if it IS hovering over this button."
 fk (GuiButton),func_559_a,,*,mouseReleased,Fired when the mouse button is released. Equivalent of MouseListener.mouseReleased(MouseEvent e).
@@ -260,12 +260,12 @@ fr (GameSettings),func_1049_c,,*,getOptionFloatValue,"If the specified option is
 fr (GameSettings),func_1050_a,,*,parseFloat,Parses a string into a float.
 ,func_6519_a,,*,loadOptions,"Loads the options from the options file. It appears that this has replaced the previous ""loadOptions""."
 fx (Path),func_1033_a,,func_412_a,sortBack,Sorts a point to the left
-fx (Path),func_1034_a,,func_413_a,add,Adds a point to the path
+fx (Path),func_1034_a,,func_413_a,addPoint,Adds a point to the path
 fx (Path),func_1035_a,,func_414_a,changeDistance,Changes the provided point's distance to target
 fx (Path),func_1036_b,,func_415_b,dequeue,Returns and removes the first point in the path
 fx (Path),func_1037_b,,func_416_b,sortForward,Sorts a point to the right
-fx (Path),func_1038_a,,func_417_a,clear,Clears the path
-fx (Path),func_1039_c,,func_418_c,isEmpty,Returns true if this path contains no points
+fx (Path),func_1038_a,,func_417_a,clearPath,Clears the path
+fx (Path),func_1039_c,,func_418_c,isPathEmpty,Returns true if this path contains no points
 ga (Chunk),func_994_a,,func_329_a,getEntitiesWithinAABBForEntity,"Fills the given list of all entities that intersect within the given bounding box that aren't the passed entity  Args: entity, aabb, listToFill"
 ga (Chunk),func_999_b,,func_337_b,getHeightValue,"Returns the value in the height map at this x, z coordinate in the chunk"
 ga (Chunk),func_1000_a,,func_335_a,addEntity,Adds an entity to the chunk. Args: entity
@@ -517,7 +517,7 @@ net/minecraft/client/MinecraftApplet,func_102_b,*,*,shutdown,Called when the app
 nm (IBlockAccess),func_599_f,hq,func_443_c,getBlockMaterial,Returns the block's material.
 nm (IBlockAccess),func_600_a,hq,func_444_a,getBlockId,"Returns the block ID at coords x,y,z"
 nm (IBlockAccess),func_602_e,hq,func_446_b,getBlockMetadata,"Returns the block metadata at coords x,y,z"
-of (SoundManager),func_330_b,*,*,close,Called when Minecraft is closing down.
+of (SoundManager),func_330_b,*,*,closeMinecraft,Called when Minecraft is closing down.
 of (SoundManager),func_332_a,*,*,addSound,Adds an audio file to the sounds SoundPool.
 of (SoundManager),func_333_b,*,*,addStreaming,Adds an audio file to the streaming SoundPool.
 of (SoundManager),func_334_c,*,*,addMusic,Adds an audio file to the music SoundPool.
@@ -569,7 +569,7 @@ v (NoiseGeneratorPerlin),func_804_b,af (NoiseGeneratorPerlin),func_645_b,lerp
 *,*,ft (ServerConfigurationManager),func_635_h,writeBannedIPs,Writes the banned IPs file to disk.,,DUPLICATE
 *,*,ft (ServerConfigurationManager),func_638_i,readOps,Reads the OPs file from disk.,,DUPLICATE
 *,*,ft (ServerConfigurationManager),func_639_g,isOp,"Returns true if the player is an OP, false otherwise.",,--
-*,*,hf (MCHashTable),func_556_b,contains,Returns true if this hash table contains the specified item.,,DUPLICATE
+*,*,hf (MCHashTable),func_556_b,containsItem,Returns true if this hash table contains the specified item.,,DUPLICATE
 *,*,hf (MCHashTable),func_548_c,lookupEntry,Returns the internal entry for a key,,DUPLICATE
 *,*,hg (PlayerManager),func_540_a,getMinecraftServer,Returns the MinecraftServer associated with the PlayerManager.,,DUPLICATE
 *,*,hx (GuiStatsComponent),func_435_a,update,Public static accessor to call updateStats.,,--

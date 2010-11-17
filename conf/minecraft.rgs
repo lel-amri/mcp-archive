@@ -4,6 +4,21 @@
 .class com/jcraft/** protected
 .class net/minecraft/**
 
+.class BaseMod protected
+.class ModLoader protected
+.field_map ModLoader/usedTerrainSprites usedTerrainSprites
+.field_map ModLoader/highestEntityId highestEntityId
+.field_map ModLoader/itemSpriteIndex itemSpriteIndex
+.field_map ModLoader/terrainSpriteIndex terrainSpriteIndex
+.field_map ModLoader/osdHooks osdHooks
+.field_map ModLoader/usedItemSprites usedItemSprites
+.field_map ModLoader/overrides overrides
+.field_map ModLoader/mods mods
+.method_map ModLoader/getUniqueItemSpriteIndex ()I getUniqueItemSpriteIndex
+.method_map ModLoader/addMod (Ljava/lang/String;)V addMod
+.method_map ModLoader/loadImage (Ljava/lang/String;)Ljava/awt/image/BufferedImage; loadImage
+.method_map ModLoader/getUniqueTerrainSpriteIndex ()I getUniqueTerrainSpriteIndex
+
 .class_map cn AxisAlignedBB
 .class_map nl Block
 .class_map pw BlockBloodStone
