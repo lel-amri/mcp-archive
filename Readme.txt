@@ -1,9 +1,5 @@
-Minecraft mod creator pack 2.2a for Minecraft 1.2.2
-===================================================
-
-This is the first release of MCP that provides a way to convert compiled classes to a format that
-is compatible with the original minecraft jar files. We call it re-obfuscation. It is still a feature
-in beta state, but if you provide us with feedback about it we can soon make a final release.
+Minecraft mod creator pack 2.3 for Minecraft 1.2.3_04
+=====================================================
 
 Prerequisites:
 ==============
@@ -50,6 +46,10 @@ How to use:
   MyNewAwesomeClass
 - Start "reobf.bat" to start the reobfuscation step.
 - Your obfuscated classes are now available in "final_out\minecraft" and "final_out\minecraft_server", ready to be injected in MC.
++ BETA FEATURE : For those willing to experiment, a beta GUI is available in the tool directory. It is called obfuscathonCharmer. 
+  Just run it, experiment and give us some feedback on it. The GUI is made in C# and should work on both linux and windows (using
+  mono on linux).
+
 
 WARNINGS:
 =========
@@ -69,11 +69,8 @@ Notes:
   use your "%APPDATA%\.minecraft" folder, but instead use the "jars" folder for all saves. So any bugs in the modified
   game will not corrupt your normal worlds.
 
-* The class "fg" will be compiled with only one function in it. The original class is renamed to MathHelper, but
-  the soundsystem need a class called eo with the function b in it to work properly.
-
 * If you have any problems using this toolpack, put the "logs\*.log" files that the scripts generated into a
-  zip-file and send it to me (post it in the minecraft forum):
+  zip-file and send it to us (post it in the minecraft forum):
   http://www.minecraftforum.net/viewtopic.php?f=25&t=58464
   
 * This version of the mod creator package uses a deobfuscator to change all field and method names in the sources.
@@ -86,19 +83,52 @@ Notes:
 
 Credits:
 ========
-Searge       - Creator of MCP and the one who fixes all compile errors in the decompiled sourcecode.
-ProfMobius   - Creator of the renaming codes and re-obfuscation procedures. Helped to port scripts on Linux.
-IngisKahn    - Creator of the bytecode compare tool that helps us to update the mappings quickly after
-               new minecraft versions are released and worked on the de-obfuscation spreadsheet.
-Generic      - Works on improving IngisKahn's bytecode compare tool and added some important features for
-               us to retroguard.
-fotoply      - Helped to improve the batch files.
-Cadde        - Works on the de-obfuscation spreadsheet.
-Vaprtek      - Works on the de-obfuscation spreadsheet. Also knows how to make pet creepers.
-gronk        - Script support.
-n00bish      - Linux script maintenance.
-Sage Pourpre - His thread in the forums inspired me to create this toolpack in the first place.
-Tei          - Supported the MCP project since the first version was released.
+Searge
+* Creator of MCP
+* Fixes all compile errors in the decompiled sourcecode
+ProfMobius
+* Creator of the renaming codes and re-obfuscation procedures
+* Helped to port scripts on Linux
+* Developer and maintainer of the MCP chan bot
+* Is now bald after working too much with java constant pool and re-obfuscation
+IngisKahn
+* Creator of the bytecode compare tool that helps us to update the name mappings quickly for new minecraft versions
+* Contributed to the de-obfuscation spreadsheet
+Generic
+* Works on improving IngisKahn's bytecode compare tool
+* Added some important features to retroguard
+fotoply
+* Helped to improve the batch files
+Cadde
+* Community manager and Wiki manager
+* Works on the de-obfuscation spreadsheet
+* Mod support (making old mods work with MCP)
+* All round handyman
+Vaprtek
+* Works on the de-obfuscation spreadsheet
+* Knows how to make pet creepers
+gronk
+* Script support
+n00bish
+* Linux script maintenance
+Sage Pourpre
+* His thread in the forums inspired me (Searge) to create this toolpack in the first place
+Tei
+* Supported the MCP project since the first version was released
+spec10
+* The new linux scripts guy
+Head
+* Wiki contributor / Administrator
+* Explains classes and their members on the Wiki
+MissLil
+* Various scripting stuff
+* Lots of reverse engineering
+* OpenGL constants annoting
+Fesh0r
+* php/sql code monkey
+ScottyDoesKnow
+* obfuscathonCharmer, the obfuscathon GUI
+
 and of course:
 - Everybody who contributed to the great google spreadsheet or who created some mods (I've got them all :).
 - NOTCH for creating a game that is just awesome, I hope he does not feel offended by our decompiling efforts.
@@ -107,6 +137,7 @@ and of course:
 
 History:
 ========
+2.3  - Updated to support Minecraft 1.2.3_04 and MinecraftServer 0.2.5_02. Linux support beta.
 2.2a - Bugfix release to improve the re-obfuscation tools
 2.2  - The reobfuscation beta test release. Still for Minecraft 1.2.2
 2.1  - Updated to support Minecraft 1.2.2
@@ -122,8 +153,6 @@ History:
 
 Roadmap:
 ========
-2.3  - Add the other cool new features that were left out in release 2.0 but are almost ready to use. These include
-       Linux support, (hopefully) OSX support, updates to all name mappings in the de-obfuscation tables and much more
 2.4+ - New awesome features, improvements and updates :)
 
 _________________________________________________________________________________________________________________

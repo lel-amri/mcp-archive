@@ -1,7 +1,7 @@
 
 // this is needed for the sound engine to work with deobfuscated sourcecode without crashing
 
-public class fg {
+public class fh {
     public static int b(double d)
     {
         int i = (int)d;
