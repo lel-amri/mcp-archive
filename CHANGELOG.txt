@@ -1,3 +1,6 @@
+v2.4:
+    + Updated scripts to support Minecraft 1.2.5 and Server 0.2.7
+
 v2.3:
 	+ Included a changelog
 	+ Linux version is now available. The scripts are available in mcp/scripts-linux. The sources for the tools in python are available in mcp/tools-linux

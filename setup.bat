@@ -1,4 +1,4 @@
-set MCPVERSION=2.3
+set MCPVERSION=2.4
 set MCVERSION=%1
 
 echo *** Minecraft Coder Pack Version %MCPVERSION% ***

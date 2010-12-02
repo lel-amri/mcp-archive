@@ -1,6 +1,6 @@
-diff -r -U 3 minecraft\net\minecraft\client\Minecraft.java minecraft_patched\net\minecraft\client\Minecraft.java
---- minecraft\net\minecraft\client\Minecraft.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\client\Minecraft.java	Sat Nov 27 02:42:29 2010
+diff -r -U 3 minecraft/net/minecraft/client/Minecraft.java minecraft_patched/net/minecraft/client/Minecraft.java
+--- minecraft/net/minecraft/client/Minecraft.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/client/Minecraft.java	2010-12-02 22:57:41.000000000 +0100
 @@ -4,72 +4,72 @@
  
  package net.minecraft.client;
@@ -156,7 +156,7 @@ diff -r -U 3 minecraft\net\minecraft\client\Minecraft.java minecraft_patched\net
 -            Display.setDisplayMode(new DisplayMode(field_6326_c, field_6325_d));
 +            Display.setDisplayMode(new org.lwjgl.opengl.DisplayMode(field_6326_c, field_6325_d));
          }
-         Display.setTitle("Minecraft Minecraft Alpha v1.2.3_04");
+         Display.setTitle("Minecraft Minecraft Alpha v1.2.5");
          try
 @@ -239,7 +239,7 @@
          }
@@ -176,9 +176,9 @@ diff -r -U 3 minecraft\net\minecraft\client\Minecraft.java minecraft_patched\net
              }
              func_6273_f();
              Display.setFullscreen(field_185_a);
-diff -r -U 3 minecraft\net\minecraft\client\MinecraftApplet.java minecraft_patched\net\minecraft\client\MinecraftApplet.java
---- minecraft\net\minecraft\client\MinecraftApplet.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\client\MinecraftApplet.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/client/MinecraftApplet.java minecraft_patched/net/minecraft/client/MinecraftApplet.java
+--- minecraft/net/minecraft/client/MinecraftApplet.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/client/MinecraftApplet.java	2010-12-02 22:57:41.000000000 +0100
 @@ -4,9 +4,9 @@
  
  package net.minecraft.client;
@@ -217,9 +217,9 @@ diff -r -U 3 minecraft\net\minecraft\client\MinecraftApplet.java minecraft_patch
          if(getParameter("username") != null && getParameter("sessionid") != null)
          {
              field_6234_b.field_6320_i = new Session(getParameter("username"), getParameter("sessionid"));
-diff -r -U 3 minecraft\net\minecraft\src\CanvasMinecraftApplet.java minecraft_patched\net\minecraft\src\CanvasMinecraftApplet.java
---- minecraft\net\minecraft\src\CanvasMinecraftApplet.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\CanvasMinecraftApplet.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/CanvasMinecraftApplet.java minecraft_patched/net/minecraft/src/CanvasMinecraftApplet.java
+--- minecraft/net/minecraft/src/CanvasMinecraftApplet.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/CanvasMinecraftApplet.java	2010-12-02 22:57:41.000000000 +0100
 @@ -12,7 +12,6 @@
      public CanvasMinecraftApplet(MinecraftApplet minecraftapplet)
      {
@@ -228,9 +228,9 @@ diff -r -U 3 minecraft\net\minecraft\src\CanvasMinecraftApplet.java minecraft_pa
      }
  
      public synchronized void addNotify()
-diff -r -U 3 minecraft\net\minecraft\src\CodecMus.java minecraft_patched\net\minecraft\src\CodecMus.java
---- minecraft\net\minecraft\src\CodecMus.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\CodecMus.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/CodecMus.java minecraft_patched/net/minecraft/src/CodecMus.java
+--- minecraft/net/minecraft/src/CodecMus.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/CodecMus.java	2010-12-02 22:57:41.000000000 +0100
 @@ -17,6 +17,10 @@
  
      protected InputStream openInputStream()
@@ -243,9 +243,9 @@ diff -r -U 3 minecraft\net\minecraft\src\CodecMus.java minecraft_patched\net\min
 +		}
      }
  }
-diff -r -U 3 minecraft\net\minecraft\src\CompressedStreamTools.java minecraft_patched\net\minecraft\src\CompressedStreamTools.java
---- minecraft\net\minecraft\src\CompressedStreamTools.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\CompressedStreamTools.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/CompressedStreamTools.java minecraft_patched/net/minecraft/src/CompressedStreamTools.java
+--- minecraft/net/minecraft/src/CompressedStreamTools.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/CompressedStreamTools.java	2010-12-02 22:57:41.000000000 +0100
 @@ -14,7 +14,7 @@
      {
      }
@@ -300,9 +300,9 @@ diff -r -U 3 minecraft\net\minecraft\src\CompressedStreamTools.java minecraft_pa
      {
          NBTBase.func_738_a(nbttagcompound, dataoutput);
      }
-diff -r -U 3 minecraft\net\minecraft\src\EntityPainting.java minecraft_patched\net\minecraft\src\EntityPainting.java
---- minecraft\net\minecraft\src\EntityPainting.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\EntityPainting.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/EntityPainting.java minecraft_patched/net/minecraft/src/EntityPainting.java
+--- minecraft/net/minecraft/src/EntityPainting.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/EntityPainting.java	2010-12-02 22:57:41.000000000 +0100
 @@ -24,7 +24,7 @@
          field_9321_e = j;
          field_9320_f = k;
@@ -321,9 +321,9 @@ diff -r -U 3 minecraft\net\minecraft\src\EntityPainting.java minecraft_patched\n
          int i = aenumart.length;
          for(int j = 0; j < i; j++)
          {
-diff -r -U 3 minecraft\net\minecraft\src\EntitySorter.java minecraft_patched\net\minecraft\src\EntitySorter.java
---- minecraft\net\minecraft\src\EntitySorter.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\EntitySorter.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/EntitySorter.java minecraft_patched/net/minecraft/src/EntitySorter.java
+--- minecraft/net/minecraft/src/EntitySorter.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/EntitySorter.java	2010-12-02 22:57:41.000000000 +0100
 @@ -19,7 +19,7 @@
          return worldrenderer.func_1202_a(field_1594_a) >= worldrenderer1.func_1202_a(field_1594_a) ? 1 : -1;
      }
@@ -333,9 +333,9 @@ diff -r -U 3 minecraft\net\minecraft\src\EntitySorter.java minecraft_patched\net
      {
          return func_1063_a((WorldRenderer)obj, (WorldRenderer)obj1);
      }
-diff -r -U 3 minecraft\net\minecraft\src\EnumArt.java minecraft_patched\net\minecraft\src\EnumArt.java
---- minecraft\net\minecraft\src\EnumArt.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\EnumArt.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/EnumArt.java minecraft_patched/net/minecraft/src/EnumArt.java
+--- minecraft/net/minecraft/src/EnumArt.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/EnumArt.java	2010-12-02 22:57:41.000000000 +0100
 @@ -4,9 +4,33 @@
  // Decompiler options: packimports(3) braces deadcode 
  
@@ -416,9 +416,9 @@ diff -r -U 3 minecraft\net\minecraft\src\EnumArt.java minecraft_patched\net\mine
      }
 +*/
  }
-diff -r -U 3 minecraft\net\minecraft\src\EnumCreatureType.java minecraft_patched\net\minecraft\src\EnumCreatureType.java
---- minecraft\net\minecraft\src\EnumCreatureType.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\EnumCreatureType.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/EnumCreatureType.java minecraft_patched/net/minecraft/src/EnumCreatureType.java
+--- minecraft/net/minecraft/src/EnumCreatureType.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/EnumCreatureType.java	2010-12-02 22:57:41.000000000 +0100
 @@ -4,9 +4,11 @@
  // Decompiler options: packimports(3) braces deadcode 
  
@@ -466,9 +466,9 @@ diff -r -U 3 minecraft\net\minecraft\src\EnumCreatureType.java minecraft_patched
      }
 +*/
  }
-diff -r -U 3 minecraft\net\minecraft\src\EnumMobType.java minecraft_patched\net\minecraft\src\EnumMobType.java
---- minecraft\net\minecraft\src\EnumMobType.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\EnumMobType.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/EnumMobType.java minecraft_patched/net/minecraft/src/EnumMobType.java
+--- minecraft/net/minecraft/src/EnumMobType.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/EnumMobType.java	2010-12-02 22:57:41.000000000 +0100
 @@ -4,9 +4,12 @@
  // Decompiler options: packimports(3) braces deadcode 
  
@@ -499,9 +499,9 @@ diff -r -U 3 minecraft\net\minecraft\src\EnumMobType.java minecraft_patched\net\
      }
 +*/
  }
-diff -r -U 3 minecraft\net\minecraft\src\EnumOS1.java minecraft_patched\net\minecraft\src\EnumOS1.java
---- minecraft\net\minecraft\src\EnumOS1.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\EnumOS1.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/EnumOS1.java minecraft_patched/net/minecraft/src/EnumOS1.java
+--- minecraft/net/minecraft/src/EnumOS1.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/EnumOS1.java	2010-12-02 22:57:41.000000000 +0100
 @@ -4,9 +4,14 @@
  // Decompiler options: packimports(3) braces deadcode 
  
@@ -534,9 +534,9 @@ diff -r -U 3 minecraft\net\minecraft\src\EnumOS1.java minecraft_patched\net\mine
      }
 +*/
  }
-diff -r -U 3 minecraft\net\minecraft\src\EnumOS2.java minecraft_patched\net\minecraft\src\EnumOS2.java
---- minecraft\net\minecraft\src\EnumOS2.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\EnumOS2.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/EnumOS2.java minecraft_patched/net/minecraft/src/EnumOS2.java
+--- minecraft/net/minecraft/src/EnumOS2.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/EnumOS2.java	2010-12-02 22:57:41.000000000 +0100
 @@ -5,9 +5,14 @@
  
  import net.minecraft.client.Minecraft;
@@ -569,9 +569,9 @@ diff -r -U 3 minecraft\net\minecraft\src\EnumOS2.java minecraft_patched\net\mine
      }
 +*/
  }
-diff -r -U 3 minecraft\net\minecraft\src\EnumSkyBlock.java minecraft_patched\net\minecraft\src\EnumSkyBlock.java
---- minecraft\net\minecraft\src\EnumSkyBlock.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\EnumSkyBlock.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/EnumSkyBlock.java minecraft_patched/net/minecraft/src/EnumSkyBlock.java
+--- minecraft/net/minecraft/src/EnumSkyBlock.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/EnumSkyBlock.java	2010-12-02 22:57:41.000000000 +0100
 @@ -4,9 +4,11 @@
  // Decompiler options: packimports(3) braces deadcode 
  
@@ -617,9 +617,9 @@ diff -r -U 3 minecraft\net\minecraft\src\EnumSkyBlock.java minecraft_patched\net
      }
 +*/
  }
-diff -r -U 3 minecraft\net\minecraft\src\GameWindowListener.java minecraft_patched\net\minecraft\src\GameWindowListener.java
---- minecraft\net\minecraft\src\GameWindowListener.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\GameWindowListener.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/GameWindowListener.java minecraft_patched/net/minecraft/src/GameWindowListener.java
+--- minecraft/net/minecraft/src/GameWindowListener.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/GameWindowListener.java	2010-12-02 22:57:41.000000000 +0100
 @@ -14,7 +14,6 @@
      {
          field_1587_a = minecraft;
@@ -628,9 +628,9 @@ diff -r -U 3 minecraft\net\minecraft\src\GameWindowListener.java minecraft_patch
      }
  
      public void windowClosing(WindowEvent windowevent)
-diff -r -U 3 minecraft\net\minecraft\src\GuiChat.java minecraft_patched\net\minecraft\src\GuiChat.java
---- minecraft\net\minecraft\src\GuiChat.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\GuiChat.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/GuiChat.java minecraft_patched/net/minecraft/src/GuiChat.java
+--- minecraft/net/minecraft/src/GuiChat.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/GuiChat.java	2010-12-02 22:57:41.000000000 +0100
 @@ -51,18 +51,10 @@
          {
              field_985_a = field_985_a.substring(0, field_985_a.length() - 1);
@@ -691,9 +691,9 @@ diff -r -U 3 minecraft\net\minecraft\src\GuiChat.java minecraft_patched\net\mine
          byte byte0 = 100;
          if(field_985_a.length() > byte0)
          {
-diff -r -U 3 minecraft\net\minecraft\src\GuiEditSign.java minecraft_patched\net\minecraft\src\GuiEditSign.java
---- minecraft\net\minecraft\src\GuiEditSign.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\GuiEditSign.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/GuiEditSign.java minecraft_patched/net/minecraft/src/GuiEditSign.java
+--- minecraft/net/minecraft/src/GuiEditSign.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/GuiEditSign.java	2010-12-02 22:57:41.000000000 +0100
 @@ -62,19 +62,10 @@
          {
              field_1002_h.field_826_a[field_1000_j] = field_1002_h.field_826_a[field_1000_j].substring(0, field_1002_h.field_826_a[field_1000_j].length() - 1);
@@ -718,10 +718,10 @@ diff -r -U 3 minecraft\net\minecraft\src\GuiEditSign.java minecraft_patched\net\
      }
  
      public void func_571_a(int i, int j, float f)
-diff -r -U 3 minecraft\net\minecraft\src\GuiMultiplayer.java minecraft_patched\net\minecraft\src\GuiMultiplayer.java
---- minecraft\net\minecraft\src\GuiMultiplayer.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\GuiMultiplayer.java	Sat Nov 27 02:28:18 2010
-@@ -60,32 +60,25 @@
+diff -r -U 3 minecraft/net/minecraft/src/GuiMultiplayer.java minecraft_patched/net/minecraft/src/GuiMultiplayer.java
+--- minecraft/net/minecraft/src/GuiMultiplayer.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/GuiMultiplayer.java	2010-12-02 22:57:41.000000000 +0100
+@@ -63,32 +63,25 @@
  
      protected void func_580_a(char c, int i)
      {
@@ -771,7 +771,7 @@ diff -r -U 3 minecraft\net\minecraft\src\GuiMultiplayer.java minecraft_patched\n
          if(c == '\r')
          {
              func_572_a((GuiButton)field_949_e.get(0));
-@@ -94,20 +87,11 @@
+@@ -97,20 +90,11 @@
          {
              field_969_i = field_969_i.substring(0, field_969_i.length() - 1);
          }
@@ -796,9 +796,9 @@ diff -r -U 3 minecraft\net\minecraft\src\GuiMultiplayer.java minecraft_patched\n
      }
  
      public void func_571_a(int i, int j, float f)
-diff -r -U 3 minecraft\net\minecraft\src\IChunkLoader.java minecraft_patched\net\minecraft\src\IChunkLoader.java
---- minecraft\net\minecraft\src\IChunkLoader.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\IChunkLoader.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/IChunkLoader.java minecraft_patched/net/minecraft/src/IChunkLoader.java
+--- minecraft/net/minecraft/src/IChunkLoader.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/IChunkLoader.java	2010-12-02 22:57:41.000000000 +0100
 @@ -8,11 +8,11 @@
  public interface IChunkLoader
  {
@@ -814,9 +814,9 @@ diff -r -U 3 minecraft\net\minecraft\src\IChunkLoader.java minecraft_patched\net
  
      public abstract void func_814_a();
  
-diff -r -U 3 minecraft\net\minecraft\src\LogoEffectRandomizer.java minecraft_patched\net\minecraft\src\LogoEffectRandomizer.java
---- minecraft\net\minecraft\src\LogoEffectRandomizer.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\LogoEffectRandomizer.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/LogoEffectRandomizer.java minecraft_patched/net/minecraft/src/LogoEffectRandomizer.java
+--- minecraft/net/minecraft/src/LogoEffectRandomizer.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/LogoEffectRandomizer.java	2010-12-02 22:57:41.000000000 +0100
 @@ -11,7 +11,6 @@
      public LogoEffectRandomizer(GuiMainMenu guimainmenu, int i, int j)
      {
@@ -825,9 +825,9 @@ diff -r -U 3 minecraft\net\minecraft\src\LogoEffectRandomizer.java minecraft_pat
          field_1312_a = field_1311_b = (double)(10 + j) + GuiMainMenu.func_592_j().nextDouble() * 32D + (double)i;
      }
  
-diff -r -U 3 minecraft\net\minecraft\src\MapGenCaves.java minecraft_patched\net\minecraft\src\MapGenCaves.java
---- minecraft\net\minecraft\src\MapGenCaves.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\MapGenCaves.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/MapGenCaves.java minecraft_patched/net/minecraft/src/MapGenCaves.java
+--- minecraft/net/minecraft/src/MapGenCaves.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/MapGenCaves.java	2010-12-02 22:57:41.000000000 +0100
 @@ -115,9 +115,9 @@
                  i2 = 16;
              }
@@ -862,9 +862,9 @@ diff -r -U 3 minecraft\net\minecraft\src\MapGenCaves.java minecraft_patched\net\
                  {
                      double d13 = (((double)(k3 + j * 16) + 0.5D) - d2) / d6;
                      int l3 = (k2 * 16 + k3) * 128 + l1;
-diff -r -U 3 minecraft\net\minecraft\src\MapGenCavesHell.java minecraft_patched\net\minecraft\src\MapGenCavesHell.java
---- minecraft\net\minecraft\src\MapGenCavesHell.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\MapGenCavesHell.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/MapGenCavesHell.java minecraft_patched/net/minecraft/src/MapGenCavesHell.java
+--- minecraft/net/minecraft/src/MapGenCavesHell.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/MapGenCavesHell.java	2010-12-02 22:57:41.000000000 +0100
 @@ -115,9 +115,9 @@
                  i2 = 16;
              }
@@ -899,9 +899,9 @@ diff -r -U 3 minecraft\net\minecraft\src\MapGenCavesHell.java minecraft_patched\
                  {
                      double d13 = (((double)(k3 + j * 16) + 0.5D) - d2) / d6;
                      int l3 = (k2 * 16 + k3) * 128 + l1;
-diff -r -U 3 minecraft\net\minecraft\src\MinecartTrackLogic.java minecraft_patched\net\minecraft\src\MinecartTrackLogic.java
---- minecraft\net\minecraft\src\MinecartTrackLogic.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\MinecartTrackLogic.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/MinecartTrackLogic.java minecraft_patched/net/minecraft/src/MinecartTrackLogic.java
+--- minecraft/net/minecraft/src/MinecartTrackLogic.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/MinecartTrackLogic.java	2010-12-02 22:57:41.000000000 +0100
 @@ -12,7 +12,6 @@
      public MinecartTrackLogic(BlockMinecartTrack blockminecarttrack, World world, int i, int j, int k)
      {
@@ -910,9 +910,9 @@ diff -r -U 3 minecraft\net\minecraft\src\MinecartTrackLogic.java minecraft_patch
          field_1161_g = new ArrayList();
          field_1159_b = world;
          field_1165_c = i;
-diff -r -U 3 minecraft\net\minecraft\src\MinecraftAppletImpl.java minecraft_patched\net\minecraft\src\MinecraftAppletImpl.java
---- minecraft\net\minecraft\src\MinecraftAppletImpl.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\MinecraftAppletImpl.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/MinecraftAppletImpl.java minecraft_patched/net/minecraft/src/MinecraftAppletImpl.java
+--- minecraft/net/minecraft/src/MinecraftAppletImpl.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/MinecraftAppletImpl.java	2010-12-02 22:57:41.000000000 +0100
 @@ -12,8 +12,8 @@
  
      public MinecraftAppletImpl(MinecraftApplet minecraftapplet, Component component, Canvas canvas, MinecraftApplet minecraftapplet1, int i, int j, boolean flag)
@@ -923,9 +923,9 @@ diff -r -U 3 minecraft\net\minecraft\src\MinecraftAppletImpl.java minecraft_patc
      }
  
      public void func_4007_a(UnexpectedThrowable unexpectedthrowable)
-diff -r -U 3 minecraft\net\minecraft\src\MinecraftImpl.java minecraft_patched\net\minecraft\src\MinecraftImpl.java
---- minecraft\net\minecraft\src\MinecraftImpl.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\MinecraftImpl.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/MinecraftImpl.java minecraft_patched/net/minecraft/src/MinecraftImpl.java
+--- minecraft/net/minecraft/src/MinecraftImpl.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/MinecraftImpl.java	2010-12-02 22:57:41.000000000 +0100
 @@ -12,8 +12,8 @@
  
      public MinecraftImpl(Component component, Canvas canvas, MinecraftApplet minecraftapplet, int i, int j, boolean flag, Frame frame)
@@ -936,9 +936,9 @@ diff -r -U 3 minecraft\net\minecraft\src\MinecraftImpl.java minecraft_patched\ne
      }
  
      public void func_4007_a(UnexpectedThrowable unexpectedthrowable)
-diff -r -U 3 minecraft\net\minecraft\src\MusInputStream.java minecraft_patched\net\minecraft\src\MusInputStream.java
---- minecraft\net\minecraft\src\MusInputStream.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\MusInputStream.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/MusInputStream.java minecraft_patched/net/minecraft/src/MusInputStream.java
+--- minecraft/net/minecraft/src/MusInputStream.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/MusInputStream.java	2010-12-02 22:57:41.000000000 +0100
 @@ -13,7 +13,6 @@
      public MusInputStream(CodecMus codecmus, URL url, InputStream inputstream)
      {
@@ -960,9 +960,9 @@ diff -r -U 3 minecraft\net\minecraft\src\MusInputStream.java minecraft_patched\n
          for(int k = 0; k < j; k++)
          {
              byte byte0 = abyte0[i + k] ^= field_1516_c >> 8;
-diff -r -U 3 minecraft\net\minecraft\src\NBTBase.java minecraft_patched\net\minecraft\src\NBTBase.java
---- minecraft\net\minecraft\src\NBTBase.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\NBTBase.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/NBTBase.java minecraft_patched/net/minecraft/src/NBTBase.java
+--- minecraft/net/minecraft/src/NBTBase.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/NBTBase.java	2010-12-02 22:57:41.000000000 +0100
 @@ -13,9 +13,9 @@
          field_1087_a = null;
      }
@@ -993,9 +993,9 @@ diff -r -U 3 minecraft\net\minecraft\src\NBTBase.java minecraft_patched\net\mine
      {
          dataoutput.writeByte(nbtbase.func_733_a());
          if(nbtbase.func_733_a() == 0)
-diff -r -U 3 minecraft\net\minecraft\src\NBTTagByte.java minecraft_patched\net\minecraft\src\NBTTagByte.java
---- minecraft\net\minecraft\src\NBTTagByte.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\NBTTagByte.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/NBTTagByte.java minecraft_patched/net/minecraft/src/NBTTagByte.java
+--- minecraft/net/minecraft/src/NBTTagByte.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/NBTTagByte.java	2010-12-02 22:57:41.000000000 +0100
 @@ -17,12 +17,12 @@
          field_1092_a = byte0;
      }
@@ -1011,9 +1011,9 @@ diff -r -U 3 minecraft\net\minecraft\src\NBTTagByte.java minecraft_patched\net\m
      {
          field_1092_a = datainput.readByte();
      }
-diff -r -U 3 minecraft\net\minecraft\src\NBTTagByteArray.java minecraft_patched\net\minecraft\src\NBTTagByteArray.java
---- minecraft\net\minecraft\src\NBTTagByteArray.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\NBTTagByteArray.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/NBTTagByteArray.java minecraft_patched/net/minecraft/src/NBTTagByteArray.java
+--- minecraft/net/minecraft/src/NBTTagByteArray.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/NBTTagByteArray.java	2010-12-02 22:57:41.000000000 +0100
 @@ -17,13 +17,13 @@
          field_1096_a = abyte0;
      }
@@ -1030,9 +1030,9 @@ diff -r -U 3 minecraft\net\minecraft\src\NBTTagByteArray.java minecraft_patched\
      {
          int i = datainput.readInt();
          field_1096_a = new byte[i];
-diff -r -U 3 minecraft\net\minecraft\src\NBTTagCompound.java minecraft_patched\net\minecraft\src\NBTTagCompound.java
---- minecraft\net\minecraft\src\NBTTagCompound.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\NBTTagCompound.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/NBTTagCompound.java minecraft_patched/net/minecraft/src/NBTTagCompound.java
+--- minecraft/net/minecraft/src/NBTTagCompound.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/NBTTagCompound.java	2010-12-02 22:57:41.000000000 +0100
 @@ -14,7 +14,7 @@
          field_1094_a = new HashMap();
      }
@@ -1051,9 +1051,9 @@ diff -r -U 3 minecraft\net\minecraft\src\NBTTagCompound.java minecraft_patched\n
      {
          field_1094_a.clear();
          NBTBase nbtbase;
-diff -r -U 3 minecraft\net\minecraft\src\NBTTagDouble.java minecraft_patched\net\minecraft\src\NBTTagDouble.java
---- minecraft\net\minecraft\src\NBTTagDouble.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\NBTTagDouble.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/NBTTagDouble.java minecraft_patched/net/minecraft/src/NBTTagDouble.java
+--- minecraft/net/minecraft/src/NBTTagDouble.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/NBTTagDouble.java	2010-12-02 22:57:41.000000000 +0100
 @@ -17,12 +17,12 @@
          field_1089_a = d;
      }
@@ -1069,9 +1069,9 @@ diff -r -U 3 minecraft\net\minecraft\src\NBTTagDouble.java minecraft_patched\net
      {
          field_1089_a = datainput.readDouble();
      }
-diff -r -U 3 minecraft\net\minecraft\src\NBTTagEnd.java minecraft_patched\net\minecraft\src\NBTTagEnd.java
---- minecraft\net\minecraft\src\NBTTagEnd.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\NBTTagEnd.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/NBTTagEnd.java minecraft_patched/net/minecraft/src/NBTTagEnd.java
+--- minecraft/net/minecraft/src/NBTTagEnd.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/NBTTagEnd.java	2010-12-02 22:57:41.000000000 +0100
 @@ -12,11 +12,11 @@
      {
      }
@@ -1086,9 +1086,9 @@ diff -r -U 3 minecraft\net\minecraft\src\NBTTagEnd.java minecraft_patched\net\mi
      {
      }
  
-diff -r -U 3 minecraft\net\minecraft\src\NBTTagFloat.java minecraft_patched\net\minecraft\src\NBTTagFloat.java
---- minecraft\net\minecraft\src\NBTTagFloat.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\NBTTagFloat.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/NBTTagFloat.java minecraft_patched/net/minecraft/src/NBTTagFloat.java
+--- minecraft/net/minecraft/src/NBTTagFloat.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/NBTTagFloat.java	2010-12-02 22:57:41.000000000 +0100
 @@ -17,12 +17,12 @@
          field_1097_a = f;
      }
@@ -1104,9 +1104,9 @@ diff -r -U 3 minecraft\net\minecraft\src\NBTTagFloat.java minecraft_patched\net\
      {
          field_1097_a = datainput.readFloat();
      }
-diff -r -U 3 minecraft\net\minecraft\src\NBTTagInt.java minecraft_patched\net\minecraft\src\NBTTagInt.java
---- minecraft\net\minecraft\src\NBTTagInt.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\NBTTagInt.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/NBTTagInt.java minecraft_patched/net/minecraft/src/NBTTagInt.java
+--- minecraft/net/minecraft/src/NBTTagInt.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/NBTTagInt.java	2010-12-02 22:57:41.000000000 +0100
 @@ -17,12 +17,12 @@
          field_1093_a = i;
      }
@@ -1122,9 +1122,9 @@ diff -r -U 3 minecraft\net\minecraft\src\NBTTagInt.java minecraft_patched\net\mi
      {
          field_1093_a = datainput.readInt();
      }
-diff -r -U 3 minecraft\net\minecraft\src\NBTTagList.java minecraft_patched\net\minecraft\src\NBTTagList.java
---- minecraft\net\minecraft\src\NBTTagList.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\NBTTagList.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/NBTTagList.java minecraft_patched/net/minecraft/src/NBTTagList.java
+--- minecraft/net/minecraft/src/NBTTagList.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/NBTTagList.java	2010-12-02 22:57:41.000000000 +0100
 @@ -15,7 +15,7 @@
          field_1091_a = new ArrayList();
      }
@@ -1143,9 +1143,9 @@ diff -r -U 3 minecraft\net\minecraft\src\NBTTagList.java minecraft_patched\net\m
      {
          field_1090_b = datainput.readByte();
          int i = datainput.readInt();
-diff -r -U 3 minecraft\net\minecraft\src\NBTTagLong.java minecraft_patched\net\minecraft\src\NBTTagLong.java
---- minecraft\net\minecraft\src\NBTTagLong.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\NBTTagLong.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/NBTTagLong.java minecraft_patched/net/minecraft/src/NBTTagLong.java
+--- minecraft/net/minecraft/src/NBTTagLong.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/NBTTagLong.java	2010-12-02 22:57:41.000000000 +0100
 @@ -17,12 +17,12 @@
          field_1095_a = l;
      }
@@ -1161,9 +1161,9 @@ diff -r -U 3 minecraft\net\minecraft\src\NBTTagLong.java minecraft_patched\net\m
      {
          field_1095_a = datainput.readLong();
      }
-diff -r -U 3 minecraft\net\minecraft\src\NBTTagShort.java minecraft_patched\net\minecraft\src\NBTTagShort.java
---- minecraft\net\minecraft\src\NBTTagShort.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\NBTTagShort.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/NBTTagShort.java minecraft_patched/net/minecraft/src/NBTTagShort.java
+--- minecraft/net/minecraft/src/NBTTagShort.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/NBTTagShort.java	2010-12-02 22:57:41.000000000 +0100
 @@ -17,12 +17,12 @@
          field_1088_a = word0;
      }
@@ -1179,9 +1179,9 @@ diff -r -U 3 minecraft\net\minecraft\src\NBTTagShort.java minecraft_patched\net\
      {
          field_1088_a = datainput.readShort();
      }
-diff -r -U 3 minecraft\net\minecraft\src\NBTTagString.java minecraft_patched\net\minecraft\src\NBTTagString.java
---- minecraft\net\minecraft\src\NBTTagString.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\NBTTagString.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/NBTTagString.java minecraft_patched/net/minecraft/src/NBTTagString.java
+--- minecraft/net/minecraft/src/NBTTagString.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/NBTTagString.java	2010-12-02 22:57:41.000000000 +0100
 @@ -24,12 +24,12 @@
          }
      }
@@ -1197,9 +1197,9 @@ diff -r -U 3 minecraft\net\minecraft\src\NBTTagString.java minecraft_patched\net
      {
          field_1098_a = datainput.readUTF();
      }
-diff -r -U 3 minecraft\net\minecraft\src\NetClientHandler.java minecraft_patched\net\minecraft\src\NetClientHandler.java
---- minecraft\net\minecraft\src\NetClientHandler.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\NetClientHandler.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/NetClientHandler.java minecraft_patched/net/minecraft/src/NetClientHandler.java
+--- minecraft/net/minecraft/src/NetClientHandler.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/NetClientHandler.java	2010-12-02 22:57:41.000000000 +0100
 @@ -11,7 +11,7 @@
  public class NetClientHandler extends NetHandler
  {
@@ -1218,10 +1218,10 @@ diff -r -U 3 minecraft\net\minecraft\src\NetClientHandler.java minecraft_patched
          if(packet23vehiclespawn.field_501_e == 10)
          {
              obj = new EntityMinecart(field_1211_f, d, d1, d2, 0);
-diff -r -U 3 minecraft\net\minecraft\src\NetworkManager.java minecraft_patched\net\minecraft\src\NetworkManager.java
---- minecraft\net\minecraft\src\NetworkManager.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\NetworkManager.java	Sat Nov 27 02:28:18 2010
-@@ -10,7 +10,7 @@
+diff -r -U 3 minecraft/net/minecraft/src/NetworkManager.java minecraft_patched/net/minecraft/src/NetworkManager.java
+--- minecraft/net/minecraft/src/NetworkManager.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/NetworkManager.java	2010-12-02 22:57:41.000000000 +0100
+@@ -11,7 +11,7 @@
  public class NetworkManager
  {
  
@@ -1230,9 +1230,9 @@ diff -r -U 3 minecraft\net\minecraft\src\NetworkManager.java minecraft_patched\n
      {
          field_1475_d = new Object();
          field_1471_h = true;
-diff -r -U 3 minecraft\net\minecraft\src\NetworkMasterThread.java minecraft_patched\net\minecraft\src\NetworkMasterThread.java
---- minecraft\net\minecraft\src\NetworkMasterThread.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\NetworkMasterThread.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/NetworkMasterThread.java minecraft_patched/net/minecraft/src/NetworkMasterThread.java
+--- minecraft/net/minecraft/src/NetworkMasterThread.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/NetworkMasterThread.java	2010-12-02 22:57:41.000000000 +0100
 @@ -10,7 +10,6 @@
      NetworkMasterThread(NetworkManager networkmanager)
      {
@@ -1241,9 +1241,9 @@ diff -r -U 3 minecraft\net\minecraft\src\NetworkMasterThread.java minecraft_patc
      }
  
      public void run()
-diff -r -U 3 minecraft\net\minecraft\src\NetworkReaderThread.java minecraft_patched\net\minecraft\src\NetworkReaderThread.java
---- minecraft\net\minecraft\src\NetworkReaderThread.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\NetworkReaderThread.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/NetworkReaderThread.java minecraft_patched/net/minecraft/src/NetworkReaderThread.java
+--- minecraft/net/minecraft/src/NetworkReaderThread.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/NetworkReaderThread.java	2010-12-02 22:57:41.000000000 +0100
 @@ -9,8 +9,8 @@
  
      NetworkReaderThread(NetworkManager networkmanager, String s)
@@ -1281,9 +1281,9 @@ diff -r -U 3 minecraft\net\minecraft\src\NetworkReaderThread.java minecraft_patc
      }
  
      final NetworkManager field_1085_a; /* synthetic field */
-diff -r -U 3 minecraft\net\minecraft\src\NetworkWriterThread.java minecraft_patched\net\minecraft\src\NetworkWriterThread.java
---- minecraft\net\minecraft\src\NetworkWriterThread.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\NetworkWriterThread.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/NetworkWriterThread.java minecraft_patched/net/minecraft/src/NetworkWriterThread.java
+--- minecraft/net/minecraft/src/NetworkWriterThread.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/NetworkWriterThread.java	2010-12-02 22:57:41.000000000 +0100
 @@ -9,8 +9,8 @@
  
      NetworkWriterThread(NetworkManager networkmanager, String s)
@@ -1321,9 +1321,9 @@ diff -r -U 3 minecraft\net\minecraft\src\NetworkWriterThread.java minecraft_patc
      }
  
      final NetworkManager field_1063_a; /* synthetic field */
-diff -r -U 3 minecraft\net\minecraft\src\NextTickListEntry.java minecraft_patched\net\minecraft\src\NextTickListEntry.java
---- minecraft\net\minecraft\src\NextTickListEntry.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\NextTickListEntry.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/NextTickListEntry.java minecraft_patched/net/minecraft/src/NextTickListEntry.java
+--- minecraft/net/minecraft/src/NextTickListEntry.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/NextTickListEntry.java	2010-12-02 22:57:41.000000000 +0100
 @@ -57,7 +57,7 @@
          return field_1362_g <= nextticklistentry.field_1362_g ? 0 : 1;
      }
@@ -1333,9 +1333,9 @@ diff -r -U 3 minecraft\net\minecraft\src\NextTickListEntry.java minecraft_patche
      {
          return func_899_a((NextTickListEntry)obj);
      }
-diff -r -U 3 minecraft\net\minecraft\src\OsMap.java minecraft_patched\net\minecraft\src\OsMap.java
---- minecraft\net\minecraft\src\OsMap.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\OsMap.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/OsMap.java minecraft_patched/net/minecraft/src/OsMap.java
+--- minecraft/net/minecraft/src/OsMap.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/OsMap.java	2010-12-02 22:57:41.000000000 +0100
 @@ -11,7 +11,7 @@
  
      static 
@@ -1345,9 +1345,9 @@ diff -r -U 3 minecraft\net\minecraft\src\OsMap.java minecraft_patched\net\minecr
          try
          {
              field_1193_a[EnumOS1.linux.ordinal()] = 1;
-diff -r -U 3 minecraft\net\minecraft\src\Packet.java minecraft_patched\net\minecraft\src\Packet.java
---- minecraft\net\minecraft\src\Packet.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet.java minecraft_patched/net/minecraft/src/Packet.java
+--- minecraft/net/minecraft/src/Packet.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet.java	2010-12-02 22:57:41.000000000 +0100
 @@ -58,7 +58,7 @@
          return ((Integer)field_470_b.get(getClass())).intValue();
      }
@@ -1376,9 +1376,9 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet.java minecraft_patched\net\minec
  
      public abstract void func_323_a(NetHandler nethandler);
  
-diff -r -U 3 minecraft\net\minecraft\src\Packet0KeepAlive.java minecraft_patched\net\minecraft\src\Packet0KeepAlive.java
---- minecraft\net\minecraft\src\Packet0KeepAlive.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet0KeepAlive.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet0KeepAlive.java minecraft_patched/net/minecraft/src/Packet0KeepAlive.java
+--- minecraft/net/minecraft/src/Packet0KeepAlive.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet0KeepAlive.java	2010-12-02 22:57:41.000000000 +0100
 @@ -16,11 +16,11 @@
      {
      }
@@ -1393,9 +1393,9 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet0KeepAlive.java minecraft_patched
      {
      }
  
-diff -r -U 3 minecraft\net\minecraft\src\Packet10Flying.java minecraft_patched\net\minecraft\src\Packet10Flying.java
---- minecraft\net\minecraft\src\Packet10Flying.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet10Flying.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet10Flying.java minecraft_patched/net/minecraft/src/Packet10Flying.java
+--- minecraft/net/minecraft/src/Packet10Flying.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet10Flying.java	2010-12-02 22:57:41.000000000 +0100
 @@ -22,12 +22,12 @@
          nethandler.func_837_a(this);
      }
@@ -1411,9 +1411,9 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet10Flying.java minecraft_patched\n
      {
          dataoutputstream.write(field_555_g ? 1 : 0);
      }
-diff -r -U 3 minecraft\net\minecraft\src\Packet11PlayerPosition.java minecraft_patched\net\minecraft\src\Packet11PlayerPosition.java
---- minecraft\net\minecraft\src\Packet11PlayerPosition.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet11PlayerPosition.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet11PlayerPosition.java minecraft_patched/net/minecraft/src/Packet11PlayerPosition.java
+--- minecraft/net/minecraft/src/Packet11PlayerPosition.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet11PlayerPosition.java	2010-12-02 22:57:41.000000000 +0100
 @@ -23,7 +23,7 @@
          field_554_h = true;
      }
@@ -1432,9 +1432,9 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet11PlayerPosition.java minecraft_p
      {
          dataoutputstream.writeDouble(field_561_a);
          dataoutputstream.writeDouble(field_560_b);
-diff -r -U 3 minecraft\net\minecraft\src\Packet12PlayerLook.java minecraft_patched\net\minecraft\src\Packet12PlayerLook.java
---- minecraft\net\minecraft\src\Packet12PlayerLook.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet12PlayerLook.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet12PlayerLook.java minecraft_patched/net/minecraft/src/Packet12PlayerLook.java
+--- minecraft/net/minecraft/src/Packet12PlayerLook.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet12PlayerLook.java	2010-12-02 22:57:41.000000000 +0100
 @@ -21,14 +21,14 @@
          field_553_i = true;
      }
@@ -1452,9 +1452,9 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet12PlayerLook.java minecraft_patch
      {
          dataoutputstream.writeFloat(field_557_e);
          dataoutputstream.writeFloat(field_556_f);
-diff -r -U 3 minecraft\net\minecraft\src\Packet13PlayerLookMove.java minecraft_patched\net\minecraft\src\Packet13PlayerLookMove.java
---- minecraft\net\minecraft\src\Packet13PlayerLookMove.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet13PlayerLookMove.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet13PlayerLookMove.java minecraft_patched/net/minecraft/src/Packet13PlayerLookMove.java
+--- minecraft/net/minecraft/src/Packet13PlayerLookMove.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet13PlayerLookMove.java	2010-12-02 22:57:41.000000000 +0100
 @@ -27,7 +27,7 @@
          field_554_h = true;
      }
@@ -1473,9 +1473,9 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet13PlayerLookMove.java minecraft_p
      {
          dataoutputstream.writeDouble(field_561_a);
          dataoutputstream.writeDouble(field_560_b);
-diff -r -U 3 minecraft\net\minecraft\src\Packet14BlockDig.java minecraft_patched\net\minecraft\src\Packet14BlockDig.java
---- minecraft\net\minecraft\src\Packet14BlockDig.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet14BlockDig.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet14BlockDig.java minecraft_patched/net/minecraft/src/Packet14BlockDig.java
+--- minecraft/net/minecraft/src/Packet14BlockDig.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet14BlockDig.java	2010-12-02 22:57:41.000000000 +0100
 @@ -21,7 +21,7 @@
          field_544_d = i1;
      }
@@ -1494,9 +1494,9 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet14BlockDig.java minecraft_patched
      {
          dataoutputstream.write(field_543_e);
          dataoutputstream.writeInt(field_542_a);
-diff -r -U 3 minecraft\net\minecraft\src\Packet15Place.java minecraft_patched\net\minecraft\src\Packet15Place.java
---- minecraft\net\minecraft\src\Packet15Place.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet15Place.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet15Place.java minecraft_patched/net/minecraft/src/Packet15Place.java
+--- minecraft/net/minecraft/src/Packet15Place.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet15Place.java	2010-12-02 22:57:41.000000000 +0100
 @@ -21,7 +21,7 @@
          field_567_e = i1;
      }
@@ -1515,9 +1515,9 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet15Place.java minecraft_patched\ne
      {
          dataoutputstream.writeShort(field_566_a);
          dataoutputstream.writeInt(field_565_b);
-diff -r -U 3 minecraft\net\minecraft\src\Packet16BlockItemSwitch.java minecraft_patched\net\minecraft\src\Packet16BlockItemSwitch.java
---- minecraft\net\minecraft\src\Packet16BlockItemSwitch.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet16BlockItemSwitch.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet16BlockItemSwitch.java minecraft_patched/net/minecraft/src/Packet16BlockItemSwitch.java
+--- minecraft/net/minecraft/src/Packet16BlockItemSwitch.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet16BlockItemSwitch.java	2010-12-02 22:57:41.000000000 +0100
 @@ -18,13 +18,13 @@
          field_562_b = j;
      }
@@ -1534,9 +1534,9 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet16BlockItemSwitch.java minecraft_
      {
          dataoutputstream.writeInt(field_563_a);
          dataoutputstream.writeShort(field_562_b);
-diff -r -U 3 minecraft\net\minecraft\src\Packet17AddToInventory.java minecraft_patched\net\minecraft\src\Packet17AddToInventory.java
---- minecraft\net\minecraft\src\Packet17AddToInventory.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet17AddToInventory.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet17AddToInventory.java minecraft_patched/net/minecraft/src/Packet17AddToInventory.java
+--- minecraft/net/minecraft/src/Packet17AddToInventory.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet17AddToInventory.java	2010-12-02 22:57:41.000000000 +0100
 @@ -12,14 +12,14 @@
      {
      }
@@ -1554,9 +1554,9 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet17AddToInventory.java minecraft_p
      {
          dataoutputstream.writeShort(field_497_a);
          dataoutputstream.writeByte(field_496_b);
-diff -r -U 3 minecraft\net\minecraft\src\Packet18ArmAnimation.java minecraft_patched\net\minecraft\src\Packet18ArmAnimation.java
---- minecraft\net\minecraft\src\Packet18ArmAnimation.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet18ArmAnimation.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet18ArmAnimation.java minecraft_patched/net/minecraft/src/Packet18ArmAnimation.java
+--- minecraft/net/minecraft/src/Packet18ArmAnimation.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet18ArmAnimation.java	2010-12-02 22:57:41.000000000 +0100
 @@ -18,13 +18,13 @@
          field_521_b = i;
      }
@@ -1573,9 +1573,9 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet18ArmAnimation.java minecraft_pat
      {
          dataoutputstream.writeInt(field_522_a);
          dataoutputstream.writeByte(field_521_b);
-diff -r -U 3 minecraft\net\minecraft\src\Packet1Login.java minecraft_patched\net\minecraft\src\Packet1Login.java
---- minecraft\net\minecraft\src\Packet1Login.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet1Login.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet1Login.java minecraft_patched/net/minecraft/src/Packet1Login.java
+--- minecraft/net/minecraft/src/Packet1Login.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet1Login.java	2010-12-02 22:57:41.000000000 +0100
 @@ -19,7 +19,7 @@
          field_519_a = i;
      }
@@ -1594,9 +1594,9 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet1Login.java minecraft_patched\net
      {
          dataoutputstream.writeInt(field_519_a);
          dataoutputstream.writeUTF(field_518_b);
-diff -r -U 3 minecraft\net\minecraft\src\Packet20NamedEntitySpawn.java minecraft_patched\net\minecraft\src\Packet20NamedEntitySpawn.java
---- minecraft\net\minecraft\src\Packet20NamedEntitySpawn.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet20NamedEntitySpawn.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet20NamedEntitySpawn.java minecraft_patched/net/minecraft/src/Packet20NamedEntitySpawn.java
+--- minecraft/net/minecraft/src/Packet20NamedEntitySpawn.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet20NamedEntitySpawn.java	2010-12-02 22:57:41.000000000 +0100
 @@ -25,7 +25,7 @@
          field_535_h = itemstack != null ? itemstack.field_1617_c : 0;
      }
@@ -1615,9 +1615,9 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet20NamedEntitySpawn.java minecraft
      {
          dataoutputstream.writeInt(field_534_a);
          dataoutputstream.writeUTF(field_533_b);
-diff -r -U 3 minecraft\net\minecraft\src\Packet21PickupSpawn.java minecraft_patched\net\minecraft\src\Packet21PickupSpawn.java
---- minecraft\net\minecraft\src\Packet21PickupSpawn.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet21PickupSpawn.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet21PickupSpawn.java minecraft_patched/net/minecraft/src/Packet21PickupSpawn.java
+--- minecraft/net/minecraft/src/Packet21PickupSpawn.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet21PickupSpawn.java	2010-12-02 22:57:41.000000000 +0100
 @@ -25,7 +25,7 @@
          field_525_g = (byte)(int)(entityitem.field_606_ap * 128D);
      }
@@ -1636,9 +1636,9 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet21PickupSpawn.java minecraft_patc
      {
          dataoutputstream.writeInt(field_531_a);
          dataoutputstream.writeShort(field_524_h);
-diff -r -U 3 minecraft\net\minecraft\src\Packet22Collect.java minecraft_patched\net\minecraft\src\Packet22Collect.java
---- minecraft\net\minecraft\src\Packet22Collect.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet22Collect.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet22Collect.java minecraft_patched/net/minecraft/src/Packet22Collect.java
+--- minecraft/net/minecraft/src/Packet22Collect.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet22Collect.java	2010-12-02 22:57:41.000000000 +0100
 @@ -12,13 +12,13 @@
      {
      }
@@ -1655,9 +1655,9 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet22Collect.java minecraft_patched\
      {
          dataoutputstream.writeInt(field_581_a);
          dataoutputstream.writeInt(field_580_b);
-diff -r -U 3 minecraft\net\minecraft\src\Packet23VehicleSpawn.java minecraft_patched\net\minecraft\src\Packet23VehicleSpawn.java
---- minecraft\net\minecraft\src\Packet23VehicleSpawn.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet23VehicleSpawn.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet23VehicleSpawn.java minecraft_patched/net/minecraft/src/Packet23VehicleSpawn.java
+--- minecraft/net/minecraft/src/Packet23VehicleSpawn.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet23VehicleSpawn.java	2010-12-02 22:57:41.000000000 +0100
 @@ -12,7 +12,7 @@
      {
      }
@@ -1676,9 +1676,9 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet23VehicleSpawn.java minecraft_pat
      {
          dataoutputstream.writeInt(field_500_a);
          dataoutputstream.writeByte(field_501_e);
-diff -r -U 3 minecraft\net\minecraft\src\Packet24MobSpawn.java minecraft_patched\net\minecraft\src\Packet24MobSpawn.java
---- minecraft\net\minecraft\src\Packet24MobSpawn.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet24MobSpawn.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet24MobSpawn.java minecraft_patched/net/minecraft/src/Packet24MobSpawn.java
+--- minecraft/net/minecraft/src/Packet24MobSpawn.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet24MobSpawn.java	2010-12-02 22:57:41.000000000 +0100
 @@ -23,7 +23,7 @@
          field_548_g = (byte)(int)((entityliving.field_604_ar * 256F) / 360F);
      }
@@ -1697,9 +1697,9 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet24MobSpawn.java minecraft_patched
      {
          dataoutputstream.writeInt(field_547_a);
          dataoutputstream.writeByte(field_546_b);
-diff -r -U 3 minecraft\net\minecraft\src\Packet255KickDisconnect.java minecraft_patched\net\minecraft\src\Packet255KickDisconnect.java
---- minecraft\net\minecraft\src\Packet255KickDisconnect.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet255KickDisconnect.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet255KickDisconnect.java minecraft_patched/net/minecraft/src/Packet255KickDisconnect.java
+--- minecraft/net/minecraft/src/Packet255KickDisconnect.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet255KickDisconnect.java	2010-12-02 22:57:41.000000000 +0100
 @@ -17,12 +17,12 @@
          field_582_a = s;
      }
@@ -1715,11 +1715,11 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet255KickDisconnect.java minecraft_
      {
          dataoutputstream.writeUTF(field_582_a);
      }
-diff -r -U 3 minecraft\net\minecraft\src\Packet28.java minecraft_patched\net\minecraft\src\Packet28.java
---- minecraft\net\minecraft\src\Packet28.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet28.java	Sat Nov 27 02:28:18 2010
-@@ -12,7 +12,7 @@
-     {
+diff -r -U 3 minecraft/net/minecraft/src/Packet28.java minecraft_patched/net/minecraft/src/Packet28.java
+--- minecraft/net/minecraft/src/Packet28.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet28.java	2010-12-02 22:57:41.000000000 +0100
+@@ -50,7 +50,7 @@
+         field_6368_d = (int)(d2 * 8000D);
      }
  
 -    public void func_327_a(DataInputStream datainputstream)
@@ -1727,7 +1727,7 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet28.java minecraft_patched\net\min
      {
          field_6367_a = datainputstream.readInt();
          field_6366_b = datainputstream.readShort();
-@@ -20,7 +20,7 @@
+@@ -58,7 +58,7 @@
          field_6368_d = datainputstream.readShort();
      }
  
@@ -1736,9 +1736,9 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet28.java minecraft_patched\net\min
      {
          dataoutputstream.writeInt(field_6367_a);
          dataoutputstream.writeShort(field_6366_b);
-diff -r -U 3 minecraft\net\minecraft\src\Packet29DestroyEntity.java minecraft_patched\net\minecraft\src\Packet29DestroyEntity.java
---- minecraft\net\minecraft\src\Packet29DestroyEntity.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet29DestroyEntity.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet29DestroyEntity.java minecraft_patched/net/minecraft/src/Packet29DestroyEntity.java
+--- minecraft/net/minecraft/src/Packet29DestroyEntity.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet29DestroyEntity.java	2010-12-02 22:57:41.000000000 +0100
 @@ -12,12 +12,12 @@
      {
      }
@@ -1754,9 +1754,9 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet29DestroyEntity.java minecraft_pa
      {
          dataoutputstream.writeInt(field_507_a);
      }
-diff -r -U 3 minecraft\net\minecraft\src\Packet2Handshake.java minecraft_patched\net\minecraft\src\Packet2Handshake.java
---- minecraft\net\minecraft\src\Packet2Handshake.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet2Handshake.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet2Handshake.java minecraft_patched/net/minecraft/src/Packet2Handshake.java
+--- minecraft/net/minecraft/src/Packet2Handshake.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet2Handshake.java	2010-12-02 22:57:41.000000000 +0100
 @@ -17,12 +17,12 @@
          field_532_a = s;
      }
@@ -1772,9 +1772,9 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet2Handshake.java minecraft_patched
      {
          dataoutputstream.writeUTF(field_532_a);
      }
-diff -r -U 3 minecraft\net\minecraft\src\Packet30Entity.java minecraft_patched\net\minecraft\src\Packet30Entity.java
---- minecraft\net\minecraft\src\Packet30Entity.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet30Entity.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet30Entity.java minecraft_patched/net/minecraft/src/Packet30Entity.java
+--- minecraft/net/minecraft/src/Packet30Entity.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet30Entity.java	2010-12-02 22:57:41.000000000 +0100
 @@ -13,12 +13,12 @@
          field_486_g = false;
      }
@@ -1790,9 +1790,9 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet30Entity.java minecraft_patched\n
      {
          dataoutputstream.writeInt(field_485_a);
      }
-diff -r -U 3 minecraft\net\minecraft\src\Packet31RelEntityMove.java minecraft_patched\net\minecraft\src\Packet31RelEntityMove.java
---- minecraft\net\minecraft\src\Packet31RelEntityMove.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet31RelEntityMove.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet31RelEntityMove.java minecraft_patched/net/minecraft/src/Packet31RelEntityMove.java
+--- minecraft/net/minecraft/src/Packet31RelEntityMove.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet31RelEntityMove.java	2010-12-02 22:57:41.000000000 +0100
 @@ -12,7 +12,7 @@
      {
      }
@@ -1811,9 +1811,9 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet31RelEntityMove.java minecraft_pa
      {
          super.func_322_a(dataoutputstream);
          dataoutputstream.writeByte(field_484_b);
-diff -r -U 3 minecraft\net\minecraft\src\Packet32EntityLook.java minecraft_patched\net\minecraft\src\Packet32EntityLook.java
---- minecraft\net\minecraft\src\Packet32EntityLook.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet32EntityLook.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet32EntityLook.java minecraft_patched/net/minecraft/src/Packet32EntityLook.java
+--- minecraft/net/minecraft/src/Packet32EntityLook.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet32EntityLook.java	2010-12-02 22:57:41.000000000 +0100
 @@ -13,14 +13,14 @@
          field_486_g = true;
      }
@@ -1831,9 +1831,9 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet32EntityLook.java minecraft_patch
      {
          super.func_322_a(dataoutputstream);
          dataoutputstream.writeByte(field_488_e);
-diff -r -U 3 minecraft\net\minecraft\src\Packet33RelEntityMoveLook.java minecraft_patched\net\minecraft\src\Packet33RelEntityMoveLook.java
---- minecraft\net\minecraft\src\Packet33RelEntityMoveLook.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet33RelEntityMoveLook.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet33RelEntityMoveLook.java minecraft_patched/net/minecraft/src/Packet33RelEntityMoveLook.java
+--- minecraft/net/minecraft/src/Packet33RelEntityMoveLook.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet33RelEntityMoveLook.java	2010-12-02 22:57:41.000000000 +0100
 @@ -13,7 +13,7 @@
          field_486_g = true;
      }
@@ -1852,9 +1852,9 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet33RelEntityMoveLook.java minecraf
      {
          super.func_322_a(dataoutputstream);
          dataoutputstream.writeByte(field_484_b);
-diff -r -U 3 minecraft\net\minecraft\src\Packet34EntityTeleport.java minecraft_patched\net\minecraft\src\Packet34EntityTeleport.java
---- minecraft\net\minecraft\src\Packet34EntityTeleport.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet34EntityTeleport.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet34EntityTeleport.java minecraft_patched/net/minecraft/src/Packet34EntityTeleport.java
+--- minecraft/net/minecraft/src/Packet34EntityTeleport.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet34EntityTeleport.java	2010-12-02 22:57:41.000000000 +0100
 @@ -22,7 +22,7 @@
          field_510_f = (byte)(int)((entity.field_604_ar * 256F) / 360F);
      }
@@ -1873,9 +1873,9 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet34EntityTeleport.java minecraft_p
      {
          dataoutputstream.writeInt(field_509_a);
          dataoutputstream.writeInt(field_508_b);
-diff -r -U 3 minecraft\net\minecraft\src\Packet38.java minecraft_patched\net\minecraft\src\Packet38.java
---- minecraft\net\minecraft\src\Packet38.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet38.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet38.java minecraft_patched/net/minecraft/src/Packet38.java
+--- minecraft/net/minecraft/src/Packet38.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet38.java	2010-12-02 22:57:41.000000000 +0100
 @@ -12,13 +12,13 @@
      {
      }
@@ -1892,9 +1892,9 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet38.java minecraft_patched\net\min
      {
          dataoutputstream.writeInt(field_9274_a);
          dataoutputstream.writeByte(field_9273_b);
-diff -r -U 3 minecraft\net\minecraft\src\Packet39.java minecraft_patched\net\minecraft\src\Packet39.java
---- minecraft\net\minecraft\src\Packet39.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet39.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet39.java minecraft_patched/net/minecraft/src/Packet39.java
+--- minecraft/net/minecraft/src/Packet39.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet39.java	2010-12-02 22:57:41.000000000 +0100
 @@ -17,13 +17,13 @@
          return 8;
      }
@@ -1911,9 +1911,9 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet39.java minecraft_patched\net\min
      {
          dataoutputstream.writeInt(field_6365_a);
          dataoutputstream.writeInt(field_6364_b);
-diff -r -U 3 minecraft\net\minecraft\src\Packet3Chat.java minecraft_patched\net\minecraft\src\Packet3Chat.java
---- minecraft\net\minecraft\src\Packet3Chat.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet3Chat.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet3Chat.java minecraft_patched/net/minecraft/src/Packet3Chat.java
+--- minecraft/net/minecraft/src/Packet3Chat.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet3Chat.java	2010-12-02 22:57:41.000000000 +0100
 @@ -17,12 +17,12 @@
          field_517_a = s;
      }
@@ -1929,9 +1929,9 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet3Chat.java minecraft_patched\net\
      {
          dataoutputstream.writeUTF(field_517_a);
      }
-diff -r -U 3 minecraft\net\minecraft\src\Packet4UpdateTime.java minecraft_patched\net\minecraft\src\Packet4UpdateTime.java
---- minecraft\net\minecraft\src\Packet4UpdateTime.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet4UpdateTime.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet4UpdateTime.java minecraft_patched/net/minecraft/src/Packet4UpdateTime.java
+--- minecraft/net/minecraft/src/Packet4UpdateTime.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet4UpdateTime.java	2010-12-02 22:57:41.000000000 +0100
 @@ -12,12 +12,12 @@
      {
      }
@@ -1947,9 +1947,9 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet4UpdateTime.java minecraft_patche
      {
          dataoutputstream.writeLong(field_564_a);
      }
-diff -r -U 3 minecraft\net\minecraft\src\Packet50PreChunk.java minecraft_patched\net\minecraft\src\Packet50PreChunk.java
---- minecraft\net\minecraft\src\Packet50PreChunk.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet50PreChunk.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet50PreChunk.java minecraft_patched/net/minecraft/src/Packet50PreChunk.java
+--- minecraft/net/minecraft/src/Packet50PreChunk.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet50PreChunk.java	2010-12-02 22:57:41.000000000 +0100
 @@ -12,14 +12,14 @@
      {
      }
@@ -1967,9 +1967,9 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet50PreChunk.java minecraft_patched
      {
          dataoutputstream.writeInt(field_505_a);
          dataoutputstream.writeInt(field_504_b);
-diff -r -U 3 minecraft\net\minecraft\src\Packet51MapChunk.java minecraft_patched\net\minecraft\src\Packet51MapChunk.java
---- minecraft\net\minecraft\src\Packet51MapChunk.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet51MapChunk.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet51MapChunk.java minecraft_patched/net/minecraft/src/Packet51MapChunk.java
+--- minecraft/net/minecraft/src/Packet51MapChunk.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet51MapChunk.java	2010-12-02 22:57:41.000000000 +0100
 @@ -15,7 +15,7 @@
          field_472_j = true;
      }
@@ -1988,9 +1988,9 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet51MapChunk.java minecraft_patched
      {
          dataoutputstream.writeInt(field_573_a);
          dataoutputstream.writeShort(field_572_b);
-diff -r -U 3 minecraft\net\minecraft\src\Packet52MultiBlockChange.java minecraft_patched\net\minecraft\src\Packet52MultiBlockChange.java
---- minecraft\net\minecraft\src\Packet52MultiBlockChange.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet52MultiBlockChange.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet52MultiBlockChange.java minecraft_patched/net/minecraft/src/Packet52MultiBlockChange.java
+--- minecraft/net/minecraft/src/Packet52MultiBlockChange.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet52MultiBlockChange.java	2010-12-02 22:57:41.000000000 +0100
 @@ -13,7 +13,7 @@
          field_472_j = true;
      }
@@ -2009,9 +2009,9 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet52MultiBlockChange.java minecraft
      {
          dataoutputstream.writeInt(field_479_a);
          dataoutputstream.writeInt(field_478_b);
-diff -r -U 3 minecraft\net\minecraft\src\Packet53BlockChange.java minecraft_patched\net\minecraft\src\Packet53BlockChange.java
---- minecraft\net\minecraft\src\Packet53BlockChange.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet53BlockChange.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet53BlockChange.java minecraft_patched/net/minecraft/src/Packet53BlockChange.java
+--- minecraft/net/minecraft/src/Packet53BlockChange.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet53BlockChange.java	2010-12-02 22:57:41.000000000 +0100
 @@ -13,7 +13,7 @@
          field_472_j = true;
      }
@@ -2030,9 +2030,9 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet53BlockChange.java minecraft_patc
      {
          dataoutputstream.writeInt(field_492_a);
          dataoutputstream.write(field_491_b);
-diff -r -U 3 minecraft\net\minecraft\src\Packet59ComplexEntity.java minecraft_patched\net\minecraft\src\Packet59ComplexEntity.java
---- minecraft\net\minecraft\src\Packet59ComplexEntity.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet59ComplexEntity.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet59ComplexEntity.java minecraft_patched/net/minecraft/src/Packet59ComplexEntity.java
+--- minecraft/net/minecraft/src/Packet59ComplexEntity.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet59ComplexEntity.java	2010-12-02 22:57:41.000000000 +0100
 @@ -31,7 +31,7 @@
          }
      }
@@ -2051,9 +2051,9 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet59ComplexEntity.java minecraft_pa
      {
          dataoutputstream.writeInt(field_474_a);
          dataoutputstream.writeShort(field_473_b);
-diff -r -U 3 minecraft\net\minecraft\src\Packet5PlayerInventory.java minecraft_patched\net\minecraft\src\Packet5PlayerInventory.java
---- minecraft\net\minecraft\src\Packet5PlayerInventory.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet5PlayerInventory.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet5PlayerInventory.java minecraft_patched/net/minecraft/src/Packet5PlayerInventory.java
+--- minecraft/net/minecraft/src/Packet5PlayerInventory.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet5PlayerInventory.java	2010-12-02 22:57:41.000000000 +0100
 @@ -23,7 +23,7 @@
  
      }
@@ -2072,9 +2072,30 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet5PlayerInventory.java minecraft_p
      {
          dataoutputstream.writeInt(field_571_a);
          dataoutputstream.writeShort(field_570_b.length);
-diff -r -U 3 minecraft\net\minecraft\src\Packet6SpawnPosition.java minecraft_patched\net\minecraft\src\Packet6SpawnPosition.java
---- minecraft\net\minecraft\src\Packet6SpawnPosition.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet6SpawnPosition.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet60.java minecraft_patched/net/minecraft/src/Packet60.java
+--- minecraft/net/minecraft/src/Packet60.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet60.java	2010-12-02 23:12:24.000000000 +0100
+@@ -13,7 +13,7 @@
+     {
+     }
+ 
+-    public void func_327_a(DataInputStream datainputstream)
++    public void func_327_a(DataInputStream datainputstream) throws IOException
+     {
+         field_12236_a = datainputstream.readDouble();
+         field_12235_b = datainputstream.readDouble();
+@@ -34,7 +34,7 @@
+ 
+     }
+ 
+-    public void func_322_a(DataOutputStream dataoutputstream)
++    public void func_322_a(DataOutputStream dataoutputstream) throws IOException
+     {
+         dataoutputstream.writeDouble(field_12236_a);
+         dataoutputstream.writeDouble(field_12235_b);
+diff -r -U 3 minecraft/net/minecraft/src/Packet6SpawnPosition.java minecraft_patched/net/minecraft/src/Packet6SpawnPosition.java
+--- minecraft/net/minecraft/src/Packet6SpawnPosition.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet6SpawnPosition.java	2010-12-02 22:57:41.000000000 +0100
 @@ -12,14 +12,14 @@
      {
      }
@@ -2092,9 +2113,9 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet6SpawnPosition.java minecraft_pat
      {
          dataoutputstream.writeInt(field_515_a);
          dataoutputstream.writeInt(field_514_b);
-diff -r -U 3 minecraft\net\minecraft\src\Packet7.java minecraft_patched\net\minecraft\src\Packet7.java
---- minecraft\net\minecraft\src\Packet7.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet7.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet7.java minecraft_patched/net/minecraft/src/Packet7.java
+--- minecraft/net/minecraft/src/Packet7.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet7.java	2010-12-02 22:57:41.000000000 +0100
 @@ -19,14 +19,14 @@
          field_9278_c = k;
      }
@@ -2112,9 +2133,9 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet7.java minecraft_patched\net\mine
      {
          dataoutputstream.writeInt(field_9277_a);
          dataoutputstream.writeInt(field_9276_b);
-diff -r -U 3 minecraft\net\minecraft\src\Packet8.java minecraft_patched\net\minecraft\src\Packet8.java
---- minecraft\net\minecraft\src\Packet8.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\Packet8.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/Packet8.java minecraft_patched/net/minecraft/src/Packet8.java
+--- minecraft/net/minecraft/src/Packet8.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/Packet8.java	2010-12-02 22:57:41.000000000 +0100
 @@ -12,12 +12,12 @@
      {
      }
@@ -2130,9 +2151,9 @@ diff -r -U 3 minecraft\net\minecraft\src\Packet8.java minecraft_patched\net\mine
      {
          dataoutputstream.writeByte(field_9275_a);
      }
-diff -r -U 3 minecraft\net\minecraft\src\RecipeSorter.java minecraft_patched\net\minecraft\src\RecipeSorter.java
---- minecraft\net\minecraft\src\RecipeSorter.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\RecipeSorter.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/RecipeSorter.java minecraft_patched/net/minecraft/src/RecipeSorter.java
+--- minecraft/net/minecraft/src/RecipeSorter.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/RecipeSorter.java	2010-12-02 22:57:41.000000000 +0100
 @@ -12,7 +12,6 @@
      RecipeSorter(CraftingManager craftingmanager)
      {
@@ -2150,9 +2171,9 @@ diff -r -U 3 minecraft\net\minecraft\src\RecipeSorter.java minecraft_patched\net
      {
          return func_1040_a((CraftingRecipe)obj, (CraftingRecipe)obj1);
      }
-diff -r -U 3 minecraft\net\minecraft\src\RenderArrow.java minecraft_patched\net\minecraft\src\RenderArrow.java
---- minecraft\net\minecraft\src\RenderArrow.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\RenderArrow.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/RenderArrow.java minecraft_patched/net/minecraft/src/RenderArrow.java
+--- minecraft/net/minecraft/src/RenderArrow.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/RenderArrow.java	2010-12-02 22:57:41.000000000 +0100
 @@ -71,7 +71,7 @@
          GL11.glPopMatrix();
      }
@@ -2162,9 +2183,9 @@ diff -r -U 3 minecraft\net\minecraft\src\RenderArrow.java minecraft_patched\net\
              float f, float f1)
      {
          func_154_a((EntityArrow)entity, d, d1, d2, f, f1);
-diff -r -U 3 minecraft\net\minecraft\src\RenderBoat.java minecraft_patched\net\minecraft\src\RenderBoat.java
---- minecraft\net\minecraft\src\RenderBoat.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\RenderBoat.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/RenderBoat.java minecraft_patched/net/minecraft/src/RenderBoat.java
+--- minecraft/net/minecraft/src/RenderBoat.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/RenderBoat.java	2010-12-02 22:57:41.000000000 +0100
 @@ -40,7 +40,7 @@
          GL11.glPopMatrix();
      }
@@ -2174,9 +2195,9 @@ diff -r -U 3 minecraft\net\minecraft\src\RenderBoat.java minecraft_patched\net\m
              float f, float f1)
      {
          func_157_a((EntityBoat)entity, d, d1, d2, f, f1);
-diff -r -U 3 minecraft\net\minecraft\src\RenderChicken.java minecraft_patched\net\minecraft\src\RenderChicken.java
---- minecraft\net\minecraft\src\RenderChicken.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\RenderChicken.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/RenderChicken.java minecraft_patched/net/minecraft/src/RenderChicken.java
+--- minecraft/net/minecraft/src/RenderChicken.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/RenderChicken.java	2010-12-02 22:57:41.000000000 +0100
 @@ -25,18 +25,18 @@
          return (MathHelper.func_1106_a(f1) + 1.0F) * f2;
      }
@@ -2199,9 +2220,9 @@ diff -r -U 3 minecraft\net\minecraft\src\RenderChicken.java minecraft_patched\ne
              float f, float f1)
      {
          func_181_a((EntityChicken)entity, d, d1, d2, f, f1);
-diff -r -U 3 minecraft\net\minecraft\src\RenderCow.java minecraft_patched\net\minecraft\src\RenderCow.java
---- minecraft\net\minecraft\src\RenderCow.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\RenderCow.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/RenderCow.java minecraft_patched/net/minecraft/src/RenderCow.java
+--- minecraft/net/minecraft/src/RenderCow.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/RenderCow.java	2010-12-02 22:57:41.000000000 +0100
 @@ -18,13 +18,13 @@
          super.func_171_a(entitycow, d, d1, d2, f, f1);
      }
@@ -2218,9 +2239,9 @@ diff -r -U 3 minecraft\net\minecraft\src\RenderCow.java minecraft_patched\net\mi
              float f, float f1)
      {
          func_177_a((EntityCow)entity, d, d1, d2, f, f1);
-diff -r -U 3 minecraft\net\minecraft\src\RenderCreeper.java minecraft_patched\net\minecraft\src\RenderCreeper.java
---- minecraft\net\minecraft\src\RenderCreeper.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\RenderCreeper.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/RenderCreeper.java minecraft_patched/net/minecraft/src/RenderCreeper.java
+--- minecraft/net/minecraft/src/RenderCreeper.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/RenderCreeper.java	2010-12-02 22:57:41.000000000 +0100
 @@ -56,12 +56,12 @@
          return i << 24 | c << 16 | c1 << 8 | c2;
      }
@@ -2236,9 +2257,9 @@ diff -r -U 3 minecraft\net\minecraft\src\RenderCreeper.java minecraft_patched\ne
      {
          return func_183_a((EntityCreeper)entityliving, f, f1);
      }
-diff -r -U 3 minecraft\net\minecraft\src\RenderEngine.java minecraft_patched\net\minecraft\src\RenderEngine.java
---- minecraft\net\minecraft\src\RenderEngine.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\RenderEngine.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/RenderEngine.java minecraft_patched/net/minecraft/src/RenderEngine.java
+--- minecraft/net/minecraft/src/RenderEngine.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/RenderEngine.java	2010-12-02 22:57:41.000000000 +0100
 @@ -435,7 +435,7 @@
  
      }
@@ -2248,9 +2269,9 @@ diff -r -U 3 minecraft\net\minecraft\src\RenderEngine.java minecraft_patched\net
      {
          BufferedImage bufferedimage = ImageIO.read(inputstream);
          inputstream.close();
-diff -r -U 3 minecraft\net\minecraft\src\RenderFallingSand.java minecraft_patched\net\minecraft\src\RenderFallingSand.java
---- minecraft\net\minecraft\src\RenderFallingSand.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\RenderFallingSand.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/RenderFallingSand.java minecraft_patched/net/minecraft/src/RenderFallingSand.java
+--- minecraft/net/minecraft/src/RenderFallingSand.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/RenderFallingSand.java	2010-12-02 22:57:41.000000000 +0100
 @@ -28,7 +28,7 @@
          GL11.glPopMatrix();
      }
@@ -2260,9 +2281,9 @@ diff -r -U 3 minecraft\net\minecraft\src\RenderFallingSand.java minecraft_patche
              float f, float f1)
      {
          func_156_a((EntityFallingSand)entity, d, d1, d2, f, f1);
-diff -r -U 3 minecraft\net\minecraft\src\RenderFireball.java minecraft_patched\net\minecraft\src\RenderFireball.java
---- minecraft\net\minecraft\src\RenderFireball.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\RenderFireball.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/RenderFireball.java minecraft_patched/net/minecraft/src/RenderFireball.java
+--- minecraft/net/minecraft/src/RenderFireball.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/RenderFireball.java	2010-12-02 22:57:41.000000000 +0100
 @@ -43,7 +43,7 @@
          GL11.glPopMatrix();
      }
@@ -2272,9 +2293,9 @@ diff -r -U 3 minecraft\net\minecraft\src\RenderFireball.java minecraft_patched\n
              float f, float f1)
      {
          func_4012_a((EntityFireball)entity, d, d1, d2, f, f1);
-diff -r -U 3 minecraft\net\minecraft\src\RenderFish.java minecraft_patched\net\minecraft\src\RenderFish.java
---- minecraft\net\minecraft\src\RenderFish.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\RenderFish.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/RenderFish.java minecraft_patched/net/minecraft/src/RenderFish.java
+--- minecraft/net/minecraft/src/RenderFish.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/RenderFish.java	2010-12-02 22:57:41.000000000 +0100
 @@ -84,7 +84,7 @@
          }
      }
@@ -2284,9 +2305,9 @@ diff -r -U 3 minecraft\net\minecraft\src\RenderFish.java minecraft_patched\net\m
              float f, float f1)
      {
          func_4011_a((EntityFish)entity, d, d1, d2, f, f1);
-diff -r -U 3 minecraft\net\minecraft\src\RenderGhast.java minecraft_patched\net\minecraft\src\RenderGhast.java
---- minecraft\net\minecraft\src\RenderGhast.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\RenderGhast.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/RenderGhast.java minecraft_patched/net/minecraft/src/RenderGhast.java
+--- minecraft/net/minecraft/src/RenderGhast.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/RenderGhast.java	2010-12-02 22:57:41.000000000 +0100
 @@ -28,7 +28,7 @@
          GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
      }
@@ -2296,9 +2317,9 @@ diff -r -U 3 minecraft\net\minecraft\src\RenderGhast.java minecraft_patched\net\
      {
          func_4014_a((EntityGhast)entityliving, f);
      }
-diff -r -U 3 minecraft\net\minecraft\src\RenderGlobal.java minecraft_patched\net\minecraft\src\RenderGlobal.java
---- minecraft\net\minecraft\src\RenderGlobal.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\RenderGlobal.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/RenderGlobal.java minecraft_patched/net/minecraft/src/RenderGlobal.java
+--- minecraft/net/minecraft/src/RenderGlobal.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/RenderGlobal.java	2010-12-02 22:57:41.000000000 +0100
 @@ -400,7 +400,7 @@
              j += func_952_a(k, l, i, d);
              do
@@ -2308,9 +2329,9 @@ diff -r -U 3 minecraft\net\minecraft\src\RenderGlobal.java minecraft_patched\net
                  l *= 2;
                  if(l > field_1445_n.length)
                  {
-diff -r -U 3 minecraft\net\minecraft\src\RenderItem.java minecraft_patched\net\minecraft\src\RenderItem.java
---- minecraft\net\minecraft\src\RenderItem.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\RenderItem.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/RenderItem.java minecraft_patched/net/minecraft/src/RenderItem.java
+--- minecraft/net/minecraft/src/RenderItem.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/RenderItem.java	2010-12-02 22:57:41.000000000 +0100
 @@ -207,7 +207,7 @@
          tessellator.func_982_a();
      }
@@ -2320,9 +2341,9 @@ diff -r -U 3 minecraft\net\minecraft\src\RenderItem.java minecraft_patched\net\m
              float f, float f1)
      {
          func_165_a((EntityItem)entity, d, d1, d2, f, f1);
-diff -r -U 3 minecraft\net\minecraft\src\RenderLiving.java minecraft_patched\net\minecraft\src\RenderLiving.java
---- minecraft\net\minecraft\src\RenderLiving.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\RenderLiving.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/RenderLiving.java minecraft_patched/net/minecraft/src/RenderLiving.java
+--- minecraft/net/minecraft/src/RenderLiving.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/RenderLiving.java	2010-12-02 22:57:41.000000000 +0100
 @@ -162,7 +162,7 @@
      {
      }
@@ -2332,9 +2353,9 @@ diff -r -U 3 minecraft\net\minecraft\src\RenderLiving.java minecraft_patched\net
              float f, float f1)
      {
          func_171_a((EntityLiving)entity, d, d1, d2, f, f1);
-diff -r -U 3 minecraft\net\minecraft\src\RenderMinecart.java minecraft_patched\net\minecraft\src\RenderMinecart.java
---- minecraft\net\minecraft\src\RenderMinecart.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\RenderMinecart.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/RenderMinecart.java minecraft_patched/net/minecraft/src/RenderMinecart.java
+--- minecraft/net/minecraft/src/RenderMinecart.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/RenderMinecart.java	2010-12-02 22:57:41.000000000 +0100
 @@ -85,7 +85,7 @@
          GL11.glPopMatrix();
      }
@@ -2344,9 +2365,9 @@ diff -r -U 3 minecraft\net\minecraft\src\RenderMinecart.java minecraft_patched\n
              float f, float f1)
      {
          func_152_a((EntityMinecart)entity, d, d1, d2, f, f1);
-diff -r -U 3 minecraft\net\minecraft\src\RenderPainting.java minecraft_patched\net\minecraft\src\RenderPainting.java
---- minecraft\net\minecraft\src\RenderPainting.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\RenderPainting.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/RenderPainting.java minecraft_patched/net/minecraft/src/RenderPainting.java
+--- minecraft/net/minecraft/src/RenderPainting.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/RenderPainting.java	2010-12-02 22:57:41.000000000 +0100
 @@ -126,7 +126,7 @@
          GL11.glColor3f(f2, f2, f2);
      }
@@ -2356,9 +2377,9 @@ diff -r -U 3 minecraft\net\minecraft\src\RenderPainting.java minecraft_patched\n
              float f, float f1)
      {
          func_158_a((EntityPainting)entity, d, d1, d2, f, f1);
-diff -r -U 3 minecraft\net\minecraft\src\RenderPig.java minecraft_patched\net\minecraft\src\RenderPig.java
---- minecraft\net\minecraft\src\RenderPig.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\RenderPig.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/RenderPig.java minecraft_patched/net/minecraft/src/RenderPig.java
+--- minecraft/net/minecraft/src/RenderPig.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/RenderPig.java	2010-12-02 22:57:41.000000000 +0100
 @@ -19,7 +19,7 @@
          return i == 0 && entitypig.field_759_a;
      }
@@ -2368,10 +2389,10 @@ diff -r -U 3 minecraft\net\minecraft\src\RenderPig.java minecraft_patched\net\mi
      {
          return func_180_a((EntityPig)entityliving, i);
      }
-diff -r -U 3 minecraft\net\minecraft\src\RenderPlayer.java minecraft_patched\net\minecraft\src\RenderPlayer.java
---- minecraft\net\minecraft\src\RenderPlayer.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\RenderPlayer.java	Sat Nov 27 02:28:18 2010
-@@ -163,28 +163,28 @@
+diff -r -U 3 minecraft/net/minecraft/src/RenderPlayer.java minecraft_patched/net/minecraft/src/RenderPlayer.java
+--- minecraft/net/minecraft/src/RenderPlayer.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/RenderPlayer.java	2010-12-02 22:57:41.000000000 +0100
+@@ -198,28 +198,28 @@
          field_209_f.field_1283_d.func_922_a(0.0625F);
      }
  
@@ -2405,9 +2426,9 @@ diff -r -U 3 minecraft\net\minecraft\src\RenderPlayer.java minecraft_patched\net
              float f, float f1)
      {
          func_188_a((EntityPlayer)entity, d, d1, d2, f, f1);
-diff -r -U 3 minecraft\net\minecraft\src\RenderSheep.java minecraft_patched\net\minecraft\src\RenderSheep.java
---- minecraft\net\minecraft\src\RenderSheep.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\RenderSheep.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/RenderSheep.java minecraft_patched/net/minecraft/src/RenderSheep.java
+--- minecraft/net/minecraft/src/RenderSheep.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/RenderSheep.java	2010-12-02 22:57:41.000000000 +0100
 @@ -19,7 +19,7 @@
          return i == 0 && !entitysheep.field_760_a;
      }
@@ -2417,9 +2438,9 @@ diff -r -U 3 minecraft\net\minecraft\src\RenderSheep.java minecraft_patched\net\
      {
          return func_176_a((EntitySheep)entityliving, i);
      }
-diff -r -U 3 minecraft\net\minecraft\src\RenderSlime.java minecraft_patched\net\minecraft\src\RenderSlime.java
---- minecraft\net\minecraft\src\RenderSlime.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\RenderSlime.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/RenderSlime.java minecraft_patched/net/minecraft/src/RenderSlime.java
+--- minecraft/net/minecraft/src/RenderSlime.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/RenderSlime.java	2010-12-02 22:57:41.000000000 +0100
 @@ -40,12 +40,12 @@
          GL11.glScalef(f2 * f3, (1.0F / f2) * f3, f2 * f3);
      }
@@ -2435,9 +2456,9 @@ diff -r -U 3 minecraft\net\minecraft\src\RenderSlime.java minecraft_patched\net\
      {
          return func_179_a((EntitySlime)entityliving, i);
      }
-diff -r -U 3 minecraft\net\minecraft\src\RenderSnowball.java minecraft_patched\net\minecraft\src\RenderSnowball.java
---- minecraft\net\minecraft\src\RenderSnowball.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\RenderSnowball.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/RenderSnowball.java minecraft_patched/net/minecraft/src/RenderSnowball.java
+--- minecraft/net/minecraft/src/RenderSnowball.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/RenderSnowball.java	2010-12-02 22:57:41.000000000 +0100
 @@ -42,7 +42,7 @@
          GL11.glPopMatrix();
      }
@@ -2447,9 +2468,9 @@ diff -r -U 3 minecraft\net\minecraft\src\RenderSnowball.java minecraft_patched\n
              float f, float f1)
      {
          func_155_a((EntitySnowball)entity, d, d1, d2, f, f1);
-diff -r -U 3 minecraft\net\minecraft\src\RenderSorter.java minecraft_patched\net\minecraft\src\RenderSorter.java
---- minecraft\net\minecraft\src\RenderSorter.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\RenderSorter.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/RenderSorter.java minecraft_patched/net/minecraft/src/RenderSorter.java
+--- minecraft/net/minecraft/src/RenderSorter.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/RenderSorter.java	2010-12-02 22:57:41.000000000 +0100
 @@ -41,7 +41,7 @@
          }
      }
@@ -2459,9 +2480,9 @@ diff -r -U 3 minecraft\net\minecraft\src\RenderSorter.java minecraft_patched\net
      {
          return func_993_a((WorldRenderer)obj, (WorldRenderer)obj1);
      }
-diff -r -U 3 minecraft\net\minecraft\src\RenderSpider.java minecraft_patched\net\minecraft\src\RenderSpider.java
---- minecraft\net\minecraft\src\RenderSpider.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\RenderSpider.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/RenderSpider.java minecraft_patched/net/minecraft/src/RenderSpider.java
+--- minecraft/net/minecraft/src/RenderSpider.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/RenderSpider.java	2010-12-02 22:57:41.000000000 +0100
 @@ -40,12 +40,12 @@
          }
      }
@@ -2477,9 +2498,9 @@ diff -r -U 3 minecraft\net\minecraft\src\RenderSpider.java minecraft_patched\net
      {
          return func_190_a((EntitySpider)entityliving, i);
      }
-diff -r -U 3 minecraft\net\minecraft\src\RenderTNTPrimed.java minecraft_patched\net\minecraft\src\RenderTNTPrimed.java
---- minecraft\net\minecraft\src\RenderTNTPrimed.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\RenderTNTPrimed.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/RenderTNTPrimed.java minecraft_patched/net/minecraft/src/RenderTNTPrimed.java
+--- minecraft/net/minecraft/src/RenderTNTPrimed.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/RenderTNTPrimed.java	2010-12-02 22:57:41.000000000 +0100
 @@ -54,7 +54,7 @@
          GL11.glPopMatrix();
      }
@@ -2489,9 +2510,9 @@ diff -r -U 3 minecraft\net\minecraft\src\RenderTNTPrimed.java minecraft_patched\
              float f, float f1)
      {
          func_153_a((EntityTNTPrimed)entity, d, d1, d2, f, f1);
-diff -r -U 3 minecraft\net\minecraft\src\RenderZombieSimple.java minecraft_patched\net\minecraft\src\RenderZombieSimple.java
---- minecraft\net\minecraft\src\RenderZombieSimple.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\RenderZombieSimple.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/RenderZombieSimple.java minecraft_patched/net/minecraft/src/RenderZombieSimple.java
+--- minecraft/net/minecraft/src/RenderZombieSimple.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/RenderZombieSimple.java	2010-12-02 22:57:41.000000000 +0100
 @@ -19,7 +19,7 @@
          GL11.glScalef(field_204_f, field_204_f, field_204_f);
      }
@@ -2501,9 +2522,9 @@ diff -r -U 3 minecraft\net\minecraft\src\RenderZombieSimple.java minecraft_patch
      {
          func_175_a((EntityZombieSimple)entityliving, f);
      }
-diff -r -U 3 minecraft\net\minecraft\src\SlotArmor.java minecraft_patched\net\minecraft\src\SlotArmor.java
---- minecraft\net\minecraft\src\SlotArmor.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\SlotArmor.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/SlotArmor.java minecraft_patched/net/minecraft/src/SlotArmor.java
+--- minecraft/net/minecraft/src/SlotArmor.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/SlotArmor.java	2010-12-02 22:57:41.000000000 +0100
 @@ -10,9 +10,9 @@
  
      SlotArmor(GuiInventory guiinventory, GuiContainer guicontainer, IInventory iinventory, int i, int j, int k, int l)
@@ -2515,9 +2536,9 @@ diff -r -U 3 minecraft\net\minecraft\src\SlotArmor.java minecraft_patched\net\mi
      }
  
      public int func_4104_e()
-diff -r -U 3 minecraft\net\minecraft\src\SpawnerAnimals.java minecraft_patched\net\minecraft\src\SpawnerAnimals.java
---- minecraft\net\minecraft\src\SpawnerAnimals.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\SpawnerAnimals.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/SpawnerAnimals.java minecraft_patched/net/minecraft/src/SpawnerAnimals.java
+--- minecraft/net/minecraft/src/SpawnerAnimals.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/SpawnerAnimals.java	2010-12-02 23:44:23.000000000 +0100
 @@ -21,152 +21,104 @@
          return new ChunkPosition(k, l, i1);
      }
@@ -2526,8 +2547,7 @@ diff -r -U 3 minecraft\net\minecraft\src\SpawnerAnimals.java minecraft_patched\n
 -    {
 -        int j;
 -        int k;
-+    public static final int func_4154_a(World var0) {
-         field_6544_a.clear();
+-        field_6544_a.clear();
 -        for(int i = 0; i < world.field_1040_k.size(); i++)
 -        {
 -            EntityPlayer entityplayer = (EntityPlayer)world.field_1040_k.get(i);
@@ -2540,21 +2560,25 @@ diff -r -U 3 minecraft\net\minecraft\src\SpawnerAnimals.java minecraft_patched\n
 -                {
 -                    field_6544_a.add(new ChunkCoordIntPair(j1 + l, k1 + i1));
 -                }
++   public static final int func_4154_a(World var0) {
++      field_6544_a.clear();
  
--            }
-+        int var1;
-+        for(var1 = 0; var1 < var0.field_1040_k.size(); ++var1) {
-+           EntityPlayer var2 = (EntityPlayer)var0.field_1040_k.get(var1);
-+           int var3 = MathHelper.func_1108_b(var2.field_611_ak / 16.0D);
-+           int var4 = MathHelper.func_1108_b(var2.field_609_am / 16.0D);
-+           byte var5 = 8;
++      int var1;
++      for(var1 = 0; var1 < var0.field_1040_k.size(); ++var1) {
++         EntityPlayer var2 = (EntityPlayer)var0.field_1040_k.get(var1);
++         int var3 = MathHelper.func_1108_b(var2.field_611_ak / 16.0D);
++         int var4 = MathHelper.func_1108_b(var2.field_609_am / 16.0D);
++         byte var5 = 8;
++
++         for(int var6 = -var5; var6 <= var5; ++var6) {
++            for(int var7 = -var5; var7 <= var5; ++var7) {
++               field_6544_a.add(new ChunkCoordIntPair(var6 + var3, var7 + var4));
+             }
++         }
++      }
  
-+           for(int var6 = -var5; var6 <= var5; ++var6) {
-+              for(int var7 = -var5; var7 <= var5; ++var7) {
-+                 field_6544_a.add(new ChunkCoordIntPair(var6 + var3, var7 + var4));
-+              }
-+           }
-         }
+-        }
++      var1 = 0;
  
 -        j = 0;
 -        k = 0;
@@ -2587,80 +2611,7 @@ diff -r -U 3 minecraft\net\minecraft\src\SpawnerAnimals.java minecraft_patched\n
 -                    if(!iterator.hasNext())
 -                    {
 -                        continue; /* Loop/switch isn't completed */
-+        var1 = 0;
-+
-+        for(int var28 = 0; var28 < EnumCreatureType.values().length; ++var28) {
-+           EnumCreatureType var29 = EnumCreatureType.values()[var28];
-+           if(var0.func_621_b(var29.field_4278_c) <= var29.field_4277_d * field_6544_a.size() / 256) {
-+              Iterator var30 = field_6544_a.iterator();
-+
-+              label90:
-+              while(var30.hasNext()) {
-+                 ChunkCoordIntPair var31 = (ChunkCoordIntPair)var30.next();
-+                 if(var0.field_1037_n.nextInt(50) == 0) {
-+                    MobSpawnerBase var32 = var0.func_4075_a().func_4074_a(var31);
-+                    Class[] var33 = var32.func_4118_a(var29);
-+                    if(var33 != null && var33.length != 0) {
-+                       int var8 = var0.field_1037_n.nextInt(var33.length);
-+                       ChunkPosition var9 = func_4153_a(var0, var31.field_189_a * 16, var31.field_188_b * 16);
-+                       int var10 = var9.field_1111_a;
-+                       int var11 = var9.field_1110_b;
-+                       int var12 = var9.field_1112_c;
-+                       if(!var0.func_601_g(var10, var11, var12) && var0.func_599_f(var10, var11, var12) == Material.field_1337_a) {
-+                          int var13 = 0;
-+
-+                          for(int var14 = 0; var14 < 3; ++var14) {
-+                             int var15 = var10;
-+                             int var16 = var11;
-+                             int var17 = var12;
-+                             byte var18 = 6;
-+
-+                             for(int var19 = 0; var19 < 4; ++var19) {
-+                                var15 += var0.field_1037_n.nextInt(var18) - var0.field_1037_n.nextInt(var18);
-+                                var16 += var0.field_1037_n.nextInt(1) - var0.field_1037_n.nextInt(1);
-+                                var17 += var0.field_1037_n.nextInt(var18) - var0.field_1037_n.nextInt(var18);
-+                                if(var0.func_601_g(var15, var16 - 1, var17) && !var0.func_601_g(var15, var16, var17) && !var0.func_599_f(var15, var16, var17).func_879_d() && !var0.func_601_g(var15, var16 + 1, var17)) {
-+                                   float var20 = (float)var15 + 0.5F;
-+                                   float var21 = (float)var16;
-+                                   float var22 = (float)var17 + 0.5F;
-+                                   if(var0.func_683_a((double)var20, (double)var21, (double)var22, 24.0D) == null) {
-+                                      float var23 = var20 - (float)var0.field_1036_o;
-+                                      float var24 = var21 - (float)var0.field_4210_n;
-+                                      float var25 = var22 - (float)var0.field_1034_q;
-+                                      float var26 = var23 * var23 + var24 * var24 + var25 * var25;
-+                                      if(var26 >= 576.0F) {
-+                                         EntityLiving var34;
-+                                         try {
-+                                            var34 = (EntityLiving)var33[var8].getConstructor(new Class[]{World.class}).newInstance(new Object[]{var0});
-+                                         } catch (Exception var27) {
-+                                            var27.printStackTrace();
-+                                            return var1;
-+                                         }
-+
-+                                         var34.func_365_c((double)var20, (double)var21, (double)var22, var0.field_1037_n.nextFloat() * 360.0F, 0.0F);
-+                                         if(var34.func_433_a()) {
-+                                            ++var13;
-+                                            var0.func_674_a(var34);
-+                                            if(var34 instanceof EntitySpider && var0.field_1037_n.nextInt(100) == 0) {
-+                                               EntitySkeleton var35 = new EntitySkeleton(var0);
-+                                               var35.func_365_c((double)var20, (double)var21, (double)var22, var34.field_605_aq, 0.0F);
-+                                               var0.func_674_a(var35);
-+                                               var35.func_6377_h(var34);
-+                                            }
-+
-+                                            if(var13 >= var34.func_6391_i()) {
-+                                               continue label90;
-+                                            }
-+                                         }
-+
-+                                         var1 += var13;
-+                                      }
-+                                   }
-+                                }
-+                             }
-+                          }
-+                       }
-                     }
+-                    }
 -                    chunkcoordintpair = (ChunkCoordIntPair)iterator.next();
 -                } while(world.field_1037_n.nextInt(50) != 0);
 -                MobSpawnerBase mobspawnerbase = world.func_4075_a().func_4074_a(chunkcoordintpair);
@@ -2697,10 +2648,7 @@ diff -r -U 3 minecraft\net\minecraft\src\SpawnerAnimals.java minecraft_patched\n
 -        if(!world.func_601_g(j3, k3 - 1, l3) || world.func_601_g(j3, k3, l3) || world.func_599_f(j3, k3, l3).func_879_d() || world.func_601_g(j3, k3 + 1, l3))
 -        {
 -            continue; /* Loop/switch isn't completed */
-+                 }
-+              }
-+           }
-         }
+-        }
 -        float f = (float)j3 + 0.5F;
 -        float f1 = k3;
 -        float f2 = (float)l3 + 0.5F;
@@ -2756,15 +2704,91 @@ diff -r -U 3 minecraft\net\minecraft\src\SpawnerAnimals.java minecraft_patched\n
 -_L2:
 -        return j;
 -    }
++      for(int var28 = 0; var28 < EnumCreatureType.values().length; ++var28) {
++         EnumCreatureType var29 = EnumCreatureType.values()[var28];
++         if(var0.func_621_b(var29.field_4278_c) <= var29.field_4277_d * field_6544_a.size() / 256) {
++            Iterator var30 = field_6544_a.iterator();
 +
-+        return var1;
-+     }
++            label90:
++            while(var30.hasNext()) {
++               ChunkCoordIntPair var31 = (ChunkCoordIntPair)var30.next();
++               if(var0.field_1037_n.nextInt(50) == 0) {
++                  MobSpawnerBase var32 = var0.func_4075_a().func_4074_a(var31);
++                  Class[] var33 = var32.func_4118_a(var29);
++                  if(var33 != null && var33.length != 0) {
++                     int var8 = var0.field_1037_n.nextInt(var33.length);
++                     ChunkPosition var9 = func_4153_a(var0, var31.field_189_a * 16, var31.field_188_b * 16);
++                     int var10 = var9.field_1111_a;
++                     int var11 = var9.field_1110_b;
++                     int var12 = var9.field_1112_c;
++                     if(!var0.func_601_g(var10, var11, var12) && var0.func_599_f(var10, var11, var12) == Material.field_1337_a) {
++                        int var13 = 0;
++
++                        for(int var14 = 0; var14 < 3; ++var14) {
++                           int var15 = var10;
++                           int var16 = var11;
++                           int var17 = var12;
++                           byte var18 = 6;
++
++                           for(int var19 = 0; var19 < 4; ++var19) {
++                              var15 += var0.field_1037_n.nextInt(var18) - var0.field_1037_n.nextInt(var18);
++                              var16 += var0.field_1037_n.nextInt(1) - var0.field_1037_n.nextInt(1);
++                              var17 += var0.field_1037_n.nextInt(var18) - var0.field_1037_n.nextInt(var18);
++                              if(var0.func_601_g(var15, var16 - 1, var17) && !var0.func_601_g(var15, var16, var17) && !var0.func_599_f(var15, var16, var17).func_879_d() && !var0.func_601_g(var15, var16 + 1, var17)) {
++                                 float var20 = (float)var15 + 0.5F;
++                                 float var21 = (float)var16;
++                                 float var22 = (float)var17 + 0.5F;
++                                 if(var0.func_683_a((double)var20, (double)var21, (double)var22, 24.0D) == null) {
++                                    float var23 = var20 - (float)var0.field_1036_o;
++                                    float var24 = var21 - (float)var0.field_4210_n;
++                                    float var25 = var22 - (float)var0.field_1034_q;
++                                    float var26 = var23 * var23 + var24 * var24 + var25 * var25;
++                                    if(var26 >= 576.0F) {
++                                       EntityLiving var34;
++                                       try {
++                                          var34 = (EntityLiving)var33[var8].getConstructor(new Class[]{World.class}).newInstance(new Object[]{var0});
++                                       } catch (Exception var27) {
++                                          var27.printStackTrace();
++                                          return var1;
++                                       }
++
++                                       var34.func_365_c((double)var20, (double)var21, (double)var22, var0.field_1037_n.nextFloat() * 360.0F, 0.0F);
++                                       if(var34.func_433_a()) {
++                                          ++var13;
++                                          var0.func_674_a(var34);
++                                          if(var34 instanceof EntitySpider && var0.field_1037_n.nextInt(100) == 0) {
++                                             EntitySkeleton var35 = new EntitySkeleton(var0);
++                                             var35.func_365_c((double)var20, (double)var21, (double)var22, var34.field_605_aq, 0.0F);
++                                             var0.func_674_a(var35);
++                                             var35.func_6377_h(var34);
++                                          }
++
++                                          if(var13 >= var34.func_6391_i()) {
++                                             continue label90;
++                                          }
++                                       }
++
++                                       var1 += var13;
++                                    }
++                                 }
++                              }
++                           }
++                        }
++                     }
++                  }
++               }
++            }
++         }
++      }
++
++      return var1;
++   }
  
      private static Set field_6544_a = new HashSet();
  
-diff -r -U 3 minecraft\net\minecraft\src\TexturePackCustom.java minecraft_patched\net\minecraft\src\TexturePackCustom.java
---- minecraft\net\minecraft\src\TexturePackCustom.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\TexturePackCustom.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/TexturePackCustom.java minecraft_patched/net/minecraft/src/TexturePackCustom.java
+--- minecraft/net/minecraft/src/TexturePackCustom.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/TexturePackCustom.java	2010-12-02 22:57:41.000000000 +0100
 @@ -13,7 +13,7 @@
  public class TexturePackCustom extends TexturePackBase
  {
@@ -2774,9 +2798,9 @@ diff -r -U 3 minecraft\net\minecraft\src\TexturePackCustom.java minecraft_patche
      {
          field_6495_f = -1;
          field_6487_a = file.getName();
-diff -r -U 3 minecraft\net\minecraft\src\ThreadConnectToServer.java minecraft_patched\net\minecraft\src\ThreadConnectToServer.java
---- minecraft\net\minecraft\src\ThreadConnectToServer.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\ThreadConnectToServer.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/ThreadConnectToServer.java minecraft_patched/net/minecraft/src/ThreadConnectToServer.java
+--- minecraft/net/minecraft/src/ThreadConnectToServer.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/ThreadConnectToServer.java	2010-12-02 22:57:41.000000000 +0100
 @@ -16,7 +16,6 @@
          field_1102_a = minecraft;
          field_1101_b = s;
@@ -2785,9 +2809,9 @@ diff -r -U 3 minecraft\net\minecraft\src\ThreadConnectToServer.java minecraft_pa
      }
  
      public void run()
-diff -r -U 3 minecraft\net\minecraft\src\ThreadDownloadImage.java minecraft_patched\net\minecraft\src\ThreadDownloadImage.java
---- minecraft\net\minecraft\src\ThreadDownloadImage.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\ThreadDownloadImage.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/ThreadDownloadImage.java minecraft_patched/net/minecraft/src/ThreadDownloadImage.java
+--- minecraft/net/minecraft/src/ThreadDownloadImage.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/ThreadDownloadImage.java	2010-12-02 22:57:41.000000000 +0100
 @@ -15,7 +15,6 @@
          field_1217_c = threaddownloadimagedata;
          field_1216_a = s;
@@ -2796,9 +2820,9 @@ diff -r -U 3 minecraft\net\minecraft\src\ThreadDownloadImage.java minecraft_patc
      }
  
      public void run()
-diff -r -U 3 minecraft\net\minecraft\src\ThreadDownloadResources.java minecraft_patched\net\minecraft\src\ThreadDownloadResources.java
---- minecraft\net\minecraft\src\ThreadDownloadResources.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\ThreadDownloadResources.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/ThreadDownloadResources.java minecraft_patched/net/minecraft/src/ThreadDownloadResources.java
+--- minecraft/net/minecraft/src/ThreadDownloadResources.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/ThreadDownloadResources.java	2010-12-02 22:57:41.000000000 +0100
 @@ -134,7 +134,7 @@
          }
      }
@@ -2808,9 +2832,9 @@ diff -r -U 3 minecraft\net\minecraft\src\ThreadDownloadResources.java minecraft_
      {
          byte abyte0[] = new byte[4096];
          DataInputStream datainputstream = new DataInputStream(url.openStream());
-diff -r -U 3 minecraft\net\minecraft\src\ThreadRunIsoClient.java minecraft_patched\net\minecraft\src\ThreadRunIsoClient.java
---- minecraft\net\minecraft\src\ThreadRunIsoClient.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\ThreadRunIsoClient.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/ThreadRunIsoClient.java minecraft_patched/net/minecraft/src/ThreadRunIsoClient.java
+--- minecraft/net/minecraft/src/ThreadRunIsoClient.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/ThreadRunIsoClient.java	2010-12-02 22:57:41.000000000 +0100
 @@ -10,7 +10,6 @@
      ThreadRunIsoClient(CanvasIsomPreview canvasisompreview)
      {
@@ -2819,9 +2843,9 @@ diff -r -U 3 minecraft\net\minecraft\src\ThreadRunIsoClient.java minecraft_patch
      }
  
      public void run()
-diff -r -U 3 minecraft\net\minecraft\src\ThreadSleepForever.java minecraft_patched\net\minecraft\src\ThreadSleepForever.java
---- minecraft\net\minecraft\src\ThreadSleepForever.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\ThreadSleepForever.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/ThreadSleepForever.java minecraft_patched/net/minecraft/src/ThreadSleepForever.java
+--- minecraft/net/minecraft/src/ThreadSleepForever.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/ThreadSleepForever.java	2010-12-02 22:57:41.000000000 +0100
 @@ -10,8 +10,8 @@
  
      public ThreadSleepForever(Minecraft minecraft, String s)
@@ -2832,9 +2856,9 @@ diff -r -U 3 minecraft\net\minecraft\src\ThreadSleepForever.java minecraft_patch
          setDaemon(true);
          start();
      }
-diff -r -U 3 minecraft\net\minecraft\src\TileEntityMobSpawnerRenderer.java minecraft_patched\net\minecraft\src\TileEntityMobSpawnerRenderer.java
---- minecraft\net\minecraft\src\TileEntityMobSpawnerRenderer.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\TileEntityMobSpawnerRenderer.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/TileEntityMobSpawnerRenderer.java minecraft_patched/net/minecraft/src/TileEntityMobSpawnerRenderer.java
+--- minecraft/net/minecraft/src/TileEntityMobSpawnerRenderer.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/TileEntityMobSpawnerRenderer.java	2010-12-02 22:57:41.000000000 +0100
 @@ -41,7 +41,7 @@
          GL11.glPopMatrix();
      }
@@ -2844,9 +2868,9 @@ diff -r -U 3 minecraft\net\minecraft\src\TileEntityMobSpawnerRenderer.java minec
              float f)
      {
          func_931_a((TileEntityMobSpawner)tileentity, d, d1, d2, f);
-diff -r -U 3 minecraft\net\minecraft\src\TileEntitySignRenderer.java minecraft_patched\net\minecraft\src\TileEntitySignRenderer.java
---- minecraft\net\minecraft\src\TileEntitySignRenderer.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\TileEntitySignRenderer.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/TileEntitySignRenderer.java minecraft_patched/net/minecraft/src/TileEntitySignRenderer.java
+--- minecraft/net/minecraft/src/TileEntitySignRenderer.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/TileEntitySignRenderer.java	2010-12-02 22:57:41.000000000 +0100
 @@ -76,7 +76,7 @@
          GL11.glPopMatrix();
      }
@@ -2856,9 +2880,9 @@ diff -r -U 3 minecraft\net\minecraft\src\TileEntitySignRenderer.java minecraft_p
              float f)
      {
          func_932_a((TileEntitySign)tileentity, d, d1, d2, f);
-diff -r -U 3 minecraft\net\minecraft\src\WorldBlockPositionType.java minecraft_patched\net\minecraft\src\WorldBlockPositionType.java
---- minecraft\net\minecraft\src\WorldBlockPositionType.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\WorldBlockPositionType.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/WorldBlockPositionType.java minecraft_patched/net/minecraft/src/WorldBlockPositionType.java
+--- minecraft/net/minecraft/src/WorldBlockPositionType.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/WorldBlockPositionType.java	2010-12-02 22:57:41.000000000 +0100
 @@ -10,7 +10,6 @@
      public WorldBlockPositionType(WorldClient worldclient, int i, int j, int k, int l, int i1)
      {
@@ -2867,9 +2891,9 @@ diff -r -U 3 minecraft\net\minecraft\src\WorldBlockPositionType.java minecraft_p
          field_1202_a = i;
          field_1201_b = j;
          field_1207_c = k;
-diff -r -U 3 minecraft\net\minecraft\src\WorldIso.java minecraft_patched\net\minecraft\src\WorldIso.java
---- minecraft\net\minecraft\src\WorldIso.java	Sat Nov 27 02:27:58 2010
-+++ minecraft_patched\net\minecraft\src\WorldIso.java	Sat Nov 27 02:28:18 2010
+diff -r -U 3 minecraft/net/minecraft/src/WorldIso.java minecraft_patched/net/minecraft/src/WorldIso.java
+--- minecraft/net/minecraft/src/WorldIso.java	2010-12-02 23:36:29.000000000 +0100
++++ minecraft_patched/net/minecraft/src/WorldIso.java	2010-12-02 22:57:41.000000000 +0100
 @@ -10,8 +10,8 @@
  
      WorldIso(CanvasIsomPreview canvasisompreview, File file, String s)

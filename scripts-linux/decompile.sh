@@ -36,15 +36,7 @@ then
   echo "Patching minecraft sources"
   echo "*** Patching minecraft sources" >> $MCPLOG
   
-  dos2unix $MCSRC1/*.java 2>/dev/null
-  dos2unix $MCSRC2/*.java 2>/dev/null
-  dos2unix $MCPATCH 2>/dev/null
-
-  sed -i 's:minecraft\\net\\minecraft\\client\\:minecraft/net/minecraft/client/:g' $MCPATCH
-  sed -i 's:patched\\net\\minecraft\\client\\:patched/net/minecraft/client/:g' $MCPATCH
-  sed -i 's:minecraft\\net\\minecraft\\src\\:minecraft/net/minecraft/src/:g' $MCPATCH
-  sed -i 's:patched\\net\\minecraft\\src\\:patched/net/minecraft/src/:g' $MCPATCH
-  $MCPPATCH -p1 -u < $MCPATCH -d $MCJADOUT >> $MCPLOG
+  sed "/^--- \\|^+++ / s#\\\\#/#g" "$MCPATCH" | patch --binary  -p 1 -u -d "$MCJADOUT" >>"$MCPLOG"
 else
   echo "Minecraft.jar was not found."
   echo "Minecraft.jar was not found" >> $MCPLOG
@@ -79,15 +71,7 @@ then
   echo "Patching minecraft server sources"
   echo "*** Patching minecraft server sources" >> $MCPLOG
   
-  dos2unix $MCSSRC1/*.java 2>/dev/null
-  dos2unix $MCSSRC2/*.java 2>/dev/null
-  dos2unix $MCSPATCH 2>/dev/null
-
-  sed -i 's:minecraft_server\\net\\minecraft\\server\\:minecraft_server/net/minecraft/server/:g' $MCSPATCH
-  sed -i 's:patched\\net\\minecraft\\server\\:patched/net/minecraft/server/:g' $MCSPATCH
-  sed -i 's:minecraft_server\\net\\minecraft\\src\\:minecraft_server/net/minecraft/src/:g' $MCSPATCH
-  sed -i 's:patched\\net\\minecraft\\src\\:patched/net/minecraft/src/:g' $MCSPATCH
-  $MCPPATCH -p1 -u < $MCSPATCH -d $MCSJADOUT >> $MCPLOG
+  sed "/^--- \\|^+++ / s#\\\\#/#g" "$MCSPATCH" | patch --binary  -p 1 -u   -d "$MCSJADOUT" >>"$MCPLOG"
 
 else
   echo "Minecraft_server.jar was not found."

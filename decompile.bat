@@ -3,6 +3,8 @@
 call setup.bat %1
 call findjdk.bat PATH
 
+set REINDEX_NUMBER=12000
+
 java -help > NUL 2> NUL
 if errorlevel 1 (
     echo Unable to locate java.exe. Please verify that it is in the PATH.
@@ -23,7 +25,7 @@ if exist "%MCJAR%" (
     
     echo Deobfuscating minecraft.jar
     echo *** Deobfuscating minecraft.jar >>"%MCPLOG%"
-    %MCPRG% "%MCJAR%" "%MCRGJAR%" "%MCRGSCRIPT%" "%MCRGLOG%" >>"%MCPLOG%"
+    %MCPRG% "%MCJAR%" "%MCRGJAR%" "%MCRGSCRIPT%" "%MCRGLOG%" %REINDEX_NUMBER% >>"%MCPLOG%"
     
     echo Unpacking minecraft.jar
     echo *** Unpacking minecraft.jar >>"%MCPLOG%"
@@ -57,7 +59,7 @@ if exist "%MCSJAR%" (
     
     echo Deobfuscating minecraft_server.jar
     echo *** Deobfuscating minecraft_server.jar >>"%MCPLOG%"
-    %MCPRG% "%MCSJAR%" "%MCSRGJAR%" "%MCSRGSCRIPT%" "%MCSRGLOG%" >>"%MCPLOG%"
+    %MCPRG% "%MCSJAR%" "%MCSRGJAR%" "%MCSRGSCRIPT%" "%MCSRGLOG%" %REINDEX_NUMBER% >>"%MCPLOG%"
     
     echo Unpacking minecraft_server.jar
     echo *** Unpacking minecraft_server.jar >>"%MCPLOG%"

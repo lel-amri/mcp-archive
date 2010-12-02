@@ -10,7 +10,7 @@ else
   MCVERSIONPATH=""
 fi
   
-MCPVERSION=2.3
+MCPVERSION=2.4
 
 MCPDIR=`pwd`
 
