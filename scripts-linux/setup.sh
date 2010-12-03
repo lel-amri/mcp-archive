@@ -10,7 +10,7 @@ else
   MCVERSIONPATH=""
 fi
   
-MCPVERSION=2.4
+MCPVERSION=2.5
 
 MCPDIR=`pwd`
 
@@ -73,7 +73,7 @@ MCSPATCH="$MCPPATCHDIR/minecraft_server.patch"
 MCPSPLASHES="$MCPPATCHDIR/splashes.txt"
 
 MCSTART="$MCPPATCHDIR/Start.java"
-MCSNDFIX="$MCPPATCHDIR/fh.java"
+MCSNDFIX="$MCPPATCHDIR/fi.java"
 
 MCSRC1="$MCPSOURCEBASE/minecraft/net/minecraft/client"
 MCSRC2="$MCPSOURCEBASE/minecraft/net/minecraft/src"

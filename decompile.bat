@@ -3,7 +3,7 @@
 call setup.bat %1
 call findjdk.bat PATH
 
-set REINDEX_NUMBER=12000
+set REINDEX_NUMBER=15000
 
 java -help > NUL 2> NUL
 if errorlevel 1 (

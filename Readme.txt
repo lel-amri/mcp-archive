@@ -1,4 +1,4 @@
-Minecraft mod creator pack 2.4 for Minecraft 1.2.5
+Minecraft mod creator pack 2.5 for Minecraft 1.2.6
 ==================================================
 
 Prerequisites:
@@ -137,6 +137,7 @@ and of course:
 
 History:
 ========
+2.5  - Updated to support Minecraft 1.2.6 and MinecraftServer 0.2.8
 2.4  - Updated to support Minecraft 1.2.5 and MinecraftServer 0.2.7
 2.3  - Updated to support Minecraft 1.2.3_04 and MinecraftServer 0.2.5_02. Linux support beta.
 2.2a - Bugfix release to improve the re-obfuscation tools
@@ -154,7 +155,7 @@ History:
 
 Roadmap:
 ========
-2.5+ - New awesome features, improvements and updates :)
+2.6+ - New awesome features, improvements and updates :)
 
 _________________________________________________________________________________________________________________
 _________________________________________________________________________________________________________________

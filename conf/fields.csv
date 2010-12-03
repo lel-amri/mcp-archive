@@ -48,7 +48,7 @@ bh,c,field_951_c,*,*,*,width,The width of the screen object.
 bh,d,field_950_d,*,*,*,height,The height of the screen object.
 bh,e,field_949_e,*,*,*,controlList,A list of all the controls added to this container.
 bl,a,field_1765_a,cd,a,field_1005_a,pathLength,The total length of the path
-bl,b,field_1764_b,cd,b,field_1055_a,points, The actual points in the path
+bl,b,field_1764_b,cd,b,field_1004_b,points, The actual points in the path
 bl,c,field_1766_c,cd,c,field_1006_c,pathIndex,The index of the current point in the path
 bm,a,field_581_a,ce,a,field_137_a,collectedEntityId,The entity on the ground that was picked up.
 bm,b,field_580_b,ce,b,field_136_b,collectorEntityId,The entity that picked up the one from the ground.
@@ -93,7 +93,7 @@ cn,d,field_1047_d,dy,d,field_812_d,snowCovered,Is true if world is a snow world
 cn,I,field_1016_I,dy,H,field_4266_H,nbtCompoundPlayer,Reference to the player object as NBT compound
 cn,H,field_1017_H,dy,G,field_783_G,chunkProvider,Handles chunk operations and caching
 cn,k,field_1040_k,dy,k,field_805_k,playerEntities,Array list of players in the world.
-cn,n,field_1037_n,dy,n,field_802_n,rand,RNG for world.
+cn,n,field_1037_n,dy,m,field_803_m,rand,RNG for world.
 cn,o,field_1036_o,dy,n,field_4276_m,spawnX,Spawn point X coordinate
 cn,p,field_4210_n,dy,o,field_4275_n,spawnY,Spawn point Y coordinate
 cn,q,field_1034_q,dy,p,field_4274_o,spawnZ,Spawn point Z coordinate
@@ -420,7 +420,7 @@ gb,s,field_1319_s,iq,s,field_508_s,snow
 gb,t,field_1318_t,iq,t,field_507_t,builtSnow
 gb,u,field_1317_u,iq,u,field_506_u,cactus
 gb,v,field_1316_v,iq,v,field_505_v,clay
-gb,w,field_4261_w,iq,w,field_4211_y,canBurn,Bool defining if the block can burn or not.
+gb,w,field_4259_y,iq,w,field_4211_y,canBurn,Bool defining if the block can burn or not.
 gc,a,field_968_a,*,*,*,updateCounter,Counts the number of screen updates. Used to make the caret flash.
 gc,h,field_970_h,*,*,*,parentScreen,A reference to the screen object that created this. Used for navigating between screens.
 gc,i,field_969_i,*,*,*,serverAddress,Server address.
@@ -795,7 +795,7 @@ net/minecraft/client/Minecraft,k,field_6318_k,*,*,*,mcCanvas,The canvas to which
 net/minecraft/client/Minecraft,J,field_149_J,*,*,*,enableRain,"If true it will be raining in the world (kind of, effect is not finished)"
 net/minecraft/client/Minecraft,p,field_169_p,*,*,*,currentScreen,Reference to the current screen being displayed.
 net/minecraft/client/Minecraft,y,field_6304_y,*,*,*,options,Reference to the game options.
-net/minecraft/client/Minecraft,W,REPLACEME_6275_Z,*,*,*,dataFolder,"contains data folder (File) (normally ""%APPDATA%\.minecraft"") Remove the remove the 1 in the front of the field number once start.java gets updated"
+net/minecraft/client/Minecraft,Z,field_6275_Z,*,*,*,dataFolder,"contains data folder (File) (normally ""%APPDATA%\.minecraft"")"
 net/minecraft/client/Minecraft,A,field_6301_A,*,*,*,sndManager
 net/minecraft/client/Minecraft,z,field_6303_z,*,*,*,mcApplet,Applet instance.
 net/minecraft/client/Minecraft,B,field_6299_B,*,*,*,mouseHelper,Mouse helper instance.
@@ -922,7 +922,6 @@ v,d,field_1189_d,af,d,field_936_d,permutations
 ,,field_4049_be,,,field_6065_bd,lightStone
 ,,field_4047_bf,,,field_4044_bf,portal,The purple teleport blocks inside the obsidian circle
 ,,field_4045_bg,,,field_6062_bf,pumpkinLantern,The Jack-O-Lantern
-,,field_4259_y,,,,burning
 ,,field_4023_aQ,,,field_4195_aQ,pocketSundial
 ,,field_4022_aR,,,field_4194_aR,lightStoneDust
 ,,field_4021_aS,,,field_4193_aS,fishRaw
@@ -1067,4 +1066,191 @@ ChunkProviderLoadOrGenerate,*,field_892_h,*,*,*,lastQueriedChunk,The last Chunk 
 ChunkProviderLoadOrGenerate,*,field_891_a,*,*,*,lastQueriedChunkXPos,The last X position of a chunk that was returned from func_553_b
 *,*,*,Block,*,field_569_be,blockResistance,Indicates the blocks resistance to explosions.
 *,*,*,ItemTool,*,field_265_aX,blocksEffectiveAgainst,Array of blocks the tool has extra effect against.
-*,*,*,Block,*,field_571_bd,blockHardness,Indicates how many hits it takes to break a block.EntityPlayer,*,field_776_d,*,*,*,score,"Tracks the player's score."
+*,*,*,Block,*,field_571_bd,blockHardness,Indicates how many hits it takes to break a block.
+
+ModelRenderer,*,field_1406_e,*,*,*,rotateAngleY,"*"
+ModelRenderer,*,field_1407_d,*,*,*,rotateAngleX,"*"
+ModelRenderer,*,field_1404_g,*,*,*,mirror,"*"
+ModelRenderer,*,field_1405_f,*,*,*,rotateAngleZ,"*"
+ModelRenderer,*,field_1408_c,*,*,*,offsetZ,"*"
+ModelRenderer,*,field_1409_b,*,*,*,offsetY,"*"
+Minecraft,*,field_6298_C,*,*,*,texturePackList,"The TexturePackLister used by this instance of Minecraft..."
+Render,*,field_195_d,*,*,*,unusedModelBiped,"*"
+Render,*,field_203_d,*,*,*,unusedRenderBlocks,"*"
+RenderPlayer,*,field_206_i,*,*,*,armorFilenamePrefix,"*"
+RenderBlocks,*,field_1774_c,*,*,*,flipTexture,"Set to true if the texture should be flipped horizontally during render*Face"
+RenderBlocks,*,field_1771_b,*,*,*,overrideBlockTexture,"If set to >=0, all block faces will be rendered using this texture index"
+RenderBlocks,*,field_1772_a,*,*,*,blockAccess,"The IBlockAccess used by this instance of RenderBlocks"
+RenderBlocks,*,field_1773_d,*,*,*,renderAllFaces,"If true, renders all faces on all blocks rather than using the logic in Block.shouldSideBeRendered.  Unused."
+ModelRenderer,*,field_1396_o,*,*,*,displayList,"The GL display list rendered by the Tessellator for this model"
+ModelRenderer,*,field_1397_n,*,*,*,compiled,"*"
+EntityCreature,*,field_749_a,*,*,*,pathToEntity,"*"
+Minecraft,*,field_6286_O,*,*,*,glCapabilities,"Checks OpenGL capabilities (as of 1.2.3_04 effectively unused)."
+Minecraft,*,field_6283_R,*,*,*,ticksRan,"Number of ticks ran since the program was started."
+Block,*,field_343_p,*,*,*,opaqueCubeLookup,"An array of 256 booleans corresponding to the result of the isOpaqueCube() method for each block ID"
+EntityCreature,*,field_750_g,*,*,*,hasAttacked,"returns true if a creature has attacked recently only used for creepers and skeletons"
+TexturePackList,*,field_6537_e,*,*,*,mc,"The Minecraft instance used by this TexturePackList"
+TexturePackList,*,field_6536_f,*,*,*,texturePackDir,"The directory the texture packs will be loaded from."
+TexturePackList,*,field_6534_a,*,*,*,selectedTexturePack,"The TexturePack that will be used."
+EntityFish,*,field_6380_t,*,*,*,velocityZ,"*"
+EntityFish,*,field_6381_s,*,*,*,velocityY,"*"
+EntityFish,*,field_6382_r,*,*,*,velocityX,"*"
+NoiseGeneratorOctaves,*,field_1192_a,*,*,*,generatorCollection,"Collection of noise generation functions.  Output is combined to produce different octaves of noise."
+TextureWaterFX,*,field_1154_k,*,*,*,tickCounter,"*"
+EntityPlayer,*,field_4128_n,*,*,*,fishEntity,"*"
+ItemPickaxe,*,field_329_aX,*,*,*,blocksEffectiveAgainst,"*"
+ItemTool,*,field_324_aY,*,*,*,efficiencyOnProperMaterial,"*"
+ItemAxe,*,field_327_aX,*,*,*,blocksEffectiveAgainst,"*"
+ItemSpade,*,field_326_aX,*,*,*,blocksEffectiveAgainst,"*"
+ItemTool,*,field_323_aZ,*,*,*,damageVsEntity,"*"
+ItemTool,*,field_322_a,*,*,*,ingredientQuality,"*"
+EntityPlayerSP,*,field_788_bg,*,*,*,mc,"*"
+Material,*,field_4261_w,*,*,*,pumpkin,"pumpkin"
+Entity,*,field_9283_av,*,*,*,prevPosZ,"*"
+Entity,*,field_9284_au,*,*,*,prevPosY,"*"
+Entity,*,field_9285_at,*,*,*,prevPosX,"*"
+Entity,*,field_9288_aU,*,*,*,fallDistance,"*"
+Entity,*,field_9289_aT,*,*,*,entityWalks,"*"
+TexturePackList,*,field_6533_b,*,*,*,availableTexturePacks,"The list of the available texture packs."
+ItemBlock,*,field_330_a,*,*,*,blockID,"The block ID of the Block associated with this ItemBlock"
+ModelGhast,*,field_4257_b,*,*,*,tentacles,"*"
+ModelGhast,*,field_4258_a,*,*,*,body,"*"
+Material,*,field_4259_y,*,*,*,canBurn,"Bool defining if the block can burn or not."
+Entity,*,field_9292_aO,*,*,*,yOffset,"*"
+Entity,*,field_9298_aH,*,*,*,onGround,"*"
+Packet8,*,field_9275_a,*,*,*,healthMP,"Variable used for incoming health packets"
+World,*,field_1058_B,*,*,*,scheduledTickTreeSet,"*"
+World,*,field_1056_C,*,*,*,scheduledTickSet,"*"
+ModelRenderer,*,field_1398_m,*,*,*,textureOffsetY,"The Y offset into the texture used for displaying this model"
+ModelRenderer,*,field_1399_l,*,*,*,textureOffsetX,"The X offset into the texture used for displaying this model"
+Block,*,field_9248_k,*,*,*,soundClothFootstep,"*"
+Block,*,field_9249_j,*,*,*,soundGlassFootstep,"*"
+Minecraft,*,field_9244_k,*,*,*,mcCanvas,"*"
+Block,*,field_9247_l,*,*,*,soundSandFootstep,"*"
+Minecraft,*,field_9241_z,*,*,*,mcApplet,"*"
+ModelRenderer,*,field_1410_a,*,*,*,offsetX,"*"
+ItemArmor,*,field_314_bb,*,*,*,maxDamageArray,"Holds the 'base' maxDamage that each armorType have."
+ItemArmor,*,field_310_a,*,*,*,armorLevel,"Stores the armor level: 0 is leather, 1 is chain or gold, 2 is steel and 3 is diamond."
+ItemArmor,*,field_311_aZ,*,*,*,renderIndex,"Used on RenderPlayer to select the correspondent armor to be rendered on the player: 0 is cloth, 1 is chain, 2 is iron, 3 is diamond and 4 is gold."
+ItemArmor,*,field_313_aX,*,*,*,armorType,"Stores the armor type: 0 is helmet, 1 is plate, 2 is legs and 3 is boots"
+ItemSword,*,field_319_a,*,*,*,weaponDamage,"*"
+ModelQuadraped,*,field_1262_h,*,*,*,leg3,"*"
+ModelQuadraped,*,field_1263_g,*,*,*,leg2,"*"
+ModelQuadraped,*,field_1261_i,*,*,*,leg4,"*"
+ModelQuadraped,*,field_1266_d,*,*,*,head,"*"
+ModelCow,*,field_1267_b,*,*,*,horn1,"*"
+ModelQuadraped,*,field_1264_f,*,*,*,leg1,"*"
+ModelQuadraped,*,field_1265_e,*,*,*,body,"*"
+ModelCow,*,field_1268_a,*,*,*,udders,"*"
+ModelCow,*,field_1269_c,*,*,*,horn2,"*"
+Session,*,field_1666_b,*,*,*,inventory,"*"
+Session,*,field_1667_a,*,*,*,registeredBlocksList,"*"
+SoundPool,*,field_1660_d,*,*,*,nameToSoundPoolEntriesMapping,"Maps a name (can be sound/newsound/streaming/music/newmusic) to a list of SoundPoolEntry's."
+SoundPool,*,field_1661_c,*,*,*,rand,"The RNG used by SoundPool."
+Block,*,field_9253_f,*,*,*,soundGravelFootstep,"*"
+Block,*,field_9252_g,*,*,*,soundGrassFootstep,"*"
+Block,*,field_9251_h,*,*,*,soundStoneFootstep,"*"
+Block,*,field_9250_i,*,*,*,soundMetalFootstep,"*"
+Block,*,field_9254_e,*,*,*,soundWoodFootstep,"*"
+BlockFurnace,*,field_456_a,*,*,*,isActive,"True if this is an active furnace, false if idle"
+BlockStairs,*,field_452_a,*,*,*,modelBlock,"The block that is used as model for the stair."
+ModelCreeper,*,field_1271_a,*,*,*,head,"*"
+ModelCreeper,*,field_1270_b,*,*,*,unusedModel,"*"
+ModelCreeper,*,field_1273_f,*,*,*,leg3,"*"
+ModelCreeper,*,field_1272_g,*,*,*,leg4,"*"
+ModelCreeper,*,field_1275_d,*,*,*,leg1,"*"
+ModelCreeper,*,field_1274_e,*,*,*,leg2,"*"
+ModelCreeper,*,field_1276_c,*,*,*,body,"*"
+Entity,*,field_9312_bd,*,*,*,rand,"*"
+EntityArrow,*,field_9316_f,*,*,*,inTile,"*"
+EntityArrow,*,field_9317_e,*,*,*,zTile,"*"
+EntityArrow,*,field_9315_g,*,*,*,inGround,"*"
+EntityArrow,*,field_9318_d,*,*,*,yTile,"*"
+EntityArrow,*,field_9319_c,*,*,*,xTile,"*"
+FontRenderer,*,field_1307_b,*,*,*,charWidth,"Array of width of all the characters in default.png"
+GameSettings,*,field_6524_j,*,*,*,skin,"The name of the selected texture pack."
+EntityMinecart,*,field_9418_e,*,*,*,fuel,"*"
+EntityMinecart,*,field_9417_f,*,*,*,pushX,"*"
+EntityMinecart,*,field_9416_g,*,*,*,pushZ,"*"
+Minecraft,*,field_9237_P,*,*,*,timer,"*"
+Entity,*,field_9305_bk,*,*,*,air,"*"
+Entity,*,field_9304_bm,*,*,*,isImmuneToFire,"*"
+Entity,*,field_9309_bg,*,*,*,fire,"*"
+TexturePackList,*,field_6539_c,*,*,*,defaultTexturePack,"The default texture pack."
+GuiIngame,*,field_9421_h,*,*,*,updateCounter,"*"
+GuiIngame,*,field_9422_g,*,*,*,mc,"*"
+GuiIngame,*,field_9423_f,*,*,*,rand,"*"
+PositionTexureVertex,*,field_1656_c,*,*,*,texturePositionY,"*"
+PositionTexureVertex,*,field_1655_a,*,*,*,vector3D,"*"
+PositionTexureVertex,*,field_1654_b,*,*,*,texturePositionX,"*"
+MathHelper,*,field_1653_a,*,*,*,SIN_TABLE,"A table of sin values computed from 0 (inclusive) to 2*pi (exclusive), with steps of 2*PI / 65536."
+SoundPool,*,field_1659_e,*,*,*,allSoundPoolEntries,"A list of all SoundPoolEntries that have been loaded."
+SoundPool,*,field_1658_a,*,*,*,numberOfSoundPoolEntries,"The number of soundPoolEntry's. This value is computed but never used (should be equal to allSoundPoolEntries.size())."
+EntityLiving,*,field_9336_ak,*,*,*,isJumping,"used to check whether entity is jumping."
+EntityLiving,*,field_9337_J,*,*,*,health,"*"
+EntityLiving,*,field_9330_P,*,*,*,attackTime,"*"
+EntityLiving,*,field_9339_I,*,*,*,swingProgress,"*"
+ItemArmor,*,field_315_ba,*,*,*,damageReduceAmmountArray,"Holds the ammount of damage that the each armorType have."
+ItemArmor,*,field_312_aY,*,*,*,damageReduceAmmount,"Holds the ammount of damage that the armor reduce at full durability."
+Minecraft,*,field_6305_x,*,*,*,objectMouseOver,"The ray trace hit that the mouse is over."
+Minecraft,*,field_6308_u,*,*,*,ingameGUI,"*"
+TexturePackCustom,*,field_6495_f,*,*,*,texturePackName,"The allocated OpenGL texture name for this texture pack, or -1 if it hasn't been allocated yet."
+TexturePackDefault,*,field_6491_e,*,*,*,texturePackName,"The allocated OpenGL for this TexturePack, or -1 if it hasn't been loaded yet."
+World,*,field_9435_j,*,*,*,autosavePeriod,"*"
+World,*,field_9434_r,*,*,*,worldAccesses,"*"
+Minecraft,*,field_6312_q,*,*,*,loadingScreen,"*"
+Minecraft,*,field_6314_o,*,*,*,fontRenderer,"The font renderer used for displaying and measuring text."
+TexturePackBase,*,field_6487_a,*,*,*,texturePackFileName,"The file name of the texture pack, or Default if not from a custom texture pack."
+TexturePackBase,*,field_6486_b,*,*,*,firstDescriptionLine,"The first line of the texture pack description (read from the pack.txt file)"
+TexturePackBase,*,field_6489_c,*,*,*,secondDescriptionLine,"The second line of the texture pack description (read from the pack.txt file)"
+Block,*,field_4063_aU,*,*,*,blockIce,"*"
+EntityLiving,*,field_9357_z,*,*,*,texture,"*"
+ImageBufferDownload,*,field_1344_c,*,*,*,imageHeight,"*"
+ImageBufferDownload,*,field_1343_a,*,*,*,imageData,"*"
+ImageBufferDownload,*,field_1342_b,*,*,*,imageWidth,"*"
+ChunkPosition,*,field_1110_b,*,*,*,y,"The y coordinate of this ChunkPosition"
+ChunkPosition,*,field_1111_a,*,*,*,x,"The x coordinate of this ChunkPosition"
+ChunkPosition,*,field_1112_c,*,*,*,z,"The z coordinate of this ChunkPosition"
+EntityLiving,*,field_9341_H,*,*,*,prevSwingProgress,"*"
+Block,*,field_416_af,*,*,*,plantRed,"Was rose"
+NetClientHandler,*,field_1211_f,*,*,*,worldClient,"*"
+EntityPlayer,*,field_9370_g,*,*,*,score,"*"
+*,*,*,ServerConfigurationManager,*,field_9253_e,maxPlayers,"the maximum amount of players that can be connected"
+*,*,*,ServerConfigurationManager,*,field_9251_j,ipBanFile,"the file which contains the list of banned IPs"
+*,*,*,ServerConfigurationManager,*,field_9250_k,opFile,"the file which contains the list of ops"
+*,*,*,Block,*,field_9028_e,soundWoodFootstep,"*"
+*,*,*,Entity,*,field_9092_m,prevPosX,"*"
+*,*,*,Block,*,field_9024_i,soundMetalFootstep,"*"
+*,*,*,Block,*,field_9025_h,soundStoneFootstep,"*"
+*,*,*,Block,*,field_9026_g,soundGrassFootstep,"*"
+*,*,*,Block,*,field_9027_f,soundGravelFootstep,"*"
+*,*,*,Block,*,field_9022_k,soundClothFootstep,"*"
+*,*,*,Block,*,field_9052_aM,pressurePlatePlanks,"*"
+*,*,*,Entity,*,field_9093_l,worldObj,"*"
+*,*,*,World,*,field_803_m,rand,"RNG for World."
+*,*,*,World,*,field_804_l,monstersEnabled,"Whether monsters are enabled or not. (1 = on, 0 = off)"
+*,*,*,World,*,field_9208_H,nbtCompoundPlayer,"*"
+*,*,*,Entity,*,field_9089_x,prevRotationYaw,"*"
+*,*,*,MinecraftServer,*,field_6033_f,configManager,"the server config manager for this server"
+*,*,*,Block,*,field_9051_aR,button,"*"
+*,*,*,Block,*,field_9044_ay,workbench,"*"
+*,*,*,Block,*,field_9045_at,stairCompactPlanks,"*"
+*,*,*,Block,*,field_9043_L,sponge,"*"
+*,*,*,Block,*,field_9021_l,soundSandFootstep,"*"
+*,*,*,Block,*,field_9023_j,soundGlassFootstep,"*"
+*,*,*,Vec3D,*,field_1055_a,xCoord,"X coordinate of Vec3D"
+*,*,*,PathEntity,*,field_1004_b,points,"The actual points in the path"
+*,*,*,Entity,*,field_9081_ad,air,"*"
+*,*,*,Entity,*,field_9086_A,onGround,"*"
+*,*,*,Entity,*,field_9088_y,prevRotationPitch,"*"
+*,*,*,World,*,field_821_y,field_821,"the chunk provider that generates the chunks for this world"
+*,*,*,Block,*,field_9046_aq,torchWood,"*"
+*,*,*,Block,*,field_9047_al,brick,"*"
+*,*,*,Block,*,field_9055_aH,stairCompactCobblestone,"*"
+*,*,*,Block,*,field_9054_aJ,lever,"*"
+*,*,*,Block,*,field_9053_aK,pressurePlateStone,"*"
+*,*,*,Entity,*,field_9091_n,prevPosY,"*"
+*,*,*,Entity,*,field_9076_H,yOffset,"*"
+*,*,*,Entity,*,field_9073_M,entityWalks,"*"
+*,*,*,Entity,*,field_9072_N,fallDistance,"*"
+*,*,*,Entity,*,field_9090_o,prevPosZ,"*"
