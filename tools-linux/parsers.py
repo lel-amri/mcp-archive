@@ -74,7 +74,8 @@ def parse_rgs   (filename):
                     '.field_map': ['src_name', 'trg_name'],                    
                     '.class':     ['src_name', 'arg'],
                     '.field':     ['src_name', 'src_type', 'arg'],
-                    '.method':    ['src_name', 'src_sig',  'arg']
+                    '.method':    ['src_name', 'src_sig',  'arg'],
+                    '.attribute': ['src_name', 'arg']
                     }
 
     parsed_dic   = {'option':[],
@@ -83,7 +84,8 @@ def parse_rgs   (filename):
                     'field_map':[],
                     'class':[],
                     'field':[],
-                    'method':[]
+                    'method':[],
+                    'attribute':[]
                     }
 
     def get_parsed_line(keyword, buffer):

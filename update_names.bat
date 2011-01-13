@@ -1,10 +1,11 @@
 @echo off
 
-set MCPDIR=%CD%
-set MCPTOOLS=%MCPDIR%\tools
-set MCPCONF=%MCPDIR%\conf
 
-"%MCPTOOLS%\get_csv.exe" -d "%MCPCONF%"
-"%MCPTOOLS%\renamer.exe" -R --skipopengl -c "%MCPCONF%\renamer.conf"
+call setup.bat %1
+
+set MCPCONF_L=%MCPDIR%\conf
+
+"%MCPGETCSV%" -d "%MCPCONF_L%"
+"%MCPRENAMER%" -R --skipopengl -c "%MCPCONFDIR%\renamer.conf"
 
 pause

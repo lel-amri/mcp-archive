@@ -16,18 +16,36 @@ mkdir "%MCSBIN%" 2>NUL:
 
 echo === Minecraft Coder Pack %MCPVERSION% === >"%MCPCOMPLOG%"
 
-echo Compiling Minecraft
+if exist "%MCJADOUT%\net\minecraft\client\Minecraft.java" (
+    echo Compiling Minecraft
 
-echo *** Compiling Minecraft >>"%MCPCOMPLOG%"
-javac -g -verbose -cp "%MCCP%" -sourcepath "%MCJADOUT%" -d "%MCBIN%" %MCSRC1%\*.java %MCSRC2%\*.java "%MCSTART%" 2>>"%MCPCOMPLOG%"
+    echo *** Compiling Minecraft >>"%MCPCOMPLOG%"
+    javac -g -verbose -cp "%MCCP%" -sourcepath "%MCJADOUT%" -d "%MCBIN%" %MCSRC1%\*.java %MCSRC2%\*.java "%MCSTART%" 2>&1 | "%MCPTEE%" -a "%MCPCOMPLOG%" | "%MCPGREP%" -v "^\[" | "%MCPGREP%" -v "^Note:"
 
-echo Compiling Minecraft Start Class
-echo *** Compiling Minecraft Starter >>"%MCPCOMPLOG%"
-javac -g -verbose -sourcepath "%MCJADOUT%" -d "%MCBIN%" "%MCSNDFIX%" 2>>"%MCPCOMPLOG%"
+    echo Compiling Minecraft Start Class
+    echo *** Compiling Minecraft Starter >>"%MCPCOMPLOG%"
+    javac -g -verbose -sourcepath "%MCJADOUT%" -d "%MCBIN%" "%MCSNDFIX%" 2>&1 | "%MCPTEE%" -a "%MCPCOMPLOG%" | "%MCPGREP%" -v "^\[" | "%MCPGREP%" -v "^Note:"
+) else (
+    if exist "%MCJAR%" (
+        echo *** Client not decompiled, run decompile.bat
+    ) else (
+        echo *** minecraft.jar was not found, skipping
+    )
+)
 
-echo Compiling Minecraft Server
-echo *** Compiling Minecraft Server >>"%MCPCOMPLOG%"
-javac -g -verbose -sourcepath "%MCSJADOUT%" -d "%MCSBIN%" %MCSSRC1%\*.java %MCSSRC2%\*.java 2>>"%MCPCOMPLOG%"
+
+if exist "%MCSJADOUT%\net\minecraft\server\MinecraftServer.java" (
+    echo Compiling Minecraft Server
+    echo *** Compiling Minecraft Server >>"%MCPCOMPLOG%"
+    javac -g -verbose -sourcepath "%MCSJADOUT%" -d "%MCSBIN%" %MCSSRC1%\*.java %MCSSRC2%\*.java 2>&1 | "%MCPTEE%" -a "%MCPCOMPLOG%" | "%MCPGREP%" -v "^\[" | "%MCPGREP%" -v "^Note:"
+) else (
+    if exist "%MCSJAR%" (
+        echo *** Server not decompiled, run decompile.bat
+    ) else (
+        echo *** minecraft_server.jar was not found, skipping
+    )
+)
 
 echo === MCP %MCPVERSION% recompile script finished ===
+
 pause

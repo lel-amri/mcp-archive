@@ -10,14 +10,29 @@ else
   MCVERSIONPATH=""
 fi
   
-MCPVERSION=2.5
+MCPVERSION=2.6
 
 MCPDIR=`pwd`
 
-if [ "$MCPDIR" != "${MCPDIR/ /}" ]
+if [ "${0/decompile}" != "$0" -o  "$MCPDIR" != "${MCPDIR/ }" ]
 then
-  echo "=== This mcp-linux-version does not support whitespaces in path or filenames! Aborting. ==="
-  exit 666
+  echo "=== Creating directory symlink in /tmp..."
+  TMPFILE=`mktemp /tmp/mcpXXXXX`
+  if ! [ -f "$TMPFILE" ]; then
+    echo "=== Could not create temporary file!"
+    exit 1
+  fi
+
+  ln -sf `pwd` $TMPFILE
+  if ! [ -h "$TMPFILE" ]; then
+    echo "=== Could not create directory symlink!"
+    rm -f "$TMPFILE"
+    exit 1
+  fi
+
+  cd $TMPFILE
+  trap "rm -f $TMPFILE" 0
+  MCPDIR="$TMPFILE"
 fi
 
 MCPTOOLSDIR="$MCPDIR/tools"
@@ -73,7 +88,7 @@ MCSPATCH="$MCPPATCHDIR/minecraft_server.patch"
 MCPSPLASHES="$MCPPATCHDIR/splashes.txt"
 
 MCSTART="$MCPPATCHDIR/Start.java"
-MCSNDFIX="$MCPPATCHDIR/fi.java"
+MCSNDFIX="$MCPPATCHDIR/fr.java"
 
 MCSRC1="$MCPSOURCEBASE/minecraft/net/minecraft/client"
 MCSRC2="$MCPSOURCEBASE/minecraft/net/minecraft/src"
@@ -86,6 +101,7 @@ MCSPLASHES="$MCPTEMPDIR/minecraft/title/splashes.txt"
 
 MCTESTCP="$MCBIN":"$MCTEMP":"$MCJI":"$MCJGL":"$MCJGLU"
 MCNAT="$MCPJARSDIR/bin/natives"
+MCSTESTCP="$MCSBIN":"$MCSTEMP"
 
 MCREOBSCRIPT="$MCPDIR/conf/minecraft_rev.saffx"
 MCSREOBSCRIPT="$MCPDIR/conf/minecraft_server_rev.saffx"
@@ -107,8 +123,8 @@ then
   echo "=== Initializing MCP "$MCPVERSION" environment ==="
 
   echo "+++ Checking scripts"
-  chmod -c u+x "$MCPDIR"/*.sh
-  chmod -c u+x "$MCPLINUXTOOLSDIR"/*.sh
+  chmod -c +x "$MCPDIR"/*.sh
+  chmod -c +x "$MCPLINUXTOOLSDIR"/*.sh
 
   echo "+++ Checking directory structure"
   echo "+ $MCPREOBDIR"

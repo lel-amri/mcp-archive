@@ -10,5 +10,12 @@ if errorlevel 1 (
     exit /b
 )
 
-cd "%MCPBINDIR%"
-java -Xmx1024M -Xms1024M -cp "%MCSBIN%" net.minecraft.server.MinecraftServer
+if exist "%MCSBIN%\net\minecraft\server\MinecraftServer.class" (
+    cd "%MCPBINDIR%"
+    java -Xms1024M -Xmx1024M -cp "%MCSTESTCP%" net.minecraft.server.MinecraftServer
+    cd "%MCPDIR%"
+) else (
+    echo *** Server not compiled, run recompile.bat
+)
+
+pause

@@ -11,4 +11,5 @@ fi
 
 echo "=== Minecraft Coder Pack $MCPVERSION ==="
 
-java -Xmx1024M -Xms1024M -cp $MCSBIN net.minecraft.server.MinecraftServer
+cd $MCPBINDIR
+java -Xmx1024M -Xms1024M -cp $MCSTESTCP net.minecraft.server.MinecraftServer

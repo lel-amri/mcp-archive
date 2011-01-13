@@ -1,5 +1,6 @@
-import def_project
-import parsers
+import sys
+import time
+import shutil
 import pprint
 import os
 import re
@@ -7,7 +8,15 @@ import glob
 import shutil
 import urllib
 import md5
+sys.path.append('..')
+sys.path.append('../parsers')
+sys.path.append('../obfuscathon_v2')
+sys.path.append('../renamer_v3')
+
+import parsers
+import def_project
 import annotate_gl_constants
+
 from optparse import OptionParser
 
 def get_class_list(filename):
@@ -43,16 +52,22 @@ def main(options, args):
     class_list   = get_class_list(conf)
     parsed_match = parsers.parse_saffx(obf)
     parsed_match['Option'] = parsed_match['options']
-    parsed_match['Class']  = {}
-    parsed_match['Method'] = {}
-    parsed_match['Field']  = {}
+    parsed_match['Class']     = {}
+    parsed_match['Method']    = {}
+    parsed_match['Field']     = {}
+    parsed_match['Signature'] = {}
+    signat_table              = {}
     
     for value in parsed_match['classes']:
         parsed_match['Class'][value['src_name']] = value['trg_name']
     for value in parsed_match['methods']:
         parsed_match['Method'][value['src_name']] = value['trg_name']
+    for value in parsed_match['methods']:
+        parsed_match['Signature'][value['src_name']] = value['src_sig']        
     for value in parsed_match['fields']:
-        parsed_match['Field'][value['src_name']] = value['trg_name']        
+        parsed_match['Field'][value['src_name']] = value['trg_name']
+
+
     
     print ('+ Reading classes in %s.'%indir)
     current_project = def_project.ProjectDef(indir)

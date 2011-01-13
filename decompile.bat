@@ -3,7 +3,7 @@
 call setup.bat %1
 call findjdk.bat PATH
 
-set REINDEX_NUMBER=15000
+set REINDEX_NUMBER=20000
 
 java -help > NUL 2> NUL
 if errorlevel 1 (
@@ -21,16 +21,23 @@ echo === Minecraft Coder Pack %MCPVERSION% === >"%MCPLOG%"
 echo MCP %MCPVERSION% running in %MCPDIR%
 
 if exist "%MCJAR%" (
+    if exist "%MCJADOUT%\net\minecraft\client\Minecraft.java" (
+        echo *** minecraft.jar already decompiled, run cleanup.bat
+        echo *** minecraft.jar already decompiled >>"%MCPLOG%"
+        goto skip_mc
+    )
+
     echo *** minecraft.jar was found, processing >>"%MCPLOG%"
-    
+
     echo Deobfuscating minecraft.jar
     echo *** Deobfuscating minecraft.jar >>"%MCPLOG%"
     %MCPRG% "%MCJAR%" "%MCRGJAR%" "%MCRGSCRIPT%" "%MCRGLOG%" %REINDEX_NUMBER% >>"%MCPLOG%"
-    
+
     echo Unpacking minecraft.jar
     echo *** Unpacking minecraft.jar >>"%MCPLOG%"
     "%MCPUNZIP%" -o "%MCRGJAR%" * -d "%MCTEMP%" >>"%MCPLOG%"
     del /f /q "%MCTEMP%\META-INF\MOJANG_C.*"
+    del /f /q "%MCTEMP%\null"
 
     echo Fixing minecraft classes
     echo *** Fixing minecraft classes >>"%MCPLOG%"
@@ -44,26 +51,35 @@ if exist "%MCJAR%" (
     echo Repackage minecraft sources
     echo *** Repackage minecraft sources >>"%MCPLOG%"
     "%MCPREPACK%" "%MCJADOUT%" %MCPACKAGE% >>"%MCPLOG%"
-    
+
     echo Patching minecraft sources
     echo *** Patching minecraft sources >>"%MCPLOG%"
-    "%MCPPATCH%" -p 1 -u -i "%MCPATCH%" -d "%MCJADOUT%" >>"%MCPLOG%"
+    "%MCPPATCH%" -p 1 -u -i "%MCPATCH%" -d "%MCJADOUT%" -s | "%MCPTEE%" -a "%MCPLOG%"
 
 ) else (
-    echo Minecraft.jar was not found.
-    echo Minecraft.jar was not found >>"%MCPLOG%"
+    echo *** minecraft.jar was not found, skipping
+    echo minecraft.jar was not found >>"%MCPLOG%"
 )
 
+:skip_mc
+
 if exist "%MCSJAR%" (
+    if exist "%MCSJADOUT%\net\minecraft\server\MinecraftServer.java" (
+        echo *** minecraft_server.jar already decompiled, run cleanup.bat
+        echo *** minecraft_server.jar already decompiled >>"%MCPLOG%"
+        goto skip_mcs
+    )
+
     echo *** minecraft_server.jar was found, processing >>"%MCPLOG%"
-    
+
     echo Deobfuscating minecraft_server.jar
     echo *** Deobfuscating minecraft_server.jar >>"%MCPLOG%"
     %MCPRG% "%MCSJAR%" "%MCSRGJAR%" "%MCSRGSCRIPT%" "%MCSRGLOG%" %REINDEX_NUMBER% >>"%MCPLOG%"
-    
+
     echo Unpacking minecraft_server.jar
     echo *** Unpacking minecraft_server.jar >>"%MCPLOG%"
     "%MCPUNZIP%" -o "%MCSRGJAR%" * -d "%MCSTEMP%" >>"%MCPLOG%"
+    del /f /q "%MCSTEMP%\null"
 
     echo Fixing minecraft server classes
     echo *** Fixing minecraft server classes >>"%MCPLOG%"
@@ -77,21 +93,24 @@ if exist "%MCSJAR%" (
     echo Repackage minecraft server sources
     echo *** Repackage minecraft server sources >>"%MCPLOG%"
     "%MCPREPACK%" "%MCSJADOUT%" %MCSPACKAGE% >>"%MCPLOG%"
-    
+
     echo Patching minecraft server sources
     echo *** Patching minecraft server sources >>"%MCPLOG%"
-    "%MCPPATCH%" -p 1 -u -i "%MCSPATCH%" -d "%MCSJADOUT%" >>"%MCPLOG%"
+    "%MCPPATCH%" -p 1 -u -i "%MCSPATCH%" -d "%MCSJADOUT%" -s | "%MCPTEE%" -a "%MCPLOG%"
 
 ) else (
-    echo Minecraft_server.jar was not found.
-    echo Minecraft_server.jar was not found >>"%MCPLOG%"
+    echo *** minecraft_server.jar was not found, skipping
+    echo minecraft_server.jar was not found >>"%MCPLOG%"
 )
 
-    if exist "%MCPSPLASHES%" copy "%MCPSPLASHES%" "%MCSPLASHES%"
-    
-    echo Renaming methods and fields
-    echo *** Renaming methods and fields >>"%MCPLOG%"
-    "%MCPRENAMER%" -R -c "%MCPCONFDIR%\renamer.conf" >>"%MCPLOG%"
+:skip_mcs
+
+if exist "%MCPSPLASHES%" copy "%MCPSPLASHES%" "%MCSPLASHES%" >NUL
+
+echo Renaming methods and fields
+echo *** Renaming methods and fields >>"%MCPLOG%"
+"%MCPRENAMER%" -R -c "%MCPCONFDIR%\renamer.conf" >>"%MCPLOG%"
 
 echo === MCP %MCPVERSION% decompile script finished ===
+
 pause

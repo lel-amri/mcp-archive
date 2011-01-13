@@ -1,4 +1,4 @@
-set MCPVERSION=2.5
+set MCPVERSION=2.6
 set MCVERSION=%1
 
 echo *** Minecraft Coder Pack Version %MCPVERSION% ***
@@ -22,9 +22,12 @@ set MCPUNZIP=%MCPTOOLSDIR%\unzip.exe
 set MCPJR=%MCPTOOLSDIR%\jadretro.exe
 set MCPJAD=%MCPTOOLSDIR%\jad.exe
 set MCPPATCH=%MCPTOOLSDIR%\applydiff.exe
+set MCPGETCSV=%MCPTOOLSDIR%\get_csv.exe
 set MCPRENAMER=%MCPTOOLSDIR%\renamer.exe
 set MCPREPACK=%MCPTOOLSDIR%\repackage.exe
 set MCPOBFUSC=%MCPTOOLSDIR%\obfuscathon.exe
+set MCPTEE=%MCPTOOLSDIR%\tee.exe
+set MCPGREP=%MCPTOOLSDIR%\grep.exe
 
 set MCJAR=%MCPJARSDIR%\bin\minecraft.jar
 set MCSJAR=%MCPJARSDIR%\minecraft_server.jar
@@ -55,7 +58,7 @@ set MCSPATCH=%MCPPATCHDIR%\minecraft_server.patch
 set MCPSPLASHES=%MCPPATCHDIR%\splashes.txt
 
 set MCSTART=%MCPPATCHDIR%\Start.java
-set MCSNDFIX=%MCPPATCHDIR%\fi.java
+set MCSNDFIX=%MCPPATCHDIR%\fr.java
 
 set MCSRC1=%MCPSOURCEBASE%\minecraft\net\minecraft\client
 set MCSRC2=%MCPSOURCEBASE%\minecraft\net\minecraft\src
@@ -68,6 +71,7 @@ set MCSPLASHES=%MCPTEMPDIR%\minecraft\title\splashes.txt
 
 set MCTESTCP=%MCBIN%;%MCTEMP%;%MCJI%;%MCJGL%;%MCJGLU%
 set MCNAT=%MCPJARSDIR%\bin\natives
+set MCSTESTCP=%MCSBIN%;%MCSTEMP%
 
 set MCREOBSCRIPT=%MCPDIR%\conf\minecraft_rev.saffx
 set MCSREOBSCRIPT=%MCPDIR%\conf\minecraft_server_rev.saffx

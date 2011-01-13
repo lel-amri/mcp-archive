@@ -1512,7 +1512,7 @@ constant_map = {
     37157: 'GL_MAX_FRAGMENT_INPUT_COMPONENTS',
     37158: 'GL_CONTEXT_PROFILE_MASK'}
 
-constant_regex = re.compile(r'(?<![.\w])\d+(?![.\w])')
+constant_regex = re.compile(r'(?<![.\w])\d+(?![.\w])(?! /\*GL_)')
 
 def expand_constant(match):
     constant = match.group(0)
@@ -1528,7 +1528,7 @@ def annotate_constants(code):
 
 def annotate_file(filename):
     code = file(filename,'r').read()
-    if 'import org.lwjgl.opengl.GL11' in code:
+    if 'import org.lwjgl.opengl.' in code:
         code = annotate_constants(code)
         file(filename,'w').write(code)
 

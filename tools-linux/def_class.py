@@ -63,6 +63,12 @@ class ClassDef():
     def get_fieldsref (self):
         return ['%s/%s'%(i.get_class(),i.get_name()) for i in self.cpool if i.Tag == 9]
 
+    def get_methodsref_inst(self):
+        return [i for i in self.cpool if i.Tag in [10,11]]
+
+    def get_fieldsref_inst (self):
+        return [i for i in self.cpool if i.Tag == 9]
+
     def get_members   (self, m_type):
         if m_type == 'Field':  return self.get_fields()
         if m_type == 'Method': return self.get_methods()
@@ -88,6 +94,34 @@ class ClassDef():
 
     def get_methods_desc   (self):
         return ['%s/%s %s'%(self.get_classname(),i.get_name(), i.get_desc()) for i in self.methods]
+
+    def get_field_desc     (self, classname, name):
+        fieldsrefs = self.get_fieldsref_inst()
+        for i in fieldsrefs:
+            if i.get_name() == name and i.get_class() == classname:
+                return i.get_desc()
+        for i in self.fields:
+            if i.get_name() == name and self.get_classname() == classname:
+                return i.get_desc()
+        return None            
+
+    def get_method_desc    (self, classname, name):
+        methodrefs = self.get_methodsref_inst()
+        for i in methodrefs:
+            if i.get_name() == name and i.get_class() == classname:
+                return i.get_desc()        
+        for i in self.methods:
+            if i.get_name() == name and self.get_classname() == classname:
+                return i.get_desc()
+        return None            
+
+    def print_fieldsref(self):
+        fieldsrefs = self.get_fieldsref_inst()
+        for i in fieldsrefs: print "%s %s %s"%(i.get_class(), i.get_name(), i.get_desc())
+
+    def print_methodsref(self):
+        methodrefs = self.get_methodsref_inst()
+        for i in methodrefs: print "%s %s %s"%(i.get_class(), i.get_name(), i.get_desc())
 
     def get_constructors   (self):
         return ['%s/%s %s'%(self.get_classname(),i.get_name(), i.get_desc()) for i in self.methods if i.get_name() in ['<init>', '<clinit>']]
