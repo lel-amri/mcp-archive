@@ -21,7 +21,7 @@ then
 
   echo "Fixing minecraft classes"
   echo "*** Fixing minecraft classes" >> $MCPLOG
-  wine $MCPJR -b $MCTEMP >> $MCPLOG 2>/dev/null
+  wine $MCPJR $MCTEMP >> $MCPLOG 2>/dev/null
 
   echo "Decompiling minecraft classes"
   echo "*** Decompiling minecraft classes" >> $MCPLOG
@@ -55,7 +55,7 @@ then
 
   echo "Fixing minecraft server classes"
   echo "*** Fixing minecraft server classes" >> $MCPLOG
-  wine $MCPJR -b $MCSTEMP >> $MCPLOG 2>/dev/null
+  wine $MCPJR $MCSTEMP >> $MCPLOG 2>/dev/null
 
   echo "Decompiling minecraft server classes"
   echo "*** Decompiling minecraft server classes" >> $MCPLOG

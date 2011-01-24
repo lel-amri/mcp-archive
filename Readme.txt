@@ -1,4 +1,4 @@
-Minecraft mod creator pack 2.6 for Minecraft 1.1_02
+Minecraft mod creator pack 2.7 for Minecraft 1.2_02
 ===================================================
 
 Prerequisites:
@@ -125,9 +125,12 @@ MissLil
 * Lots of reverse engineering
 * OpenGL constants annoting
 Fesh0r
-* php/sql code monkey
+* PHP/SQL code monkey
+* MCP 2.6/2.7 class mappings, patches, and general release work
 ScottyDoesKnow
 * obfuscathonCharmer, the obfuscathon GUI
+Tahg
+* Server class mappings
 
 and of course:
 - Everybody who contributed to the great google spreadsheet or who created some mods (I've got them all :).
@@ -137,7 +140,8 @@ and of course:
 
 History:
 ========
-2.6  - Updated to support Minecraft 1.1._02 and MinecraftServer 1.1_02
+2.7  - Updated to support Minecraft 1.2_02 and MinecraftServer 1.2_01
+2.6  - Updated to support Minecraft 1.1_02 and MinecraftServer 1.1_02
 2.5  - Updated to support Minecraft 1.2.6 and MinecraftServer 0.2.8
 2.4  - Updated to support Minecraft 1.2.5 and MinecraftServer 0.2.7
 2.3  - Updated to support Minecraft 1.2.3_04 and MinecraftServer 0.2.5_02. Linux support beta.
@@ -156,7 +160,7 @@ History:
 
 Roadmap:
 ========
-2.7+ - New awesome features, improvements and updates :)
+2.8+ - New awesome features, improvements and updates :)
 
 _________________________________________________________________________________________________________________
 _________________________________________________________________________________________________________________

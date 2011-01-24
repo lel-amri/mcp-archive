@@ -1,11 +1,18 @@
-import parsers
-import pprint
-import glob
 import os
 import re
-import shutil
 import md5
+import sys
+import glob
+import time
+import shutil
+import pprint
+
 from optparse import OptionParser
+
+sys.path.append('..')
+sys.path.append('../parsers')
+
+import parsers
 import annotate_gl_constants as GLConstants
 
 def create_dic_class (parsed_rgs):
@@ -58,8 +65,14 @@ def create_dic_member(parsed_rgs, parsed_csv, class_dict, target, type, config):
         return_dic[s_root]['descript']    = None
         return_dic[s_root]['package']     = config['package_name']
         
-        return_dic[s_root]['modified']    = False   #This one is just for the IRC bot and useless otherwise
+        #Bot related keys
+        return_dic[s_root]['old_mod']     = False   #This modification has already been commited and is considered permanent
+        return_dic[s_root]['new_mod']     = False   #This is a new modification to be commited on next update
+        return_dic[s_root]['modified']    = False   #The entry has been modified
         return_dic[s_root]['nick_mod']    = None    #The name of the guy who did the last set on this entry
+        return_dic[s_root]['time_mod']    = None    #The time of the modification
+        return_dic[s_root]['forced']      = False   #If this entry has been forced modified
+        return_dic[s_root]['annotation']  = ''      #Some infos which may be usefull later one
         
         try:
             return_dic[s_root]['class']       = rev_class_dict[notch_data[-2]]

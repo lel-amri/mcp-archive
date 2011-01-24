@@ -3,7 +3,7 @@
 call setup.bat %1
 call findjdk.bat PATH
 
-set REINDEX_NUMBER=20000
+set REINDEX_NUMBER=21000
 
 java -help > NUL 2> NUL
 if errorlevel 1 (
@@ -41,7 +41,7 @@ if exist "%MCJAR%" (
 
     echo Fixing minecraft classes
     echo *** Fixing minecraft classes >>"%MCPLOG%"
-    "%MCPJR%" -b "%MCTEMP%" >>"%MCPLOG%" 2>NUL:
+    "%MCPJR%" "%MCTEMP%" >>"%MCPLOG%" 2>NUL:
 
     echo Decompiling minecraft classes
     echo *** Decompiling minecraft classes >>"%MCPLOG%"
@@ -83,7 +83,7 @@ if exist "%MCSJAR%" (
 
     echo Fixing minecraft server classes
     echo *** Fixing minecraft server classes >>"%MCPLOG%"
-    "%MCPJR%" -b "%MCSTEMP%" >>"%MCPLOG%" 2>NUL:
+    "%MCPJR%" "%MCSTEMP%" >>"%MCPLOG%" 2>NUL:
 
     echo Decompiling minecraft server classes
     echo *** Decompiling minecraft server classes >>"%MCPLOG%"

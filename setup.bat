@@ -1,4 +1,4 @@
-set MCPVERSION=2.6
+set MCPVERSION=2.7
 set MCVERSION=%1
 
 echo *** Minecraft Coder Pack Version %MCPVERSION% ***
@@ -58,7 +58,7 @@ set MCSPATCH=%MCPPATCHDIR%\minecraft_server.patch
 set MCPSPLASHES=%MCPPATCHDIR%\splashes.txt
 
 set MCSTART=%MCPPATCHDIR%\Start.java
-set MCSNDFIX=%MCPPATCHDIR%\fr.java
+set MCSNDFIX=%MCPPATCHDIR%\gd.java
 
 set MCSRC1=%MCPSOURCEBASE%\minecraft\net\minecraft\client
 set MCSRC2=%MCPSOURCEBASE%\minecraft\net\minecraft\src
