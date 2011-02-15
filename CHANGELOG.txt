@@ -1,3 +1,8 @@
+v2.8:
+    + Added alpha version of OSX support
+	+ Added alpha version of the MCP mod system
+	+ Updated mapping with a lot more method and field names
+
 v2.7:
     + Updated scripts to support Minecraft Beta 1.2_02 and Server 1.2_01
 

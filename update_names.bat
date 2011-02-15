@@ -1,10 +1,12 @@
 @echo off
 
-call setup.bat %1
+call setup.bat
 
-set MCPCONF_L=%MCPDIR%\conf
+echo MCP %MCPVERSION% running in %MCPDIR%
 
-"%MCPGETCSV%" -d "%MCPCONF_L%"
-"%MCPRENAMER%" -R -c "%MCPCONFDIR%\renamer.conf"
+%MCPGETCSV% -d "%MCPCONFDIR%"
+%MCPRENAMER% -R -c "%MCPCONFDIR%\renamer.conf"
+
+echo === MCP %MCPVERSION% update names script finished ===
 
 pause

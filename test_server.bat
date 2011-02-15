@@ -1,9 +1,9 @@
 @echo off
 
-call setup.bat %1
+call setup.bat
 call findjdk.bat PATH
 
-java -help > NUL 2> NUL
+java -help >NUL 2>NUL
 if errorlevel 1 (
     echo Unable to locate java.exe. Please verify that it is in the PATH.
     pause
