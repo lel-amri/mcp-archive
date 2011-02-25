@@ -1,5 +1,7 @@
-Minecraft mod creator pack 2.8 for Minecraft 1.2_02
+Minecraft mod creator pack 2.9 for Minecraft 1.3_01
 ===================================================
+
+(The MCP Mod System is not included in this release, it will be released as soon as it is updated for 1.3_01)
 
 Prerequisites:
 ==============
@@ -81,6 +83,8 @@ Notes:
   game :) The known bugs, like missing sound effects or the backspace bug in the text entry gui, are fixed with this
   release.
 
+* If your reobfuscated classes cause a black screen in Minecraft, make sure that you've deleted the META-INF folder
+  in the minecraft.jar file.
 
 Credits:
 ========
@@ -90,7 +94,7 @@ Searge
 * Created the MCP Mod Launcher system and API
 ProfMobius
 * Creator of the renaming codes and re-obfuscation procedures
-* Helped to port scripts on Linux
+* Helped to port scripts to Linux
 * Developer and maintainer of the MCP chan bot
 * Is now bald after working too much with java constant pool and re-obfuscation
 IngisKahn
@@ -99,12 +103,12 @@ IngisKahn
 Generic
 * Works on improving IngisKahn's bytecode compare tool
 * Added some important features to retroguard
-fotoply
-* Helped to improve the batch files
 Fesh0r
 * php/sql code monkey
 * MCP 2.6/2.7 class mappings, patches, and general release work
 * Has Searge's approval to make official MCP releases ;)
+fotoply
+* Helped to improve the batch files
 Cadde
 * Community manager and Wiki manager
 * Works on the de-obfuscation spreadsheet
@@ -132,12 +136,17 @@ MissLil
 * OpenGL constants annoting
 ScottyDoesKnow
 * obfuscathonCharmer, the obfuscathon GUI
-Tahg
-* Server class mappings
 Chase
 * MCP Launcher Work
 * External jar loading
-* Scrollable mod list
+* Scrollable mod list.
+303
+* Wiki contributor
+* Tries to help out newbies in the IRC channels
+ZeuX
+* Helps out in the IRC channels, constantly fails at solving modloader issues.
+* Named most new classes for MCP 2.9
+* Did server patches for MCP 2.9
 
 and of course:
 - Everybody who contributed to the great google spreadsheet or who created some mods (I've got them all :).
@@ -147,6 +156,7 @@ and of course:
 
 History:
 ========
+2.9  - Updated to support Minecraft 1.3_01 and MinecraftServer 1.3
 2.8  - Added the MCP mod system SDK and support for OSX
 2.7  - Updated to support Minecraft 1.2_02 and MinecraftServer 1.2_01
 2.6  - Updated to support Minecraft 1.1_02 and MinecraftServer 1.1_02
@@ -168,7 +178,8 @@ History:
 
 Roadmap:
 ========
-2.9+ - New awesome features, improvements and updates :)
+3.0  - An improved set of tools and an updated version of the MCP Mod System
+3.1+ - New awesome features, improvements and updates :)
 
 _________________________________________________________________________________________________________________
 _________________________________________________________________________________________________________________

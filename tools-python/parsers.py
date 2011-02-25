@@ -68,13 +68,16 @@ def parse_rgs   (filename):
     print '+ Opening file %s for reading.'%filename
     ff = open(filename, 'rb')
 
-    rgs_keywords = {'.option':    ['rgs_name'], 
-                    '.class_map': ['src_name', 'trg_name'], 
-                    '.method_map':['src_name', 'src_sig', 'trg_name'], 
-                    '.field_map': ['src_name', 'trg_name'],                    
+    rgs_keywords = {'.option':    ['rgs_name'],
+                    '.class_map': ['src_name', 'trg_name'],
+                    '.method_map':['src_name', 'src_sig', 'trg_name'],
+                    '.field_map': ['src_name', 'trg_name'],
                     '.class':     ['src_name', 'arg'],
+                    '.class;private': ['src_name', 'arg'],
                     '.field':     ['src_name', 'src_type', 'arg'],
+                    '.field;private': ['src_name', 'src_type', 'arg'],
                     '.method':    ['src_name', 'src_sig',  'arg'],
+                    '.method;private': ['src_name', 'src_sig',  'arg'],
                     '.attribute': ['src_name', 'arg']
                     }
 
@@ -83,8 +86,11 @@ def parse_rgs   (filename):
                     'method_map':[],
                     'field_map':[],
                     'class':[],
+                    'class;private':[],
                     'field':[],
+                    'field;private':[],
                     'method':[],
+                    'method;private':[],
                     'attribute':[]
                     }
 
@@ -119,8 +125,8 @@ def parse_saffx (filename):
     ff = open(filename, 'rb')
 
     saffx_states = {  '[OPTIONS]': ['command', 'argument'],
-                      '[CLASSES]': ['src_name', 'trg_name'], 
-                      '[METHODS]': ['src_name', 'src_sig', 'trg_name', 'trg_sig'], 
+                      '[CLASSES]': ['src_name', 'trg_name'],
+                      '[METHODS]': ['src_name', 'src_sig', 'trg_name', 'trg_sig'],
                       '[FIELDS]':  ['src_name', 'trg_name']
                     }
 

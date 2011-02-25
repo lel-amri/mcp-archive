@@ -1,3 +1,6 @@
+v2.9:
+    + Updated scripts to support Minecraft Beta 1.3_01 and Server 1.3
+
 v2.8:
     + Added alpha version of OSX support
 	+ Added alpha version of the MCP mod system
