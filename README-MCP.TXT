@@ -1,7 +1,5 @@
-Minecraft mod creator pack 2.9 for Minecraft 1.3_01
-===================================================
-
-(The MCP Mod System is not included in this release, it will be released as soon as it is updated for 1.3_01)
+Minecraft mod creator pack 2.9a for Minecraft 1.3_01
+====================================================
 
 Prerequisites:
 ==============
@@ -143,10 +141,14 @@ Chase
 303
 * Wiki contributor
 * Tries to help out newbies in the IRC channels
+* Created some scripts for mod loader support
 ZeuX
 * Helps out in the IRC channels, constantly fails at solving modloader issues.
 * Named most new classes for MCP 2.9
 * Did server patches for MCP 2.9
+Risugami
+* The guy who created the first mods I (Searge) ever used in Minecraft
+* The creator of modloader who gave us permission to include files from his system in MCP
 
 and of course:
 - Everybody who contributed to the great google spreadsheet or who created some mods (I've got them all :).
@@ -156,6 +158,7 @@ and of course:
 
 History:
 ========
+2.9a - Added MCP Mod System for 1.3_01, added mod loader support, updated mappings
 2.9  - Updated to support Minecraft 1.3_01 and MinecraftServer 1.3
 2.8  - Added the MCP mod system SDK and support for OSX
 2.7  - Updated to support Minecraft 1.2_02 and MinecraftServer 1.2_01

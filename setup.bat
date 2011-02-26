@@ -41,7 +41,7 @@ set MCSJAR=%MCPJARSDIR%\minecraft_server.jar
 set MCJI=%MCPJARSDIR%\bin\jinput.jar
 set MCJGL=%MCPJARSDIR%\bin\lwjgl.jar
 set MCJGLU=%MCPJARSDIR%\bin\lwjgl_util.jar
-set MCCP=%MCJAR%;%MCJI%;%MCJGL%;%MCJGLU%
+set MCCP=%MCJAR%;%MCJI%;%MCJGL%;%MCJGLU%;%MCPPATCHDIR%\modloader.jar
 
 set MCRGJAR=%MCPTEMPDIR%\minecraft_rg.jar
 set MCRGSCRIPT=%MCPCONFDIR%\minecraft.rgs
@@ -96,4 +96,7 @@ set MODTEMP=%MCBIN%
 set MODREOBDIR=%MCPTEMPDIR%\mods
 set MODSOURCEBASE=mods\MCP
 set MODCP=%MCPMODDIR%\mcp_v1.jar;%MCTESTCP%
-set MODJAR=%MCPOUTDIR%\mcp_12_02.jar
+set MODJAR=%MCPOUTDIR%\mcp_13_01.jar
+
+set MLPATCH=%MCPPATCHDIR%\modloader.patch
+set MLCP=%MCPPATCHDIR%\modloader.jar;%MCTESTCP%

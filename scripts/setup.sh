@@ -123,6 +123,10 @@ MODSOURCEBASE="mods/MCP"
 MODCP="$MCPMODDIR/mcp_v1.jar:$MCTESTCP"
 MODJAR="$MCPOUTDIR/mcp_12_02.jar"
 
+MLPATCH="$MCPPATCHDIR/modloader.patch"
+MLCP="$MCPPATCHDIR/modloader.jar:$MCTESTCP"
+MCCP="$MCCP:$MCPPATCHDIR/modloader.jar"
+
 if [ "$1" == --init ] || [ ! -e "$MCPCONFDIR/init" ]
 then
   echo "=== Initializing MCP $MCPVERSION environment ==="

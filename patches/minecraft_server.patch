@@ -1,5 +1,3 @@
-Only in minecraft_server_patched: .project
-Only in minecraft_server_patched\net\minecraft\server: MinecraftServer.class
 diff -r -U 3 minecraft_server\net\minecraft\server\MinecraftServer.java minecraft_server_patched\net\minecraft\server\MinecraftServer.java
 --- minecraft_server\net\minecraft\server\MinecraftServer.java	Fri Feb 25 15:59:09 2011
 +++ minecraft_server_patched\net\minecraft\server\MinecraftServer.java	Fri Feb 25 15:26:54 2011
