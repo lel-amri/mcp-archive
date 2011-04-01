@@ -3,7 +3,6 @@ Things required to run:
 - The shell scripts in the scripts directory need to be moved into the root
   directory of MCP before using them:
   mv scripts/*.sh .
-- python to run some of the tools
 - minecraft.jar, lwjgl jars, and the OSX version of the natives, these can be
   found in your home folder under "Library/Application Support/minecraft/bin",
   the entire bin folder itself should be copied into the jars folder

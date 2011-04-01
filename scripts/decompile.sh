@@ -21,7 +21,10 @@ then
 
     echo "Unpacking minecraft.jar"
     echo "*** Unpacking $MCJAR" >> "$MCPLOG"
-    unzip -o "$MCRGJAR" -d "$MCTEMP" >> "$MCPLOG"
+    mkdir -p "$MCTEMP"
+    cd "$MCTEMP"
+    jar xvf "$MCRGJAR" >> "$MCPLOG"
+    cd "$MCPDIR"
     rm -f "$MCTEMP/META-INF"/MOJANG_C.*
     rm -f "$MCTEMP/null"
 
@@ -61,7 +64,10 @@ then
 
     echo "Unpacking minecraft_server.jar"
     echo "*** Unpacking $MCSJAR" >> "$MCPLOG"
-    unzip -o "$MCSRGJAR" -d "$MCSTEMP" >> "$MCPLOG"
+    mkdir -p "$MCSTEMP"
+    cd "$MCSTEMP"
+    jar xvf "$MCSRGJAR" >> "$MCPLOG"
+    cd "$MCPDIR"
     rm -f "$MCSTEMP/null"
 
     echo "Fixing minecraft server classes"

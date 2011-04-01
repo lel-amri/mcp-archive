@@ -1,3 +1,6 @@
+v2.10:
+    + Updated scripts to support Minecraft Beta 1.4 and Server 1.4
+
 v2.9a:
     + Added support for mod loader 1.3_01v3
     + Added MCP Mod System SDK updated for 1.3_01

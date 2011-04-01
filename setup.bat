@@ -1,4 +1,4 @@
-set MCPVERSION=2.9
+set MCPVERSION=2.10
 
 echo *** Minecraft Coder Pack Version %MCPVERSION% ***
 
@@ -19,22 +19,19 @@ set MCPOUTDIR=%MCPDIR%\final_out
 set MCPLOG=%MCPLOGDIR%\minecraft.log
 set MCPCOMPLOG=%MCPLOGDIR%\minecraft_compile.log
 
+set MCPPYTHON="%MCPTOOLSDIR%\python_mcp.exe"
 set MCPRG=java -cp "%MCPTOOLSDIR%\retroguard.jar" RetroGuard
 set MCPUNZIP="%MCPTOOLSDIR%\unzip.exe"
-set MCPJR="%MCPTOOLSDIR%\jadretro.exe"
+set MCPJR=java -jar "%MCPTOOLSDIR%\jadretro.jar"
 set MCPJAD="%MCPTOOLSDIR%\jad.exe"
 set MCPPATCH="%MCPTOOLSDIR%\applydiff.exe"
-set MCPGETCSV="%MCPTOOLSDIR%\get_csv.exe"
-rem set MCPGETCSV=python "%MCPPYTHONTOOLSDIR%\get_csv.py"
-set MCPRENAMER="%MCPTOOLSDIR%\renamer.exe"
-rem set MCPRENAMER=python "%MCPPYTHONTOOLSDIR%\renamer_v3.py"
+set MCPGETCSV=%MCPPYTHON% "%MCPPYTHONTOOLSDIR%\get_csv.py"
+set MCPRENAMER=%MCPPYTHON% "%MCPPYTHONTOOLSDIR%\renamer_v3.py"
 set MCPREPACK="%MCPTOOLSDIR%\repackage.exe"
-set MCPOBFUSC="%MCPTOOLSDIR%\obfuscathon.exe"
-rem set MCPOBFUSC=python "%MCPPYTHONTOOLSDIR%\obfuscathon.py"
+set MCPOBFUSC=%MCPPYTHON% "%MCPPYTHONTOOLSDIR%\obfuscathon.py"
 set MCPTEE="%MCPTOOLSDIR%\tee.exe"
 set MCPGREP="%MCPTOOLSDIR%\grep.exe"
-set MCPWHEREIS="%MCPTOOLSDIR%\whereis.exe"
-rem set MCPWHEREIS=python "%MCPPYTHONTOOLSDIR%\whereis.py"
+set MCPWHEREIS=%MCPPYTHON% "%MCPPYTHONTOOLSDIR%\whereis.py"
 
 set MCJAR=%MCPJARSDIR%\bin\minecraft.jar
 set MCSJAR=%MCPJARSDIR%\minecraft_server.jar
@@ -64,10 +61,10 @@ set MCPATCH=%MCPPATCHDIR%\minecraft.patch
 set MCSPATCH=%MCPPATCHDIR%\minecraft_server.patch
 set MCPSPLASHES=%MCPPATCHDIR%\splashes.txt
 
-set REINDEX_NUMBER=22000
+set REINDEX_NUMBER=25000
 
 set MCSTART=%MCPPATCHDIR%\Start.java
-set MCSNDFIX=%MCPPATCHDIR%\gq.java
+set MCSNDFIX=%MCPPATCHDIR%\gz.java
 
 set MCSRC1=%MCPSOURCEBASE%\minecraft\net\minecraft\client
 set MCSRC2=%MCPSOURCEBASE%\minecraft\net\minecraft\src

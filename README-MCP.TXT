@@ -1,5 +1,5 @@
-Minecraft mod creator pack 2.9a for Minecraft 1.3_01
-====================================================
+Minecraft mod creator pack 2.10 for Minecraft 1.4
+=================================================
 
 Prerequisites:
 ==============
@@ -12,7 +12,7 @@ Prerequisites:
     http://www.java.com/en/download/help/path.xml
 
     Example for Windows users of what you have to add to the variable (entries are seperated by ; )
-    C:\Program Files\Java\jdk1.6.0_23\bin;C:\Program Files\Java\jre6\bin
+    C:\Program Files\Java\jdk1.6.0_24\bin;C:\Program Files\Java\jre6\bin
 
 How to use:
 ===========
@@ -89,7 +89,7 @@ Credits:
 Searge
 * Creator of MCP
 * Fixes all compile errors in the decompiled sourcecode
-* Created the MCP Mod Launcher system and API
+* Created the MCP Mod System and API
 ProfMobius
 * Creator of the renaming codes and re-obfuscation procedures
 * Helped to port scripts to Linux
@@ -145,7 +145,7 @@ Chase
 ZeuX
 * Helps out in the IRC channels, constantly fails at solving modloader issues.
 * Named most new classes for MCP 2.9
-* Did server patches for MCP 2.9
+* Did server patches for the most recent versions - if you run into any (patch-related) problems, it's his fault
 Risugami
 * The guy who created the first mods I (Searge) ever used in Minecraft
 * The creator of modloader who gave us permission to include files from his system in MCP
@@ -158,6 +158,7 @@ and of course:
 
 History:
 ========
+2.10 - Updated to support Minecraft 1.4 and MinecraftServer 1.4
 2.9a - Added MCP Mod System for 1.3_01, added mod loader support, updated mappings
 2.9  - Updated to support Minecraft 1.3_01 and MinecraftServer 1.3
 2.8  - Added the MCP mod system SDK and support for OSX

@@ -32,7 +32,10 @@ if exist "%MCJAR%" (
 
     echo Unpacking minecraft.jar
     echo *** Unpacking minecraft.jar >>"%MCPLOG%"
-    %MCPUNZIP% -o "%MCRGJAR%" * -d "%MCTEMP%" >>"%MCPLOG%"
+    mkdir "%MCTEMP%" 2>NUL
+    cd "%MCTEMP%"
+    jar xvf "%MCRGJAR%" >>"%MCPLOG%"
+    cd "%MCPDIR%"
     del /f /q "%MCTEMP%\META-INF\MOJANG_C.*" 2>NUL
     del /f /q "%MCTEMP%\null" 2>NUL
 
@@ -74,7 +77,10 @@ if exist "%MCSJAR%" (
 
     echo Unpacking minecraft_server.jar
     echo *** Unpacking minecraft_server.jar >>"%MCPLOG%"
-    %MCPUNZIP% -o "%MCSRGJAR%" * -d "%MCSTEMP%" >>"%MCPLOG%"
+    mkdir "%MCSTEMP%" 2>NUL
+    cd "%MCSTEMP%"
+    jar xvf "%MCSRGJAR%" >>"%MCPLOG%"
+    cd "%MCPDIR%"
     del /f /q "%MCSTEMP%\null" 2>NUL
 
     echo Fixing minecraft server classes
