@@ -1,4 +1,4 @@
-set MCPVERSION=2.10
+set MCPVERSION=2.11
 
 echo *** Minecraft Coder Pack Version %MCPVERSION% ***
 
@@ -20,6 +20,7 @@ set MCPLOG=%MCPLOGDIR%\minecraft.log
 set MCPCOMPLOG=%MCPLOGDIR%\minecraft_compile.log
 
 set MCPPYTHON="%MCPTOOLSDIR%\python_mcp.exe"
+set PYTHONPATH="%MCPTOOLSDIR%"
 set MCPRG=java -cp "%MCPTOOLSDIR%\retroguard.jar" RetroGuard
 set MCPUNZIP="%MCPTOOLSDIR%\unzip.exe"
 set MCPJR=java -jar "%MCPTOOLSDIR%\jadretro.jar"
@@ -61,7 +62,7 @@ set MCPATCH=%MCPPATCHDIR%\minecraft.patch
 set MCSPATCH=%MCPPATCHDIR%\minecraft_server.patch
 set MCPSPLASHES=%MCPPATCHDIR%\splashes.txt
 
-set REINDEX_NUMBER=25000
+set REINDEX_NUMBER=26500
 
 set MCSTART=%MCPPATCHDIR%\Start.java
 set MCSNDFIX=%MCPPATCHDIR%\gz.java

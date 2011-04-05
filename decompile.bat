@@ -106,7 +106,7 @@ if exist "%MCSJAR%" (
 
 :skip_mcs
 
-if exist "%MCPSPLASHES%" copy "%MCPSPLASHES%" "%MCSPLASHES%" >NUL
+if exist "%MCSPLASHES%" copy "%MCPSPLASHES%" "%MCSPLASHES%" >NUL
 
 echo Renaming methods and fields
 echo *** Renaming methods and fields >>"%MCPLOG%"

@@ -1,5 +1,5 @@
-Minecraft mod creator pack 2.10 for Minecraft 1.4
-=================================================
+Minecraft mod creator pack 2.11 for Minecraft 1.4_01
+====================================================
 
 Prerequisites:
 ==============
@@ -158,6 +158,7 @@ and of course:
 
 History:
 ========
+2.11 - Updated to support Minecraft 1.4_01 and MinecraftServer 1.4_01
 2.10 - Updated to support Minecraft 1.4 and MinecraftServer 1.4
 2.9a - Added MCP Mod System for 1.3_01, added mod loader support, updated mappings
 2.9  - Updated to support Minecraft 1.3_01 and MinecraftServer 1.3

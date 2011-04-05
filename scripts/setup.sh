@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MCPVERSION="2.10"
+MCPVERSION="2.11"
 
 if [ "`uname`" == "Darwin" ]
 then
@@ -89,7 +89,7 @@ MCPATCH="$MCPPATCHDIR/minecraft.patch"
 MCSPATCH="$MCPPATCHDIR/minecraft_server.patch"
 MCPSPLASHES="$MCPPATCHDIR/splashes.txt"
 
-REINDEX_NUMBER="25000"
+REINDEX_NUMBER="26500"
 
 MCSTART="$MCPPATCHDIR/Start.java"
 MCSNDFIX="$MCPPATCHDIR/gz.java"
