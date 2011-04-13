@@ -16,5 +16,5 @@ if errorlevel 1 (
 )
 
 :foundit
-%PYTHON% runtime\cleanup.py conf\mcp.cfg
+%PYTHON% runtime\startclient.py conf\mcp.cfg
 pause
