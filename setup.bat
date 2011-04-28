@@ -1,4 +1,4 @@
-set MCPVERSION=2.11
+set MCPVERSION=2.12
 
 echo *** Minecraft Coder Pack Version %MCPVERSION% ***
 
@@ -62,10 +62,10 @@ set MCPATCH=%MCPPATCHDIR%\minecraft.patch
 set MCSPATCH=%MCPPATCHDIR%\minecraft_server.patch
 set MCPSPLASHES=%MCPPATCHDIR%\splashes.txt
 
-set REINDEX_NUMBER=26500
+set REINDEX_NUMBER=27500
 
 set MCSTART=%MCPPATCHDIR%\Start.java
-set MCSNDFIX=%MCPPATCHDIR%\gz.java
+set MCSNDFIX=%MCPPATCHDIR%\hy.java
 
 set MCSRC1=%MCPSOURCEBASE%\minecraft\net\minecraft\client
 set MCSRC2=%MCPSOURCEBASE%\minecraft\net\minecraft\src
@@ -93,8 +93,8 @@ set MODCOMPLOG=%MCPLOGDIR%\mcpmod_compile.log
 set MODTEMP=%MCBIN%
 set MODREOBDIR=%MCPTEMPDIR%\mods
 set MODSOURCEBASE=mods\MCP
-set MODCP=%MCPMODDIR%\mcp_v1.jar;%MCTESTCP%
-set MODJAR=%MCPOUTDIR%\mcp_13_01.jar
+set MODCP=%MCPMODDIR%\mcp_v12.jar;%MCTESTCP%
+set MODJAR=%MCPOUTDIR%\mcp_14_01.jar
 
 set MLPATCH=%MCPPATCHDIR%\modloader.patch
 set MLCP=%MCPPATCHDIR%\modloader.jar;%MCTESTCP%

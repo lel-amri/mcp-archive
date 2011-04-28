@@ -422,7 +422,11 @@ class ProjectDef():
                 print "\t+ Found %d potential candidates for %s %s"%(len(candidate_list), member, member_sig)
                 for i in candidate_list:
                     print "\t\t",i
-                
+
+                #We only have more than one possibility, use the first one
+                if len(candidate_list) > 0:
+                    map_table[member_key][member] = mappingtable[member_key][candidate_list[0]]
+
                 #If the member is not in the table, it means we don't have a good match
 #                if member not in map_table[member_key]:
 #                    sys.stderr.write("WARNING : Cannot find a proper entry for %s %s. Will not be reobfuscated.\n"%(member_key, member))

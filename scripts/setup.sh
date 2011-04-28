@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MCPVERSION="2.11"
+MCPVERSION="2.12"
 
 if [ "`uname`" == "Darwin" ]
 then
@@ -89,10 +89,10 @@ MCPATCH="$MCPPATCHDIR/minecraft.patch"
 MCSPATCH="$MCPPATCHDIR/minecraft_server.patch"
 MCPSPLASHES="$MCPPATCHDIR/splashes.txt"
 
-REINDEX_NUMBER="26500"
+REINDEX_NUMBER="27500"
 
 MCSTART="$MCPPATCHDIR/Start.java"
-MCSNDFIX="$MCPPATCHDIR/gz.java"
+MCSNDFIX="$MCPPATCHDIR/hy.java"
 
 MCSRC1="$MCPSOURCEBASE/minecraft/net/minecraft/client"
 MCSRC2="$MCPSOURCEBASE/minecraft/net/minecraft/src"
@@ -120,8 +120,8 @@ MODCOMPLOG="$MCPLOGDIR/mcpmod_compile.log"
 MODTEMP="$MCBIN"
 MODREOBDIR="$MCPTEMPDIR/mods"
 MODSOURCEBASE="mods/MCP"
-MODCP="$MCPMODDIR/mcp_v1.jar:$MCTESTCP"
-MODJAR="$MCPOUTDIR/mcp_13_01.jar"
+MODCP="$MCPMODDIR/mcp_v12.jar:$MCTESTCP"
+MODJAR="$MCPOUTDIR/mcp_14_01.jar"
 
 MLPATCH="$MCPPATCHDIR/modloader.patch"
 MLCP="$MCPPATCHDIR/modloader.jar:$MCTESTCP"

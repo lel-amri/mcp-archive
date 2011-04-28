@@ -1,3 +1,6 @@
+v2.12:
+    + Updated scripts to support Minecraft Beta 1.5_01 and Server 1.5_02
+
 v2.11:
     + Updated scripts to support Minecraft Beta 1.4_01 and Server 1.4_01
 
