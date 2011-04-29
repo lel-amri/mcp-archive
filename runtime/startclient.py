@@ -11,9 +11,9 @@ from commands import Commands
 
 def main(conffile):
     commands = Commands(conffile)
-    
+
     commands.startclient()
-    
+
 if __name__ == '__main__':
     if len(sys.argv) < 2:
         print("Syntax: python startclient.py <configfile>")

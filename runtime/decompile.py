@@ -11,7 +11,7 @@ import recompile
 
 def main(conffile):
     commands = Commands(conffile)
-    commands.checkupdates()   
+    commands.checkupdates()
     #TODO: Add a check for java here.
     cltdone = False
     srvdone = False
@@ -41,7 +41,7 @@ def main(conffile):
             #commands.createsaffx(0)
             commands.renamereobsrg(0)
             #print ('> Cleaning temp directory')
-            #commands.cleantempbin(0)    
+            #commands.cleantempbin(0)
             commands.logger.info ('> Done in %.2f seconds'%(time.time()-clienttime))
     else:
         commands.logger.warn ('!! Client already decompiled. Run cleanup before decompiling again !!')
@@ -49,9 +49,8 @@ def main(conffile):
 
     if not os.path.exists(commands.srcserver):
         commands.logger.info ('== Decompiling Server ==')
-        if commands.checkjars(1):        
+        if commands.checkjars(1):
             servertime = time.time()
-            commands.checkjars(1)
             commands.logger.info ('> Creating SRGS for server')
             commands.createsrgs(1)
             commands.logger.info ('> Applying Retroguard to server')

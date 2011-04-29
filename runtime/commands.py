@@ -15,25 +15,24 @@ import urllib, urllib2
 #if sys.version_info[0] == 2:
 #    import ConfigParser
 #    import urllib
-#if sys.version_info[0] == 3:    
+#if sys.version_info[0] == 3:
 #    import configparser as ConfigParser
-#    import urllib.request as urllib    
-#    raw_input=input    
+#    import urllib.request as urllib
+#    raw_input=input
 from filehandling.srgsexport import writesrgsfromcsvs
 from pylibs.annotate_gl_constants import annotate_file
-from pylibs.whereis import whereis      
+from pylibs.whereis import whereis
 from hashlib import md5
 
 
 class Commands(object):
     """Contains the commands and initialisation for a full mcp run"""
 
-    MCPVersion = '3.0'    
+    MCPVersion = '3.1'
     _instance  = None    #Small trick to create a singleton
     _single    = False   #Small trick to create a singleton
-    
+
     def __init__(self, conffile):
-        
         #HINT: This is for the singleton pattern. If we already did __init__, we skip it
         if     Commands._single:return
         if not Commands._single:Commands._single=True
@@ -41,7 +40,7 @@ class Commands(object):
         if sys.version_info[0] == 3:
             print ('ERROR : Python3 is not supported yet.')
             sys.exit(1)
-        
+
         self.conffile = conffile
 
         self.readconf()
@@ -66,10 +65,9 @@ class Commands(object):
     def __new__(cls, *args, **kwargs):
         if not cls._instance:
             cls._instance = super(Commands, cls).__new__(cls, *args, **kwargs)
-        return cls._instance  
+        return cls._instance
 
     def readcommands(self):
-
         self.patcher  = self.config.get('COMMANDS', 'Patcher' ).replace('/',os.sep).replace('\\',os.sep)
         self.jadretro = self.config.get('COMMANDS', 'JadRetro').replace('/',os.sep).replace('\\',os.sep)
         self.jad      = self.config.get('COMMANDS', 'Jad%s'%self.osname     ).replace('/',os.sep).replace('\\',os.sep)
@@ -95,24 +93,24 @@ class Commands(object):
         ch.setLevel(logging.INFO)
         #File output of everything Warning or above
         eh = logging.FileHandler(filename=self.mcperrlogfile, mode='w')
-        eh.setLevel(logging.WARNING)        
+        eh.setLevel(logging.WARNING)
         # create formatter and add it to the handlers
-        formatterconsole = logging.Formatter('%(asctime)s - %(module)11s - %(levelname)s - %(message)s',datefmt='%Y-%m-%d %H:%M' )
+        formatterconsole = logging.Formatter('%(message)s')
         ch.setFormatter(formatterconsole)
-        formatterfile = logging.Formatter('%(asctime)s - %(module)11s.%(funcName)s - %(levelname)s - %(message)s',datefmt='%Y-%m-%d %H:%M' )        
+        formatterfile = logging.Formatter('%(asctime)s - %(module)11s.%(funcName)s - %(levelname)s - %(message)s',datefmt='%Y-%m-%d %H:%M' )
         fh.setFormatter(formatterfile)
         eh.setFormatter(formatterfile)
         # add the handlers to logger
         self.logger.addHandler(ch)
-        self.logger.addHandler(fh)        
-        self.logger.addHandler(eh)     
+        self.logger.addHandler(fh)
+        self.logger.addHandler(eh)
 
         #HINT: SECONDARY LOGGER FOR CLIENT & SERVER
         self.loggermc = logging.getLogger('MCRunLog')
         self.loggermc.setLevel(logging.DEBUG)
         chmc = logging.StreamHandler()
         chmc.setLevel(logging.DEBUG)
-        formatterconsolemc = logging.Formatter('[MPCLog - %(asctime)s - %(levelname)s] %(message)s',datefmt='%H:%M' )
+        formatterconsolemc = logging.Formatter('[%(asctime)s] %(message)s',datefmt='%H:%M' )
         chmc.setFormatter(formatterconsolemc)
         # add the handlers to logger
         self.loggermc.addHandler(chmc)
@@ -127,9 +125,9 @@ class Commands(object):
         self.dirtemp  = config.get('DEFAULT','DirTemp')
         self.dirsrc   = config.get('DEFAULT','DirSrc')
         self.dirlogs  = config.get('DEFAULT','DirLogs')
-        self.dirbin   = config.get('DEFAULT','DirBin')        
-        self.dirjars  = config.get('DEFAULT','DirJars') 
-        self.dirreobf = config.get('DEFAULT','DirReobf')         
+        self.dirbin   = config.get('DEFAULT','DirBin')
+        self.dirjars  = config.get('DEFAULT','DirJars')
+        self.dirreobf = config.get('DEFAULT','DirReobf')
 
         #HINT: We read the position of the CSV files
         self.csvclasses = config.get('CSV', 'Classes')
@@ -187,20 +185,21 @@ class Commands(object):
         self.md5client      = config.get('REOBF', 'MD5Client')
         self.md5server      = config.get('REOBF', 'MD5Server')
         self.md5reobfclient = config.get('REOBF', 'MD5PreReobfClient')
-        self.md5reobfserver = config.get('REOBF', 'MD5PreReobfServer')        
+        self.md5reobfserver = config.get('REOBF', 'MD5PreReobfServer')
         self.reobsrgclient  = config.get('REOBF', 'ObfSRGClient')
         self.reobsrgserver  = config.get('REOBF', 'ObfSRGServer')
         self.cmpjarclient   = config.get('REOBF', 'RecompJarClient')
-        self.cmpjarserver   = config.get('REOBF', 'RecompJarServer')        
+        self.cmpjarserver   = config.get('REOBF', 'RecompJarServer')
         self.reobfjarclient = config.get('REOBF', 'ObfJarClient')
-        self.reobfjarserver = config.get('REOBF', 'ObfJarServer')        
+        self.reobfjarserver = config.get('REOBF', 'ObfJarServer')
         self.nullpkg        = config.get('REOBF', 'NullPkg')
+        self.ignorepkg      = config.get('REOBF', 'IgnorePkg').split(',')
         self.dirreobfclt    = config.get('REOBF', 'ReobfDirClient')
-        self.dirreobfsrv    = config.get('REOBF', 'ReobfDirServer')        
+        self.dirreobfsrv    = config.get('REOBF', 'ReobfDirServer')
         self.clientreoblog  = config.get('REOBF', 'ReobfClientLog')
-        self.serverreoblog  = config.get('REOBF', 'ReobfServerLog') 
-        self.fixsound       = config.get('REOBF', 'FixSound') 
-        self.fixstart       = config.get('REOBF', 'FixStart') 
+        self.serverreoblog  = config.get('REOBF', 'ReobfServerLog')
+        self.fixsound       = config.get('REOBF', 'FixSound')
+        self.fixstart       = config.get('REOBF', 'FixStart')
 
         self.mcplogfile     = config.get('MCP', 'LogFile')
         self.mcperrlogfile  = config.get('MCP', 'LogFileErr')
@@ -209,8 +208,17 @@ class Commands(object):
         """Create the files necessary for RetroGuard"""
         rgout = open(self.rgconfig,'wb')
         rgout.write('.option Application\n')
+        rgout.write('.option Applet\n')
         rgout.write('.option Repackage\n')
         rgout.write('.attribute LineNumberTable\n')
+        rgout.write('.option Annotations\n')
+        rgout.write('.attribute EnclosingMethod\n')
+        rgout.write('.attribute Deprecated\n')
+        #rgout.write('.attribute LocalVariableTable\n')
+        #rgout.write('.attribute LocalVariableTypeTable\n')
+        #rgout.write('.option Generic\n')
+        #rgout.write('.option MapClassString\n')
+        #rgout.write('.attribute SourceFile\n')
         rgout.close()
 
         rgout = open(self.rgclientconf,'w')
@@ -228,8 +236,8 @@ class Commands(object):
         rgout.write('%s = %s\n'%('reob', self.reobsrgclient))
         rgout.write('%s = %s\n'%('nplog', self.rgclientdeoblog))
         rgout.write('%s = %s\n'%('rolog', self.clientreoblog))
-        rgout.write('%s = %s\n'%('protectedpackage', 'com/'))
-        rgout.write('%s = %s\n'%('protectedpackage', 'paulscode/'))
+        for pkg in self.ignorepkg:
+            rgout.write('%s = %s\n'%('protectedpackage', pkg))
         rgout.close()
 
         rgout = open(self.rgserverconf,'w')
@@ -261,8 +269,8 @@ class Commands(object):
         ff = open(saffxlk[side], 'w')
 
         ff.write('[OPTIONS]\n')
-        ff.write('strip_package net/minecraft/src\n\n')        
-        
+        ff.write('strip_package net/minecraft/src\n\n')
+
         #HINT: We read the data from the CSVs and dump it in another formating to a SAFFX file
         methodsreader = csv.DictReader(open(self.csvmethods, 'r'), delimiter=',',quotechar='"', quoting=csv.QUOTE_ALL)
         fieldsreader  = csv.DictReader(open(self.csvfields,  'r'), delimiter=',',quotechar='"', quoting=csv.QUOTE_ALL)
@@ -285,7 +293,7 @@ class Commands(object):
             if row['classname'] == 'Start': continue
             if int(row['side']) == side:
                 ff.write('%s/%s/%s %s\n'%(row['package'], row['classname'], row['name'], row['notch']))
-                
+
         ff.close()
 
     def checkjava(self):
@@ -298,13 +306,34 @@ class Commands(object):
                 self.cmdjar   = 'jar.exe'
                 return
             else:
-                results.extend(whereis('javac.exe', 'C:\\Program Files (x86)\\'))
-                results.extend(whereis('javac.exe', 'C:\\Program files\\'))
+                import _winreg
+                for flag in [_winreg.KEY_WOW64_64KEY, _winreg.KEY_WOW64_32KEY]:
+                    try:
+                        k = _winreg.OpenKey(_winreg.HKEY_LOCAL_MACHINE, "Software\\JavaSoft\\Java Development Kit", 0, _winreg.KEY_READ | flag)
+                        version,_ = _winreg.QueryValueEx(k, "CurrentVersion")
+                        k.Close()
+                        k = _winreg.OpenKey(_winreg.HKEY_LOCAL_MACHINE, "Software\\JavaSoft\\Java Development Kit\\%s" % version, 0, _winreg.KEY_READ | flag)
+                        path,_ = _winreg.QueryValueEx(k, "JavaHome")
+                        k.Close()
+                        if subprocess.call('"%s" 1>NUL 2>NUL' % os.path.join(path, "bin", "javac.exe"), shell=True) == 2:
+                            self.cmdjava = '"%s"' % os.path.join(path, "bin", "java.exe")
+                            self.cmdjavac = '"%s"' % os.path.join(path, "bin", "javac.exe")
+                            self.cmdjar = '"%s"' % os.path.join(path, "bin", "jar.exe")
+                            return
+                    except:
+                        pass
+
+                if 'ProgramW6432' in os.environ:
+                    results.extend(whereis('javac.exe', os.environ['ProgramW6432']))
+                if 'ProgramFiles' in os.environ:
+                    results.extend(whereis('javac.exe', os.environ['ProgramFiles']))
+                if 'ProgramFiles(x86)' in os.environ:
+                    results.extend(whereis('javac.exe', os.environ['ProgramFiles(x86)']))
 
         if self.osname  in ['linux','osx']:
             if subprocess.call('javac 1> /dev/null 2> /dev/null', shell=True) == 2:
                 self.cmdjava  = 'java'
-                self.cmdjavac = 'javac'  
+                self.cmdjavac = 'javac'
                 self.cmdjar   = 'jar'
                 return
             else:
@@ -328,13 +357,16 @@ class Commands(object):
     def checkjars(self, side):
         jarlk     = {0:self.jarclient, 1:self.jarserver}
         md5jarlk  = {0:self.md5jarclt, 1:self.md5jarsrv}
-        
+
         if not os.path.exists(jarlk[side]):
             self.logger.warning('!! Missing jar file %s. Aborting !!'%jarlk[side])
             return False
-        
-        if not md5(open(jarlk[side],'rb').read()).hexdigest() == md5jarlk[side]:
+
+        md5jar = md5(open(jarlk[side],'rb').read()).hexdigest()
+
+        if not md5jar == md5jarlk[side]:
             self.logger.warn('!! Modified jar detected. Unpredictable results !!')
+            #self.logger.info('md5: ' + md5jar)
 
         return True
 
@@ -372,13 +404,13 @@ class Commands(object):
 
     def checkfolders(self):
         if not os.path.exists(self.dirtemp):
-            os.mkdir(self.dirtemp) 
+            os.mkdir(self.dirtemp)
         if not os.path.exists(self.dirsrc):
-            os.mkdir(self.dirsrc) 
+            os.mkdir(self.dirsrc)
         if not os.path.exists(self.dirlogs):
-            os.mkdir(self.dirlogs)     
+            os.mkdir(self.dirlogs)
         if not os.path.exists(self.dirbin):
-            os.mkdir(self.dirbin)         
+            os.mkdir(self.dirbin)
         if not os.path.exists(self.dirreobf):
             os.mkdir(self.dirreobf)
 
@@ -396,10 +428,10 @@ class Commands(object):
         md5srvlist = urllib.urlopen('http://mcp.ocean-labs.de/files/mcprolling/mcp.md5').readlines()
         md5srvdict = {}
 
-        #HINT: Each remote entry is of the form dict[filename]=(md5,modificationtime)        
+        #HINT: Each remote entry is of the form dict[filename]=(md5,modificationtime)
         for entry in md5srvlist:
             md5srvdict[entry.split()[0]] = (entry.split()[1], float(entry.split()[2]), entry.split()[3])
-            
+
         for key,value in md5srvdict.items():
             #HINT: If the remote entry is not in the local table, append
             if not key in md5lcldict:
@@ -408,10 +440,10 @@ class Commands(object):
             #HINT: If the remote entry has a different MD5 checksum and modtime is > local entry modtime
             if not md5lcldict[key][0] == value[0] and value[1] > md5lcldict[key][1]:
                 results.append([key, value[0], value[1], value[2]])
-        
-        if results and not silent:        
+
+        if results and not silent:
             self.logger.warning('!! Updates available. Please run updatemcp to get them. !!')
-        
+
         return results
 
     def cleanbindirs(self,side):
@@ -428,36 +460,37 @@ class Commands(object):
 
 #        if os.path.exists(pathtmpbinlk[side]):
 #            shutil.rmtree(pathtmpbinlk[side], ignore_errors=True)
-#        os.mkdir(pathtmpbinlk[side])        
-        
+#        os.mkdir(pathtmpbinlk[side])
+
     def cleanreobfdir(self, side):
-        outpathlk = {0:self.dirreobfclt,    1:self.dirreobfsrv} 
+        outpathlk = {0:self.dirreobfclt,    1:self.dirreobfsrv}
         pathbinlk = {0:self.binclient,    1:self.binserver}
         if os.path.exists(outpathlk[side]):
             shutil.rmtree(outpathlk[side], ignore_errors=True)
-        #os.mkdir(outpathlk[side])             
-        
+        #os.mkdir(outpathlk[side])
+
         shutil.copytree(pathbinlk[side], outpathlk[side])
         for path, dirlist, filelist in os.walk(outpathlk[side]):
             for bin_file in glob.glob(os.path.join(path, '*.class')):
                 os.remove(bin_file)
-          
+
         for i in range(4):
             for path, dirlist, filelist in os.walk(outpathlk[side]):
                 if not dirlist and not filelist:
                     shutil.rmtree(path)
-                
+
         if not os.path.exists(outpathlk[side]):
             os.mkdir(outpathlk[side])
 
     def cleantempbin(self, side):
         pathbinlk = {0:self.binclienttmp,    1:self.binservertmp}
-        
+
         if side == 0:
             shutil.rmtree(os.path.join(pathbinlk[side], 'META-INF'), ignore_errors=True)
-            shutil.rmtree(os.path.join(pathbinlk[side], 'com'), ignore_errors=True)
             shutil.rmtree(os.path.join(pathbinlk[side], 'net'), ignore_errors=True)
+            shutil.rmtree(os.path.join(pathbinlk[side], 'com'), ignore_errors=True)
             shutil.rmtree(os.path.join(pathbinlk[side], 'paulscode'), ignore_errors=True)
+
         if side == 1:
             shutil.rmtree(os.path.join(pathbinlk[side], 'META-INF'), ignore_errors=True)
             shutil.rmtree(os.path.join(pathbinlk[side], 'net'), ignore_errors=True)
@@ -466,7 +499,7 @@ class Commands(object):
         """Apply rg to the given side"""
         cfglk = {0:self.rgclientconf, 1:self.rgserverconf}
         forkcmd = self.cmdrg.format(jarrg=self.retroguard, conffile=cfglk[side])
-        self.runcmd(forkcmd)         
+        self.runcmd(forkcmd)
 
     def applyjadretro(self, side):
         """Apply jadretro to the bin output directory"""
@@ -477,14 +510,15 @@ class Commands(object):
         pkglist = []
         for path, dirlist, filelist in os.walk(pathbinlk[side]):
             if glob.glob(os.path.join(path,'*.class')):
-                if '/com/'       in path:continue
-                if '/paulscode/' in path:continue
-                if '\\com\\'       in path:continue
-                if '\\paulscode\\' in path:continue            
-                pkglist.append(path)
+                for pkg in self.ignorepkg:
+                    if pkg.replace('\\',os.sep).replace('/',os.sep) in path:
+                        break
+                else:
+                    pkglist.append(path)
+
         for pkg in pkglist:
             forkcmd = self.cmdjadretro.format(jarjr=self.jadretro, targetdir=pkg)
-            self.runcmd(forkcmd)         
+            self.runcmd(forkcmd)
 
     def applyjad(self, side):
         """Decompile the code using jad"""
@@ -495,8 +529,8 @@ class Commands(object):
         #HINT: We delete the old sources and recreate it
         if os.path.exists(pathsrclk[side]):
             shutil.rmtree(pathsrclk[side])
-        os.mkdir(pathsrclk[side])        
-        
+        os.mkdir(pathsrclk[side])
+
         #HINT: We go throught the packages and apply jad to the directory
 #        for pkg in pkgslk[side]:
 #            classlist = os.path.join(pathbinlk[side], pkg, '*.class')
@@ -504,17 +538,17 @@ class Commands(object):
         pkglist = []
         for path, dirlist, filelist in os.walk(pathbinlk[side]):
             if glob.glob(os.path.join(path,'*.class')):
-                if '/com/'         in path:continue
-                if '/paulscode/'   in path:continue
-                if '\\com\\'        in path:continue
-                if '\\paulscode\\'  in path:continue                            
-                pkglist.append(path)
+                for pkg in self.ignorepkg:
+                    if pkg.replace('\\',os.sep).replace('/',os.sep) in path:
+                        break
+                else:
+                    pkglist.append(path)
 
         for pkg in pkglist:
             classlist = os.path.join(pkg, '*.class')
-                       
+
             forkcmd = self.cmdjad.format(binjad=self.jad, outdir=pathsrclk[side], classes=classlist)
-            self.runcmd(forkcmd)                                 
+            self.runcmd(forkcmd)
 
     def applypatches(self, side):
         """Applies the patches to the src directory"""
@@ -538,50 +572,32 @@ class Commands(object):
         errormsgs = []
         retcode = None
         while True:
-            buffer.append(p.stdout.readline().strip())
+            o = p.stdout.readline()
             retcode = p.poll()
-            if buffer[-1] == '' and retcode != None:
-                break            
+            if o == '' and retcode != None:
+                break
+            if o != '':
+                buffer.append(o.strip())
+
         if retcode == 0:
-            for line in buffer:            
-                self.logger.debug(line)            
+            for line in buffer:
+                self.logger.debug(line)
         else:
             self.logger.warn('%s failed.'%forkcmd)
             self.logger.warn('Return code : %d'%retcode)
             for line in buffer:
                 if 'saving rejects' in line:
                     errormsgs.append(line)
-                self.logger.debug(line) 
+                self.logger.debug(line)
 
             self.logger.warn('')
             self.logger.warn('== ERRORS FOUND ==')
             self.logger.warn('')
             for line in errormsgs:
-                self.logger.warn(line) 
-            self.logger.warn('==================')                
+                self.logger.warn(line)
+            self.logger.warn('==================')
             self.logger.warn('')
 
-#        errormsgs = []
-#        try:
-#            outmsg = subprocess.check_output(forkcmd, shell=True, stderr=subprocess.STDOUT)
-#            for line in outmsg.splitlines():            
-#                self.logger.debug(line)
-#        except subprocess.CalledProcessError as error:
-#            self.logger.error('%s failed.'%forkcmd)
-#            self.logger.error('Return code : %d'%error.returncode)
-#            for line in error.output.splitlines():
-#                if 'saving rejects' in line:
-#                    errormsgs.append(line)
-#                self.logger.debug(line) 
-#
-#            self.logger.error('')
-#            self.logger.error('== ERRORS FOUND ==')
-#            self.logger.error('')
-#            for line in errormsgs:
-#                self.logger.error(line) 
-#            self.logger.error('==================')                
-#            self.logger.error('')
-       
 
     def recompile(self, side):
         """Recompile the sources and produce the final bins"""
@@ -593,17 +609,17 @@ class Commands(object):
         #HINT: We delete and recreate the bin directory
 #        if os.path.exists(pathbinlk[side]):
 #            shutil.rmtree(pathbinlk[side])
-#        os.mkdir(pathbinlk[side]) 
+#        os.mkdir(pathbinlk[side])
 
         if not os.path.exists(pathbinlk[side]):
-            os.mkdir(pathbinlk[side]) 
+            os.mkdir(pathbinlk[side])
 
         #HINT: We create the list of source directories based on the list of packages
         pkglist = ''
         for path, dirlist, filelist in os.walk(pathsrclk[side]):
             if glob.glob(os.path.join(path,'*.java')):
                 pkglist += os.path.join(path,'*.java') + ' '
-        
+
         #HINT: We have to split between client & server because both have different arguments
         forkcmd = ''
         if side == 0:
@@ -611,20 +627,23 @@ class Commands(object):
             forkcmd = cmdlk[side].format(classpath=cpc, sourcepath=pathsrclk[side], outpath=pathbinlk[side], pkgs=pkglist, fixes=self.fixesclient)
 
         if side == 1:
-            forkcmd = cmdlk[side].format(sourcepath=pathsrclk[side], outpath=pathbinlk[side], pkgs=pkglist)          
+            forkcmd = cmdlk[side].format(sourcepath=pathsrclk[side], outpath=pathbinlk[side], pkgs=pkglist)
 
         p = subprocess.Popen(forkcmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         buffer = []
         errormsgs = []
         retcode = None
         while True:
-            buffer.append(p.stdout.readline().strip())
+            o = p.stdout.readline()
             retcode = p.poll()
-            if buffer[-1] == '' and retcode != None:
-                break            
+            if o == '' and retcode != None:
+                break
+            if o != '':
+                buffer.append(o.strip())
+
         if retcode == 0:
-            for line in buffer:            
-                self.logger.debug(line)            
+            for line in buffer:
+                self.logger.debug(line)
         else:
             self.logger.error('%s failed.'%forkcmd)
             self.logger.error('Return code : %d'%retcode)
@@ -632,40 +651,17 @@ class Commands(object):
                 if not line.strip(): continue
                 if line[0] != '[' and line[0:4] != 'Note':
                     errormsgs.append(line)
-                self.logger.debug(line) 
+                self.logger.debug(line)
 
             self.logger.error('')
             self.logger.error('== ERRORS FOUND ==')
             self.logger.error('')
             for line in errormsgs:
-                self.logger.error(line) 
+                self.logger.error(line)
                 if '^' in line: self.logger.error('')
-            self.logger.error('==================')                
+            self.logger.error('==================')
             self.logger.error('')
-            sys.exit(1)
-
-#        errormsgs = []
-#        try:
-#            outmsg = subprocess.check_output(forkcmd, shell=True, stderr=subprocess.STDOUT)
-#            for line in outmsg.splitlines():            
-#                self.logger.debug(line)
-#        except subprocess.CalledProcessError as error:
-#            self.logger.error('%s failed.'%forkcmd)
-#            self.logger.error('Return code : %d'%error.returncode)
-#            for line in error.output.splitlines():
-#                if line[0] != '[' and line[0:4] != 'Note':
-#                    errormsgs.append(line)
-#                self.logger.debug(line) 
-#
-#            self.logger.error('')
-#            self.logger.error('== ERRORS FOUND ==')
-#            self.logger.error('')
-#            for line in errormsgs:
-#                self.logger.error(line) 
-#                if '^' in line: self.logger.error('')
-#            self.logger.error('==================')                
-#            self.logger.error('')
-#            sys.exit(1)
+            #sys.exit(1)
 
     def startserver(self):
         binserver    = '../'+self.binserver
@@ -677,9 +673,8 @@ class Commands(object):
 
         forkcmd = self.cmdstartsrv.format(classpath=cps)
         self.runmc(forkcmd)
-        
+
     def startclient(self):
-        
         cpc = self.binclient
         cpc += os.pathsep + os.pathsep.join(self.cpathclient)
 
@@ -687,58 +682,52 @@ class Commands(object):
         self.runmc(forkcmd)
 
     def runcmd(self, forkcmd):
+        #self.logger.info("runcmd: '"+forkcmd+"'")
         p = subprocess.Popen(forkcmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         buffer = []
         retcode = None
         while True:
-            buffer.append(p.stdout.readline().strip())
+            o = p.stdout.readline()
             retcode = p.poll()
-            if buffer[-1] == '' and retcode != None:
-                break            
+            if o == '' and retcode != None:
+                break
+            if o != '':
+                buffer.append(o.strip())
+
         if retcode == 0:
-            for line in buffer:            
-                self.logger.debug(line)            
+            for line in buffer:
+                self.logger.debug(line)
         else:
             self.logger.error('%s failed.'%forkcmd)
             self.logger.error('Return code : %d'%retcode)
             for line in buffer:
-                self.logger.error(line)        
-            
-#        try:
-#            outmsg = subprocess.check_output(forkcmd, shell=True, stderr=subprocess.STDOUT)
-#            for line in outmsg.splitlines():            
-#                self.logger.debug(line)
-#        except subprocess.CalledProcessError as error:
-#            self.logger.error('%s failed.'%forkcmd)
-#            self.logger.error('Return code : %d'%error.returncode)
-#            for line in error.output.splitlines():
-#                self.logger.error(line)        
+                self.logger.error(line)
 
     def runmc(self, forkcmd):
         pclient = subprocess.Popen(forkcmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         msgs        = []
         returnvalue = None
         while True:
-            msgs.append(pclient.stdout.readline().strip())
+            o = pclient.stdout.readline()
             returnvalue = pclient.poll()
-            if msgs[-1] == '' and returnvalue != None:
+            if o == '' and returnvalue != None:
                 break
-            if msgs[-1] != '':
-                self.loggermc.debug(msgs[-1])
-#            self.logger.info(msgs[-1])
-            
+            if o != '':
+                self.loggermc.debug(o.strip())
+                msgs.append(o.strip())
+
         if returnvalue != 0:
             for msg in msgs:
                 self.logger.error(msg)
         else:
             for msg in msgs:
-                self.logger.debug(msg)         
+                self.logger.debug(msg)
 
     def extractjar(self, side):
         """Unzip the jar file to the bin directory defined in the config file"""
         pathbinlk = {0:self.binclienttmp,   1:self.binservertmp}
         jarlk     = {0:self.rgclientout, 1:self.rgserverout}
-        
+
         #HINT: We check if the top output directory exists. If not, we create it
         #We than check if the specific side directory exists. If it does, we delete it and create a new one
         if not os.path.exists(self.binouttmp):
@@ -746,11 +735,11 @@ class Commands(object):
         if os.path.exists(pathbinlk[side]):
             shutil.rmtree(pathbinlk[side])
         os.mkdir(pathbinlk[side])
-        
+
         #HINT: We extract the jar to the right location
         zipjar = zipfile.ZipFile(jarlk[side])
         zipjar.extractall(pathbinlk[side])
-    
+
     def rename(self, side):
         """Rename the sources using the CSV data"""
         pathsrclk = {0:self.srcclient,    1:self.srcserver}
@@ -773,21 +762,21 @@ class Commands(object):
         type_hash         = {'methods':'func', 'fields':'field'}
         regexp_searge     = r'%s_[0-9]+_[a-zA-Z]+_?'
 
-        #HINT: We pathwalk the sources    
+        #HINT: We pathwalk the sources
         for path, dirlist, filelist in os.walk(pathsrclk[side]):
             for src_file in glob.glob(os.path.join(path, '*.java')):
-                
+
                 ff    = open(src_file, 'r')
                 fftmp = open(src_file + '.tmp', 'w')
 
                 buffer = ff.read()
                 ff.close()
 
-                #HINT: We check if the sources have func_????_? or field_????_? in them. 
+                #HINT: We check if the sources have func_????_? or field_????_? in them.
                 # If yes, we replace with the relevant information
                 for group in ['methods', 'fields']:
                     results = re.findall(regexp_searge%type_hash[group], buffer)
-                    
+
                     for result in results:
                         #HINT: It is possible for the csv to contain data from previous version or enums, so we catch those
                         try:
@@ -799,17 +788,17 @@ class Commands(object):
                 fftmp.close()
 
                 shutil.move(src_file + '.tmp', src_file)
-            
+
                 #HINT: We annotate the GL constants
                 annotate_file(src_file)
 
     def renamereobsrg(self,side):
         deoblk = {0:'logs/client_deob.log',1:'logs/server_deob.log'}
         reoblk = {0:self.reobsrgclient, 1:self.reobsrgserver}
-    
+
         deoblog = open(deoblk[side],'r').read()
         reobsrg = open(reoblk[side],'w')
-    
+
         methodsreader = csv.DictReader(open(self.csvmethods, 'r'), delimiter=',',quotechar='"', quoting=csv.QUOTE_ALL)
         fieldsreader  = csv.DictReader(open(self.csvfields,  'r'), delimiter=',',quotechar='"', quoting=csv.QUOTE_ALL)
 
@@ -823,29 +812,28 @@ class Commands(object):
 
         reobsrg.write(deoblog)
         reobsrg.close()
-        
+
     def gathermd5s(self, side, reobf=False):
         if not reobf:
             md5lk     = {0:self.md5client,    1:self.md5server}
         else:
             md5lk     = {0:self.md5reobfclient,    1:self.md5reobfserver}
         pathbinlk = {0:self.binclient,    1:self.binserver}
-        
+
         md5file = open(md5lk[side],'w')
-        
+
         #HINT: We pathwalk the recompiled classes
         for path, dirlist, filelist in os.walk(pathbinlk[side]):
             for bin_file in glob.glob(os.path.join(path, '*.class')):
                 bin_file_osindep = os.sep.join(bin_file.replace(os.sep,'/').split('/')[2:]).split('.')[0]
                 md5file.write('%s %s\n'%(bin_file_osindep, md5(open(bin_file,'rb').read()).hexdigest()))
         md5file.close()
-        
+
     def packbin(self, side):
         jarlk     = {0:self.cmpjarclient, 1:self.cmpjarserver}
         pathbinlk = {0:self.binclient,    1:self.binserver}
         pathtmpbinlk = {0:self.binclienttmp,    1:self.binservertmp}
-        
-        
+
         #HINT: We create the zipfile and add all the files from the bin directory
         zipjar = zipfile.ZipFile(jarlk[side], 'w')
         for path, dirlist, filelist in os.walk(pathbinlk[side]):
@@ -854,33 +842,29 @@ class Commands(object):
                 if self.fixsound.replace('/',os.sep).replace('\\',os.sep) in bin_file: continue
                 if self.fixstart.replace('/',os.sep).replace('\\',os.sep) in bin_file: continue
                 zipjar.write(bin_file, os.sep.join(bin_file.split(os.sep)[2:]))
-        
+
         if side == 0:
-            pathcom = os.path.join(pathtmpbinlk[0],'com')
-            pathpsc = os.path.join(pathtmpbinlk[0],'paulscode')
-            for path, dirlist, filelist in os.walk(pathcom):
-                path = path.replace('/',os.sep)
-                for bin_file in glob.glob(os.path.join(path, '*.class')):
-                    zipjar.write(bin_file, os.sep.join(bin_file.split(os.sep)[3:]))
-            for path, dirlist, filelist in os.walk(pathpsc):
-                path = path.replace('/',os.sep)
-                for bin_file in glob.glob(os.path.join(path, '*.class')):
-                    zipjar.write(bin_file, os.sep.join(bin_file.split(os.sep)[3:]))
-        
+            for pkg in self.ignorepkg:
+                curpath = os.path.join(pathtmpbinlk[0],pkg)
+                for path, dirlist, filelist in os.walk(curpath):
+                    path = path.replace('/',os.sep)
+                    for bin_file in glob.glob(os.path.join(path, '*.class')):
+                        zipjar.write(bin_file, os.sep.join(bin_file.split(os.sep)[3:]))
+
         zipjar.close()
-                
+
     def reobfuscate(self, side):
         cfglk = {0:self.rgclientconf, 1:self.rgserverconf}
 
         forkcmd = self.cmdrgreobf.format(jarrg=self.retroguard, conffile=cfglk[side])
         self.runcmd(forkcmd)
-        
+
     def unpackreobfclasses(self, side):
-        jarlk     = {0:self.reobfjarclient, 1:self.reobfjarserver}        
-        md5lk     = {0:self.md5client,      1:self.md5server}        
+        jarlk     = {0:self.reobfjarclient, 1:self.reobfjarserver}
+        md5lk     = {0:self.md5client,      1:self.md5server}
         md5reoblk = {0:self.md5reobfclient, 1:self.md5reobfserver}
-        outpathlk = {0:self.dirreobfclt,    1:self.dirreobfsrv}          
-        
+        outpathlk = {0:self.dirreobfclt,    1:self.dirreobfsrv}
+
         #HINT: We need a table for the old md5 and the new ones
         md5table     = {}
         md5reobtable = {}
@@ -901,8 +885,8 @@ class Commands(object):
                 continue
             if not md5table[key] == md5reobtable[key]:
                 trgclasses.append(key.split('.')[0])
-                self.logger.info ('> Modified class found : %s'%key)                
-        
+                self.logger.info ('> Modified class found : %s'%key)
+
         classesreader = csv.DictReader(open(self.csvclasses, 'r'), delimiter=',',quotechar='"', quoting=csv.QUOTE_ALL)
         classes = {}
         for row in classesreader:
@@ -911,24 +895,24 @@ class Commands(object):
                 pkg = row['package'] + '/'
                 if row['package'] == self.nullpkg: pkg = ''
                 classes['%s/%s'%(row['package'],row['name'])] = pkg + row['notch']
-        
+
         if not os.path.exists(outpathlk[side]):
             os.mkdir(outpathlk[side])
-        
+
         #HINT: We extract the modified class files
-        zipjar = zipfile.ZipFile(jarlk[side], 'r')        
+        zipjar = zipfile.ZipFile(jarlk[side], 'r')
         for i in trgclasses:
             if i in classes:
                 zipjar.extract('%s.class'%classes[i], outpathlk[side])
                 #zipjar.extract(r'%s.class'%classes[i].replace('/',os.sep), outpathlk[side])
-                self.logger.info ('> Outputed %s to %s as %s'%(i.ljust(35),outpathlk[side],classes[i]+'.class'))
+                self.logger.info ('> Outputted %s to %s as %s'%(i.ljust(35),outpathlk[side],classes[i]+'.class'))
             else:
                 i = i.replace(self.nullpkg, '')
                 if i[0] == '/': i = i[1:]
                 zipjar.extract('%s.class'%i, outpathlk[side])
-                self.logger.info ('> Outputed %s to %s as %s'%(i.ljust(35),outpathlk[side],i+'.class'))
+                self.logger.info ('> Outputted %s to %s as %s'%(i.ljust(35),outpathlk[side],i+'.class'))
         zipjar.close()
-        
+
     def downloadupdates(self, force=False):
         newfiles = self.checkupdates(silent=True)
 
@@ -960,8 +944,8 @@ class Commands(object):
             answer = raw_input('If you really want to update, enter "Yes" ')
             if not answer.lower() in ['yes','y']:
                 print('You have not entered "Yes", aborting the update process')
-                sys.exit(0) 
-        
+                sys.exit(0)
+
         for entry in newfiles:
             if entry[3] == 'U':
                 self.logger.info('Retrieving file from server : %s'%entry[0])
@@ -969,4 +953,3 @@ class Commands(object):
             if entry[3] == 'D':
                 self.logger.info('Removing file from local install : %s'%entry[0])
                 #Remove file here
-

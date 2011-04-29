@@ -17,11 +17,11 @@ def main(conffile):
         commands.cleanbindirs(0)
         commands.recompile(0)
         commands.logger.info ('> Done in %.2f seconds'%(time.time()-clienttime))
-    
+
     commands.logger.info ('> Recompiling server...')
     servertime = time.time()
     if commands.checksources(1):
-        commands.cleanbindirs(1)    
+        commands.cleanbindirs(1)
         commands.recompile(1)
         commands.logger.info ('> Done in %.2f seconds'%(time.time()-servertime))
 

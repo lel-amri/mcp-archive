@@ -11,9 +11,9 @@ from commands import Commands
 
 def main(conffile):
     commands = Commands(conffile)
-    
+
     commands.startserver()
-    
+
 if __name__ == '__main__':
     if len(sys.argv) < 2:
         commands.logger.info("Syntax: python startserver.py <configfile>")

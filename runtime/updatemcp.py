@@ -13,7 +13,7 @@ def main(conffile, force=False):
 
     commands.logger.info ('== Updating MCP ==')
     commands.downloadupdates(force)
-    
+
 if __name__ == '__main__':
     if len(sys.argv) < 2:
         print("Syntax: python updatemcp.py <configfile>")
@@ -21,4 +21,4 @@ if __name__ == '__main__':
     if len(sys.argv) == 3 and sys.argv[2] == '-f':
         main(sys.argv[1], True)
     else:
-        main(sys.argv[1])    
+        main(sys.argv[1])
