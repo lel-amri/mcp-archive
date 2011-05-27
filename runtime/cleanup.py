@@ -3,7 +3,7 @@
 Created on Sat Apr  9 13:51:48 2011
 
 @author: ProfMobius & Searge
-@version: v0.1
+@version: v1.0
 """
 
 import sys, shutil, os, glob, logging, time, stat
@@ -31,17 +31,14 @@ def main(conffile, force=False):
     commands.logger.info ('> Cleaning temp')
     if not reallyrmtree(commands.dirtemp):
         commands.logger.error ('failed cleaning temp')
-#    os.mkdir(commands.dirtemp)
 
     commands.logger.info ('> Cleaning src')
     if not reallyrmtree(commands.dirsrc):
         commands.logger.error ('failed cleaning src')
-#    os.mkdir(commands.dirsrc)
 
     commands.logger.info ('> Cleaning bin')
     if not reallyrmtree(commands.dirbin):
         commands.logger.error ('failed cleaning bin')
-#    os.mkdir(commands.dirbin)
 
     commands.logger.info ('> Cleaning reobf')
     if not reallyrmtree(commands.dirreobf):
@@ -59,7 +56,6 @@ def main(conffile, force=False):
     commands.logger.info ('> Cleaning logs')
     logging.shutdown()
     reallyrmtree(commands.dirlogs)
-#    os.mkdir(commands.dirlogs)
 
 
 def reallyrmtree(dir):

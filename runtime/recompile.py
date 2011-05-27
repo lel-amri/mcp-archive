@@ -3,7 +3,7 @@
 Created on Fri Apr  8 16:54:36 2011
 
 @author: ProfMobius
-@version: v0.1
+@version: v1.0
 """
 import sys, time
 from commands import Commands

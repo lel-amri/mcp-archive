@@ -24,35 +24,46 @@ public class Start
 		
 		// start minecraft game application
 		Minecraft.main(args);
-		
-		// enumerate all threads in this process
-		Thread[] threads = new Thread[256];
-		int count = java.lang.Thread.enumerate(threads);
-		
-		// find the minecraft main thread
-		Minecraft mc = null;
-		for(int i = 0; i < count; ++i)
+
+		// get the minecraft instance
+		final Minecraft mc;
+		try
 		{
-			// compare thread name to find the main thread
-			if(threads[i].getName().equals("Minecraft main thread"))
-			{
-				try
-				{
-					// get access to minecraft main thread object
-					Field f = Thread.class.getDeclaredField("target");
-					Field.setAccessible(new Field[] { f }, true);
-					mc = (Minecraft)f.get(threads[i]);
-				}
-				catch (Exception e)
-				{
-					e.printStackTrace();
-					System.exit(0);
-				}
-				break;
-			}
+			Field f = Minecraft.class.getDeclaredField("theMinecraft");
+			Field.setAccessible(new Field[] { f }, true);
+			mc = (Minecraft) f.get(null);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			return;
 		}
 		
-		// the variable mc now holds a reference to the minecraft main thread object, have fun :)
+		// make sure no nagging message will come up during testing
+		Thread noNagging = new Thread("nonagging") {
+
+			@Override
+			public void run()
+			{
+				while(mc.running)
+				{
+					if(mc.field_28005_H > 0)
+						mc.field_28005_H = 0;
+					
+					try
+					{
+						Thread.sleep(10);
+					}
+					catch (InterruptedException e)
+					{
+					}
+				}
+			}
+			
+		};
+		
+		// start our no-nagging thread
+		noNagging.start();
 	}
 	
 }

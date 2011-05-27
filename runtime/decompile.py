@@ -3,7 +3,7 @@
 Created on Fri Apr  8 16:54:36 2011
 
 @author: ProfMobius
-@version: v0.1
+@version: v1.2
 """
 import sys, time, os
 from commands import Commands
@@ -38,10 +38,7 @@ def main(conffile):
             commands.logger.info ('> Renaming sources')
             commands.rename(0)
             commands.logger.info ('> Creating reobfuscation tables')
-            #commands.createsaffx(0)
             commands.renamereobsrg(0)
-            #print ('> Cleaning temp directory')
-            #commands.cleantempbin(0)
             commands.logger.info ('> Done in %.2f seconds'%(time.time()-clienttime))
     else:
         commands.logger.warn ('!! Client already decompiled. Run cleanup before decompiling again !!')
@@ -66,10 +63,7 @@ def main(conffile):
             commands.logger.info ('> Renaming sources')
             commands.rename(1)
             commands.logger.info ('> Creating reobfuscation tables')
-            #commands.createsaffx(1)
             commands.renamereobsrg(1)
-            #print ('> Cleaning temp directory')
-            #commands.cleantempbin(1)
             commands.logger.info ('> Done in %.2f seconds'%(time.time()-servertime))
     else:
         commands.logger.warn ('!! Server already decompiled. Run cleanup before decompiling again !!')

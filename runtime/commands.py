@@ -3,7 +3,7 @@
 Created on Fri Apr  8 16:36:26 2011
 
 @author: ProfMobius & Searge
-@version: v0.1
+@version: v1.2
 """
 import warnings
 warnings.simplefilter('ignore')
@@ -12,13 +12,6 @@ import logging
 import os, shutil, zipfile, glob, csv, re, subprocess
 import ConfigParser
 import urllib, urllib2
-#if sys.version_info[0] == 2:
-#    import ConfigParser
-#    import urllib
-#if sys.version_info[0] == 3:
-#    import configparser as ConfigParser
-#    import urllib.request as urllib
-#    raw_input=input
 from filehandling.srgsexport import writesrgsfromcsvs
 from pylibs.annotate_gl_constants import annotate_file
 from pylibs.whereis import whereis
@@ -28,7 +21,7 @@ from hashlib import md5
 class Commands(object):
     """Contains the commands and initialisation for a full mcp run"""
 
-    MCPVersion = '3.1'
+    MCPVersion = '3.2'
     _instance  = None    #Small trick to create a singleton
     _single    = False   #Small trick to create a singleton
 
@@ -97,7 +90,7 @@ class Commands(object):
         # create formatter and add it to the handlers
         formatterconsole = logging.Formatter('%(message)s')
         ch.setFormatter(formatterconsole)
-        formatterfile = logging.Formatter('%(asctime)s - %(module)11s.%(funcName)s - %(levelname)s - %(message)s',datefmt='%Y-%m-%d %H:%M' )
+        formatterfile = logging.Formatter('%(asctime)s - %(module)11s.%(funcName)s - %(levelname)s - %(message)s',datefmt='%Y-%m-%d %H:%M')
         fh.setFormatter(formatterfile)
         eh.setFormatter(formatterfile)
         # add the handlers to logger
@@ -110,7 +103,7 @@ class Commands(object):
         self.loggermc.setLevel(logging.DEBUG)
         chmc = logging.StreamHandler()
         chmc.setLevel(logging.DEBUG)
-        formatterconsolemc = logging.Formatter('[%(asctime)s] %(message)s',datefmt='%H:%M' )
+        formatterconsolemc = logging.Formatter('[%(asctime)s] %(message)s',datefmt='%H:%M')
         chmc.setFormatter(formatterconsolemc)
         # add the handlers to logger
         self.loggermc.addHandler(chmc)
@@ -128,6 +121,7 @@ class Commands(object):
         self.dirbin   = config.get('DEFAULT','DirBin')
         self.dirjars  = config.get('DEFAULT','DirJars')
         self.dirreobf = config.get('DEFAULT','DirReobf')
+        self.dirlib   = config.get('DEFAULT','DirLib')
 
         #HINT: We read the position of the CSV files
         self.csvclasses = config.get('CSV', 'Classes')
@@ -177,6 +171,7 @@ class Commands(object):
         self.binclient    = config.get('RECOMPILE','BinClient')
         self.binserver    = config.get('RECOMPILE','BinServer')
         self.cpathclient  = config.get('RECOMPILE','ClassPathClient').split(',')
+        self.cpathserver  = config.get('RECOMPILE','ClassPathServer').split(',')
         self.fixesclient  = config.get('RECOMPILE','ClientFixes')
 
         #HINT: Reobf related configs
@@ -214,6 +209,7 @@ class Commands(object):
         rgout.write('.option Annotations\n')
         rgout.write('.attribute EnclosingMethod\n')
         rgout.write('.attribute Deprecated\n')
+        # those will mess up the decompiler patches:
         #rgout.write('.attribute LocalVariableTable\n')
         #rgout.write('.attribute LocalVariableTypeTable\n')
         #rgout.write('.option Generic\n')
@@ -255,6 +251,8 @@ class Commands(object):
         rgout.write('%s = %s\n'%('reob', self.reobsrgserver))
         rgout.write('%s = %s\n'%('nplog', self.rgserverdeoblog))
         rgout.write('%s = %s\n'%('rolog', self.serverreoblog))
+        for pkg in self.ignorepkg:
+            rgout.write('%s = %s\n'%('protectedpackage', pkg))
         rgout.close()
 
     def createsrgs(self, side):
@@ -366,7 +364,7 @@ class Commands(object):
 
         if not md5jar == md5jarlk[side]:
             self.logger.warn('!! Modified jar detected. Unpredictable results !!')
-            #self.logger.info('md5: ' + md5jar)
+            self.logger.debug('md5: ' + md5jar)
 
         return True
 
@@ -413,11 +411,13 @@ class Commands(object):
             os.mkdir(self.dirbin)
         if not os.path.exists(self.dirreobf):
             os.mkdir(self.dirreobf)
+        if not os.path.exists(self.dirlib):
+            os.mkdir(self.dirlib)
 
     def checkupdates(self, silent=False):
         results = []
         #HINT: Each local entry is of the form dict[filename]=(md5,modificationtime)
-        md5lcldict={}
+        md5lcldict = {}
         for path, dirlist, filelist in os.walk('.'):
             for trgfile in filelist:
                 md5lcldict[os.path.join(path,trgfile).replace(os.sep, '/').replace('./','')] = \
@@ -425,8 +425,11 @@ class Commands(object):
                  os.stat(os.path.join(path,trgfile)).st_mtime
                  )
 
-        md5srvlist = urllib.urlopen('http://mcp.ocean-labs.de/files/mcprolling/mcp.md5').readlines()
-        md5srvdict = {}
+        try:
+            md5srvlist = urllib.urlopen('http://mcp.ocean-labs.de/files/mcprolling/mcp.md5').readlines()
+            md5srvdict = {}
+        except IOError:
+            return []
 
         #HINT: Each remote entry is of the form dict[filename]=(md5,modificationtime)
         for entry in md5srvlist:
@@ -448,26 +451,16 @@ class Commands(object):
 
     def cleanbindirs(self,side):
         pathbinlk    = {0:self.binclient,    1:self.binserver}
-#        pathtmpbinlk = {0:self.binclienttmp,    1:self.binservertmp}
-
-#        if os.path.exists(pathbinlk[side]):
-#            shutil.rmtree(pathbinlk[side], ignore_errors=True)
-#        os.mkdir(pathbinlk[side])
 
         for path, dirlist, filelist in os.walk(pathbinlk[side]):
             for bin_file in glob.glob(os.path.join(path, '*.class')):
                 os.remove(bin_file)
-
-#        if os.path.exists(pathtmpbinlk[side]):
-#            shutil.rmtree(pathtmpbinlk[side], ignore_errors=True)
-#        os.mkdir(pathtmpbinlk[side])
 
     def cleanreobfdir(self, side):
         outpathlk = {0:self.dirreobfclt,    1:self.dirreobfsrv}
         pathbinlk = {0:self.binclient,    1:self.binserver}
         if os.path.exists(outpathlk[side]):
             shutil.rmtree(outpathlk[side], ignore_errors=True)
-        #os.mkdir(outpathlk[side])
 
         shutil.copytree(pathbinlk[side], outpathlk[side])
         for path, dirlist, filelist in os.walk(outpathlk[side]):
@@ -497,16 +490,25 @@ class Commands(object):
 
     def applyrg(self, side):
         """Apply rg to the given side"""
-        cfglk = {0:self.rgclientconf, 1:self.rgserverconf}
-        forkcmd = self.cmdrg.format(jarrg=self.retroguard, conffile=cfglk[side])
+
+        # add retroguard.jar to copy of client classpath
+        if side == 0:
+            rgconf = self.rgclientconf
+            rgcp = [self.retroguard] + self.cpathclient
+            rgcp = os.pathsep.join(rgcp)
+
+        # add retroguard.jar to copy of server classpath
+        if side == 1:
+            rgconf = self.rgserverconf
+            rgcp = [self.retroguard] + self.cpathserver
+            rgcp = os.pathsep.join(rgcp)
+
+        forkcmd = self.cmdrg.format(classpath=rgcp, conffile=rgconf)
         self.runcmd(forkcmd)
 
     def applyjadretro(self, side):
         """Apply jadretro to the bin output directory"""
         pathbinlk = {0:self.binclienttmp,   1:self.binservertmp}
-#        pkgslk    = {0:self.pkgclient,   1:self.pkgserver}
-#        for pkg in pkgslk[side]:
-#            os.system(self.cmdjadretro.format(jarjr=self.jadretro, targetdir=os.path.join(pathbinlk[side], pkg)))
         pkglist = []
         for path, dirlist, filelist in os.walk(pathbinlk[side]):
             if glob.glob(os.path.join(path,'*.class')):
@@ -523,7 +525,6 @@ class Commands(object):
     def applyjad(self, side):
         """Decompile the code using jad"""
         pathbinlk = {0:self.binclienttmp, 1:self.binservertmp}
-#        pkgslk    = {0:self.pkgclient,    1:self.pkgserver}
         pathsrclk = {0:self.srcclient,    1:self.srcserver}
 
         #HINT: We delete the old sources and recreate it
@@ -532,9 +533,6 @@ class Commands(object):
         os.mkdir(pathsrclk[side])
 
         #HINT: We go throught the packages and apply jad to the directory
-#        for pkg in pkgslk[side]:
-#            classlist = os.path.join(pathbinlk[side], pkg, '*.class')
-#            os.system(self.cmdjad.format(binjad=self.jad, outdir=pathsrclk[side], classes=classlist))
         pkglist = []
         for path, dirlist, filelist in os.walk(pathbinlk[side]):
             if glob.glob(os.path.join(path,'*.class')):
@@ -604,12 +602,6 @@ class Commands(object):
         cmdlk     = {0:self.cmdrecompclt, 1:self.cmdrecompsrv}
         pathbinlk = {0:self.binclient,    1:self.binserver}
         pathsrclk = {0:self.srcclient,    1:self.srcserver}
-#        pkgslk    = {0:self.pkgclient,    1:self.pkgserver}
-
-        #HINT: We delete and recreate the bin directory
-#        if os.path.exists(pathbinlk[side]):
-#            shutil.rmtree(pathbinlk[side])
-#        os.mkdir(pathbinlk[side])
 
         if not os.path.exists(pathbinlk[side]):
             os.mkdir(pathbinlk[side])
@@ -627,8 +619,10 @@ class Commands(object):
             forkcmd = cmdlk[side].format(classpath=cpc, sourcepath=pathsrclk[side], outpath=pathbinlk[side], pkgs=pkglist, fixes=self.fixesclient)
 
         if side == 1:
-            forkcmd = cmdlk[side].format(sourcepath=pathsrclk[side], outpath=pathbinlk[side], pkgs=pkglist)
+            cps = os.pathsep.join(self.cpathserver)
+            forkcmd = cmdlk[side].format(classpath=cps, sourcepath=pathsrclk[side], outpath=pathbinlk[side], pkgs=pkglist)
 
+        self.logger.debug("recompile: '"+forkcmd+"'")
         p = subprocess.Popen(forkcmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         buffer = []
         errormsgs = []
@@ -664,10 +658,10 @@ class Commands(object):
             #sys.exit(1)
 
     def startserver(self):
-        binserver    = '../'+self.binserver
-        jarserver    = '../'+self.jarserver
-
-        cps = '%s%s%s'%(binserver, os.pathsep, jarserver)
+        cps = ['../'+p for p in self.cpathserver]
+        cps.insert(2, '../'+self.binserver)
+        cps = os.pathsep.join(cps)
+        #self.logger.info("classpath: '"+cps+"'")
 
         os.chdir(self.dirjars)
 
@@ -675,14 +669,16 @@ class Commands(object):
         self.runmc(forkcmd)
 
     def startclient(self):
-        cpc = self.binclient
-        cpc += os.pathsep + os.pathsep.join(self.cpathclient)
+        cpc = list(self.cpathclient)
+        cpc.insert(2, self.binclient)
+        cpc = os.pathsep.join(cpc)
+        #self.logger.info("classpath: '"+cpc+"'")
 
         forkcmd = self.cmdstartclt.format(classpath=cpc, natives=self.dirnatives)
         self.runmc(forkcmd)
 
     def runcmd(self, forkcmd):
-        #self.logger.info("runcmd: '"+forkcmd+"'")
+        self.logger.debug("runcmd: '"+forkcmd+"'")
         p = subprocess.Popen(forkcmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         buffer = []
         retcode = None
@@ -704,6 +700,7 @@ class Commands(object):
                 self.logger.error(line)
 
     def runmc(self, forkcmd):
+        self.logger.debug("runmc: '"+forkcmd+"'")
         pclient = subprocess.Popen(forkcmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         msgs        = []
         returnvalue = None
@@ -752,11 +749,11 @@ class Commands(object):
         fields  = {}
         for row in methodsreader:
             if int(row['side']) == side:
-                #if row['searge'] in methods: print ('WTF ? %s'%row['searge'])
+                if row['searge'] in methods: self.logger.debug('WTF ? %s'%row['searge'])
                 methods[row['searge']] = row
         for row in fieldsreader:
             if int(row['side']) == side:
-                #if row['searge'] in methods: print ('WTF ? %s'%row['searge'])
+                if row['searge'] in methods: self.logger.debug('WTF ? %s'%row['searge'])
                 fields[row['searge']]  = row
 
         type_hash         = {'methods':'func', 'fields':'field'}
@@ -843,20 +840,29 @@ class Commands(object):
                 if self.fixstart.replace('/',os.sep).replace('\\',os.sep) in bin_file: continue
                 zipjar.write(bin_file, os.sep.join(bin_file.split(os.sep)[2:]))
 
-        if side == 0:
-            for pkg in self.ignorepkg:
-                curpath = os.path.join(pathtmpbinlk[0],pkg)
-                for path, dirlist, filelist in os.walk(curpath):
-                    path = path.replace('/',os.sep)
-                    for bin_file in glob.glob(os.path.join(path, '*.class')):
-                        zipjar.write(bin_file, os.sep.join(bin_file.split(os.sep)[3:]))
+        for pkg in self.ignorepkg:
+            curpath = os.path.join(pathtmpbinlk[0],pkg)
+            for path, dirlist, filelist in os.walk(curpath):
+                path = path.replace('/',os.sep)
+                for bin_file in glob.glob(os.path.join(path, '*.class')):
+                    zipjar.write(bin_file, os.sep.join(bin_file.split(os.sep)[3:]))
 
         zipjar.close()
 
     def reobfuscate(self, side):
-        cfglk = {0:self.rgclientconf, 1:self.rgserverconf}
+        # add retroguard.jar to copy of client classpath
+        if side == 0:
+            rgconf = self.rgclientconf
+            rgcp = [self.retroguard] + self.cpathclient
+            rgcp = os.pathsep.join(rgcp)
 
-        forkcmd = self.cmdrgreobf.format(jarrg=self.retroguard, conffile=cfglk[side])
+        # add retroguard.jar to copy of server classpath
+        if side == 1:
+            rgconf = self.rgserverconf
+            rgcp = [self.retroguard] + self.cpathserver
+            rgcp = os.pathsep.join(rgcp)
+
+        forkcmd = self.cmdrgreobf.format(classpath=rgcp, conffile=rgconf)
         self.runcmd(forkcmd)
 
     def unpackreobfclasses(self, side):
@@ -904,7 +910,6 @@ class Commands(object):
         for i in trgclasses:
             if i in classes:
                 zipjar.extract('%s.class'%classes[i], outpathlk[side])
-                #zipjar.extract(r'%s.class'%classes[i].replace('/',os.sep), outpathlk[side])
                 self.logger.info ('> Outputted %s to %s as %s'%(i.ljust(35),outpathlk[side],classes[i]+'.class'))
             else:
                 i = i.replace(self.nullpkg, '')
