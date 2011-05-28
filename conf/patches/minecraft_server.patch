@@ -1169,7 +1169,7 @@ diff -r -U 3 minecraft_server\net\minecraft\src\NetworkMasterThread.java minecra
 diff -r -U 3 minecraft_server\net\minecraft\src\NetworkReaderThread.java minecraft_server_patched\net\minecraft\src\NetworkReaderThread.java
 --- minecraft_server\net\minecraft\src\NetworkReaderThread.java	Fri May 27 22:44:40 2011
 +++ minecraft_server_patched\net\minecraft\src\NetworkReaderThread.java	Fri May 27 21:56:56 2011
-@@ -13,45 +13,57 @@
+@@ -13,8 +13,8 @@
  
      NetworkReaderThread(NetworkManager networkmanager, String s)
      {
@@ -1178,92 +1178,42 @@ diff -r -U 3 minecraft_server\net\minecraft\src\NetworkReaderThread.java minecra
 +        field_827_a = networkmanager;
      }
  
--    public void run()
--    {
--        synchronized(NetworkManager.field_1053_a)
--        {
--            NetworkManager.field_1052_b++;
--        }
--        while(NetworkManager.func_743_a(field_827_a) && !NetworkManager.func_740_b(field_827_a)) 
--        {
--            for(int i = 100; i > 0; i--)
--            {
--                if(!NetworkManager.func_751_c(field_827_a))
--                {
--                    i = 0;
--                }
--            }
--
--            try
--            {
--                sleep(1L);
--            }
--            catch(InterruptedException interruptedexception) { }
-+    public void run() {
-+        Object var1 = NetworkManager.field_1053_a;
-+        synchronized(NetworkManager.field_1053_a) {
-+           ++NetworkManager.field_1052_b;
+     public void run()
+@@ -23,6 +23,8 @@
+         {
+             NetworkManager.field_1052_b++;
+         }
++        try
++        {
+         while(NetworkManager.func_743_a(field_827_a) && !NetworkManager.func_740_b(field_827_a)) 
+         {
+             while(NetworkManager.func_751_c(field_827_a)) ;
+@@ -32,18 +34,14 @@
+             }
+             catch(InterruptedException interruptedexception) { }
          }
 -        synchronized(NetworkManager.field_1053_a)
 -        {
 -            NetworkManager.field_1052_b--;
-+
-+        while(true) {
-+           boolean var12 = false;
-+
-+           try {
-+              var12 = true;
-+              if(!NetworkManager.func_743_a(this.field_827_a)) {
-+                 var12 = false;
-+                 break;
-+              }
-+
-+              if(NetworkManager.func_740_b(this.field_827_a)) {
-+                 var12 = false;
-+                 break;
-+              }
-+
-+              for(int var18 = 100; var18 > 0; --var18) {
-+                 if(!NetworkManager.func_751_c(this.field_827_a)) {
-+                    var18 = 0;
-+                 }
-+              }
-+
-+              try {
-+                 sleep(1L);
-+              } catch (InterruptedException var15) {
-+                 ;
-+              }
-+           } finally {
-+              if(var12) {
-+                 Object var5 = NetworkManager.field_1053_a;
-+                 synchronized(NetworkManager.field_1053_a) {
-+                    --NetworkManager.field_1052_b;
-+                 }
-+              }
-+           }
          }
--        break MISSING_BLOCK_LABEL_141;
+-        break MISSING_BLOCK_LABEL_131;
 -        Exception exception2;
 -        exception2;
--        synchronized(NetworkManager.field_1053_a)
--        {
--            NetworkManager.field_1052_b--;
-+
-+        var1 = NetworkManager.field_1053_a;
-+        synchronized(NetworkManager.field_1053_a) {
-+           --NetworkManager.field_1052_b;
++        finally
++        {
+         synchronized(NetworkManager.field_1053_a)
+         {
+             NetworkManager.field_1052_b--;
          }
 -        throw exception2;
--    }
-+     }
++        }
+     }
  
      final NetworkManager field_827_a; /* synthetic field */
- }
 diff -r -U 3 minecraft_server\net\minecraft\src\NetworkWriterThread.java minecraft_server_patched\net\minecraft\src\NetworkWriterThread.java
 --- minecraft_server\net\minecraft\src\NetworkWriterThread.java	Fri May 27 22:44:40 2011
 +++ minecraft_server_patched\net\minecraft\src\NetworkWriterThread.java	Fri May 27 22:00:12 2011
-@@ -15,61 +15,60 @@
+@@ -15,8 +15,8 @@
  
      NetworkWriterThread(NetworkManager networkmanager, String s)
      {
@@ -1272,107 +1222,38 @@ diff -r -U 3 minecraft_server\net\minecraft\src\NetworkWriterThread.java minecra
 +        field_826_a = networkmanager;
      }
  
--    public void run()
--    {
--        synchronized(NetworkManager.field_1053_a)
--        {
--            NetworkManager.field_1051_c++;
-+    public void run() {
-+        synchronized(NetworkManager.field_1053_a) {
-+           ++NetworkManager.field_1051_c;
+     public void run()
+@@ -25,6 +25,8 @@
+         {
+             NetworkManager.field_1051_c++;
          }
--        do
--        {
--            if(!NetworkManager.func_743_a(field_826_a))
--            {
--                break;
--            }
--            for(int i = 100; i > 0; i--)
--            {
--                if(!NetworkManager.func_749_d(field_826_a))
--                {
--                    i = 0;
--                }
--            }
--
--            try
--            {
--                sleep(1L);
--            }
--            catch(InterruptedException interruptedexception) { }
--            if(NetworkManager.func_28135_e(field_826_a))
--            {
--                NetworkManager.func_28137_a(field_826_a, false);
--                try
--                {
--                    NetworkManager.func_28136_f(field_826_a).flush();
--                }
--                catch(IOException ioexception)
--                {
--                    ioexception.printStackTrace();
--                }
--            }
--        } while(true);
++        try
++        {
+         do
+         {
+             if(!NetworkManager.func_743_a(field_826_a))
+@@ -53,18 +55,14 @@
+                 ioexception.printStackTrace();
+             }
+         } while(true);
 -        synchronized(NetworkManager.field_1053_a)
 -        {
 -            NetworkManager.field_1051_c--;
-+
-+        while(true) {
-+           boolean var13 = false;
-+
-+           try {
-+              var13 = true;
-+              if(!NetworkManager.func_743_a(this.field_826_a)) {
-+                 var13 = false;
-+                 break;
-+              }
-+
-+              for(int var20 = 100; var20 > 0; --var20) {
-+                 if(!NetworkManager.func_749_d(this.field_826_a)) {
-+                    var20 = 0;
-+                 }
-+              }
-+
-+              try {
-+                 sleep(1L);
-+              } catch (InterruptedException var17) {
-+                 ;
-+              }
-+
-+              if(NetworkManager.func_28135_e(this.field_826_a)) {
-+                 NetworkManager.func_28137_a(this.field_826_a, false);
-+
-+                 try {
-+                    NetworkManager.func_28136_f(this.field_826_a).flush();
-+                 } catch (IOException var16) {
-+                    var16.printStackTrace();
-+                 }
-+              }
-+           } finally {
-+              if(var13) {
-+                 Object var5 = NetworkManager.field_1053_a;
-+                 synchronized(NetworkManager.field_1053_a) {
-+                    --NetworkManager.field_1051_c;
-+                 }
-+              }
-+           }
          }
--        break MISSING_BLOCK_LABEL_168;
+-        break MISSING_BLOCK_LABEL_167;
 -        Exception exception2;
 -        exception2;
--        synchronized(NetworkManager.field_1053_a)
--        {
--            NetworkManager.field_1051_c--;
-+
-+        synchronized(NetworkManager.field_1053_a) {
-+           --NetworkManager.field_1051_c;
++        finally
++        {
+         synchronized(NetworkManager.field_1053_a)
+         {
+             NetworkManager.field_1051_c--;
          }
 -        throw exception2;
--    }
-+     }
++        }
+     }
  
      final NetworkManager field_826_a; /* synthetic field */
- }
 diff -r -U 3 minecraft_server\net\minecraft\src\Packet.java minecraft_server_patched\net\minecraft\src\Packet.java
 --- minecraft_server\net\minecraft\src\Packet.java	Fri May 27 22:44:40 2011
 +++ minecraft_server_patched\net\minecraft\src\Packet.java	Fri May 27 21:42:30 2011

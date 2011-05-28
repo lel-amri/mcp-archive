@@ -1,3 +1,6 @@
+== v3.3 ==
++ Updated to client & server v1.6.5
+
 == v3.2 ==
 + Updated to client & server v1.6.4
 + Added support for external jar files in recompile and reobfuscation

@@ -1772,8 +1772,8 @@ diff -r -U 3 minecraft\net\minecraft\src\NetworkReaderThread.java minecraft_patc
 +        {
          while(NetworkManager.func_971_a(field_1085_a) && !NetworkManager.func_968_b(field_1085_a)) 
          {
-             for(int i = 100; i > 0; i--)
-@@ -39,18 +41,14 @@
+             while(NetworkManager.func_966_c(field_1085_a)) ;
+@@ -32,18 +34,14 @@
              }
              catch(InterruptedException interruptedexception) { }
          }
@@ -1781,7 +1781,7 @@ diff -r -U 3 minecraft\net\minecraft\src\NetworkReaderThread.java minecraft_patc
 -        {
 -            NetworkManager.field_1477_b--;
          }
--        break MISSING_BLOCK_LABEL_141;
+-        break MISSING_BLOCK_LABEL_131;
 -        Exception exception2;
 -        exception2;
 +        finally
@@ -1817,15 +1817,15 @@ diff -r -U 3 minecraft\net\minecraft\src\NetworkWriterThread.java minecraft_patc
          do
          {
              if(!NetworkManager.func_971_a(field_1063_a))
-@@ -57,18 +59,14 @@
-                 }
+@@ -53,18 +55,14 @@
+                 ioexception.printStackTrace();
              }
          } while(true);
 -        synchronized(NetworkManager.field_1478_a)
 -        {
 -            NetworkManager.field_1476_c--;
          }
--        break MISSING_BLOCK_LABEL_168;
+-        break MISSING_BLOCK_LABEL_167;
 -        Exception exception2;
 -        exception2;
 +        finally

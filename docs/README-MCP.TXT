@@ -1,5 +1,5 @@
-Minecraft mod creator pack 3.2 for Minecraft 1.6
-================================================
+Minecraft mod creator pack 3.3 for Minecraft 1.6.5
+==================================================
 
 Prerequisites:
 ==============
@@ -48,7 +48,8 @@ WARNINGS:
 
 Notes:
 ======
-* If you want to include external libraries (either as .jar or .class) to the classpath during recompilation add them to "libs\".
+* If you want to include external libraries (either as .jar or .class) to the classpath during recompilation add them
+  to a folder called "lib" creating it first if required.
 
 * Should mcp compalain about "java.lang.NoClassDefFoundError: Start" when trying to run startclient.bat or startserver.bat
   try cleanup.bat (make backups of you sources!), decompile again and recompile as the final step.
@@ -86,7 +87,7 @@ Searge
 * Creator of MCP
 * Fixes all compile errors in the decompiled sourcecode
 * Created the MCP Mod Framework system and API
-* Created the new RetroGuard deobfuscation module for MCP 3.0
+* Created the new RetroGuard deobfuscation module for MCP 3.x
 ProfMobius
 * Creator of the renaming codes and re-obfuscation procedures
 * Helped to port scripts to Linux
@@ -162,6 +163,7 @@ and of course:
 
 History:
 ========
+3.3  - Updated to support Minecraft 1.6.5 and MinecraftServer 1.6.5
 3.2  - Updated to support Minecraft 1.6.4 and MinecraftServer 1.6.4
 3.1  - Complete rewrite of the framework, works with Minecraft 1.5_01 and MinecraftServer 1.5_02
 2.12 - Updated to support Minecraft 1.5_01 and MinecraftServer 1.5_02
@@ -190,7 +192,7 @@ History:
 
 Roadmap:
 ========
-3.3+ - New awesome features, improvements and updates :)
+3.4+ - New awesome features, improvements and updates :)
 
 _________________________________________________________________________________________________________________
 _________________________________________________________________________________________________________________

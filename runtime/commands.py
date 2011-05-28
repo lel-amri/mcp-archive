@@ -21,7 +21,7 @@ from hashlib import md5
 class Commands(object):
     """Contains the commands and initialisation for a full mcp run"""
 
-    MCPVersion = '3.2'
+    MCPVersion = '3.3'
     _instance  = None    #Small trick to create a singleton
     _single    = False   #Small trick to create a singleton
 
@@ -115,13 +115,16 @@ class Commands(object):
         self.config = config
 
         #HINT: We read the directories for cleanup
-        self.dirtemp  = config.get('DEFAULT','DirTemp')
-        self.dirsrc   = config.get('DEFAULT','DirSrc')
-        self.dirlogs  = config.get('DEFAULT','DirLogs')
-        self.dirbin   = config.get('DEFAULT','DirBin')
-        self.dirjars  = config.get('DEFAULT','DirJars')
-        self.dirreobf = config.get('DEFAULT','DirReobf')
-        self.dirlib   = config.get('DEFAULT','DirLib')
+        try:
+            self.dirtemp  = config.get('DEFAULT','DirTemp')
+            self.dirsrc   = config.get('DEFAULT','DirSrc')
+            self.dirlogs  = config.get('DEFAULT','DirLogs')
+            self.dirbin   = config.get('DEFAULT','DirBin')
+            self.dirjars  = config.get('DEFAULT','DirJars')
+            self.dirreobf = config.get('DEFAULT','DirReobf')
+            self.dirlib   = config.get('DEFAULT','DirLib')
+        except ConfigParser.NoOptionError:
+            pass
 
         #HINT: We read the position of the CSV files
         self.csvclasses = config.get('CSV', 'Classes')
@@ -168,11 +171,14 @@ class Commands(object):
         self.patchtemp    = config.get('PATCHES', 'PatchTemp')
 
         #HINT: Recompilation related configs
-        self.binclient    = config.get('RECOMPILE','BinClient')
-        self.binserver    = config.get('RECOMPILE','BinServer')
-        self.cpathclient  = config.get('RECOMPILE','ClassPathClient').split(',')
-        self.cpathserver  = config.get('RECOMPILE','ClassPathServer').split(',')
-        self.fixesclient  = config.get('RECOMPILE','ClientFixes')
+        try:
+            self.binclient    = config.get('RECOMPILE','BinClient')
+            self.binserver    = config.get('RECOMPILE','BinServer')
+            self.cpathclient  = config.get('RECOMPILE','ClassPathClient').split(',')
+            self.fixesclient  = config.get('RECOMPILE','ClientFixes')
+            self.cpathserver  = config.get('RECOMPILE','ClassPathServer').split(',')
+        except ConfigParser.NoOptionError:
+            pass
 
         #HINT: Reobf related configs
         self.saffxclient    = config.get('REOBF', 'SAFFXClient')
@@ -401,18 +407,21 @@ class Commands(object):
                 return True
 
     def checkfolders(self):
-        if not os.path.exists(self.dirtemp):
-            os.mkdir(self.dirtemp)
-        if not os.path.exists(self.dirsrc):
-            os.mkdir(self.dirsrc)
-        if not os.path.exists(self.dirlogs):
-            os.mkdir(self.dirlogs)
-        if not os.path.exists(self.dirbin):
-            os.mkdir(self.dirbin)
-        if not os.path.exists(self.dirreobf):
-            os.mkdir(self.dirreobf)
-        if not os.path.exists(self.dirlib):
-            os.mkdir(self.dirlib)
+        try:
+            if not os.path.exists(self.dirtemp):
+                os.mkdir(self.dirtemp)
+            if not os.path.exists(self.dirsrc):
+                os.mkdir(self.dirsrc)
+            if not os.path.exists(self.dirlogs):
+                os.mkdir(self.dirlogs)
+            if not os.path.exists(self.dirbin):
+                os.mkdir(self.dirbin)
+            if not os.path.exists(self.dirreobf):
+                os.mkdir(self.dirreobf)
+            if not os.path.exists(self.dirlib):
+                os.mkdir(self.dirlib)
+        except AttributeError:
+            pass
 
     def checkupdates(self, silent=False):
         results = []
@@ -954,6 +963,13 @@ class Commands(object):
         for entry in newfiles:
             if entry[3] == 'U':
                 self.logger.info('Retrieving file from server : %s'%entry[0])
+                dir = os.path.dirname(entry[0])
+                if not os.path.isdir(dir):
+                    try:
+                        os.makedirs(dir)
+                    except OSError:
+                        pass
+
                 urllib.urlretrieve('http://mcp.ocean-labs.de/files/mcprolling/mcp/'+entry[0], entry[0])
             if entry[3] == 'D':
                 self.logger.info('Removing file from local install : %s'%entry[0])
