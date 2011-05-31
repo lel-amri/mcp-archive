@@ -21,7 +21,7 @@ from hashlib import md5
 class Commands(object):
     """Contains the commands and initialisation for a full mcp run"""
 
-    MCPVersion = '3.3'
+    MCPVersion = '3.4'
     _instance  = None    #Small trick to create a singleton
     _single    = False   #Small trick to create a singleton
 
@@ -431,7 +431,8 @@ class Commands(object):
             for trgfile in filelist:
                 md5lcldict[os.path.join(path,trgfile).replace(os.sep, '/').replace('./','')] = \
                 (md5(open(os.path.join(path,trgfile),'rb').read()).hexdigest(),
-                 os.stat(os.path.join(path,trgfile)).st_mtime
+                 0
+                 #os.stat(os.path.join(path,trgfile)).st_mtime
                  )
 
         try:

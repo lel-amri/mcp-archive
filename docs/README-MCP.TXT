@@ -1,4 +1,4 @@
-Minecraft mod creator pack 3.3 for Minecraft 1.6.5
+Minecraft mod creator pack 3.4 for Minecraft 1.6.6
 ==================================================
 
 Prerequisites:
@@ -51,7 +51,7 @@ Notes:
 * If you want to include external libraries (either as .jar or .class) to the classpath during recompilation add them
   to a folder called "lib" creating it first if required.
 
-* Should mcp compalain about "java.lang.NoClassDefFoundError: Start" when trying to run startclient.bat or startserver.bat
+* Should mcp complain about "java.lang.NoClassDefFoundError: Start" when trying to run startclient.bat or startserver.bat
   try cleanup.bat (make backups of you sources!), decompile again and recompile as the final step.
 
 * Do not use this to release complete packages of minecraft jar, class or java files. They are copyrighted
@@ -163,6 +163,7 @@ and of course:
 
 History:
 ========
+3.4  - Updated to support Minecraft 1.6.6 and MinecraftServer 1.6.6
 3.3  - Updated to support Minecraft 1.6.5 and MinecraftServer 1.6.5
 3.2  - Updated to support Minecraft 1.6.4 and MinecraftServer 1.6.4
 3.1  - Complete rewrite of the framework, works with Minecraft 1.5_01 and MinecraftServer 1.5_02
@@ -192,7 +193,7 @@ History:
 
 Roadmap:
 ========
-3.4+ - New awesome features, improvements and updates :)
+3.5+ - New awesome features, improvements and updates :)
 
 _________________________________________________________________________________________________________________
 _________________________________________________________________________________________________________________

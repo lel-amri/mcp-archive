@@ -47,8 +47,8 @@ public class Start
 			{
 				while(mc.running)
 				{
-					if(mc.field_28005_H > 0)
-						mc.field_28005_H = 0;
+					if(mc.hasPaidCheckTime > 0)
+						mc.hasPaidCheckTime = 0;
 					
 					try
 					{

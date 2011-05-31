@@ -458,7 +458,7 @@ diff -r -U 3 minecraft\net\minecraft\src\EnumOptions.java minecraft_patched\net\
 +    VIEW_BOBBING("VIEW_BOBBING", 5, "options.viewBobbing", false, true),
 +    ANAGLYPH("ANAGLYPH", 6, "options.anaglyph", false, true),
 +    ADVANCED_OPENGL("ADVANCED_OPENGL", 7, "options.advancedOpengl", false, true),
-+    LIMIT_FRAMERATE("LIMIT_FRAMERATE", 8, "options.limitFramerate", false, true),
++    LIMIT_FRAMERATE("LIMIT_FRAMERATE", 8, "options.framerateLimit", false, false),
 +    DIFFICULTY("DIFFICULTY", 9, "options.difficulty", false, false),
 +    GRAPHICS("GRAPHICS", 10, "options.graphics", false, false),
 +    AMBIENT_OCCLUSION("AMBIENT_OCCLUSION", 11, "options.ao", false, true),
@@ -768,7 +768,7 @@ diff -r -U 3 minecraft\net\minecraft\src\GuiChat.java minecraft_patched\net\mine
      }
  
      public void func_571_a(int i, int j, float f)
-@@ -84,40 +76,22 @@
+@@ -84,40 +76,23 @@
      {
          if(k != 0)
          {
@@ -779,6 +779,7 @@ diff -r -U 3 minecraft\net\minecraft\src\GuiChat.java minecraft_patched\net\mine
          {
 -            break MISSING_BLOCK_LABEL_132;
 +            super.func_565_a(i, j, k);
++            return;
 +        }
 +        if(field_985_a.length() > 0 && !field_985_a.endsWith(" "))
 +        {
@@ -3143,7 +3144,7 @@ diff -r -U 3 minecraft\net\minecraft\src\RenderGlobal.java minecraft_patched\net
              do
              {
 -                byte byte0 = i1;
-+                byte byte0 = (byte) i1;
++                int byte0 = i1;
                  i1 *= 2;
                  if(i1 > field_1445_n.length)
                  {
