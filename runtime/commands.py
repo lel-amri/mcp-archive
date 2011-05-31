@@ -21,7 +21,7 @@ from hashlib import md5
 class Commands(object):
     """Contains the commands and initialisation for a full mcp run"""
 
-    MCPVersion = '3.4'
+    MCPVersion = '4.0'
     _instance  = None    #Small trick to create a singleton
     _single    = False   #Small trick to create a singleton
 
@@ -61,19 +61,23 @@ class Commands(object):
         return cls._instance
 
     def readcommands(self):
-        self.patcher  = self.config.get('COMMANDS', 'Patcher' ).replace('/',os.sep).replace('\\',os.sep)
-        self.jadretro = self.config.get('COMMANDS', 'JadRetro').replace('/',os.sep).replace('\\',os.sep)
-        self.jad      = self.config.get('COMMANDS', 'Jad%s'%self.osname     ).replace('/',os.sep).replace('\\',os.sep)
-        self.cmdjad   = self.config.get('COMMANDS', 'CmdJad%s'%self.osname  ).replace('/',os.sep).replace('\\',os.sep)
-        self.cmdpatch = self.config.get('COMMANDS', 'CmdPatch%s'%self.osname).replace('/',os.sep).replace('\\',os.sep)
-
-        self.cmdrg        = self.config.get('COMMANDS', 'CmdRG',        raw=1)%self.cmdjava
-        self.cmdrgreobf   = self.config.get('COMMANDS', 'CmdRGReobf',   raw=1)%self.cmdjava
-        self.cmdjadretro  = self.config.get('COMMANDS', 'CmdJadretro',  raw=1)%self.cmdjava
-        self.cmdrecompclt = self.config.get('COMMANDS', 'CmdRecompClt', raw=1)%self.cmdjavac
-        self.cmdrecompsrv = self.config.get('COMMANDS', 'CmdRecompSrv', raw=1)%self.cmdjavac
-        self.cmdstartsrv  = self.config.get('COMMANDS', 'CmdStartSrv',  raw=1)%self.cmdjava
-        self.cmdstartclt  = self.config.get('COMMANDS', 'CmdStartClt',  raw=1)%self.cmdjava
+        self.patcher     = self.config.get('COMMANDS', 'Patcher' ).replace('/',os.sep).replace('\\',os.sep)
+        self.jadretro    = self.config.get('COMMANDS', 'JadRetro').replace('/',os.sep).replace('\\',os.sep)
+        self.jad         = self.config.get('COMMANDS', 'Jad%s'%self.osname     ).replace('/',os.sep).replace('\\',os.sep)
+        self.cmdjad      = self.config.get('COMMANDS', 'CmdJad%s'%self.osname  ).replace('/',os.sep).replace('\\',os.sep)
+        self.cmdpatch    = self.config.get('COMMANDS', 'CmdPatch%s'%self.osname).replace('/',os.sep).replace('\\',os.sep)
+        self.fernflower  = self.config.get('COMMANDS', 'Fernflower').replace('/',os.sep).replace('\\',os.sep)
+        self.exceptor    = self.config.get('COMMANDS', 'Exceptor').replace('/',os.sep).replace('\\',os.sep)
+        
+        self.cmdrg         = self.config.get('COMMANDS', 'CmdRG',         raw=1)%self.cmdjava
+        self.cmdrgreobf    = self.config.get('COMMANDS', 'CmdRGReobf',    raw=1)%self.cmdjava
+        self.cmdjadretro   = self.config.get('COMMANDS', 'CmdJadretro',   raw=1)%self.cmdjava
+        self.cmdrecompclt  = self.config.get('COMMANDS', 'CmdRecompClt',  raw=1)%self.cmdjavac
+        self.cmdrecompsrv  = self.config.get('COMMANDS', 'CmdRecompSrv',  raw=1)%self.cmdjavac
+        self.cmdstartsrv   = self.config.get('COMMANDS', 'CmdStartSrv',   raw=1)%self.cmdjava
+        self.cmdstartclt   = self.config.get('COMMANDS', 'CmdStartClt',   raw=1)%self.cmdjava
+        self.cmdfernflower = self.config.get('COMMANDS', 'CmdFernflower', raw=1)%self.cmdjava
+        self.cmdexceptor   = self.config.get('COMMANDS', 'CmdExceptor',   raw=1)%self.cmdjava
 
     def startlogger(self):
         self.logger = logging.getLogger('MCPLog')
@@ -123,6 +127,7 @@ class Commands(object):
             self.dirjars  = config.get('DEFAULT','DirJars')
             self.dirreobf = config.get('DEFAULT','DirReobf')
             self.dirlib   = config.get('DEFAULT','DirLib')
+            self.dirffout = config.get('DEFAULT','DirFFOut')
         except ConfigParser.NoOptionError:
             pass
 
@@ -154,6 +159,23 @@ class Commands(object):
         self.rgclientdeoblog  = config.get('RETROGUARD', 'ClientDeobLog')
         self.rgserverdeoblog  = config.get('RETROGUARD', 'ServerDeobLog')
 
+        #HINT: We read keys relevant to exceptor
+        self.xclientconf = config.get('EXCEPTOR', 'XClientCfg')
+        self.xserverconf = config.get('EXCEPTOR', 'XServerCfg')
+        self.xclientout  = config.get('EXCEPTOR', 'XClientOut')
+        self.xserverout  = config.get('EXCEPTOR', 'XServerOut')
+        self.xclientlog  = config.get('EXCEPTOR', 'XClientLog')
+        self.xserverlog  = config.get('EXCEPTOR', 'XServerLog')
+
+        #HINT: We read keys relevant to fernflower
+        self.ffclientconf = config.get('DECOMPILE', 'FFClientConf')
+        self.ffserverconf = config.get('DECOMPILE', 'FFServerConf')
+        self.ffclientout  = config.get('DECOMPILE', 'FFClientOut')
+        self.ffserverout  = config.get('DECOMPILE', 'FFServerOut')
+        self.ffclientsrc  = config.get('DECOMPILE', 'FFClientSrc')
+        self.ffserversrc  = config.get('DECOMPILE', 'FFServerSrc')
+        self.ffsource     = config.get('DECOMPILE', 'FFSource')
+
         #HINT: We read the output directories
         self.binouttmp    = config.get('OUTPUT', 'BinOut')
         self.binclienttmp = config.get('OUTPUT', 'BinClient')
@@ -166,9 +188,11 @@ class Commands(object):
         self.pkgserver = config.get('PACKAGES', 'PkgServer').split(',')
 
         #HINT: Patcher related configs
-        self.patchclient  = config.get('PATCHES', 'PatchClient')
-        self.patchserver  = config.get('PATCHES', 'PatchServer')
-        self.patchtemp    = config.get('PATCHES', 'PatchTemp')
+        self.patchclient   = config.get('PATCHES', 'PatchClient')
+        self.patchserver   = config.get('PATCHES', 'PatchServer')
+        self.patchtemp     = config.get('PATCHES', 'PatchTemp')
+        self.ffpatchclient = config.get('PATCHES', 'FFPatchClient')
+        self.ffpatchserver = config.get('PATCHES', 'FFPatchServer')
 
         #HINT: Recompilation related configs
         try:
@@ -431,8 +455,7 @@ class Commands(object):
             for trgfile in filelist:
                 md5lcldict[os.path.join(path,trgfile).replace(os.sep, '/').replace('./','')] = \
                 (md5(open(os.path.join(path,trgfile),'rb').read()).hexdigest(),
-                 0
-                 #os.stat(os.path.join(path,trgfile)).st_mtime
+                 os.stat(os.path.join(path,trgfile)).st_mtime
                  )
 
         try:
@@ -514,6 +537,30 @@ class Commands(object):
             rgcp = os.pathsep.join(rgcp)
 
         forkcmd = self.cmdrg.format(classpath=rgcp, conffile=rgconf)
+        self.runcmd(forkcmd)
+
+    def applyff(self, side):
+        """Apply fernflower to the given side"""
+
+        if side == 0:
+            ffconf = self.ffclientconf
+            ffsrc  = self.xclientout
+            
+        if side == 1:
+            ffconf = self.ffserverconf
+            ffsrc  = self.xserverout
+
+        forkcmd = self.cmdfernflower.format(jarff=self.fernflower, conf=ffconf, jarin=ffsrc, jarout=self.dirffout)
+        self.runcmd(forkcmd)
+
+    def applyexceptor(self, side):
+        """Apply exceptor to the given side"""
+        excinput = {0:self.rgclientout,    1:self.rgserverout}
+        excoutput = {0:self.xclientout,    1:self.xserverout}
+        excconf = {0:self.xclientconf,    1:self.xserverconf}
+        exclog = {0:self.xclientlog,    1:self.xserverlog}
+
+        forkcmd = self.cmdexceptor.format(jarexc=self.exceptor, input=excinput[side], output=excoutput[side], conf=excconf[side], log=exclog[side])
         self.runcmd(forkcmd)
 
     def applyjadretro(self, side):
@@ -606,6 +653,53 @@ class Commands(object):
             self.logger.warn('==================')
             self.logger.warn('')
 
+    def applyffpatches(self, side):
+        """Applies the patches to the src directory"""
+        pathsrclk = {0:self.srcclient,   1:self.srcserver}
+        patchlk   = {0:self.ffpatchclient, 1:self.ffpatchserver}
+
+        #HINT: Here we transform the patches to match the directory separator of the specific platform
+        patch    = open(patchlk[side],'r').read().splitlines()
+        outpatch = open(self.patchtemp,'w')
+        for line in patch:
+            if line[:3] in ['+++','---', 'Onl', 'dif']:
+                 outpatch.write(line.replace('\\',os.sep).replace('/',os.sep) + '\r\n')
+            else:
+                outpatch.write(line  + '\r\n')
+        outpatch.close()
+
+        forkcmd = self.cmdpatch.format(srcdir=pathsrclk[side], patchfile=self.patchtemp)
+
+        p = subprocess.Popen(forkcmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        buffer = []
+        errormsgs = []
+        retcode = None
+        while True:
+            o = p.stdout.readline()
+            retcode = p.poll()
+            if o == '' and retcode != None:
+                break
+            if o != '':
+                buffer.append(o.strip())
+
+        if retcode == 0:
+            for line in buffer:
+                self.logger.debug(line)
+        else:
+            self.logger.warn('%s failed.'%forkcmd)
+            self.logger.warn('Return code : %d'%retcode)
+            for line in buffer:
+                if 'saving rejects' in line:
+                    errormsgs.append(line)
+                self.logger.debug(line)
+
+            self.logger.warn('')
+            self.logger.warn('== ERRORS FOUND ==')
+            self.logger.warn('')
+            for line in errormsgs:
+                self.logger.warn(line)
+            self.logger.warn('==================')
+            self.logger.warn('')
 
     def recompile(self, side):
         """Recompile the sources and produce the final bins"""
@@ -733,7 +827,7 @@ class Commands(object):
     def extractjar(self, side):
         """Unzip the jar file to the bin directory defined in the config file"""
         pathbinlk = {0:self.binclienttmp,   1:self.binservertmp}
-        jarlk     = {0:self.rgclientout, 1:self.rgserverout}
+        jarlk     = {0:self.xclientout, 1:self.xserverout}
 
         #HINT: We check if the top output directory exists. If not, we create it
         #We than check if the specific side directory exists. If it does, we delete it and create a new one
@@ -746,6 +840,30 @@ class Commands(object):
         #HINT: We extract the jar to the right location
         zipjar = zipfile.ZipFile(jarlk[side])
         zipjar.extractall(pathbinlk[side])
+
+    def extractsrc(self, side):
+        """Unzip the source jar file to the src directory defined in the config file"""
+        pathbinlk = {0:self.ffclientout,   1:self.ffserverout}
+        jarlk     = {0:self.ffclientsrc, 1:self.ffserversrc}
+        pathsrclk = {0:self.srcclient,   1:self.srcserver}
+
+        #HINT: We check if the top output directory exists. If not, we create it
+        if not os.path.exists(pathbinlk[side]):
+            os.mkdir(pathbinlk[side])
+
+        #HINT: We extract the jar to the right location
+        zipjar = zipfile.ZipFile(jarlk[side])
+        zipjar.extractall(pathbinlk[side])
+
+        if not os.path.exists(pathsrclk[side]):
+            os.mkdir(pathsrclk[side])
+
+        srcsrc = os.path.join(pathbinlk[side], self.ffsource).replace('/',os.sep).replace('\\',os.sep)
+        srcdest = os.path.join(pathsrclk[side], self.ffsource).replace('/',os.sep).replace('\\',os.sep)
+        
+        if os.path.exists(srcdest):
+            os.rmtree(srcdest)
+        shutil.copytree(srcsrc, srcdest)
 
     def rename(self, side):
         """Rename the sources using the CSV data"""

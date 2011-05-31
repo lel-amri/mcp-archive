@@ -1,4 +1,4 @@
-Minecraft mod creator pack 3.4 for Minecraft 1.6.6
+Minecraft mod creator pack 4.0 for Minecraft 1.6.6
 ==================================================
 
 Prerequisites:
@@ -88,6 +88,7 @@ Searge
 * Fixes all compile errors in the decompiled sourcecode
 * Created the MCP Mod Framework system and API
 * Created the new RetroGuard deobfuscation module for MCP 3.x
+* Created the Exceptor tool for MCP 4.x
 ProfMobius
 * Creator of the renaming codes and re-obfuscation procedures
 * Helped to port scripts to Linux
@@ -163,6 +164,7 @@ and of course:
 
 History:
 ========
+4.0  - Added improved decompile scripts with new Exceptor tool
 3.4  - Updated to support Minecraft 1.6.6 and MinecraftServer 1.6.6
 3.3  - Updated to support Minecraft 1.6.5 and MinecraftServer 1.6.5
 3.2  - Updated to support Minecraft 1.6.4 and MinecraftServer 1.6.4
@@ -193,7 +195,7 @@ History:
 
 Roadmap:
 ========
-3.5+ - New awesome features, improvements and updates :)
+4.1+ - New awesome features, improvements and updates :)
 
 _________________________________________________________________________________________________________________
 _________________________________________________________________________________________________________________

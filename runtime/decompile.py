@@ -15,11 +15,14 @@ def main(conffile):
     #TODO: Add a check for java here.
     cltdone = False
     srvdone = False
+    
+    ffexists = os.path.exists(commands.fernflower)
 
     commands.logger.info ('> Creating Retroguard config files')
     commands.creatergcfg()
 
-    if not os.path.exists(commands.srcclient):
+    srcdir = os.path.join(commands.srcclient, commands.ffsource).replace('/',os.sep).replace('\\',os.sep)
+    if not os.path.exists(srcdir):
         commands.logger.info ('== Decompiling Client ==')
         if commands.checkjars(0):
             clienttime = time.time()
@@ -27,14 +30,26 @@ def main(conffile):
             commands.createsrgs(0)
             commands.logger.info ('> Applying Retroguard to client')
             commands.applyrg(0)
+            commands.logger.info ('> Applying Exceptor to client')
+            commands.applyexceptor(0)
+            if ffexists:
+                commands.logger.info ('> Decompiling...')
+                commands.applyff(0)
+                commands.logger.info ('> Unzipping the client sources')
+                commands.extractsrc(0)
             commands.logger.info ('> Unzipping the client jar')
             commands.extractjar(0)
-            commands.logger.info ('> Applying jadretro')
-            commands.applyjadretro(0)
-            commands.logger.info ('> Decompiling...')
-            commands.applyjad(0)
+            if not ffexists:
+                commands.logger.info ('> Applying jadretro')
+                commands.applyjadretro(0)
+            if not ffexists:
+                commands.logger.info ('> Decompiling...')
+                commands.applyjad(0)
             commands.logger.info ('> Applying patches')
-            commands.applypatches(0)
+            if not ffexists:
+                commands.applypatches(0)
+            else:
+                commands.applyffpatches(0)
             commands.logger.info ('> Renaming sources')
             commands.rename(0)
             commands.logger.info ('> Creating reobfuscation tables')
@@ -44,7 +59,8 @@ def main(conffile):
         commands.logger.warn ('!! Client already decompiled. Run cleanup before decompiling again !!')
         cltdone = True
 
-    if not os.path.exists(commands.srcserver):
+    srcdir = os.path.join(commands.srcserver, commands.ffsource).replace('/',os.sep).replace('\\',os.sep)
+    if not os.path.exists(srcdir):
         commands.logger.info ('== Decompiling Server ==')
         if commands.checkjars(1):
             servertime = time.time()
@@ -52,14 +68,26 @@ def main(conffile):
             commands.createsrgs(1)
             commands.logger.info ('> Applying Retroguard to server')
             commands.applyrg(1)
+            commands.logger.info ('> Applying Exceptor to client')
+            commands.applyexceptor(1)
+            if ffexists:
+                commands.logger.info ('> Decompiling...')
+                commands.applyff(1)
+                commands.logger.info ('> Unzipping the server sources')
+                commands.extractsrc(1)
             commands.logger.info ('> Unzipping the server jar')
             commands.extractjar(1)
-            commands.logger.info ('> Applying jadretro')
-            commands.applyjadretro(1)
-            commands.logger.info ('> Decompiling...')
-            commands.applyjad(1)
+            if not ffexists:
+                commands.logger.info ('> Applying jadretro')
+                commands.applyjadretro(1)
+            if not ffexists:
+                commands.logger.info ('> Decompiling...')
+                commands.applyjad(1)
             commands.logger.info ('> Applying patches')
-            commands.applypatches(1)
+            if not ffexists:
+                commands.applypatches(1)
+            else:
+                commands.applyffpatches(1)
             commands.logger.info ('> Renaming sources')
             commands.rename(1)
             commands.logger.info ('> Creating reobfuscation tables')

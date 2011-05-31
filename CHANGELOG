@@ -1,3 +1,7 @@
+== v4.0 ==
++ Added new tool Exceptor
++ Added alternative support for fernflower decompiler
+
 == v3.4 ==
 + Updated to client & server v1.6.6
 
