@@ -21,7 +21,7 @@ from hashlib import md5
 class Commands(object):
     """Contains the commands and initialisation for a full mcp run"""
 
-    MCPVersion = '4.0'
+    MCPVersion = '4.1'
     _instance  = None    #Small trick to create a singleton
     _single    = False   #Small trick to create a singleton
 
