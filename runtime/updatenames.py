@@ -2,18 +2,22 @@
 """
 Created on Fri Apr  8 16:54:36 2011
 
-@author: ProfMobius
+@author: Searge
 @version: v1.0
 """
-import sys
+import sys, time, os
 from optparse import OptionParser
 from commands import Commands
 
-
-def main(conffile=None):
+def main(conffile):
     commands = Commands(conffile)
 
-    commands.startserver()
+    commands.logger.info ('== Client ==')
+    commands.logger.info ('> Renaming sources')
+    commands.rename(0)
+    commands.logger.info ('== Server ==')
+    commands.logger.info ('> Renaming sources')
+    commands.rename(1)
 
 if __name__ == '__main__':
     parser = OptionParser(version='MCP %s' % Commands.MCPVersion)
