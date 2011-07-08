@@ -15,9 +15,13 @@ def main(conffile):
     commands.logger.info ('== Client ==')
     commands.logger.info ('> Renaming sources')
     commands.rename(0)
+    commands.logger.info ('> Creating reobfuscation tables')
+    commands.renamereobsrg(0)
     commands.logger.info ('== Server ==')
     commands.logger.info ('> Renaming sources')
     commands.rename(1)
+    commands.logger.info ('> Creating reobfuscation tables')
+    commands.renamereobsrg(1)
 
 if __name__ == '__main__':
     parser = OptionParser(version='MCP %s' % Commands.MCPVersion)
