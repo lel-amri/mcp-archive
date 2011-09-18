@@ -22,7 +22,7 @@ from hashlib import md5
 class Commands(object):
     """Contains the commands and initialisation for a full mcp run"""
 
-    MCPVersion = '4.3'
+    MCPVersion = '4.4'
     _instance  = None    #Small trick to create a singleton
     _single    = False   #Small trick to create a singleton
     _default_config = 'conf/mcp.cfg'
@@ -1018,13 +1018,18 @@ class Commands(object):
         pathbinlk = {0:self.binclient,    1:self.binserver}
         pathtmpbinlk = {0:self.binclienttmp,    1:self.binservertmp}
 
+        fixsound_file = self.fixsound.replace('/',os.sep).replace('\\',os.sep)
+        fixstart_file = self.fixstart.replace('/',os.sep).replace('\\',os.sep)
+        fixstart1_file = fixstart_file.replace('.class', '$1.class')
+
         #HINT: We create the zipfile and add all the files from the bin directory
         zipjar = zipfile.ZipFile(jarlk[side], 'w')
         for path, dirlist, filelist in os.walk(pathbinlk[side]):
             path = path.replace('/',os.sep)
             for bin_file in glob.glob(os.path.join(path, '*.class')):
-                if self.fixsound.replace('/',os.sep).replace('\\',os.sep) in bin_file: continue
-                if self.fixstart.replace('/',os.sep).replace('\\',os.sep) in bin_file: continue
+                if fixsound_file in bin_file: continue
+                if fixstart_file in bin_file: continue
+                if fixstart1_file in bin_file: continue
                 zipjar.write(bin_file, os.sep.join(bin_file.split(os.sep)[2:]))
 
         for pkg in self.ignorepkg:
@@ -1052,7 +1057,7 @@ class Commands(object):
         forkcmd = self.cmdrgreobf.format(classpath=rgcp, conffile=rgconf)
         self.runcmd(forkcmd)
 
-    def unpackreobfclasses(self, side):
+    def unpackreobfclasses(self, side, reobf_all=False):
         jarlk     = {0:self.reobfjarclient, 1:self.reobfjarserver}
         md5lk     = {0:self.md5client,      1:self.md5server}
         md5reoblk = {0:self.md5reobfclient, 1:self.md5reobfserver}
@@ -1070,8 +1075,14 @@ class Commands(object):
             if len(row) == 2:
                 md5reobtable[row[0].replace(os.sep,'/')] = row[1]
 
+        fixstart_base = self.fixstart.replace('minecraft/','').replace('.class','')
+        fixstart1_base = fixstart_base + '$1'
+        fixsound_base = self.fixsound.replace('minecraft/','').replace('.class','')
+
         trgclasses = []
         for key,value in md5reobtable.items():
+            if key == fixstart_base or key == fixstart1_base or key == fixsound_base:
+                continue
             if not key in md5table:
                 self.logger.info ('> New class found      : %s'%key)
                 trgclasses.append(key.split('.')[0])
@@ -1079,6 +1090,10 @@ class Commands(object):
             if not md5table[key] == md5reobtable[key]:
                 trgclasses.append(key.split('.')[0])
                 self.logger.info ('> Modified class found : %s'%key)
+                continue
+            if reobf_all:
+                self.logger.info ('> Unchanged class found: %s'%key)
+                trgclasses.append(key.split('.')[0])
 
         classesreader = csv.DictReader(open(self.csvclasses, 'r'), delimiter=',',quotechar='"', quoting=csv.QUOTE_ALL)
         classes = {}
@@ -1095,14 +1110,17 @@ class Commands(object):
         #HINT: We extract the modified class files
         zipjar = zipfile.ZipFile(jarlk[side], 'r')
         for i in trgclasses:
-            if i in classes:
-                zipjar.extract('%s.class'%classes[i], outpathlk[side])
-                self.logger.info ('> Outputted %s to %s as %s'%(i.ljust(35),outpathlk[side],classes[i]+'.class'))
-            else:
-                i = i.replace(self.nullpkg, '')
-                if i[0] == '/': i = i[1:]
-                zipjar.extract('%s.class'%i, outpathlk[side])
-                self.logger.info ('> Outputted %s to %s as %s'%(i.ljust(35),outpathlk[side],i+'.class'))
+            try:
+                if i in classes:
+                    zipjar.extract('%s.class'%classes[i], outpathlk[side])
+                    self.logger.info ('> Outputted %s to %s as %s'%(i.ljust(35),outpathlk[side],classes[i]+'.class'))
+                else:
+                    i = i.replace(self.nullpkg, '')
+                    if i[0] == '/': i = i[1:]
+                    zipjar.extract('%s.class'%i, outpathlk[side])
+                    self.logger.info ('> Outputted %s to %s as %s'%(i.ljust(35),outpathlk[side],i+'.class'))
+            except KeyError:
+                    self.logger.info ('> File %s not found'%(i+'.class'))
         zipjar.close()
 
     def downloadupdates(self, force=False):

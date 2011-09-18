@@ -1,5 +1,26 @@
-Minecraft mod creator pack 4.3 for Minecraft 1.7.3
-==================================================
+Minecraft Coder Pack 4.4 for Minecraft 1.8.1
+============================================
+MCP is (c) Copyright by the MCP Team
+
+License and terms of use.
+=========================
+
+No warranties. If MCP does not work for you, or causes any damage, it's your problem. Use it at own risk.
+
+You are allowed to:
+- Use MCP to decompile the Minecraft client and server jar files.
+- Use the decompiled source code to create mods for Minecraft.
+- Recompile modified versions of Minecraft.
+- Reobfuscate the classes of your mod for Minecraft.
+
+You are NOT allowed to:
+- Use MCP to do anything that violated Mojangs terms of use for Minecraft.
+- Release Minecraft versions or modifications that allow you to play without having bought Minecraft from Mojang.
+- Release modified or unmodified versions of MCP anywhere.
+- Use any of MCPs scripts, tools or data files without explicit written permission.
+- Make money with anything based on MCP (excluding Minecraft mods created by using MCP).
+- Use MCP to create clients that are used for griefing or exploiting server bugs.
+- Release the decompiled source code of Minecraft in any way.
 
 Prerequisites:
 ==============
@@ -16,6 +37,8 @@ Prerequisites:
 
     We wont provide any help setting it up - this _is_ a prerequesite.
 
+Note: MCP versions 4.4 and higher should also work properly with JDK 1.7
+	
 How to use:
 ===========
 1) Prepare the files:
@@ -69,7 +92,7 @@ Notes:
   zip-file and send it to us (post it in the minecraft forum):
   http://www.minecraftforum.net/viewtopic.php?f=25&t=58464
   
-* This version of the mod creator package uses a deobfuscator to change all field and method names in the sources.
+* This version of the MCP uses a deobfuscator to change all field and method names in the sources.
   Look in the csv files in "conf", namely "conf\classes.csv", "conf\fields.csv" and "conf\methods.csv" files for a complete mapping of the names.
 
 * There are currently no known bugs in the recompiled game or server, except those that were already in the original
@@ -83,13 +106,14 @@ Notes:
 
 Credits:
 ========
+== Currently Active ==
 Searge
 * Creator of MCP
 * Fixes all compile errors in the decompiled sourcecode
-* Created the MCP Mod Framework system and API
-* Created the new RetroGuard deobfuscation module for MCP 3.x
-* Created the Exceptor tool for MCP 4.x
+* Created the MCP mod system and API
 * Created the Eclipse workspace for MCP 4.x
+* Created the new RetroGuard deobfuscation module for MCP 3.0
+* Created the new mod system
 ProfMobius
 * Creator of the renaming codes and re-obfuscation procedures
 * Helped to port scripts to Linux
@@ -102,21 +126,33 @@ IngisKahn
 * Working hard on creating better internal tools for mapping updates and decompiling
 Fesh0r
 * php/sql code monkey
-* Uses his magic to create the mappings, patches, and general release work
+* Uses his magic to create mappings, patches, and general release work
 * Has Searge's approval to make official MCP releases ;)
 * Makes sure we get proper patches for the sourcecode that JAD generates
+* Maintains our scripts and toolkits
+* Optimized the Retroguard and Exceptor tools
+R4WK
+* Works on MCP updates and contributes to the new mod system
+* Helps ZeuX with Techne improvements
 ZeuX
 * Helps out in the IRC channels - Head of HR
 * Did server patches for the most recent versions - if you run into any (patch-related) problems, it's his fault :P
+* Created the famous Techne model editor for Minecraft
+* Contributes features to the new mod system
 303
 * Wiki contributor
 * Tries to help out newbies in the IRC channels
-* Created some scripts for mod loader support
+* Makes sure modloader mods can be created with MCP
 Mr_okushama
 * Wiki contributor
 * Public Support Manager
 * IRC Operator
 * Savior of the 2011 April fools prank
+Cryect
+* Contributed a lot of deobfuscation mappings
+* Created the awesome AdventureCraft mod
+
+== Former Contributors ==
 Generic
 * Works on improving IngisKahn's bytecode compare tool
 * Added some important features to retroguard
@@ -125,8 +161,6 @@ Risugami
 * The creator of modloader who gave us permission to include files from his system in MCP
 fotoply
 * Helped to improve the batch files
-ScottyDoesKnow
-* obfuscathonCharmer, the obfuscathon GUI
 Cadde
 * Community manager and Wiki manager
 * Works on the de-obfuscation spreadsheet
@@ -152,10 +186,15 @@ MissLil
 * Various scripting stuff
 * Lots of reverse engineering
 * OpenGL constants annoting
+ScottyDoesKnow
+* obfuscathonCharmer, the obfuscathon GUI
 Chase
 * MCP Launcher Work
 * External jar loading
 * Scrollable mod list.
+titegtnodI
+* Wiki contributor
+* IRC Operator
 
 and of course:
 - Everybody who contributed to the great google spreadsheet or who created some mods (I've got them all :).
@@ -165,6 +204,7 @@ and of course:
 
 History:
 ========
+4.4  - Updated to support Minecraft 1.8.1 and MinecraftServer 1.8.1
 4.3  - Updated to support Minecraft 1.7.3 and MinecraftServer 1.7.3
 4.2  - Updated to support Minecraft 1.7.2 and MinecraftServer 1.7.2
 4.1  - Added an Eclipse workspace and included a reobfuscation bugfix
@@ -199,7 +239,7 @@ History:
 
 Roadmap:
 ========
-4.4+ - New awesome features, improvements and updates :)
+4.5+ - New awesome features, improvements and updates :)
 
 _________________________________________________________________________________________________________________
 _________________________________________________________________________________________________________________

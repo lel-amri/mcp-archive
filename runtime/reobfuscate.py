@@ -9,7 +9,7 @@ import sys, time
 from optparse import OptionParser
 from commands import Commands
 
-def main(conffile=None):
+def main(conffile=None, reobf_all=False):
     commands = Commands(conffile)
 
     commands.logger.info ('== Reobfuscating client ==')
@@ -22,7 +22,7 @@ def main(conffile=None):
         commands.logger.info ('> Reobfuscating client jar')
         commands.reobfuscate(0)
         commands.logger.info ('> Extracting modified classes')
-        commands.unpackreobfclasses(0)
+        commands.unpackreobfclasses(0, reobf_all)
 
     commands.logger.info ('== Reobfuscating server ==')
     if commands.checkbins(1):
@@ -34,10 +34,11 @@ def main(conffile=None):
         commands.logger.info ('> Reobfuscating server jar')
         commands.reobfuscate(1)
         commands.logger.info ('> Extracting modified classes')
-        commands.unpackreobfclasses(1)
+        commands.unpackreobfclasses(1, reobf_all)
 
 if __name__ == '__main__':
     parser = OptionParser(version='MCP %s' % Commands.MCPVersion)
+    parser.add_option('-a', '--all', action='store_true', dest='reobf_all', help='output all classes', default=False)
     parser.add_option('-c', '--config', dest='config', help='additional configuration file')
     (options, args) = parser.parse_args()
-    main(options.config)
+    main(options.config, options.reobf_all)
