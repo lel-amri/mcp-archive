@@ -22,7 +22,7 @@ from hashlib import md5
 class Commands(object):
     """Contains the commands and initialisation for a full mcp run"""
 
-    MCPVersion = '4.4'
+    MCPVersion = '4.5'
     _instance  = None    #Small trick to create a singleton
     _single    = False   #Small trick to create a singleton
     _default_config = 'conf/mcp.cfg'
@@ -233,6 +233,11 @@ class Commands(object):
         self.mcplogfile     = config.get('MCP', 'LogFile')
         self.mcperrlogfile  = config.get('MCP', 'LogFileErr')
 
+        # Get modified source
+        self.srcModClient    = config.get('GETMODSOURCE', 'OutSRCClient')
+        self.srcModServer    = config.get('GETMODSOURCE', 'OutSRCServer')
+        self.srcMod          = config.get('GETMODSOURCE', 'OutSRC')
+
         try:
             self.rgreobconfig   = config.get('RETROGUARD', 'RetroReobConf')
             self.rgclientreobconf = config.get('RETROGUARD', 'ClientReobConf')
@@ -268,9 +273,9 @@ class Commands(object):
             # this will mess up the patches with mods:
             rgout.write('.attribute LocalVariableTable\n')
 
-            # rg doesn't remap generic signatures:
-            rgout.write('.option Generic\n')
-            rgout.write('.attribute LocalVariableTypeTable\n')
+            # rg screws up generic signatures:
+            #rgout.write('.option Generic\n')
+            #rgout.write('.attribute LocalVariableTypeTable\n')
 
         rgout.close()
 
@@ -295,6 +300,7 @@ class Commands(object):
         rgout.write('%s = %s\n'%('reob', self.reobsrgclient))
         rgout.write('%s = %s\n'%('nplog', self.rgclientdeoblog))
         rgout.write('%s = %s\n'%('rolog', self.clientreoblog))
+        rgout.write('%s = %s\n'%('verbose', '1'))
         for pkg in self.ignorepkg:
             rgout.write('%s = %s\n'%('protectedpackage', pkg))
         rgout.close()
@@ -320,6 +326,7 @@ class Commands(object):
         rgout.write('%s = %s\n'%('reob', self.reobsrgserver))
         rgout.write('%s = %s\n'%('nplog', self.rgserverdeoblog))
         rgout.write('%s = %s\n'%('rolog', self.serverreoblog))
+        rgout.write('%s = %s\n'%('verbose', '1'))
         for pkg in self.ignorepkg:
             rgout.write('%s = %s\n'%('protectedpackage', pkg))
         rgout.close()
@@ -493,7 +500,10 @@ class Commands(object):
                  )
 
         try:
-            md5srvlist = urllib.urlopen('http://mcp.ocean-labs.de/files/mcprolling/mcp.md5').readlines()
+            listfh = urllib.urlopen('http://mcp.ocean-labs.de/files/mcprolling_'+Commands.MCPVersion+'/mcp.md5')
+            if listfh.getcode() != 200:
+                return []
+            md5srvlist = listfh.readlines()
             md5srvdict = {}
         except IOError:
             return []
@@ -550,6 +560,7 @@ class Commands(object):
             shutil.rmtree(os.path.join(pathbinlk[side], 'net'), ignore_errors=True)
             shutil.rmtree(os.path.join(pathbinlk[side], 'com'), ignore_errors=True)
             shutil.rmtree(os.path.join(pathbinlk[side], 'paulscode'), ignore_errors=True)
+            shutil.rmtree(os.path.join(pathbinlk[side], 'isom'), ignore_errors=True)
 
         if side == 1:
             shutil.rmtree(os.path.join(pathbinlk[side], 'META-INF'), ignore_errors=True)
@@ -633,11 +644,13 @@ class Commands(object):
                 else:
                     pkglist.append(path)
 
+        classlist = []
         for pkg in pkglist:
-            classlist = os.path.join(pkg, '*.class')
+            classlist.append(os.path.join(pkg, '*.class'))
+        classes = ' '.join(classlist)
 
-            forkcmd = self.cmdjad.format(binjad=self.jad, outdir=pathsrclk[side], classes=classlist)
-            self.runcmd(forkcmd)
+        forkcmd = self.cmdjad.format(binjad=self.jad, outdir=pathsrclk[side], classes=classes)
+        self.runcmd(forkcmd)
 
     def applypatches(self, side):
         """Applies the patches to the src directory"""
@@ -746,7 +759,7 @@ class Commands(object):
 
         #HINT: We create the list of source directories based on the list of packages
         pkglist = ''
-        for path, dirlist, filelist in os.walk(pathsrclk[side]):
+        for path, dirlist, filelist in os.walk(pathsrclk[side], followlinks=True):
             if glob.glob(os.path.join(path,'*.java')):
                 pkglist += os.path.join(path,'*.java') + ' '
 
@@ -897,7 +910,7 @@ class Commands(object):
         src_dir = os.path.normpath(src_dir)
         dest_dir = os.path.normpath(dest_dir)
 
-        for path, dirlist, filelist in os.walk(src_dir):
+        for path, dirlist, filelist in os.walk(src_dir, followlinks=True):
             sub_dir = os.path.relpath(path, src_dir)
             if sub_dir == '.':
                 sub_dir = ''
@@ -947,7 +960,7 @@ class Commands(object):
         regexp_searge     = r'%s_[0-9]+_[a-zA-Z]+_?'
 
         #HINT: We pathwalk the sources
-        for path, dirlist, filelist in os.walk(pathsrclk[side]):
+        for path, dirlist, filelist in os.walk(pathsrclk[side], followlinks=True):
             for src_file in glob.glob(os.path.join(path, '*.java')):
 
                 ff    = open(src_file, 'r')
@@ -1139,7 +1152,7 @@ class Commands(object):
         if 'CHANGELOG' in [i[0] for i in newfiles]:
             print('')
             self.logger.info('== CHANGELOG ==')
-            changelog = urllib.urlopen('http://mcp.ocean-labs.de/files/mcprolling/mcp/CHANGELOG').readlines()
+            changelog = urllib.urlopen('http://mcp.ocean-labs.de/files/mcprolling_'+Commands.MCPVersion+'/mcp/CHANGELOG').readlines()
             for line in changelog:
                 self.logger.info(line.strip())
                 if not line.strip():
@@ -1166,7 +1179,46 @@ class Commands(object):
                     except OSError:
                         pass
 
-                urllib.urlretrieve('http://mcp.ocean-labs.de/files/mcprolling/mcp/'+entry[0], entry[0])
+                urllib.urlretrieve('http://mcp.ocean-labs.de/files/mcprolling_'+Commands.MCPVersion+'/mcp/'+entry[0], entry[0])
             if entry[3] == 'D':
                 self.logger.info('Removing file from local install : %s'%entry[0])
                 #Remove file here
+
+    def unpackmodifiedclasses(self, side):
+        jarlk     = {0:self.reobfjarclient, 1:self.reobfjarserver}
+        md5lk     = {0:self.md5client,      1:self.md5server}
+        md5reoblk = {0:self.md5reobfclient, 1:self.md5reobfserver}
+        outpathlk = {0:self.srcModClient,    1:self.srcModServer}
+        src       = {0:self.srcclient, 1:self.srcserver}
+
+        #HINT: We need a table for the old md5 and the new ones
+        md5table     = {}
+        md5reobtable = {}
+        for row in open(md5lk[side],'r').read().splitlines():
+            row = row.strip().split()
+            if len(row) == 2:
+                md5table[row[0].replace(os.sep,'/')] = row[1]
+        for row in open(md5reoblk[side],'r').read().splitlines():
+            row = row.strip().split()
+            if len(row) == 2:
+                md5reobtable[row[0].replace(os.sep,'/')] = row[1]
+
+        trgclasses = []
+        for key,value in md5reobtable.items():
+            if not key in md5table:
+                self.logger.info ('> New class found      : %s'%key)
+                trgclasses.append(key.split('.')[0])
+                continue
+            if not md5table[key] == md5reobtable[key]:
+                trgclasses.append(key.split('.')[0])
+                self.logger.info ('> Modified class found : %s'%key)
+
+        if not os.path.exists(outpathlk[side]):
+            os.makedirs(outpathlk[side])
+
+        #HINT: We extract the modified class files
+        for i in trgclasses:
+            if not os.path.exists(os.path.dirname(outpathlk[side] + '/' + i + '.java')):
+                os.makedirs(os.path.dirname(outpathlk[side] + '/' + i + '.java'))
+            shutil.copyfile(src[side] + '/' + i + '.java', outpathlk[side] + '/' + i + '.java')
+            self.logger.info ('> Outputted ' + i + ' to ' + i)

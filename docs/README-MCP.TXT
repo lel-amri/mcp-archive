@@ -1,5 +1,5 @@
-Minecraft Coder Pack 4.4 for Minecraft 1.8.1
-============================================
+Minecraft Coder Pack 4.4 for Minecraft 1.9 pre 5
+================================================
 MCP is (c) Copyright by the MCP Team
 
 License and terms of use.
@@ -204,6 +204,7 @@ and of course:
 
 History:
 ========
+4.5  - Updated to support Minecraft 1.9 pre 5 and MinecraftServer 1.9 pre 5
 4.4  - Updated to support Minecraft 1.8.1 and MinecraftServer 1.8.1
 4.3  - Updated to support Minecraft 1.7.3 and MinecraftServer 1.7.3
 4.2  - Updated to support Minecraft 1.7.2 and MinecraftServer 1.7.2

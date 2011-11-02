@@ -1,3 +1,11 @@
+== v4.5 ==
++ Updated to client & server v1.9 pre 5
++ Improved Retroguard and Exceptor tools
+
+YOU NEED TO DOWNLOAD MCP FROM THE WIKI IF YOU ARE UPDATING FROM MCP 4.3, UPDATEMCP.BAT WILL NOT WORK FOR 4.3 TO 4.4 UPDATES!
++ Fixes to mapping of methods in EntityLiving
++ Bugfix for crashes when playing sounds due to issue in Block.java
+
 == v4.4 ==
 + Updated to client & server v1.8.1
 + Improved Retroguard and Exceptor tools
