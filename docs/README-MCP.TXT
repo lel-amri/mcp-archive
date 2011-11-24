@@ -1,5 +1,5 @@
-Minecraft Coder Pack 4.4 for Minecraft 1.9 pre 5
-================================================
+Minecraft Coder Pack 5.0 for Minecraft 1.0.0/1.0.1
+==================================================
 MCP is (c) Copyright by the MCP Team
 
 License and terms of use.
@@ -151,6 +151,10 @@ Mr_okushama
 Cryect
 * Contributed a lot of deobfuscation mappings
 * Created the awesome AdventureCraft mod
+LexManos
+* Helped Fesh0r to update MCP for Minecraft 1.0.0/1.0.1
+Mysterio N
+* Created the getmodsource scripts
 
 == Former Contributors ==
 Generic
@@ -196,14 +200,19 @@ titegtnodI
 * Wiki contributor
 * IRC Operator
 
+== Special thanks to ==
+UltraMoogleMan
+Yamachi
+
 and of course:
-- Everybody who contributed to the great google spreadsheet or who created some mods (I've got them all :).
-- NOTCH for creating a game that is just awesome, I hope he does not feel offended by our decompiling efforts.
+- Everybody who contributed to the google spreadsheet and MCPBot or who created some mods with MCP.
+- NOTCH and JEB for creating a game that is just awesome, I hope they do not feel offended by our decompiling efforts.
         Please, Notch, support our ambitions to mod your game. I know people who bought it just because of
         some great mods.
 
 History:
 ========
+5.0  - Updated to support Minecraft 1.0.0 and MinecraftServer 1.0.1
 4.5  - Updated to support Minecraft 1.9 pre 5 and MinecraftServer 1.9 pre 5
 4.4  - Updated to support Minecraft 1.8.1 and MinecraftServer 1.8.1
 4.3  - Updated to support Minecraft 1.7.3 and MinecraftServer 1.7.3
@@ -240,7 +249,7 @@ History:
 
 Roadmap:
 ========
-4.5+ - New awesome features, improvements and updates :)
+5.1+ - New awesome features, improvements and updates :)
 
 _________________________________________________________________________________________________________________
 _________________________________________________________________________________________________________________

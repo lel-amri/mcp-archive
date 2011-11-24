@@ -22,7 +22,7 @@ from hashlib import md5
 class Commands(object):
     """Contains the commands and initialisation for a full mcp run"""
 
-    MCPVersion = '4.5'
+    MCPVersion = '5.0'
     _instance  = None    #Small trick to create a singleton
     _single    = False   #Small trick to create a singleton
     _default_config = 'conf/mcp.cfg'
@@ -293,10 +293,7 @@ class Commands(object):
         else:
             rgout.write('%s = %s\n'%('script', self.rgconfig))
         rgout.write('%s = %s\n'%('log', self.rgclientlog))
-        rgout.write('%s = %s\n'%('packages', self.srgsclient))
-        rgout.write('%s = %s\n'%('classes', self.srgsclient))
-        rgout.write('%s = %s\n'%('fields', self.srgsclient))
-        rgout.write('%s = %s\n'%('methods', self.srgsclient))
+        rgout.write('%s = %s\n'%('deob', self.srgsclient))
         rgout.write('%s = %s\n'%('reob', self.reobsrgclient))
         rgout.write('%s = %s\n'%('nplog', self.rgclientdeoblog))
         rgout.write('%s = %s\n'%('rolog', self.clientreoblog))
@@ -319,10 +316,7 @@ class Commands(object):
         else:
             rgout.write('%s = %s\n'%('script', self.rgconfig))
         rgout.write('%s = %s\n'%('log', self.rgserverlog))
-        rgout.write('%s = %s\n'%('packages', self.srgsserver))
-        rgout.write('%s = %s\n'%('classes', self.srgsserver))
-        rgout.write('%s = %s\n'%('fields', self.srgsserver))
-        rgout.write('%s = %s\n'%('methods', self.srgsserver))
+        rgout.write('%s = %s\n'%('deob', self.srgsserver))
         rgout.write('%s = %s\n'%('reob', self.reobsrgserver))
         rgout.write('%s = %s\n'%('nplog', self.rgserverdeoblog))
         rgout.write('%s = %s\n'%('rolog', self.serverreoblog))
@@ -644,13 +638,11 @@ class Commands(object):
                 else:
                     pkglist.append(path)
 
-        classlist = []
         for pkg in pkglist:
-            classlist.append(os.path.join(pkg, '*.class'))
-        classes = ' '.join(classlist)
+            classlist = os.path.join(pkg, '*.class')
 
-        forkcmd = self.cmdjad.format(binjad=self.jad, outdir=pathsrclk[side], classes=classes)
-        self.runcmd(forkcmd)
+            forkcmd = self.cmdjad.format(binjad=self.jad, outdir=pathsrclk[side], classes=classlist)
+            self.runcmd(forkcmd)
 
     def applypatches(self, side):
         """Applies the patches to the src directory"""
