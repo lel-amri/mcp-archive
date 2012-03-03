@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Apr  8 16:54:36 2011
+Created on Thu Jan  19 12:34:12 2012
 
-@author: ProfMobius
+@author: Fesh0r
 @version: v1.0
 """
 
@@ -11,28 +11,27 @@ import logging
 from optparse import OptionParser
 
 from commands import Commands, CLIENT, SERVER, CalledProcessError
-from mcp import recompile_side
+from mcp import reformat_side
 
 
 def main():
     parser = OptionParser(version='MCP %s' % Commands.fullversion())
     parser.add_option('-c', '--config', dest='config', help='additional configuration file')
     options, _ = parser.parse_args()
-    recompile(options.config)
+    reformat(options.config)
 
 
-def recompile(conffile):
+def reformat(conffile):
     try:
         commands = Commands(conffile, verify=True)
 
         try:
-            recompile_side(commands, CLIENT)
+            reformat_side(commands, CLIENT)
+            reformat_side(commands, SERVER)
         except CalledProcessError:
-            pass
-        try:
-            recompile_side(commands, SERVER)
-        except CalledProcessError:
-            pass
+            # astyle failed
+            commands.logger.error('Reformat failed')
+            sys.exit(1)
     except Exception:  # pylint: disable-msg=W0703
         logging.exception('FATAL ERROR')
         sys.exit(1)

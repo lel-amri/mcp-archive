@@ -7,34 +7,40 @@ Created on Fri Apr  8 16:54:36 2011
 """
 
 import sys
+import logging
 from optparse import OptionParser
 
 from commands import Commands, CLIENT, SERVER
+from mcp import updatenames_side
 
 
 def main():
-    parser = OptionParser(version='MCP %s' % Commands.MCPFullVersion())
+    parser = OptionParser(version='MCP %s' % Commands.fullversion())
+    parser.add_option('-f', '--force', action='store_true', dest='force', help='force update', default=False)
     parser.add_option('-c', '--config', dest='config', help='additional configuration file')
     options, _ = parser.parse_args()
-    updatenames(options.config)
+    updatenames(options.config, options.force)
 
 
-def updatenames(conffile):
-    commands = Commands(conffile)
-
+def updatenames(conffile, force):
     try:
-        commands.logger.info('== Client ==')
-        commands.logger.info('> Renaming sources')
-        commands.process_rename(CLIENT)
-        commands.logger.info('> Creating reobfuscation tables')
-        commands.renamereobsrg(CLIENT)
-        commands.logger.info('== Server ==')
-        commands.logger.info('> Renaming sources')
-        commands.process_rename(SERVER)
-        commands.logger.info('> Creating reobfuscation tables')
-        commands.renamereobsrg(SERVER)
+        commands = Commands(conffile)
+
+        if not force:
+            print 'WARNING:'
+            print 'The updatenames script is unsupported, not recommended, and can break your'
+            print 'code in hard to detect ways.'
+            print 'Only use this script if you absolutely know what you are doing, or when a'
+            print 'MCP team member asks you to do so.'
+            answer = raw_input('If you really want to update all classes, enter "Yes" ')
+            if answer.lower() not in ['yes']:
+                print 'You have not entered "Yes", aborting the update process'
+                sys.exit(1)
+
+        updatenames_side(commands, CLIENT)
+        updatenames_side(commands, SERVER)
     except Exception:  # pylint: disable-msg=W0703
-        commands.logger.exception('FATAL ERROR')
+        logging.exception('FATAL ERROR')
         sys.exit(1)
 
 

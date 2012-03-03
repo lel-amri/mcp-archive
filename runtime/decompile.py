@@ -7,135 +7,107 @@ Created on Fri Apr  8 16:54:36 2011
 """
 
 import sys
-import time
-import os
+import logging
 from optparse import OptionParser
 
-from commands import Commands, CLIENT, SERVER
-from recompile import recompile
+from commands import Commands, CLIENT, SERVER, CalledProcessError
+from mcp import decompile_side, updatemd5_side
 
 
 def main():
-    parser = OptionParser(version='MCP %s' % Commands.MCPFullVersion())
+    parser = OptionParser(version='MCP %s' % Commands.fullversion())
     parser.add_option('-j', '--jad', dest='force_jad', action='store_true',
                       help='force use of JAD even if Fernflower available', default=False)
+    parser.add_option('-s', '--csv', dest='force_csv', action='store_true',
+                      help='force use of CSVs even if SRGs available', default=False)
+    parser.add_option('-r', '--norecompile', dest='no_recompile', action='store_true',
+                      help='disable recompile after decompile', default=False)
+    parser.add_option('-d', '--nocomments', dest='no_comments', action='store_true', help='disable javadoc',
+                      default=False)
+    parser.add_option('-a', '--noreformat', dest='no_reformat', action='store_true',
+                      help='disable source reformatting', default=False)
+    parser.add_option('-n', '--norenamer', dest='no_renamer', action='store_true',
+                      help='disable field and method renaming', default=False)
+    parser.add_option('-l', '--lvt', dest='keep_lvt', action='store_true', help='preserve local variable table',
+                      default=False)
+    parser.add_option('-g', '--generics', dest='keep_generics', action='store_true',
+                      help='preserve generics as well as local variables', default=False)
+    parser.add_option('-p', '--nopatch', dest='no_patch', action='store_true',
+                      help='disable source patching', default=False)
+    parser.add_option('-o', '--onlypatch', dest='only_patch', action='store_true', help='only patch source',
+                      default=False)
     parser.add_option('-c', '--config', dest='config', help='additional configuration file')
     options, _ = parser.parse_args()
-    decompile(options.config, options.force_jad)
+    decompile(options.config, options.force_jad, options.force_csv, options.no_recompile, options.no_comments,
+              options.no_reformat, options.no_renamer, options.no_patch, options.only_patch, options.keep_lvt,
+              options.keep_generics)
 
 
-def decompile(conffile=None, force_jad=False):
-    commands = Commands(conffile)
-
+def decompile(conffile, force_jad, force_csv, no_recompile, no_comments, no_reformat, no_renamer, no_patch, only_patch,
+              keep_lvt, keep_generics):
     try:
+        commands = Commands(conffile, verify=True, no_patch=no_patch)
+
         commands.checkupdates()
 
-        cltdone = False
-        srvdone = False
+        use_ff = commands.has_ff and not force_jad
+        use_srg = commands.has_srg and not force_csv
 
-        use_ff = os.path.exists(commands.fernflower) and not force_jad
+        if force_jad and not commands.has_jad:
+            commands.logger.error('!! forcing jad when not available !!')
+            sys.exit(1)
+
+        if force_csv and not commands.has_map_csv:
+            commands.logger.error('!! forcing csvs when not available !!')
+            sys.exit(1)
+
+        # if only patch then disable everything but patching
+        if only_patch:
+            no_patch = False
+            no_comments = True
+            no_reformat = True
+            no_renamer = True
+            no_recompile = True
+        # if no_patch then disable patching, comments, reformat, renamer, or recompile
+        if no_patch:
+            no_comments = True
+            no_reformat = True
+            no_renamer = True
+            no_recompile = True
+
+        # if we have generics enabled we need the lvt as well
+        if keep_generics:
+            keep_lvt = True
 
         commands.logger.info('> Creating Retroguard config files')
-        commands.creatergcfg()
+        commands.creatergcfg(reobf=False, keep_lvt=keep_lvt, keep_generics=keep_generics)
 
-        srcdir = os.path.join(commands.srcclient, os.path.normpath(commands.ffsource))
-        if not os.path.exists(srcdir):
-            commands.logger.info('== Decompiling Client ==')
-            if commands.checkjars(CLIENT):
-                clienttime = time.time()
-                commands.logger.info('> Creating SRGS for client')
-                commands.createsrgs(CLIENT)
-                commands.logger.info('> Applying Retroguard to client')
-                commands.applyrg(CLIENT)
-                commands.logger.info('> Applying Exceptor to client')
-                commands.applyexceptor(CLIENT)
-                if use_ff:
-                    commands.logger.info('> Decompiling...')
-                    commands.applyff(CLIENT)
-                    commands.logger.info('> Unzipping the client sources')
-                    commands.extractsrc(CLIENT)
-                commands.logger.info('> Unzipping the client jar')
-                commands.extractjar(CLIENT)
-                if not use_ff:
-                    commands.logger.info('> Applying jadretro')
-                    commands.applyjadretro(CLIENT)
-                    commands.logger.info('> Decompiling...')
-                    commands.applyjad(CLIENT)
-                    commands.logger.info('> Copying the client sources')
-                    commands.copysrc(CLIENT)
-                commands.logger.info('> Applying patches')
-                if commands.osname == 'osx' and not use_ff:
-                    commands.applypatches(CLIENT, False, True)
-                commands.applypatches(CLIENT, use_ff)
-                commands.logger.info('> Removing comments')
-                commands.process_comments(CLIENT)
-                commands.logger.info('> Renaming sources')
-                commands.process_rename(CLIENT)
-                commands.logger.info('> Reformating sources')
-                commands.applyastyle(CLIENT)
-                commands.logger.info('> Commenting OpenGL constants')
-                commands.process_annotate(CLIENT)
-                commands.logger.info('> Creating reobfuscation tables')
-                commands.renamereobsrg(CLIENT)
-                commands.logger.info('> Done in %.2f seconds' % (time.time() - clienttime))
+        try:
+            cltdecomp = decompile_side(commands, CLIENT, use_ff=use_ff, use_srg=use_srg, no_comments=no_comments,
+                                       no_reformat=no_reformat, no_renamer=no_renamer, no_patch=no_patch)
+            srvdecomp = decompile_side(commands, SERVER, use_ff=use_ff, use_srg=use_srg, no_comments=no_comments,
+                                       no_reformat=no_reformat, no_renamer=no_renamer, no_patch=no_patch)
+        except CalledProcessError:
+            # retroguard or other called process error so bail
+            commands.logger.error('Decompile failed')
+            sys.exit(1)
+        if not no_recompile:
+            if cltdecomp:
+                try:
+                    updatemd5_side(commands, CLIENT)
+                except CalledProcessError:
+                    commands.logger.error('Initial client recompile failed, correct source then run updatemd5')
+                    pass
+            if srvdecomp:
+                try:
+                    updatemd5_side(commands, SERVER)
+                except CalledProcessError:
+                    commands.logger.error('Initial server recompile failed, correct source then run updatemd5')
+                    pass
         else:
-            commands.logger.warn('!! Client already decompiled. Run cleanup before decompiling again !!')
-            cltdone = True
-
-        srcdir = os.path.join(commands.srcserver, os.path.normpath(commands.ffsource))
-        if not os.path.exists(srcdir):
-            commands.logger.info('== Decompiling Server ==')
-            if commands.checkjars(SERVER):
-                servertime = time.time()
-                commands.logger.info('> Creating SRGS for server')
-                commands.createsrgs(SERVER)
-                commands.logger.info('> Applying Retroguard to server')
-                commands.applyrg(SERVER)
-                commands.logger.info('> Applying Exceptor to server')
-                commands.applyexceptor(SERVER)
-                if use_ff:
-                    commands.logger.info('> Decompiling...')
-                    commands.applyff(SERVER)
-                    commands.logger.info('> Unzipping the server sources')
-                    commands.extractsrc(SERVER)
-                commands.logger.info('> Unzipping the server jar')
-                commands.extractjar(SERVER)
-                if not use_ff:
-                    commands.logger.info('> Applying jadretro')
-                    commands.applyjadretro(SERVER)
-                    commands.logger.info('> Decompiling...')
-                    commands.applyjad(SERVER)
-                    commands.logger.info('> Copying the server sources')
-                    commands.copysrc(SERVER)
-                commands.logger.info('> Applying patches')
-                if commands.osname == 'osx' and not use_ff:
-                    commands.applypatches(SERVER, False, True)
-                commands.applypatches(SERVER, use_ff)
-                commands.logger.info('> Removing comments')
-                commands.process_comments(SERVER)
-                commands.logger.info('> Renaming sources')
-                commands.process_rename(SERVER)
-                commands.logger.info('> Reformating sources')
-                commands.applyastyle(SERVER)
-                commands.logger.info('> Creating reobfuscation tables')
-                commands.renamereobsrg(SERVER)
-                commands.logger.info('> Done in %.2f seconds' % (time.time() - servertime))
-        else:
-            commands.logger.warn('!! Server already decompiled. Run cleanup before decompiling again !!')
-            srvdone = True
-
-        commands.logger.info('== Post decompiling operations ==')
-        if not cltdone or not srvdone:
-            commands.logger.info('> Recompiling')
-            recompile(conffile)
-        if not cltdone:
-            commands.logger.info('> Generating the md5 (client)')
-            commands.gathermd5s(CLIENT)
-        if not srvdone:
-            commands.logger.info('> Generating the md5 (server)')
-            commands.gathermd5s(SERVER)
+            commands.logger.info('!! recompile disabled !!')
     except Exception:  # pylint: disable-msg=W0703
-        commands.logger.exception('FATAL ERROR')
+        logging.exception('FATAL ERROR')
         sys.exit(1)
 
 

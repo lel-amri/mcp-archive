@@ -7,25 +7,29 @@ Created on Fri Apr  8 16:54:36 2011
 """
 
 import sys
+import logging
 from optparse import OptionParser
 
-from commands import Commands
+from commands import Commands, SERVER
 
 
 def main():
-    parser = OptionParser(version='MCP %s' % Commands.MCPFullVersion())
+    parser = OptionParser(version='MCP %s' % Commands.fullversion())
     parser.add_option('-c', '--config', dest='config', help='additional configuration file')
     options, _ = parser.parse_args()
     startserver(options.config)
 
 
-def startserver(conffile=None):
-    commands = Commands(conffile)
-
+def startserver(conffile):
     try:
+        commands = Commands(conffile)
+
+        if not commands.checkbins(SERVER):
+            commands.logger.warning('!! Can not find server bins !!')
+            sys.exit(1)
         commands.startserver()
     except Exception:  # pylint: disable-msg=W0703
-        commands.logger.exception('FATAL ERROR')
+        logging.exception('FATAL ERROR')
         sys.exit(1)
 
 

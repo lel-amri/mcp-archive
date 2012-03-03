@@ -1,5 +1,5 @@
-Minecraft Coder Pack 5.6 for Minecraft 1.1
-==========================================
+Minecraft Coder Pack 6.0 for Minecraft 1.2.3
+============================================
 MCP is (c) Copyright by the MCP Team
 
 License and terms of use.
@@ -212,6 +212,7 @@ and of course:
 
 History:
 ========
+6.0  - Updated to support Minecraft 1.2.3 and MinecraftServer 1.2.3
 5.6  - Updated to support Minecraft 1.1 and MinecraftServer 1.1
 5.0  - Updated to support Minecraft 1.0.0 and MinecraftServer 1.0.1
 4.5  - Updated to support Minecraft 1.9 pre 5 and MinecraftServer 1.9 pre 5
@@ -250,7 +251,7 @@ History:
 
 Roadmap:
 ========
-6.0+ - New awesome features, improvements and updates :)
+6.1+ - New awesome features, improvements and updates :)
 
 _________________________________________________________________________________________________________________
 _________________________________________________________________________________________________________________

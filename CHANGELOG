@@ -1,3 +1,7 @@
+== v6.0 ==
++ Updated to client 1.2.3 & server 1.2.3
++ Added javadoc comments to the decompiled sourcecode
+
 == v5.6 ==
 + Updated to client 1.1 & server 1.1
 + Run Artistic Style source beautifier on decompiled source code

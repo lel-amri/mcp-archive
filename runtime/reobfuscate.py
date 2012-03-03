@@ -7,48 +7,39 @@ Created on Fri Apr  8 16:54:36 2011
 """
 
 import sys
+import logging
 from optparse import OptionParser
 
 from commands import Commands, CLIENT, SERVER
+from mcp import reobfuscate_side
 
 
 def main():
-    parser = OptionParser(version='MCP %s' % Commands.MCPFullVersion())
+    parser = OptionParser(version='MCP %s' % Commands.fullversion())
     parser.add_option('-a', '--all', action='store_true', dest='reobf_all', help='output all classes', default=False)
+    parser.add_option('-n', '--nolvt', dest='keep_lvt', action='store_false', help='strip local variable table',
+                      default=True)
+    parser.add_option('-g', '--generics', dest='keep_generics', action='store_true',
+                      help='preserve generics as well as local variables', default=False)
     parser.add_option('-c', '--config', dest='config', help='additional configuration file')
     options, _ = parser.parse_args()
-    reobfuscate(options.config, options.reobf_all)
+    reobfuscate(options.config, options.reobf_all, options.keep_lvt, options.keep_generics)
 
 
-def reobfuscate(conffile=None, reobf_all=False):
-    commands = Commands(conffile)
-
+def reobfuscate(conffile, reobf_all, keep_lvt, keep_generics):
     try:
-        commands.logger.info('== Reobfuscating client ==')
-        if commands.checkbins(CLIENT):
-            commands.cleanreobfdir(CLIENT)
-            commands.logger.info('> Gathering md5 checksums')
-            commands.gathermd5s(CLIENT, True)
-            commands.logger.info('> Compacting client bin directory')
-            commands.packbin(CLIENT)
-            commands.logger.info('> Reobfuscating client jar')
-            commands.applyrg(CLIENT, True)
-            commands.logger.info('> Extracting modified classes')
-            commands.unpackreobfclasses(CLIENT, reobf_all)
+        commands = Commands(conffile, verify=True)
 
-        commands.logger.info('== Reobfuscating server ==')
-        if commands.checkbins(SERVER):
-            commands.cleanreobfdir(SERVER)
-            commands.logger.info('> Gathering md5 checksums')
-            commands.gathermd5s(SERVER, True)
-            commands.logger.info('> Compacting server bin directory')
-            commands.packbin(SERVER)
-            commands.logger.info('> Reobfuscating server jar')
-            commands.applyrg(SERVER, True)
-            commands.logger.info('> Extracting modified classes')
-            commands.unpackreobfclasses(SERVER, reobf_all)
+        if keep_generics:
+            keep_lvt = True
+
+        commands.logger.info('> Creating Retroguard config files')
+        commands.creatergcfg(reobf=True, keep_lvt=keep_lvt, keep_generics=keep_generics)
+
+        reobfuscate_side(commands, CLIENT, reobf_all=reobf_all)
+        reobfuscate_side(commands, SERVER, reobf_all=reobf_all)
     except Exception:  # pylint: disable-msg=W0703
-        commands.logger.exception('FATAL ERROR')
+        logging.exception('FATAL ERROR')
         sys.exit(1)
 
 

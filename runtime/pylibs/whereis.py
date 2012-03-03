@@ -13,8 +13,7 @@ import logging
 def whereis(filename, rootdir):
     if not os.path.exists(rootdir):
         return []
-    logger = logging.getLogger('MCPLog')
-    logger.info('> Searching for %s in %s' % (filename, rootdir))
+    logging.info('> Searching for %s in %s', filename, rootdir)
     results = []
     for path, _, filelist in os.walk(rootdir):
         if filename in filelist:
