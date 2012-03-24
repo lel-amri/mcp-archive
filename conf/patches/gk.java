@@ -1,6 +1,6 @@
 // this is needed for the sound engine to work with deobfuscated sourcecode without crashing
 
-public class gh
+public class gk
 {
     public static int c(double d)
     {

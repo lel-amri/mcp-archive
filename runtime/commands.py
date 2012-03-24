@@ -22,7 +22,7 @@ import stat
 import errno
 import shlex
 import platform
-from hashlib import md5
+from hashlib import md5  # pylint: disable-msg=E0611
 from contextlib import closing
 from textwrap import TextWrapper
 
@@ -32,6 +32,9 @@ from pylibs.annotate_gl_constants import annotate_file
 from pylibs.whereis import whereis
 from pylibs.jadfix import jadfix
 from pylibs.fffix import fffix
+from pylibs.cleanup_src import strip_comments, src_cleanup
+from pylibs.normlines import normaliselines
+from pylibs.normpatch import normalisepatch
 
 
 CLIENT = 0
@@ -100,7 +103,10 @@ def filterdirs(src_dir, pattern=None, ignore_dirs=None, append_pattern=False, al
                 # if the full subdir is in the ignored package list delete it so that we don't descend into it
                 dirlist.remove(cur_dir)
         if pattern is None:
-            dirs.append(path)
+            if all_files:
+                dirs.extend([os.path.join(path, f) for f in filelist])
+            else:
+                dirs.append(path)
         else:
             files = fnmatch.filter(filelist, pattern)
             if files:
@@ -111,18 +117,6 @@ def filterdirs(src_dir, pattern=None, ignore_dirs=None, append_pattern=False, al
                 else:
                     dirs.append(path)
     return dirs
-
-
-def normaliselines(in_filename, out_filename):
-    regex_ending = re.compile(r'\r?\n')
-    with open(in_filename, 'rb') as in_file:
-        with open(out_filename, 'wb') as out_file:
-            buf = in_file.read()
-            if os.linesep == '\r\n':
-                buf = regex_ending.sub(r'\r\n', buf)
-            else:
-                buf = buf.replace('\r\n', '\n')
-            out_file.write(buf)
 
 
 def cmdsplit(args):
@@ -149,7 +143,7 @@ def csv_header(csvfile):
 class Commands(object):
     """Contains the commands and initialisation for a full mcp run"""
 
-    MCPVersion = '6.0'
+    MCPVersion = '6.1'
     _default_config = 'conf/mcp.cfg'
     _version_config = 'conf/version.cfg'
 
@@ -195,7 +189,7 @@ class Commands(object):
 
         # tell off people running as root as it screws up wine
         if self.osname in ['linux', 'osx']:
-            if not os.getuid():
+            if not os.getuid():  # pylint: disable-msg=E1101
                 self.logger.error("!! Please don't run MCP as root !!")
                 sys.exit(1)
 
@@ -562,8 +556,10 @@ class Commands(object):
             self.updateurl = updateurl.format(version=Commands.MCPVersion)
         else:
             self.updateurl = None
-        ignoreimport = config.get('MCP', 'IgnoreUpdate').split(',')
-        self.ignoreimport = [os.path.normpath(p) for p in ignoreimport]
+        ignoreupdate = config.get('MCP', 'IgnoreUpdate').split(',')
+        self.ignoreupdate = [os.path.normpath(p) for p in ignoreupdate]
+        self.mcprgindex = os.path.normpath(config.get('MCP', 'RGIndex'))
+        self.mcpparamindex = os.path.normpath(config.get('MCP', 'ParamIndex'))
 
         # Get changed source
         self.srcmodclient = os.path.normpath(config.get('GETMODSOURCE', 'OutSRCClient'))
@@ -577,7 +573,7 @@ class Commands(object):
         if os.path.isfile(self.astyleconf):
             self.has_astyle_cfg = True
 
-    def creatergcfg(self, reobf=False, keep_lvt=False, keep_generics=False):
+    def creatergcfg(self, reobf=False, keep_lvt=False, keep_generics=False, rg_update=False):
         """Create the files necessary for RetroGuard"""
         if reobf:
             rgconfig_file = self.rgreobconfig
@@ -609,7 +605,6 @@ class Commands(object):
                 rgout.write('.attribute SourceFile\n')
 
         with open(rgclientconf_file, 'w') as rgout:
-            rgout.write('%s = %s\n' % ('startindex', '0'))
             rgout.write('%s = %s\n' % ('input', self.jarclient))
             rgout.write('%s = %s\n' % ('output', self.rgclientout))
             rgout.write('%s = %s\n' % ('reobinput', self.cmpjarclient))
@@ -626,7 +621,12 @@ class Commands(object):
             rgout.write('%s = %s\n' % ('rolog', self.clientreoblog))
             rgout.write('%s = %s\n' % ('verbose', '0'))
             rgout.write('%s = %s\n' % ('quiet', '1'))
-            rgout.write('%s = %s\n' % ('fullmap', '0'))
+            if rg_update:
+                rgout.write('%s = %s\n' % ('fullmap', '1'))
+                rgout.write('%s = %s\n' % ('startindex', self.mcprgindex))
+            else:
+                rgout.write('%s = %s\n' % ('fullmap', '0'))
+                rgout.write('%s = %s\n' % ('startindex', '0'))
             for pkg in self.ignorepkg:
                 rgout.write('%s = %s\n' % ('protectedpackage', pkg))
 
@@ -648,7 +648,12 @@ class Commands(object):
             rgout.write('%s = %s\n' % ('rolog', self.serverreoblog))
             rgout.write('%s = %s\n' % ('verbose', '0'))
             rgout.write('%s = %s\n' % ('quiet', '1'))
-            rgout.write('%s = %s\n' % ('fullmap', '0'))
+            if rg_update:
+                rgout.write('%s = %s\n' % ('fullmap', '1'))
+                rgout.write('%s = %s\n' % ('startindex', self.mcprgindex))
+            else:
+                rgout.write('%s = %s\n' % ('fullmap', '0'))
+                rgout.write('%s = %s\n' % ('startindex', '0'))
             for pkg in self.ignorepkg:
                 rgout.write('%s = %s\n' % ('protectedpackage', pkg))
 
@@ -805,17 +810,12 @@ class Commands(object):
 
         # HINT: Each local entry is of the form dict[filename]=(md5,modificationtime)
         md5lcldict = {}
-        for path, dirlist, filelist in os.walk('.'):
-            test_dirlist = dirlist[:]
-            for cur_dir in test_dirlist:
-                if os.path.normpath(os.path.join(path, cur_dir)) in self.ignoreimport:
-                    # if the full subdir is in the ignored list delete it so that we don't descend into it
-                    dirlist.remove(cur_dir)
-            for trgfile in filelist:
-                cur_file = os.path.normpath(os.path.join(path, trgfile))
-                with open(cur_file, 'rb') as fh:
-                    md5_file = md5(fh.read()).hexdigest()
-                md5lcldict[cur_file] = (md5_file, os.stat(cur_file).st_mtime)
+        files = filterdirs('.', ignore_dirs=self.ignoreupdate, all_files=True)
+        for trgfile in files:
+            cur_file = os.path.normpath(trgfile)
+            with open(cur_file, 'rb') as fh:
+                md5_file = md5(fh.read()).hexdigest()
+            md5lcldict[cur_file] = (md5_file, os.stat(cur_file).st_mtime)
         try:
             update_url = self.updateurl + 'mcp.md5'
             listfh = urllib.urlopen(update_url)
@@ -909,7 +909,7 @@ class Commands(object):
         forkcmd = self.cmdfernflower.format(indir=pathclslk[side], outdir=pathsrclk[side])
         self.runcmd(forkcmd)
 
-    def applyexceptor(self, side):
+    def applyexceptor(self, side, exc_update=False):
         """Apply exceptor to the given side"""
         excinput = {CLIENT: self.rgclientout, SERVER: self.rgserverout}
         excoutput = {CLIENT: self.xclientout, SERVER: self.xserverout}
@@ -918,6 +918,8 @@ class Commands(object):
 
         forkcmd = self.cmdexceptor.format(input=excinput[side], output=excoutput[side], conf=excconf[side],
                                           log=exclog[side])
+        if exc_update:
+            forkcmd += ' %s.exc %s' % (exclog[side], self.mcpparamindex)
         self.runcmd(forkcmd)
 
     def applyjadretro(self, side):
@@ -987,14 +989,7 @@ class Commands(object):
 
         # HINT: Here we transform the patches to match the directory separator of the specific platform
         # also normalise lineendings to platform default to keep patch happy
-        with open(patchlk[side], 'rb') as inpatch:
-            with open(self.patchtemp, 'wb') as outpatch:
-                for line in inpatch:
-                    line = line.rstrip('\r\n')
-                    if line[:3] in ['+++', '---', 'Onl', 'dif']:
-                        outpatch.write(line.replace('\\', os.sep) + os.linesep)
-                    else:
-                        outpatch.write(line + os.linesep)
+        normalisepatch(patchlk[side], self.patchtemp)
         patchfile = os.path.relpath(self.patchtemp, pathsrclk[side])
         forkcmd = self.cmdpatch.format(srcdir=pathsrclk[side], patchfile=patchfile)
         try:
@@ -1126,25 +1121,19 @@ class Commands(object):
         """Copy the class files to the temp directory defined in the config file"""
         pathbinlk = {CLIENT: self.binclienttmp, SERVER: self.binservertmp}
         pathclslk = {CLIENT: self.clsclienttmp, SERVER: self.clsservertmp}
-        ignore_dirs = [os.path.normpath(p) for p in self.ignorepkg]
 
         # HINT: We delete the specific side directory and recreate it
         reallyrmtree(pathclslk[side])
         os.makedirs(pathclslk[side])
 
-        for path, dirlist, filelist in os.walk(pathbinlk[side], followlinks=True):
-            sub_dir = os.path.relpath(path, pathbinlk[side])
-            test_dirlist = dirlist[:]
-            for cur_dir in test_dirlist:
-                if os.path.normpath(os.path.join(sub_dir, cur_dir)) in ignore_dirs:
-                    # if the full subdir is in the ignored package list delete it so that we don't descend into it
-                    dirlist.remove(cur_dir)
-            for cur_file in fnmatch.filter(filelist, '*.class'):
-                src_file = os.path.normpath(os.path.join(pathbinlk[side], sub_dir, cur_file))
-                dest_file = os.path.normpath(os.path.join(pathclslk[side], sub_dir, cur_file))
-                if not os.path.exists(os.path.dirname(dest_file)):
-                    os.makedirs(os.path.dirname(dest_file))
-                shutil.copy(src_file, dest_file)
+        ignore_dirs = [os.path.normpath(p) for p in self.ignorepkg]
+        files = filterdirs(pathbinlk[side], '*.class', ignore_dirs=ignore_dirs, all_files=True)
+        for src_file in files:
+            sub_dir = os.path.relpath(os.path.dirname(src_file), pathbinlk[side])
+            dest_file = os.path.join(pathclslk[side], sub_dir, os.path.basename(src_file))
+            if not os.path.exists(os.path.dirname(dest_file)):
+                os.makedirs(os.path.dirname(dest_file))
+            shutil.copy(src_file, dest_file)
 
     def copysrc(self, side):
         """Copy the source files to the src directory defined in the config file"""
@@ -1160,29 +1149,23 @@ class Commands(object):
 
         # HINT: copy Start and soundfix to source dir
         if side == CLIENT:
-            normaliselines(os.path.join(self.fixesclient, self.fixstart + '.java'), os.path.join(pathsrclk[side], self.fixstart + '.java'))
-            normaliselines(os.path.join(self.fixesclient, self.fixsound + '.java'), os.path.join(pathsrclk[side], self.fixsound + '.java'))
+            normaliselines(os.path.join(self.fixesclient, self.fixstart + '.java'),
+                           os.path.join(pathsrclk[side], self.fixstart + '.java'))
+            normaliselines(os.path.join(self.fixesclient, self.fixsound + '.java'),
+                           os.path.join(pathsrclk[side], self.fixsound + '.java'))
 
     def copyandfixsrc(self, src_dir, dest_dir):
         src_dir = os.path.normpath(src_dir)
         dest_dir = os.path.normpath(dest_dir)
         ignore_dirs = [os.path.normpath(p) for p in self.ignorepkg]
-
-        for path, dirlist, filelist in os.walk(src_dir, followlinks=True):
-            sub_dir = os.path.relpath(path, src_dir)
-            test_dirlist = dirlist[:]
-            for cur_dir in test_dirlist:
-                if os.path.normpath(os.path.join(sub_dir, cur_dir)) in ignore_dirs:
-                    # if the full subdir is in the ignored package list delete it so that we don't descend into it
-                    dirlist.remove(cur_dir)
-            for cur_file in fnmatch.filter(filelist, '*.java'):
-                src_file = os.path.normpath(os.path.join(src_dir, sub_dir, cur_file))
-                dest_file = os.path.normpath(os.path.join(dest_dir, sub_dir, cur_file))
-                if not os.path.exists(os.path.dirname(dest_file)):
-                    os.makedirs(os.path.dirname(dest_file))
-
-                # normalise lineendings to platform default, to keep patch happy
-                normaliselines(src_file, dest_file)
+        files = filterdirs(src_dir, '*.java', ignore_dirs=ignore_dirs, all_files=True)
+        for src_file in files:
+            sub_dir = os.path.relpath(os.path.dirname(src_file), src_dir)
+            dest_file = os.path.join(dest_dir, sub_dir, os.path.basename(src_file))
+            if not os.path.exists(os.path.dirname(dest_file)):
+                os.makedirs(os.path.dirname(dest_file))
+            # normalise lineendings to platform default, to keep patch happy
+            normaliselines(src_file, dest_file)
 
     def process_rename(self, side):
         """Rename the sources using the CSV data"""
@@ -1259,243 +1242,13 @@ class Commands(object):
         """Removes all C/C++/Java-style comments from files"""
         pathsrclk = {CLIENT: self.srcclient, SERVER: self.srcserver}
 
-        regexps = {
-            # Remove C and C++ style comments
-            'comments': re.compile(r'//.*?$|/\*.*?\*/|\'(?:\\.|[^\\\'])*\'|"(?:\\.|[^\\"])*"',
-                                   re.MULTILINE | re.DOTALL),
-
-            # Remove repeated blank lines
-            'newlines': re.compile(r'^\n{2,}', re.MULTILINE),
-        }
-
-        def comment_replacer(match):
-            part = match.group(0)
-            if part.startswith('/') and 'JADFIX' not in part:
-                return ''
-            else:
-                return part
-
-        # HINT: We pathwalk the sources
-        for path, _, filelist in os.walk(pathsrclk[side], followlinks=True):
-            for cur_file in fnmatch.filter(filelist, '*.java'):
-                src_file = os.path.normpath(os.path.join(path, cur_file))
-                tmp_file = src_file + '.tmp'
-                with open(src_file, 'r') as fh:
-                    buf = fh.read()
-
-                buf = regexps['comments'].sub(comment_replacer, buf)
-                buf = regexps['newlines'].sub(r'\n', buf)
-
-                with open(tmp_file, 'w') as fh:
-                    fh.write(buf)
-                shutil.move(tmp_file, src_file)
+        strip_comments(pathsrclk[side])
 
     def process_cleanup(self, side):
         """Do lots of random cleanups including stripping comments, trailing whitespace and extra blank lines"""
         pathsrclk = {CLIENT: self.srcclient, SERVER: self.srcserver}
 
-        regexps = {
-            # Remove extra whitespace at start of file
-            'header': re.compile(r'^\s+'),
-
-            # Remove extra whitespace at end of file
-            'footer': re.compile(r'\s+$'),
-
-            # Remove trailing whitespace
-            'trailing': re.compile(r'[ \t]+$', re.MULTILINE),
-
-            # find package
-            'package': re.compile(r'^package (?P<package>[\w.]+);$', re.MULTILINE),
-
-            # find imports
-            'import': re.compile(r'^import (?:(?P<package>[\w.]*?)\.)?(?P<class>[\w]+);\n', re.MULTILINE),
-
-            # Remove repeated blank lines
-            'newlines': re.compile(r'^\n{2,}', re.MULTILINE),
-
-            # close up blanks in code like:
-            # {
-            #
-            #     private
-            'blockstarts': re.compile(r'(?<={)\s+(?=\n[ \t]*\S)', re.MULTILINE),
-
-            # close up blanks in code like:
-            #     }
-            #
-            # }
-            'blockends': re.compile(r'(?<=[;}])\s+(?=\n\s*})', re.MULTILINE),
-
-            # Remove GL comments and surrounding whitespace
-            'gl': re.compile(r'\s*/\*\s*GL_[^*]+\*/\s*'),
-
-            # convert unicode character constants back to integers
-            'unicode': re.compile(r"'\\u([0-9a-fA-F]{4})'"),
-
-            # strip out Character.valueof
-            'charval': re.compile(r"Character\.valueOf\(('.')\)"),
-
-            # 1.7976...E+308D to Double.MAX_VALUE
-            'maxD': re.compile(r'1\.7976[0-9]*[Ee]\+308[Dd]'),
-
-            # 3.1415...D to Math.PI
-            'piD': re.compile(r'3\.1415[0-9]*[Dd]'),
-
-            # 3.1415...F to (float)Math.PI
-            'piF': re.compile(r'3\.1415[0-9]*[Ff]'),
-
-            # 6.2831...D to (Math.PI * 2D)
-            '2piD': re.compile(r'6\.2831[0-9]*[Dd]'),
-
-            # 6.2831...F to ((float)Math.PI * 2F)
-            '2piF': re.compile(r'6\.2831[0-9]*[Ff]'),
-
-            # 1.5707...D to (Math.PI / 2D)
-            'pi2D': re.compile(r'1\.5707[0-9]*[Dd]'),
-
-            # 1.5707...F to ((float)Math.PI / 2F)
-            'pi2F': re.compile(r'1\.5707[0-9]*[Ff]'),
-
-            # 4.7123...D to (Math.PI * 3D / 2D)
-            '3pi2D': re.compile(r'4\.7123[0-9]*[Dd]'),
-
-            # 4.7123...F to ((float)Math.PI * 3F / 2F)
-            '3pi2F': re.compile(r'4\.7123[0-9]*[Ff]'),
-
-            # 0.7853...D to (Math.PI / 4D)
-            'pi4D': re.compile(r'0\.7853[0-9]*[Dd]'),
-
-            # 0.7853...F to ((float)Math.PI / 4F)
-            'pi4F': re.compile(r'0\.7853[0-9]*[Ff]'),
-
-            # 0.6283...D to (Math.PI / 5D)
-            'pi5D': re.compile(r'0\.6283[0-9]*[Dd]'),
-
-            # 0.6283...F to ((float)Math.PI / 5F)
-            'pi5F': re.compile(r'0\.6283[0-9]*[Ff]'),
-
-            # 57.295...D to (180D / Math.PI)
-            '180piD': re.compile(r'57\.295[0-9]*[Dd]'),
-
-            # 57.295...F to (180F / (float)Math.PI)
-            '180piF': re.compile(r'57\.295[0-9]*[Ff]'),
-
-            # 0.6981...D to (Math.PI * 2D / 9D)
-            '2pi9D': re.compile(r'0\.6981[0-9]*[Dd]'),
-
-            # 0.6981...F to ((float)Math.PI * 2F / 9F)
-            '2pi9F': re.compile(r'0\.6981[0-9]*[Ff]'),
-
-            # 0.3141...D to (Math.PI / 10D)
-            'pi10D': re.compile(r'0\.3141[0-9]*[Dd]'),
-
-            # 0.3141...F to ((float)Math.PI / 10F)
-            'pi10F': re.compile(r'0\.3141[0-9]*[Ff]'),
-
-            # 1.2566...D to (Math.PI * 2D / 5D)
-            '2pi5D': re.compile(r'1\.2566[0-9]*[Dd]'),
-
-            # 1.2566...F to ((float)Math.PI 2F / 5F)
-            '2pi5F': re.compile(r'1\.2566[0-9]*[Ff]'),
-
-            # 0.21991...D to (Math.PI * 7D / 100D)
-            '7pi100D': re.compile(r'0\.21991[0-9]*[Dd]'),
-
-            # 0.21991...F to ((float)Math.PI * 7F / 100F)
-            '7pi100F': re.compile(r'0\.21991[0-9]*[Ff]'),
-
-            # 5.8119...D to (Math.PI * 185D / 100D)
-            '185pi100D': re.compile(r'5\.8119[0-9]*[Dd]'),
-
-            # 5.8119...F to ((float)Math.PI * 185F / 100F)
-            '185pi100F': re.compile(r'0\.8119[0-9]*[Ff]'),
-
-            # 1.230000... to 1.23
-            'rounddown': re.compile(r'(?P<full>[0-9]+\.(?P<decimal>[0-9]+?)0000[0-9]*)(?P<type>[DdEeFf])'),
-
-            # 1.239999... to 1.24
-            'roundup': re.compile(r'(?P<full>[0-9]+\.(?P<decimal>[0-9]+?9)999[0-9]*)(?P<type>[DdEeFf])'),
-        }
-
-        def unicode_replacer(match):
-            value = int(match.group(1), 16)
-            # work around the replace('\u00a7', '$') call in MinecraftServer and a couple of '\u0000'
-            if value > 255:
-                return str(value)
-            return match.group(0)
-
-        def rounddown_match(match):
-            # hackaround for GL11.glScalef(1.000001F, 1.000001F, 1.000001F) in WorldRenderer
-            if match.group(0) == '1.000001F':
-                return match.group(0)
-            val = float(match.group('full'))
-            return '%.*f%s' % (len(match.group('decimal')), val, match.group('type'))
-
-        def roundup_match(match):
-            val = float(match.group('full'))
-            return '%.*f%s' % (len(match.group('decimal')) - 1, val, match.group('type'))
-
-        # HINT: We pathwalk the sources
-        for path, _, filelist in os.walk(pathsrclk[side], followlinks=True):
-            for cur_file in fnmatch.filter(filelist, '*.java'):
-                src_file = os.path.normpath(os.path.join(path, cur_file))
-                tmp_file = src_file + '.tmp'
-                with open(src_file, 'r') as fh:
-                    buf = fh.read()
-
-                # find the package for the current class
-                match = regexps['package'].search(buf)
-                if match:
-                    package = match.group('package')
-
-                    # if the import is for the same package as current class then delete it
-                    def import_match(match):
-                        if match.group('package') != package:
-                            return match.group(0)
-                        return ''
-                    buf = regexps['import'].sub(import_match, buf)
-
-                buf = regexps['header'].sub(r'', buf)
-                buf = regexps['footer'].sub(r'\n', buf)
-                buf = regexps['trailing'].sub(r'', buf)
-                buf = regexps['newlines'].sub(r'\n', buf)
-                buf = regexps['blockstarts'].sub(r'', buf)
-                buf = regexps['blockends'].sub(r'', buf)
-                buf = regexps['gl'].sub(r'', buf)
-                buf = regexps['unicode'].sub(unicode_replacer, buf)
-                buf = regexps['charval'].sub(r'\1', buf)
-                buf = regexps['maxD'].sub(r'Double.MAX_VALUE', buf)
-
-                buf = regexps['piD'].sub(r'Math.PI', buf)
-                buf = regexps['piF'].sub(r'(float)Math.PI', buf)
-                buf = regexps['2piD'].sub(r'(Math.PI * 2D)', buf)
-                buf = regexps['2piF'].sub(r'((float)Math.PI * 2F)', buf)
-                buf = regexps['pi2D'].sub(r'(Math.PI / 2D)', buf)
-                buf = regexps['pi2F'].sub(r'((float)Math.PI / 2F)', buf)
-                buf = regexps['3pi2D'].sub(r'(Math.PI * 3D / 2D)', buf)
-                buf = regexps['3pi2F'].sub(r'((float)Math.PI * 3F / 2F)', buf)
-                buf = regexps['pi4D'].sub(r'(Math.PI / 4D)', buf)
-                buf = regexps['pi4F'].sub(r'((float)Math.PI / 4F)', buf)
-                buf = regexps['pi5D'].sub(r'(Math.PI / 5D)', buf)
-                buf = regexps['pi5F'].sub(r'((float)Math.PI / 5F)', buf)
-                buf = regexps['180piD'].sub(r'(180D / Math.PI)', buf)
-                buf = regexps['180piF'].sub(r'(180F / (float)Math.PI)', buf)
-                buf = regexps['2pi9D'].sub(r'(Math.PI * 2D / 9D)', buf)
-                buf = regexps['2pi9F'].sub(r'((float)Math.PI * 2F / 9F)', buf)
-                buf = regexps['pi10D'].sub(r'(Math.PI / 10D)', buf)
-                buf = regexps['pi10F'].sub(r'((float)Math.PI / 10F)', buf)
-                buf = regexps['2pi5D'].sub(r'(Math.PI * 2D / 5D)', buf)
-                buf = regexps['2pi5F'].sub(r'((float)Math.PI * 2F / 5F)', buf)
-                buf = regexps['7pi100D'].sub(r'(Math.PI * 7D / 100D)', buf)
-                buf = regexps['7pi100F'].sub(r'((float)Math.PI * 7F / 100F)', buf)
-                buf = regexps['185pi100D'].sub(r'(Math.PI * 185D / 100D)', buf)
-                buf = regexps['185pi100F'].sub(r'((float)Math.PI * 185F / 100F)', buf)
-
-                buf = regexps['rounddown'].sub(rounddown_match, buf)
-                buf = regexps['roundup'].sub(roundup_match, buf)
-
-                with open(tmp_file, 'w') as fh:
-                    fh.write(buf)
-                shutil.move(tmp_file, src_file)
+        src_cleanup(pathsrclk[side], fix_imports=True, fix_unicode=True, fix_charval=True, fix_pi=True, fix_round=False)
 
     def process_javadoc(self, side):
         """Add CSV descriptions to methods and fields as javadoc"""

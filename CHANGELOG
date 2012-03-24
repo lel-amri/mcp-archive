@@ -1,3 +1,10 @@
+Disabled rounding of float and double constants due to issues with getting stuck on respawn.
+Updated client patches to work around OpenGL issues with main window on OSX and Linux.
+You will need to cleanup and decompile again for these changes to take effect.
+
+== v6.1 ==
++ Updated to client 1.2.4 & server 1.2.4
+
 == v6.0 ==
 + Updated to client 1.2.3 & server 1.2.3
 + Added javadoc comments to the decompiled sourcecode

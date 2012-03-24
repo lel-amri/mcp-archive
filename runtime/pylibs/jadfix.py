@@ -6,10 +6,13 @@ Created on Thu Jan  19 16:29:03 2012
 @version: v0.1
 """
 
+import sys
 import os
 import fnmatch
 import shutil
 import re
+from optparse import OptionParser
+
 
 _MODIFIERS = r'public|protected|private|static|abstract|final|native|synchronized|transient|volatile|strictfp'
 
@@ -379,3 +382,18 @@ def _process_file(src_file):
     with open(tmp_file, 'w') as fh:
         fh.write(buf)
     shutil.move(tmp_file, src_file)
+
+
+def main():
+    usage = 'usage: %prog [options] src_dir'
+    version = '%prog 6.0'
+    parser = OptionParser(version=version, usage=usage)
+    options, args = parser.parse_args()
+    if len(args) != 1:
+        print >> sys.stderr, 'src_dir required'
+        sys.exit(1)
+    jadfix(args[0])
+
+
+if __name__ == '__main__':
+    main()

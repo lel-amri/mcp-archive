@@ -11,6 +11,7 @@ import sys
 import re
 import shutil
 
+
 _PACKAGES = ['GL11', 'GL12', 'GL13', 'GL14', 'GL15', 'GL20', 'GL21', 'ARBMultitexture', 'ARBOcclusionQuery',
              'ARBVertexBufferObject']
 _CONSTANTS = [

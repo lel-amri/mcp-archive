@@ -12,7 +12,7 @@ from commands import CLIENT, SIDE_NAME
 
 
 def decompile_side(commands, side, use_ff=False, use_srg=False, no_comments=False, no_reformat=False, no_renamer=False,
-                   no_patch=False):
+                   no_patch=False, strip_comments=True, exc_update=False):
     if not commands.checkjars(side):
         commands.logger.warning('!! Missing %s jar file. Aborting !!', SIDE_NAME[side])
         return False
@@ -29,7 +29,7 @@ def decompile_side(commands, side, use_ff=False, use_srg=False, no_comments=Fals
     commands.logger.info('> Applying Retroguard')
     commands.applyrg(side)
     commands.logger.info('> Applying MCInjector')
-    commands.applyexceptor(side)
+    commands.applyexceptor(side, exc_update=exc_update)
     commands.logger.info('> Unpacking jar')
     commands.extractjar(side)
     commands.logger.info('> Copying classes')
@@ -56,8 +56,11 @@ def decompile_side(commands, side, use_ff=False, use_srg=False, no_comments=Fals
     if not no_patch:
         commands.logger.info('> Applying patches')
         commands.applypatches(side, use_ff=use_ff)
-        commands.logger.info('> Cleaning comments')
-        commands.process_comments(side)
+        if strip_comments:
+            commands.logger.info('> Cleaning comments')
+            commands.process_comments(side)
+        else:
+            commands.logger.warning('!! comment cleaning disabled !!')
     else:
         commands.logger.warning('!! patches disabled !!')
     commands.logger.info('- Done in %.2f seconds', time.time() - starttime)

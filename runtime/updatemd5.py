@@ -44,12 +44,10 @@ def updatemd5(conffile, force):
             updatemd5_side(commands, CLIENT)
         except CalledProcessError:
             commands.logger.error('Client recompile failed, correct source then rerun updatemd5')
-            pass
         try:
             updatemd5_side(commands, SERVER)
         except CalledProcessError:
             commands.logger.error('Server recompile failed, correct source then rerun updatemd5')
-            pass
     except Exception:  # pylint: disable-msg=W0703
         logging.exception('FATAL ERROR')
         sys.exit(1)

@@ -6,10 +6,13 @@ Created on Thu Jan  19 16:29:03 2012
 @version: v0.1
 """
 
+import sys
 import os
 import fnmatch
 import shutil
 import re
+from optparse import OptionParser
+
 
 _MODIFIERS = r'public|protected|private|static|abstract|final|native|synchronized|transient|volatile|strictfp'
 
@@ -26,6 +29,12 @@ _REGEXP = {
     'enum_class': re.compile(r'^(?P<modifiers>(?:(?:' + _MODIFIERS + r') )*)(?P<type>enum) (?P<name>[\w$]+)(?: implements (?P<implements>[\w$.]+(?:, [\w$.]+)*))? \{\n(?P<body>(?:.*?\n)*?)(?P<end>\}\n+)', re.MULTILINE),
 
     'enum_entries': re.compile(r'^ {3}(?P<name>[\w$]+)\("(?P=name)", [0-9]+(?:, (?P<body>.*?))?\)(?P<end>(?:;|,)\n+)', re.MULTILINE),
+
+    'empty_super': re.compile(r'^ +super\(\);\n', re.MULTILINE),
+
+    # strip trailing 0 from doubles and floats to fix decompile differences on OSX
+    # 0.0010D => 0.001D
+    'trailingzero': re.compile(r'(?P<value>[0-9]+\.[0-9]*[1-9])0+(?P<type>[DdFfEe])'),
 }
 
 _REGEXP_STR = {
@@ -138,8 +147,27 @@ def _process_file(src_file):
                               match.group('end'))
     buf = _REGEXP['enum_class'].sub(enum_match, buf)
 
+    buf = _REGEXP['empty_super'].sub(r'', buf)
+
+    buf = _REGEXP['trailingzero'].sub(r'\g<value>\g<type>', buf)
+
     buf = _REGEXP['newlines'].sub(r'\n', buf)
 
     with open(tmp_file, 'w') as fh:
         fh.write(buf)
     shutil.move(tmp_file, src_file)
+
+
+def main():
+    usage = 'usage: %prog [options] src_dir'
+    version = '%prog 6.0'
+    parser = OptionParser(version=version, usage=usage)
+    options, args = parser.parse_args()
+    if len(args) != 1:
+        print >> sys.stderr, 'src_dir required'
+        sys.exit(1)
+    fffix(args[0])
+
+
+if __name__ == '__main__':
+    main()

@@ -66,9 +66,9 @@ def cleanup(conffile, force):
             logging.shutdown()
             reallyrmtree(commands.dirlogs)
         except OSError as ex:
-            sys.stderr.write('Cleanup FAILED\n')
+            print >> sys.stderr, 'Cleanup FAILED'
             if hasattr(ex, 'filename'):
-                sys.stderr.write('Failed to remove ' + ex.filename + '\n')
+                print >> sys.stderr, 'Failed to remove ' + ex.filename
             sys.exit(1)
     except Exception:  # pylint: disable-msg=W0703
         logging.exception('FATAL ERROR')
