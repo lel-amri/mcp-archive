@@ -2,7 +2,7 @@
 """
 Created on Fri Apr  8 16:36:26 2011
 
-@author: ProfMobius & Searge
+@author: ProfMobius, Searge, Fesh0r
 @version: v1.2
 """
 
@@ -143,7 +143,7 @@ def csv_header(csvfile):
 class Commands(object):
     """Contains the commands and initialisation for a full mcp run"""
 
-    MCPVersion = '6.1'
+    MCPVersion = '6.2'
     _default_config = 'conf/mcp.cfg'
     _version_config = 'conf/version.cfg'
 
