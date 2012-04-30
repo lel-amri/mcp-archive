@@ -46,7 +46,7 @@ def normaliselines_dir(in_dirname, out_dirname=None):
 
 
 def main():
-    usage = 'usage: %prog [options] src_file/src_dir [dest_file/dest_dir]'
+    usage = 'usage: %prog [options] src_file|src_dir [dest_file|dest_dir]'
     version = '%prog 6.0'
     parser = OptionParser(version=version, usage=usage)
     options, args = parser.parse_args()
@@ -57,10 +57,10 @@ def main():
         in_name = args[0]
         out_name = args[1]
     else:
-        print >> sys.stderr, 'src_file/src_dir required'
+        print >> sys.stderr, 'src_file or src_dir required'
         sys.exit(1)
     if not os.path.exists(in_name):
-        print >> sys.stderr, 'src_file/src_dir not found'
+        print >> sys.stderr, 'src_file or src_dir not found'
         sys.exit(1)
     if os.path.isfile(in_name):
         normaliselines(in_name, out_name)

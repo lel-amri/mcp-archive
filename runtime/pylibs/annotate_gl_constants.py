@@ -10,10 +10,13 @@ Created on Fri Apr  8 16:36:26 2011
 import sys
 import re
 import shutil
+import os
+import fnmatch
+from optparse import OptionParser
 
 
 _PACKAGES = ['GL11', 'GL12', 'GL13', 'GL14', 'GL15', 'GL20', 'GL21', 'ARBMultitexture', 'ARBOcclusionQuery',
-             'ARBVertexBufferObject']
+             'ARBVertexBufferObject', 'ARBShaderObjects']
 _CONSTANTS = [
     (
         {
@@ -1219,16 +1222,41 @@ _CONSTANTS = [
             },
         }
     ),
+    (
+        {
+            'ARBShaderObjects': [
+                'glGetObjectParameterARB',
+                'glGetObjectParameterfARB',
+                'glGetObjectParameteriARB',
+                'glCreateShaderObjectARB',
+            ],
+        },
+        {
+            'ARBShaderObjects': {
+                35662: 'GL_OBJECT_TYPE_ARB',
+                35663: 'GL_OBJECT_SUBTYPE_ARB',
+                35712: 'GL_OBJECT_DELETE_STATUS_ARB',
+                35713: 'GL_OBJECT_COMPILE_STATUS_ARB',
+                35714: 'GL_OBJECT_LINK_STATUS_ARB',
+                35715: 'GL_OBJECT_VALIDATE_STATUS_ARB',
+                35716: 'GL_OBJECT_INFO_LOG_LENGTH_ARB',
+                35717: 'GL_OBJECT_ATTACHED_OBJECTS_ARB',
+                35718: 'GL_OBJECT_ACTIVE_UNIFORMS_ARB',
+                35719: 'GL_OBJECT_ACTIVE_UNIFORM_MAX_LENGTH_ARB',
+                35720: 'GL_OBJECT_SHADER_SOURCE_LENGTH_ARB',
+            },
+            'ARBFragmentShader': {
+                35632: 'GL_FRAGMENT_SHADER_ARB',
+            },
+            'ARBVertexShader': {
+                35633: 'GL_VERTEX_SHADER_ARB',
+            },
+        }
+    ),
 ]
 
 _CALL_REGEX = re.compile(r'(' + '|'.join(_PACKAGES) + r')\.([\w]+)\(.+\)')
 _CONSTANT_REGEX = re.compile(r'(?<![-.\w])\d+(?![.\w])')
-
-
-def main():
-    if len(sys.argv) > 1:
-        for arg in sys.argv[1:]:
-            annotate_file(arg)
 
 
 def annotate_constants(code):
@@ -1270,6 +1298,24 @@ def annotate_file(filename):
         with open(tmp_file, 'w') as fh:
             fh.write(code)
         shutil.move(tmp_file, filename)
+
+
+def annotate_dir(srcdir):
+    for path, _, filelist in os.walk(srcdir, followlinks=True):
+        for cur_file in fnmatch.filter(filelist, '*.java'):
+            src_file = os.path.normpath(os.path.join(path, cur_file))
+            annotate_file(src_file)
+
+
+def main():
+    usage = 'usage: %prog [options] src_dir'
+    version = '%prog 6.0'
+    parser = OptionParser(version=version, usage=usage)
+    options, args = parser.parse_args()
+    if len(args) != 1:
+        print >> sys.stderr, 'src_dir required'
+        sys.exit(1)
+    annotate_dir(args[0])
 
 
 if __name__ == '__main__':
