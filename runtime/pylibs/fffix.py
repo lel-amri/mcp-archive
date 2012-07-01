@@ -68,7 +68,7 @@ def _process_enum(class_name, class_type, modifiers, implements, body, end):
         return new_entry
     body = _REGEXP['enum_entries'].sub(_enum_entries_match, body)
 
-    values_regex = re.compile(_REGEXP_STR['enum_values'] % (class_name, class_name), re.MULTILINE)
+    values_regex = re.compile(_REGEXP_STR['enum_values'] % (re.escape(class_name), re.escape(class_name)), re.MULTILINE)
     body = values_regex.sub(r'', body)
 
     # process constructors
@@ -89,7 +89,7 @@ def _process_enum(class_name, class_type, modifiers, implements, body, end):
             method_body = match.group('body')
             method_end = match.group('end')
         return _process_constructor(class_name, modifiers, parameters, throws, method_body, method_end)
-    constructor_regex = re.compile(_REGEXP_STR['constructor'] % class_name, re.MULTILINE)
+    constructor_regex = re.compile(_REGEXP_STR['constructor'] % re.escape(class_name), re.MULTILINE)
     body = constructor_regex.sub(constructor_match, body)
 
     # rebuild enum

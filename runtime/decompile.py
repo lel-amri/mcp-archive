@@ -75,10 +75,10 @@ def decompile(conffile, force_jad, force_csv, no_recompile, no_comments, no_refo
                 # the fernflower patches
                 no_patch = False
                 strip_comments = False
-            elif no_reformat:
+            if no_reformat:
                 # reuse -a no_reformat to switch rg to fullmap=1 startindex=RGIndex
                 rg_update = True
-            elif no_renamer:
+            if no_renamer:
                 # reuse -n to switch mcinjector to outputing exc file, and adding new parameters
                 exc_update = True
             no_comments = True

@@ -157,7 +157,7 @@ def _process_class(class_name, class_type, modifiers, extends, implements, body,
             throws = _REGEXP['list'].split(match.group('throws'))
         return _process_constructor(class_type, class_name, modifiers, parameters, throws, match.group('body'),
                                     match.group('end'))
-    constructor_regex = re.compile(_REGEXP_STR['constructor'] % class_name, re.MULTILINE)
+    constructor_regex = re.compile(_REGEXP_STR['constructor'] % re.escape(class_name), re.MULTILINE)
     body = constructor_regex.sub(constructor_match, body)
 
     # rebuild class
@@ -178,11 +178,11 @@ def _process_enum(class_name, body):
     body = _REGEXP['enum_super'].sub(r'', body)
 
     # remove values and valueOf methods
-    methods_regex = re.compile(_REGEXP_STR['enum_methods'] % class_name, re.MULTILINE)
+    methods_regex = re.compile(_REGEXP_STR['enum_methods'] % re.escape(class_name), re.MULTILINE)
     body = methods_regex.sub(r'', body)
 
     # remove enum fields and $VALUES
-    fields_regex = re.compile(_REGEXP_STR['enum_fields'] % class_name, re.MULTILINE)
+    fields_regex = re.compile(_REGEXP_STR['enum_fields'] % re.escape(class_name), re.MULTILINE)
     body = fields_regex.sub(r'', body)
 
     # rebuild enum entries from static block
@@ -211,13 +211,13 @@ def _process_enum_static(class_name, enum_body):
         new_entry = _REGEXP['deindent'].sub(r'\1', new_entry)
         entries.append(new_entry)
         return ''
-    entries_regex = re.compile(_REGEXP_STR['enum_entries'] % class_name, re.MULTILINE | re.DOTALL)
+    entries_regex = re.compile(_REGEXP_STR['enum_entries'] % re.escape(class_name), re.MULTILINE | re.DOTALL)
     body = entries_regex.sub(_enum_entries_match, body)
     if entries:
         enum_entries = '\n' + ',\n'.join(entries) + ';\n\n'
 
     # remove the $VALUES array from the static block
-    values_regex = re.compile(_REGEXP_STR['enum_values'] % class_name, re.MULTILINE)
+    values_regex = re.compile(_REGEXP_STR['enum_values'] % re.escape(class_name), re.MULTILINE)
     body = values_regex.sub('', body)
 
     # add the entries and $VALUES to start of body

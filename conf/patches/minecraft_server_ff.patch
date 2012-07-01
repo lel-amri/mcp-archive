@@ -1,7 +1,19 @@
+diff -r -U 3 minecraft_server\net\minecraft\src\DedicatedServer.java minecraft_server_patched\net\minecraft\src\DedicatedServer.java
+--- minecraft_server\net\minecraft\src\DedicatedServer.java	Fri Jun 29 16:38:03 2012
++++ minecraft_server_patched\net\minecraft\src\DedicatedServer.java	Fri Jun 29 16:38:57 2012
+@@ -187,7 +187,7 @@
+       System.exit(0);
+    }
+ 
+-   protected void func_56160_o() {
++   public void func_56160_o() {
+       super.func_56160_o();
+       this.func_56226_ac();
+    }
 diff -r -U 3 minecraft_server\net\minecraft\src\ItemMap.java minecraft_server_patched\net\minecraft\src\ItemMap.java
---- minecraft_server\net\minecraft\src\ItemMap.java	Tue May 01 04:46:58 2012
-+++ minecraft_server_patched\net\minecraft\src\ItemMap.java	Tue May 01 04:40:35 2012
-@@ -22,7 +22,6 @@
+--- minecraft_server\net\minecraft\src\ItemMap.java	Fri Jun 29 16:38:05 2012
++++ minecraft_server_patched\net\minecraft\src\ItemMap.java	Fri Jun 29 16:38:57 2012
+@@ -24,7 +24,6 @@
     }
  
     public MapData func_28023_a(ItemStack p_28023_1_, World p_28023_2_) {
@@ -9,11 +21,11 @@ diff -r -U 3 minecraft_server\net\minecraft\src\ItemMap.java minecraft_server_pa
        MapData var4 = (MapData)p_28023_2_.func_28103_a(MapData.class, "map_" + p_28023_1_.func_21125_h());
        if(var4 == null) {
           p_28023_1_.func_28145_b(p_28023_2_.func_28104_b("map"));
-diff -r -U 3 minecraft_server\net\minecraft\src\NetworkMasterThread.java minecraft_server_patched\net\minecraft\src\NetworkMasterThread.java
---- minecraft_server\net\minecraft\src\NetworkMasterThread.java	Tue May 01 04:46:59 2012
-+++ minecraft_server_patched\net\minecraft\src\NetworkMasterThread.java	Tue May 01 04:40:35 2012
+diff -r -U 3 minecraft_server\net\minecraft\src\TcpMasterThread.java minecraft_server_patched\net\minecraft\src\TcpMasterThread.java
+--- minecraft_server\net\minecraft\src\TcpMasterThread.java	Fri Jun 29 16:38:06 2012
++++ minecraft_server_patched\net\minecraft\src\TcpMasterThread.java	Fri Jun 29 16:38:57 2012
 @@ -11,6 +11,7 @@
-       this.field_829_a = p_i577_1_;
+       this.field_56683_a = p_i1502_1_;
     }
  
 +   @SuppressWarnings("deprecation")
@@ -21,8 +33,8 @@ diff -r -U 3 minecraft_server\net\minecraft\src\NetworkMasterThread.java minecra
        try {
           Thread.sleep(5000L);
 diff -r -U 3 minecraft_server\net\minecraft\src\ThreadedFileIOBase.java minecraft_server_patched\net\minecraft\src\ThreadedFileIOBase.java
---- minecraft_server\net\minecraft\src\ThreadedFileIOBase.java	Tue May 01 04:46:59 2012
-+++ minecraft_server_patched\net\minecraft\src\ThreadedFileIOBase.java	Tue May 01 04:40:35 2012
+--- minecraft_server\net\minecraft\src\ThreadedFileIOBase.java	Fri Jun 29 16:38:06 2012
++++ minecraft_server_patched\net\minecraft\src\ThreadedFileIOBase.java	Fri Jun 29 16:38:57 2012
 @@ -20,7 +20,9 @@
     }
  
