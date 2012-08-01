@@ -173,3 +173,17 @@ def getchangedsrc_side(commands, side):
     commands.gathermd5s(side, True)
     commands.unpackmodifiedclasses(side)
     return True
+
+
+def updateids_side(commands, side, no_comments=False):
+    if not commands.checksourcedir(side):
+        return False
+    starttime = time.time()
+    commands.logger.info('== Updating %s ==', SIDE_NAME[side])
+    if commands.has_renumber_csv:
+        commands.logger.info('> Renumbering sources')
+        commands.process_renumber(side)
+    else:
+        commands.logger.warning('!! renumbering disabled due to no csvs !!')
+    commands.logger.info('- Done in %.2f seconds', time.time() - starttime)
+    return True

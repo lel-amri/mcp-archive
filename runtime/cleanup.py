@@ -52,11 +52,15 @@ def cleanup(conffile, force):
             commands.logger.info('> Cleaning reobf')
             reallyrmtree(commands.dirreobf)
 
+            commands.logger.info('> Cleaning lib')
+            reallyrmtree(commands.dirlib)
+
             commands.logger.info('> Cleaning jars')
             reallyrmtree(os.path.join(commands.dirjars, 'saves'))
             reallyrmtree(os.path.join(commands.dirjars, 'stats'))
             reallyrmtree(os.path.join(commands.dirjars, 'texturepacks'))
-            reallyrmtree(os.path.join(commands.dirjars, 'world'))
+            reallyrmtree(os.path.join(commands.dirjars, 'texturepacks-mp-cache'))
+            reallyrmtree(os.path.join(commands.dirjars, 'mcpworld'))
             if os.path.exists(os.path.join(commands.dirjars, 'server.log')):
                 os.remove(os.path.join(commands.dirjars, 'server.log'))
             for txt_file in glob.glob(os.path.join(commands.dirjars, '*.txt')):

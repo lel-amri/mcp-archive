@@ -143,7 +143,7 @@ def csv_header(csvfile):
 class Commands(object):
     """Contains the commands and initialisation for a full mcp run"""
 
-    MCPVersion = '6.15'
+    MCPVersion = '7.0'
     _default_config = 'conf/mcp.cfg'
     _version_config = 'conf/version.cfg'
 
@@ -316,6 +316,8 @@ class Commands(object):
                 reqs.append('doc csvs')
             if self.has_param_csv:
                 reqs.append('param csvs')
+            if self.has_renumber_csv:
+                reqs.append('renumber csv')
             if self.has_astyle:
                 reqs.append('astyle')
             if self.has_astyle_cfg:
@@ -410,16 +412,19 @@ class Commands(object):
         self.csvmethods = os.path.normpath(config.get('CSV', 'Methods'))
         self.csvfields = os.path.normpath(config.get('CSV', 'Fields'))
         self.csvparams = os.path.normpath(config.get('CSV', 'Params'))
+        self.csvnewids = os.path.normpath(config.get('CSV', 'NewIds'))
 
         # check what csvs we have
         self.has_map_csv = False
         self.has_name_csv = False
         self.has_doc_csv = False
         self.has_param_csv = False
+        self.has_renumber_csv = False
         header_classes = csv_header(self.csvclasses)
         header_methods = csv_header(self.csvmethods)
         header_fields = csv_header(self.csvfields)
         header_params = csv_header(self.csvparams)
+        header_newids = csv_header(self.csvnewids)
         if set(['notch', 'name', 'package', 'side']) <= header_classes and \
            set(['notch', 'searge', 'notchsig', 'sig', 'classnotch', 'classname', 'package', 'side']) <= header_methods and \
            set(['notch', 'searge', 'classnotch', 'classname', 'package', 'side']) <= header_fields:
@@ -430,6 +435,8 @@ class Commands(object):
             self.has_doc_csv = True
         if set(['param', 'name', 'side']) <= header_params:
             self.has_param_csv = True
+        if set(['client', 'server', 'newid']) <= header_newids:
+            self.has_renumber_csv = True
 
         # HINT: We read the names of the SRG output
         self.srgsconfclient = os.path.normpath(config.get('SRGS', 'ConfClient'))
@@ -529,7 +536,10 @@ class Commands(object):
         self.fixesclient = os.path.normpath(config.get('RECOMPILE', 'ClientFixes'))
         cpathserver = config.get('RECOMPILE', 'ClassPathServer').split(',')
         self.cpathserver = [os.path.normpath(p) for p in cpathserver]
-        self.fixsound = config.get('RECOMPILE', 'FixSound')
+        if config.has_option('RECOMPILE', 'FixSound'):
+            self.fixsound = config.get('RECOMPILE', 'FixSound')
+        else:
+            self.fixsound = None
         self.fixstart = config.get('RECOMPILE', 'FixStart')
         self.ignorepkg = config.get('RECOMPILE', 'IgnorePkg').split(',')
 
@@ -671,8 +681,11 @@ class Commands(object):
             if not self.has_map_csv:
                 self.logger.error('!! csvs not found !!')
                 sys.exit(1)
+            fixes = [self.fixstart]
+            if self.fixsound:
+                fixes.append(self.fixsound)
             writesrgsfromcsvs(self.csvclasses, self.csvmethods, self.csvfields, sidelk[side],
-                              side, [self.fixstart, self.fixsound])
+                              side, fixes)
 
     def checkjava(self):
         """Check for java and setup the proper directory if needed"""
@@ -1151,8 +1164,9 @@ class Commands(object):
         if side == CLIENT:
             normaliselines(os.path.join(self.fixesclient, self.fixstart + '.java'),
                            os.path.join(pathsrclk[side], self.fixstart + '.java'))
-            normaliselines(os.path.join(self.fixesclient, self.fixsound + '.java'),
-                           os.path.join(pathsrclk[side], self.fixsound + '.java'))
+            if self.fixsound:
+                normaliselines(os.path.join(self.fixesclient, self.fixsound + '.java'),
+                               os.path.join(pathsrclk[side], self.fixsound + '.java'))
 
     def copyandfixsrc(self, src_dir, dest_dir):
         src_dir = os.path.normpath(src_dir)
@@ -1228,6 +1242,69 @@ class Commands(object):
                 updatefile(os.path.normpath(os.path.join(path, cur_file)))
         return True
 
+    def process_renumber(self, side):
+        """Renumber the sources using the CSV data"""
+        pathsrclk = {CLIENT: self.srcclient, SERVER: self.srcserver}
+
+        if not self.has_renumber_csv:
+            self.logger.warning('!! renumbering disabled due to no csv !!')
+            return False
+
+        regexps = {
+            'methods': re.compile(r'func_([0-9]+)_[a-zA-Z_]+'),
+            'fields': re.compile(r'field_([0-9]+)_[a-zA-Z_]+'),
+            'params': re.compile(r'p_[\d]+_'),
+        }
+
+        # HINT: We read the relevant CSVs
+        mapping = {'methods': {}, 'fields': {}, 'params': {}}
+        with open(self.csvnewids, 'rb') as fh:
+            in_csv = csv.DictReader(fh)
+            for line in in_csv:
+                in_id = None
+                if side == CLIENT:
+                    if line['client'] != '*':
+                        in_id = line['client']
+                else:
+                    if line['server'] != '*':
+                        in_id = line['server']
+                if in_id:
+                    method_match = regexps['methods'].match(in_id)
+                    if method_match is not None:
+                        if in_id not in mapping['methods']:
+                            mapping['methods'][in_id] = line['newid']
+                            in_param = 'p_' + method_match.group(1) + '_'
+                            method_match = regexps['methods'].match(line['newid'])
+                            if method_match is not None:
+                                out_param = 'p_' + method_match.group(1) + '_'
+                                mapping['params'][in_param] = out_param
+                    field_match = regexps['fields'].match(in_id)
+                    if field_match is not None:
+                        if in_id not in mapping['fields']:
+                            mapping['fields'][in_id] = line['newid']
+
+        def updatefile(src_file):
+            tmp_file = src_file + '.tmp'
+            with open(src_file, 'r') as fh:
+                buf = fh.read()
+            for group in mapping.keys():
+                def mapname(match):
+                    try:
+                        return mapping[group][match.group(0)]
+                    except KeyError:
+                        pass
+                    return match.group(0)
+                buf = regexps[group].sub(mapname, buf)
+            with open(tmp_file, 'w') as fh:
+                fh.write(buf)
+            shutil.move(tmp_file, src_file)
+
+        # HINT: We pathwalk the sources
+        for path, _, filelist in os.walk(pathsrclk[side], followlinks=True):
+            for cur_file in fnmatch.filter(filelist, '*.java'):
+                updatefile(os.path.normpath(os.path.join(path, cur_file)))
+        return True
+
     def process_annotate(self, side):
         """Annotate OpenGL constants"""
         pathsrclk = {CLIENT: self.srcclient, SERVER: self.srcserver}
@@ -1275,8 +1352,8 @@ class Commands(object):
                 fields[row['searge']] = row['desc'].replace('*/', '* /')
 
         regexps = {
-            'field': re.compile(r'^ {4}(?:[\w$.[\]]+ )*(?P<name>field_[0-9]+_[a-zA-Z_]+) *(?:=|;)'),
-            'method': re.compile(r'^ {4}(?:[\w$.[\]]+ )*(?P<name>func_[0-9]+_[a-zA-Z_]+)\('),
+            'field': re.compile(r'^(?P<indent> {4}|\t)(?:[\w$.[\]]+ )*(?P<name>field_[0-9]+_[a-zA-Z_]+) *(?:=|;)'),
+            'method': re.compile(r'^(?P<indent> {4}|\t)(?:[\w$.[\]]+ )*(?P<name>func_[0-9]+_[a-zA-Z_]+)\('),
         }
         wrapper = TextWrapper(width=120)
 
@@ -1295,7 +1372,7 @@ class Commands(object):
                     methoddecl = regexps['method'].match(line)
                     if fielddecl:
                         prev_line = buf_out[-1].strip()
-                        indent = '    '
+                        indent = fielddecl.group('indent')
                         name = fielddecl.group('name')
                         if name in fields:
                             desc = fields[name]
@@ -1315,7 +1392,7 @@ class Commands(object):
                                 buf_out.append(indent + ' */\n')
                     elif methoddecl:
                         prev_line = buf_out[-1].strip()
-                        indent = '    '
+                        indent = methoddecl.group('indent')
                         name = methoddecl.group('name')
                         if name in methods:
                             desc = methods[name]
@@ -1377,8 +1454,9 @@ class Commands(object):
 
         ignore_files = []
         if side == CLIENT:
-            ignore_files.append(self.fixsound + '.class')
             ignore_files.append(self.fixstart + '.class')
+            if self.fixsound:
+                ignore_files.append(self.fixsound + '.class')
 
         # HINT: We create the zipfile and add all the files from the bin directory
         with closing(zipfile.ZipFile(jarlk[side], 'w')) as zipjar:
@@ -1429,14 +1507,18 @@ class Commands(object):
         ignore_classes = []
         if side == CLIENT:
             ignore_classes.append(self.fixstart)
-            ignore_classes.append(self.fixsound)
+            if self.fixsound:
+                ignore_classes.append(self.fixsound)
         trgclasses = []
         for key in md5reobtable.keys():
             if key in ignore_classes:
                 continue
             if key not in md5table:
                 trgclasses.append(key)
-                self.logger.info('> New class found      : %s', key)
+                if '$' in key:
+                    self.logger.info('> New inner class found: %s', key)
+                else:
+                    self.logger.info('> New class found      : %s', key)
             elif md5table[key] != md5reobtable[key]:
                 trgclasses.append(key)
                 self.logger.info('> Modified class found : %s', key)
@@ -1454,20 +1536,23 @@ class Commands(object):
         # HINT: We extract the modified class files
         with closing(zipfile.ZipFile(jarlk[side])) as zipjar:
             for in_class in trgclasses:
+                parent_class, sep, inner_class = in_class.partition('$')
+                if in_class in classes:
+                    out_class = classes[in_class] + '.class'
+                elif parent_class in classes:
+                    out_class = classes[parent_class] + sep + inner_class + '.class'
+                else:
+                    out_class = in_class + '.class'
+                    out_class = out_class.replace(self.nullpkg, '')
+                    if out_class[0] == '/':
+                        out_class = out_class[1:]
                 try:
-                    if in_class in classes:
-                        out_class = classes[in_class] + '.class'
-                        zipjar.extract(out_class, outpathlk[side])
-                        self.logger.info('> Outputted %s to %s as %s', in_class.ljust(35), outpathlk[side], out_class)
-                    else:
-                        out_class = in_class + '.class'
-                        out_class = out_class.replace(self.nullpkg, '')
-                        if out_class[0] == '/':
-                            out_class = out_class[1:]
-                        zipjar.extract(out_class, outpathlk[side])
-                        self.logger.info('> Outputted %s to %s as %s', in_class.ljust(35), outpathlk[side], out_class)
+                    zipjar.extract(out_class, outpathlk[side])
+                    self.logger.info('> Outputted %s to %s as %s', in_class.ljust(35), outpathlk[side], out_class)
                 except KeyError:
-                    self.logger.info('> File %s not found', in_class + '.class')
+                    self.logger.error('* File %s not found for %s', out_class, in_class)
+                except IOError:
+                    self.logger.error('* File %s failed extracting for %s', out_class, in_class)
 
     def downloadupdates(self, force=False):
         if not self.updateurl:
@@ -1545,7 +1630,10 @@ class Commands(object):
         for key in md5reobtable.keys():
             if key not in md5table:
                 trgclasses.append(key)
-                self.logger.info('> New class found      : %s', key)
+                if '$' in key:
+                    self.logger.info('> New inner class found: %s', key)
+                else:
+                    self.logger.info('> New class found      : %s', key)
             elif md5table[key] != md5reobtable[key]:
                 trgclasses.append(key)
                 self.logger.info('> Modified class found : %s', key)
@@ -1554,11 +1642,15 @@ class Commands(object):
             os.makedirs(outpathlk[side])
 
         # HINT: We extract the source files for the modified class files
-        for i in trgclasses:
-            src_file = os.path.normpath(os.path.join(src[side], i + '.java'))
-            dest_file = os.path.normpath(os.path.join(outpathlk[side], i + '.java'))
+        for in_class in trgclasses:
+            src_file = os.path.normpath(os.path.join(src[side], in_class + '.java'))
+            dest_file = os.path.normpath(os.path.join(outpathlk[side], in_class + '.java'))
             if os.path.isfile(src_file):
                 if not os.path.exists(os.path.dirname(dest_file)):
                     os.makedirs(os.path.dirname(dest_file))
-                shutil.copyfile(src_file, dest_file)
-                self.logger.info('> Outputted %s to %s', i, outpathlk[side])
+                try:
+                    shutil.copyfile(src_file, dest_file)
+                    self.logger.info('> Outputted %s to %s', in_class.ljust(35), outpathlk[side])
+                except IOError:
+                    self.logger.error('* File %s copy failed', in_class)
+
