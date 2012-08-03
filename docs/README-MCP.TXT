@@ -1,5 +1,5 @@
-Minecraft Coder Pack 7.0 for Minecraft 1.3
-==========================================
+Minecraft Coder Pack 7.0a for Minecraft 1.3.1
+=============================================
 MCP is (c) Copyright by the MCP Team
 
 License and terms of use.
@@ -199,6 +199,9 @@ Chase
 titegtnodI
 * Wiki contributor
 * IRC Operator
+
+== Superspecial thanks to ==
+Stiver - for allowing us to include the fernflower decompiler in MCP releases
 
 == Special thanks to ==
 UltraMoogleMan

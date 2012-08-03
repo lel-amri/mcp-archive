@@ -1,25 +1,3 @@
-To use the fernflower decompiler, just put the fernflower.jar file into the runtime/bin folder.
-Only tested with fernflower 0.8.6, other versions may fail.
-
-
-Hi Searge,
-
-I was told you might be planning to distribute Fernflower as a part of
-MCP. It looks like a very nice project to me (excellent work btw :))
-so I'm happy to allow the integration. Below you'll find the necessary
-supplement to the general license.
-
-Based on the general Fernflower license the following additional
-permissions are granted to the project Minecraft Coder Pack (MCP). As
-long as the project remains non-commercial it may use, integrate and
-distribute every binary version of the decompiler Fernflower in any
-desired way as part of MCP tools. Custom patches to Fernflower are
-generally possible after a brief consultation with me.
-
-Cheers,
-Stiver
-
-
 Fernflower Freeware License 1.0
 
 This license applies to the Fernflower decompiler (hereafter “Software") 

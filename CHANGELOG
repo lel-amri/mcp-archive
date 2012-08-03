@@ -1,5 +1,9 @@
+== v7.0a ==
++ Still for client 1.3.1 & server 1.3.1
++ Added fernflower decompiler
+
 == v7.0 ==
-+ Updated to client 1.3 & server 1.3
++ Updated to client 1.3.1 & server 1.3.1
 + Extended patches to remove herobrine code from decompiled classes
 
 == v6.2 ==
