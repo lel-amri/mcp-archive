@@ -143,7 +143,7 @@ def csv_header(csvfile):
 class Commands(object):
     """Contains the commands and initialisation for a full mcp run"""
 
-    MCPVersion = '7.0'
+    MCPVersion = '7.2'
     _default_config = 'conf/mcp.cfg'
     _version_config = 'conf/version.cfg'
 
@@ -236,9 +236,8 @@ class Commands(object):
         if verify:
             self.checkcommand('mcinjector', '%s --version' % self.exceptor, java=True)
 
+        # verify below along with jad if required
         self.jadretro = os.path.normpath(self.config.get('COMMANDS', 'JadRetro'))
-        if verify:
-            self.checkcommand('jadretro', '%s' % self.jadretro, java=True, single_line=True)
 
         self.patcher = os.path.normpath(self.config.get('COMMANDS', 'Patcher_%s' % self.osname))
         if verify:
@@ -270,11 +269,14 @@ class Commands(object):
             if verify:
                 self.has_astyle = self.checkcommand('astyle', '%s --version' % self.astyle, error=False)
 
-        # only check jad if we can use it
+        # only check jad and jadretro if we can use it
         if self.jad:
             if verify:
-                self.has_jad = self.checkcommand('jad', '%s' % self.jad, single_line=True, check_return=False,
+                has_jadretro = self.checkcommand('jadretro', '%s' % self.jadretro, java=True, single_line=True,
                                                  error=False)
+                has_jad = self.checkcommand('jad', '%s' % self.jad, single_line=True, check_return=False,
+                                            error=False)
+                self.has_jad = has_jad and has_jadretro
 
         self.fernflower = os.path.normpath(self.config.get('COMMANDS', 'Fernflower'))
         if verify:

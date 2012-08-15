@@ -564,7 +564,7 @@ func_71206_a,shareToLAN,0,"does nothing on dedicated. on integrated, sets comman
 func_71207_Z,getBuildLimit,0,
 func_71208_b,setServerPort,0,
 func_71209_f,getFile,0,Returns a File object from the specified string.
-func_71210_a,setServerConfigManager,0,
+func_71210_a,setConfigurationManager,0,
 func_71211_k,getHostname,0,
 func_71212_ac,getNetworkThread,0,
 func_71213_z,getAllUsernames,0,
@@ -702,6 +702,7 @@ func_71410_x,getMinecraft,0,Return the singleton Minecraft instance for the game
 func_71411_J,runGameLoop,0,Called repeatedly from run()
 func_71479_a,startMainThread,0,
 func_71480_b,shutdown,0,Called when the applet window is closed.
+func_71495_a,getOsAsString,0,
 func_71497_f,getFile,0,Gets the file this crash report is saved into.
 func_71498_d,getCauseStackTraceOrString,0,"Gets the stack trace of the Throwable that caused this crash report, or if that fails, the cause .toString()."
 func_71499_a,addCrashSectionThrowable,0,Adds a Crashreport section with the given name with the given Throwable
@@ -732,6 +733,7 @@ func_71529_a,setAdminCommander,0,Sets the static IAdminCommander.
 func_71530_a,getListOfStringsMatchingLastWord,0,Returns a List of strings (chosen from the given strings) which the last word in the given string array is a beginning-match for. (Tab completion).
 func_71531_a,getListOfStringsFromIterableMatchingLastWord,0,Returns a List of strings (chosen from the given string iterable) which the last word in the given string array is a beginning-match for. (Tab completion).
 func_71532_a,parseIntBounded,0,Parses an int from the given string within a specified bound.
+func_71536_c,getPlayers,0,
 func_71539_b,getGameModeFromCommand,0,Gets the Game Mode specified in the command.
 func_71541_a,setGameType,0,
 func_71549_c,getWittyComment,0,"Returns a random ""witty"" comment."
@@ -1010,28 +1012,28 @@ func_72354_b,sendTimeAndRainingToPlayer,0,
 func_72355_a,initializeConnectionToPlayer,0,
 func_72356_a,transferPlayerToDimension,0,
 func_72357_a,setGameType,0,
-func_72359_h,addToIPWhitelist,0,
-func_72360_c,removeNameFromWhitelist,0,
+func_72359_h,addToWhiteList,0,Add the specified player to the white list.
+func_72360_c,removeOp,0,"This removes a username from the ops list, then saves the op list"
 func_72361_f,getPlayerForUsername,0,
-func_72362_j,loadWhiteList,0,"eithre does nothing, or calls readWhiteList"
+func_72362_j,loadWhiteList,0,"Either does nothing, or calls readWhiteList."
 func_72363_f,getBannedIPs,0,
 func_72365_p,getServerInstance,0,
 func_72366_a,createPlayerForUser,0,also checks for multiple logins
 func_72368_a,respawnPlayer,0,"creates and returns a respawned player based on the provided PlayerEntity. Args are the PlayerEntityMP to respawn, an INT for the dimension to respawn into (usually 0), and a boolean value that is true if the player beat the game rather than dying"
 func_72369_d,getAllUsernames,0,
-func_72370_d,isWhiteListed,0,
+func_72370_d,isAllowedToLogin,0,Determine if the player is allowed to connect based on current server settings.
 func_72371_a,setWhiteListEnabled,0,
 func_72372_a,getEntityViewDistance,0,
 func_72373_m,getAvailablePlayerDat,0,returns a list of usernames for which playerData is available
 func_72374_b,sendPlayerInfoToAllPlayers,0,"sends 1 player per tick, but only sends a player once every 600 ticks"
 func_72376_i,getNamesWhiteList,0,
 func_72378_q,getTagsFromLastWrite,0,gets the tags created in the last writePlayerData call
-func_72379_i,removeFromIPWhitelist,0,
+func_72379_i,removeFromWhitelist,0,Remove the specified player from the whitelist.
 func_72382_j,getPlayerList,0,
 func_72383_n,isWhiteListEnabled,0,
 func_72384_a,sendPacketToAllPlayers,0,
 func_72385_f,syncPlayerInventory,0,sends the players inventory to himself
-func_72386_b,addNameToWhitelist,0,
+func_72386_b,addOp,0,"This adds a username to the ops list, then saves the op list"
 func_72387_b,setCommandsAllowedForAll,0,Sets whether all players are allowed to use commands (cheats) on the server.
 func_72388_h,getIPWhiteList,0,
 func_72389_g,saveAllPlayerData,0,
@@ -1047,9 +1049,9 @@ func_72399_a,allowUserToConnect,0,"checks ban-lists, then white-lists, then spac
 func_72415_s,getIntegratedServer,0,get the associated Integrated Server
 func_72417_t,loadOpsList,0,
 func_72418_v,readWhiteList,0,
-func_72419_u,saveOpsListOrWhitelist,0,
+func_72419_u,saveOpsList,0,
 func_72420_s,getDedicatedServerInstance,0,
-func_72421_w,saveOpsList,0,
+func_72421_w,saveWhiteList,0,
 func_72429_b,getIntermediateWithXValue,0,"Returns a new vector with x value equal to the second parameter, along the line between this vector and the passed in vector, or null if not possible."
 func_72430_b,dotProduct,0,
 func_72431_c,crossProduct,0,Returns a new vector with the result of this vector x the specified vector.
@@ -1067,6 +1069,7 @@ func_72442_b,rotateAroundY,0,Rotates the vector around the y axis by the specifi
 func_72443_a,createVectorHelper,0,"Static method for creating a new Vec3D given the three x,y,z values. This is only called from the other static method which creates and places it in the list."
 func_72444_a,subtract,0,Returns a new vector with the result of the specified vector minus this.
 func_72445_d,squareDistanceTo,0,"The square of the Euclidean distance between this and the vector of x,y,z components passed in."
+func_72446_c,rotateAroundZ,0,Rotates the vector around the z axis by the specified angle.
 func_72452_a,handleRemoveEntityEffect,0,Handle a remove entity effect packet.
 func_72453_a,handleMapChunks,0,
 func_72454_a,handleBlockEvent,0,
@@ -1182,6 +1185,7 @@ func_72713_a,renderEntities,0,"Renders all entities within range and within the 
 func_72714_a,renderSky,0,Renders the sky with the partial tick time. Args: partialTickTime
 func_72715_a,drawOutlinedBoundingBox,0,Draws lines for the edges of the bounding box.
 func_72716_a,updateRenderers,0,Updates some of the renderers sorted by distance from the player
+func_72717_a,drawBlockDamageTexture,0,
 func_72718_b,renderClouds,0,
 func_72719_a,sortAndRender,0,"Sorts all renderers based on the passed in entity. Args: entityLiving, renderPass, partialTickTime"
 func_72720_a,checkOcclusionQueryResult,0,
@@ -1557,7 +1561,7 @@ func_73703_b,saveToFile,0,par1: include header
 func_73704_a,isBanned,0,
 func_73705_d,removeExpiredBans,0,
 func_73706_a,put,0,
-func_73707_e,loadBanList,0,"loads the ban list from the file (adds every entry, does not clear the current list)"
+func_73707_e,loadBanList,0,"Loads the ban list from the file (adds every entry, does not clear the current list)."
 func_73708_a,setListActive,0,
 func_73709_b,remove,0,
 func_73710_b,isListActive,0,
@@ -1581,6 +1585,9 @@ func_73738_a,getHoverState,0,"Returns 0 if the button is disabled, 1 if the mous
 func_73739_b,mouseDragged,0,Fired when the mouse button is dragged. Equivalent of MouseListener.mouseDragged(MouseEvent e).
 func_73740_a,mouseReleased,0,Fired when the mouse button is released. Equivalent of MouseListener.mouseReleased(MouseEvent e).
 func_73753_a,returnEnumOptions,0,
+func_73759_c,deleteChatLine,0,finds and deletes a Chat line by ID
+func_73763_a,printChatMessageWithOptionalDeletion,0,"prints the String to Chat. If the ID is not 0, deletes an existing Chat Line of that ID from the GUI"
+func_73765_a,printChatMessage,0,takes a String and prints it to chat
 func_73773_a,draw,0,
 func_73774_a,update,0,
 func_73777_b,deleteFromCursor,0,"delete the selected text, otherwsie deletes characters from either side of the cursor. params: delete num"
@@ -1608,12 +1615,14 @@ func_73805_d,setCanLoseFocus,0,if true the textbox can lose focus by clicking el
 func_73806_l,isFocused,0,getter for the focused field
 func_73807_c,getSelectedtext,0,@return returns the text between the cursor and selectionEnd
 func_73808_g,getMaxStringLength,0,returns the maximum number of character that can be contained in this textbox
+func_73827_b,getChatGUI,0,"returns a pointer to the persistant Chat GUI, containing all previous chat messages and such"
 func_73828_d,renderBossHealth,0,Renders dragon's (boss) health on the HUD
 func_73829_a,renderVignette,0,"Renders the vignette. Args: vignetteBrightness, width, height"
 func_73830_a,renderGameOverlay,0,"Render the ingame overlay with quick icon bar, ..."
 func_73831_a,updateTick,0,The update tick for the ingame UI
 func_73832_a,renderInventorySlot,0,"Renders the specified item of the inventory slot at the specified location. Args: slot, x, y, partialTick"
 func_73833_a,setRecordPlayingMessage,0,
+func_73834_c,getUpdateCounter,0,
 func_73835_b,renderPortalOverlay,0,"Renders the portal overlay. Args: portalStrength, width, height"
 func_73836_a,renderPumpkinBlur,0,
 func_73846_a,queueTakenAchievement,0,Queue a taken achievement to be displayed.
@@ -1707,6 +1716,7 @@ func_74229_i,getInventory,0,Returns the creative inventory
 func_74252_a,setNetClientHandler,0,Sets the NetClientHandler.
 func_74253_d,getNetClientHandler,0,Gets the NetClientHandler.
 func_74255_a,spawnNewServerThread,0,
+func_74257_b,isCancelled,0,
 func_74275_a,updateTimer,0,Updates all fields of the Timer using the current time
 func_74291_a,saveScreenshot,0,Takes a screenshot and saves it to the screenshots directory. Returns the filename of the screenshot.
 func_74296_a,getOptionFloatValue,0,
@@ -1780,6 +1790,9 @@ func_74527_f,createDirectIntBuffer,0,Creates and returns a direct int buffer wit
 func_74528_a,generateTextureNames,0,Generates texture names and stores them in the specified buffer.
 func_74529_h,createDirectFloatBuffer,0,Creates and returns a direct float buffer with the specified capacity. Applies native ordering to speed up access.
 func_74535_a,formatString,0,Formats the strings based on 'IStatStringFormat' interface.
+func_74538_a,getChatLineString,0,
+func_74539_c,getChatLineID,0,
+func_74540_b,getUpdatedCounter,0,
 func_74544_j,escapedStringChar,0,
 func_74545_d,aJsonValue,0,
 func_74546_g,possibleExponent,0,
@@ -2906,6 +2919,7 @@ func_77273_a,getCenterXPos,0,
 func_77274_b,getCenterZPosition,0,
 func_77278_a,doExplosionA,0,Does the first part of the explosion (destroy blocks)
 func_77279_a,doExplosionB,0,"Does the second part of the explosion (sound, particles, drop spawn)"
+func_77292_e,getSelectedTexturePack,0,
 func_77293_d,availableTexturePacks,0,Returns a list of the available texture packs.
 func_77294_a,setTexturePack,0,"Sets the new TexturePack to be used, returning true if it has actually changed, false if nothing changed."
 func_77296_a,requestDownloadOfTexture,0,filename must end in .zip
@@ -2974,6 +2988,7 @@ func_77474_a,initializeTextures,0,Initializes the texture constants to be used w
 func_77475_a,setLightmapTextureCoords,0,Sets the current coordinates of the given lightmap texture
 func_77479_a,setGrassBiomeColorizer,0,
 func_77480_a,getGrassColor,0,"Gets grass color from temperature and humidity. Args: temperature, humidity"
+func_77484_a,getWorldEntitiesAsString,0,
 func_77489_c,updateLastSeen,0,Updates the time this LanServer was last seen.
 func_77493_a,calculateModifier,0,Generic method use to calculate modifiers of offensive or defensive enchantment values.
 func_77501_a,getRespiration,0,Returns the 'Water Breathing' modifier of enchantments on player equipped armors.
@@ -3400,9 +3415,18 @@ func_78794_c,postRender,0,Allows the changing of Angles after a box has been ren
 func_78814_a,getNextComponent,0,
 func_78815_a,getRandomComponent,0,
 func_78817_b,getNextMineShaftComponent,0,
+func_78836_a,getNBTCompound,0,"Returns an NBTTagCompound with the server's name, IP and maybe acceptTextures."
 func_78837_a,getServerDataFromNBTCompound,0,"Takes an NBTTagCompound with 'name' and 'ip' keys, returns a ServerData instance."
 func_78838_a,setAcceptsTextures,0,
 func_78839_b,getAcceptsTextures,0,
+func_78849_a,addServerData,0,Adds the given ServerData instance to the list.
+func_78850_a,getServerData,0,Gets the ServerData instance stored for the given index in the list.
+func_78851_b,removeServerData,0,Removes the ServerData instance stored for the given index in the list.
+func_78853_a,loadServerList,0,"Loads a list of servers from servers.dat, by running ServerData.getServerDataFromNBTCompound on each NBT compound found in the ""servers"" tag list."
+func_78854_a,setServer,0,Sets the given index in the list to the given ServerData instance.
+func_78855_b,saveServerList,0,"Runs getNBTCompound on each ServerData instance, puts everything into a ""servers"" NBT list and writes it to servers.dat."
+func_78856_c,countServers,0,Counts the number of ServerData instances in the list.
+func_78857_a,swapServers,0,"Takes two list indexes, and swaps their order around."
 func_78861_a,getIP,0,
 func_78862_a,parseIntWithDefault,0,
 func_78864_b,getPort,0,
@@ -3440,6 +3464,7 @@ func_78913_a,setPosition,0,Sets a new position for the renderer and setting it u
 func_78914_f,markDirty,0,Marks the current renderer data as dirty and needing to be updated.
 func_78944_a,doCompare,0,
 func_78946_a,sortByDistanceToEntity,0,Sorts the two world renderers according to their distance to a given entity.
+func_70002_Q,isSnooperEnabled,1,Returns whether snooping is enabled or not.
 func_70003_b,canCommandSenderUseCommand,1,Returns true if the command sender is allowed to use the given command.
 func_70004_a,translateString,1,Translates and formats the given string key with the given arguments.
 func_70005_c_,getCommandSenderName,1,"Gets the name of this command sender (usually username, but possibly ""Rcon"")"
@@ -3876,10 +3901,15 @@ func_71119_a,getTileEntityInfo,1,gets description packets from all TileEntity's 
 func_71122_b,handleFalling,1,process player falling based on movement packet
 func_71124_b,getEquipmentInSlot,1,0: Tool in Hand; 1-4: Armor
 func_71128_l,closeCraftingGui,1,close the current crafting gui
+func_71191_d,setBuildLimit,1,
 func_71197_b,startServer,1,Initialises the server and starts it.
 func_71198_k,logIn,1,
 func_71201_j,logSevere,1,Log severe error message
+func_71203_ab,getConfigurationManager,1,
+func_71205_p,setMOTD,1,
+func_71207_Z,getBuildLimit,1,
 func_71209_f,getFile,1,Returns a File object from the specified string.
+func_71210_a,setConfigurationManager,1,
 func_71213_z,getPlayerNamesAsList,1,Returns a list of usernames of all connected players
 func_71214_G,getServerOwner,1,Returns the username of the server owner (for integrated servers)
 func_71215_F,getServerPort,1,Gets serverPort.
@@ -3888,8 +3918,10 @@ func_71218_a,getWorldManager,1,gets the worldServer by the given dimension
 func_71224_l,setServerOwner,1,Sets the username of the owner of this server (in the case of an integrated server)
 func_71233_x,playersOnline,1,Returns the number of players on the server
 func_71234_u,getPort,1,Returns the server port
+func_71235_a,setGameMode,1,
 func_71236_h,logWarning,1,logs the warning same as: logger.warning(String);
 func_71239_B,isDebuggingEnabled,1,"Returns true if debugging is enabled, false otherwise"
+func_71241_aa,isServerStopped,1,
 func_71243_i,clearCurrentTask,1,set current task to null and set its percentage to 0
 func_71244_g,log,1,Logs the message with a level of INFO.
 func_71249_w,getVersion,1,Returns the server version string
@@ -3897,7 +3929,10 @@ func_71250_E,getKeyPair,1,Gets KeyPair instanced in MinecraftServer.
 func_71252_i,handleRConCommand,1,Handle a command received by an RCon instance
 func_71258_A,getPlugin,1,
 func_71260_j,stopServer,1,Saves all necessary data as preparation for stopping the server.
+func_71262_S,isDedicatedServer,1,
 func_71263_m,initiateShutdown,1,"Sets the serverRunning variable to false, in order to get the server to shut down."
+func_71264_H,isSinglePlayer,1,
+func_71273_Y,getMOTD,1,
 func_71274_v,getMotd,1,Returns the server message of the day
 func_71275_y,getMaxPlayers,1,Returns the maximum number of players allowed on the server
 func_71276_C,getServer,1,Gets mcServer.
@@ -3933,6 +3968,7 @@ func_71529_a,setAdminCommander,1,Sets the static IAdminCommander.
 func_71530_a,getListOfStringsMatchingLastWord,1,Returns a List of strings (chosen from the given strings) which the last word in the given string array is a beginning-match for. (Tab completion).
 func_71531_a,getListOfStringsFromIterableMatchingLastWord,1,Returns a List of strings (chosen from the given string iterable) which the last word in the given string array is a beginning-match for. (Tab completion).
 func_71532_a,parseIntBounded,1,Parses an int from the given string within a specified bound.
+func_71536_c,getPlayers,1,
 func_71539_b,getGameModeFromCommand,1,Gets the Game Mode specified in the command.
 func_71549_c,getWittyComment,1,"Returns a random ""witty"" comment."
 func_71553_b,addTime,1,Adds (or removes) time in the server object.
@@ -4162,25 +4198,33 @@ func_72358_d,serverUpdateMountedMovingPlayer,1,"using player's dimension, update
 func_72359_h,addToWhiteList,1,add the specified player to the white list
 func_72360_c,removeOp,1,"This removes a username from the ops list, then saves the op list"
 func_72361_f,getPlayerEntity,1,gets the player entity for the player with the name specified
-func_72362_j,reloadWhiteList,1,reloads the whitelist
+func_72362_j,loadWhiteList,1,"Either does nothing, or calls readWhiteList."
+func_72363_f,getBannedIPs,1,
 func_72364_a,setPlayerManager,1,Sets the NBT manager to the one for the worldserver given
+func_72365_p,getServerInstance,1,
 func_72367_e,playerLoggedOut,1,Called when a player disconnects from the game. Writes player data to disk and removes them from the world.
 func_72368_a,recreatePlayerEntity,1,Called on respawn
 func_72369_d,getPlayerNamesAsList,1,Returns a list of usernames of all connected players
-func_72370_d,isAllowedToLogin,1,Determine if the player is allowed to connect based on current server settings
+func_72370_d,isAllowedToLogin,1,Determine if the player is allowed to connect based on current server settings.
+func_72371_a,setWhiteListEnabled,1,
 func_72374_b,onTick,1,self explanitory
 func_72377_c,playerLoggedIn,1,Called when a player successfully logs in. Reads player data from disk and inserts the player into the world.
-func_72379_i,removeFromWhiteList,1,remove the specified player from the whitelist
+func_72379_i,removeFromWhitelist,1,Remove the specified player from the whitelist.
 func_72380_a,readPlayerDataFromFile,1,called during player login. reads the player information from disk.
 func_72384_a,sendPacketToAllPlayers,1,sends a packet to all players
 func_72386_b,addOp,1,"This adds a username to the ops list, then saves the op list"
 func_72388_h,getWhiteListedIPs,1,returns the set of whitelisted ip addresses
 func_72389_g,savePlayerStates,1,Saves all of the player's states
+func_72390_e,getBannedPlayers,1,
 func_72393_a,sendPacketToPlayersAroundPoint,1,"sends a packet to players within d3 of point (x,y,z)"
 func_72394_k,playersOnline,1,Returns the number of players on the server
 func_72395_o,getViewDistance,1,Gets the View Distance.
 func_72396_a,sendPacketToAllPlayersInDimension,1,Sends a packet to all players in the specified Dimension
 func_72398_c,getPlayerList,1,returns a string containing a comma-seperated list of player names
+func_72417_t,loadOpsList,1,
+func_72418_v,readWhiteList,1,
+func_72419_u,saveOpsList,1,
+func_72420_s,getDedicatedServerInstance,1,
 func_72421_w,saveWhiteList,1,
 func_72429_b,getIntermediateWithXValue,1,"Returns a new vector with x value equal to the second parameter, along the line between this vector and the passed in vector, or null if not possible."
 func_72430_b,dotProduct,1,
@@ -4601,6 +4645,9 @@ func_73669_a,getIntProperty,1,Returns an integer property. If the property doesn
 func_73670_a,getBooleanProperty,1,Returns a boolean property. If the property doesn't exist the default is returned.
 func_73671_a,getStringProperty,1,Returns a string property. If the property doesn't exist the default is returned.
 func_73699_a,init,1,Initialises the console logger.
+func_73707_e,loadBanList,1,"Loads the ban list from the file (adds every entry, does not clear the current list)."
+func_73708_a,setListActive,1,
+func_73711_f,saveToFileWithHeader,1,
 func_73718_a,setLoadingProgress,1,Updates the progress bar on the loading screen to the specified amount. Args: loadProgress
 func_73719_c,displayLoadingString,1,Displays a string on the loading screen supposed to indicate what is being done currently.
 func_73720_a,displaySavingString,1,Shows the 'Saving level' string.
@@ -5007,6 +5054,7 @@ func_75878_a,getPosition,1,returns the current PathEntity target node as Vec3D
 func_75879_b,isFinished,1,Returns true if this path has reached the end
 func_75880_b,isDestinationSame,1,Returns true if the final PathPoint in the PathEntity is equal to Vec3D coords.
 func_75881_a,getVectorFromIndex,1,Gets the vector of the PathPoint associated with the given index.
+func_75891_b,generateKeyPair,1,Generates RSA KeyPair
 func_75902_a,nextInt,1,"returns a LCG pseudo random number from [0, x). Args: int x"
 func_75903_a,initChunkSeed,1,"Initialize layer's current chunkSeed based on the local worldGenSeed and the (x,z) chunk coordinates."
 func_75904_a,getInts,1,"Returns a list of integer values generated by this layer. These may be interpreted as temperatures, rainfall amounts, or biomeList[] indices based on the particular GenLayer subclass."
