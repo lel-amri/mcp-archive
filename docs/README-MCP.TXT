@@ -1,4 +1,4 @@
-Minecraft Coder Pack 7.25 for Minecraft 1.4.6
+Minecraft Coder Pack 7.26 for Minecraft 1.4.7
 =============================================
 MCP is (c) Copyright by the MCP Team
 
@@ -215,6 +215,7 @@ and of course:
 
 History:
 ========
+7.26 - Updated to support Minecraft 1.4.7 and MinecraftServer 1.4.7
 7.25 - Updated to support Minecraft 1.4.6 and MinecraftServer 1.4.6
 7.23 - Updated to support Minecraft 1.4.5 and MinecraftServer 1.4.5
 7.22 - Updated to support Minecraft 1.4.5 pre1 and MinecraftServer 1.4.5 pre1
@@ -267,7 +268,7 @@ History:
 
 Roadmap:
 ========
-7.26+ - New awesome features, improvements and updates :)
+7.27+ - New awesome features, improvements and updates :)
 
 _________________________________________________________________________________________________________________
 _________________________________________________________________________________________________________________

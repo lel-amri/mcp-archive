@@ -149,7 +149,6 @@ field_70290_d,hoverStart,0,The EntityItem's random initial float height.
 field_70291_e,health,0,"The health of this EntityItem. (For example, damage for tools)"
 field_70292_b,age,0,The age of this EntityItem (used to animate it up and down as well as expire it)
 field_70293_c,delayBeforeCanPickup,0,
-field_70294_a,item,0,The item stack of this EntityItem.
 field_70323_b,classToNameMap,0,A HashMap storing the classes and mapping to the string names (reverse of nameToClassMap).
 field_70324_q,blockType,0,the Block type that this TileEntity is contained within
 field_70325_p,blockMetadata,0,
@@ -239,6 +238,8 @@ field_70482_c,inventoryContents,0,
 field_70483_a,inventoryTitle,0,
 field_70484_a,container,0,The brewing stand this slot belongs to.
 field_70488_a,associatedChest,0,
+field_70499_f,isInReverse,0,
+field_70500_g,matrix,0,Minecart rotational logic matrix
 field_70501_d,cargoItems,0,Array of item stacks stored in minecart (for storage minecarts).
 field_70502_e,fuel,0,
 field_70503_b,pushX,0,
@@ -297,6 +298,7 @@ field_70585_a,noteParticleScale,0,
 field_70586_a,lavaParticleScale,0,
 field_70587_a,smokeParticleScale,0,
 field_70588_a,snowDigParticleScale,0,
+field_70590_a,baseSpellTextureIndex,0,Base spell texture index
 field_70591_a,entityToPickUp,0,
 field_70592_at,yOffs,0,renamed from yOffset to fix shadowing Entity.yOffset
 field_70593_as,maxAge,0,
@@ -685,6 +687,154 @@ field_71585_d,offsetsZForSide,0,gives the offset required for this axis to get t
 field_71586_b,offsetsXForSide,0,gives the offset required for this axis to get the block at that side.
 field_71587_c,offsetsYForSide,0,gives the offset required for this axis to get the block at that side.
 field_71588_a,faceToSide,0,Converts a face to a side.
+field_71589_f,bc_pbe_sha512,0,
+field_71590_g,bc_pbe_sha224,0,
+field_71591_d,bc_pbe_sha256,0,
+field_71592_e,bc_pbe_sha384,0,
+field_71593_b,bc_pbe,0,
+field_71594_c,bc_pbe_sha1,0,
+field_71595_a,bc,0,
+field_71596_n,bc_pbe_sha1_pkcs12_aes256_cbc,0,
+field_71597_o,bc_pbe_sha256_pkcs12_aes128_cbc,0,
+field_71598_l,bc_pbe_sha1_pkcs12_aes128_cbc,0,
+field_71599_m,bc_pbe_sha1_pkcs12_aes192_cbc,0,
+field_71600_j,bc_pbe_sha256_pkcs5,0,
+field_71601_k,bc_pbe_sha256_pkcs12,0,
+field_71602_h,bc_pbe_sha1_pkcs5,0,
+field_71603_i,bc_pbe_sha1_pkcs12,0,
+field_71604_q,bc_pbe_sha256_pkcs12_aes256_cbc,0,
+field_71605_p,bc_pbe_sha256_pkcs12_aes192_cbc,0,
+field_71610_b,cache,0,
+field_71611_a,identifier,0,
+field_71613_D,digestAlgorithm,0,
+field_71614_E,md2,0,
+field_71615_F,md4,0,
+field_71616_G,md5,0,
+field_71617_A,encryptionAlgorithm,0,
+field_71618_B,des_EDE3_CBC,0,
+field_71619_C,RC2_CBC,0,
+field_71620_L,id_hmacWithSHA512,0,
+field_71621_M,data,0,
+field_71622_N,signedData,0,
+field_71623_O,envelopedData,0,
+field_71624_H,id_hmacWithSHA1,0,
+field_71625_I,id_hmacWithSHA224,0,
+field_71626_J,id_hmacWithSHA256,0,
+field_71627_K,id_hmacWithSHA384,0,
+field_71628_U,pkcs_9_at_unstructuredName,0,
+field_71629_T,pkcs_9_at_emailAddress,0,
+field_71630_W,pkcs_9_at_messageDigest,0,
+field_71631_V,pkcs_9_at_contentType,0,
+field_71632_Q,digestedData,0,
+field_71633_P,signedAndEnvelopedData,0,
+field_71634_S,pkcs_9,0,
+field_71635_R,encryptedData,0,
+field_71636_Y,pkcs_9_at_counterSignature,0,
+field_71637_X,pkcs_9_at_signingTime,0,
+field_71638_Z,pkcs_9_at_challengePassword,0,
+field_71639_f,sha1WithRSAEncryption,0,
+field_71640_g,srsaOAEPEncryptionSET,0,
+field_71641_d,md4WithRSAEncryption,0,
+field_71642_e,md5WithRSAEncryption,0,
+field_71643_b,rsaEncryption,0,
+field_71644_c,md2WithRSAEncryption,0,
+field_71645_a,pkcs_1,0,
+field_71646_n,sha512WithRSAEncryption,0,
+field_71647_o,sha224WithRSAEncryption,0,
+field_71648_l,sha256WithRSAEncryption,0,
+field_71649_m,sha384WithRSAEncryption,0,
+field_71650_j,id_pSpecified,0,
+field_71651_k,id_RSASSA_PSS,0,
+field_71652_h,id_RSAES_OAEP,0,
+field_71653_i,id_mgf1,0,
+field_71654_w,pbeWithSHA1AndDES_CBC,0,
+field_71655_v,pbeWithMD5AndRC2_CBC,0,
+field_71656_u,pbeWithMD5AndDES_CBC,0,
+field_71657_t,pbeWithMD2AndRC2_CBC,0,
+field_71658_s,pbeWithMD2AndDES_CBC,0,
+field_71659_r,pkcs_5,0,
+field_71660_q,dhKeyAgreement,0,
+field_71661_p,pkcs_3,0,
+field_71662_z,id_PBKDF2,0,
+field_71663_y,id_PBES2,0,
+field_71664_x,pbeWithSHA1AndRC2_CBC,0,
+field_71665_bw,pbewithSHAAnd40BitRC2_CBC,0,
+field_71666_bv,pbeWithSHAAnd40BitRC2_CBC,0,
+field_71667_by,id_alg_CMSRC2wrap,0,
+field_71668_bx,id_alg_CMS3DESwrap,0,
+field_71669_bs,pbeWithSHAAnd3_KeyTripleDES_CBC,0,
+field_71670_br,pbeWithSHAAnd40BitRC4,0,
+field_71671_bu,pbeWithSHAAnd128BitRC2_CBC,0,
+field_71672_bt,pbeWithSHAAnd2_KeyTripleDES_CBC,0,
+field_71673_bn,secretBag,0,
+field_71674_bo,safeContentsBag,0,
+field_71675_bp,pkcs_12PbeIds,0,
+field_71676_bq,pbeWithSHAAnd128BitRC4,0,
+field_71677_bj,keyBag,0,
+field_71678_bk,pkcs8ShroudedKeyBag,0,
+field_71679_bl,certBag,0,
+field_71680_bm,crlBag,0,
+field_71681_bf,id_spq_ets_uri,0,
+field_71682_bg,id_spq_ets_unotice,0,
+field_71683_bh,pkcs_12,0,
+field_71684_bi,bagtypes,0,
+field_71685_bb,id_aa_sigPolicyId,0,
+field_71686_bc,id_aa_commitmentType,0,
+field_71687_bd,id_aa_signerLocation,0,
+field_71688_be,id_aa_otherSigCert,0,
+field_71689_aZ,id_aa_ets_certCRLTimestamp,0,
+field_71690_aY,id_aa_ets_escTimeStamp,0,
+field_71691_aR,id_aa_ets_signerAttr,0,
+field_71692_aQ,id_aa_ets_signerLocation,0,
+field_71693_aT,id_aa_ets_contentTimestamp,0,
+field_71694_aS,id_aa_ets_otherSigCert,0,
+field_71695_aV,id_aa_ets_revocationRefs,0,
+field_71696_aU,id_aa_ets_certificateRefs,0,
+field_71697_aX,id_aa_ets_revocationValues,0,
+field_71698_aW,id_aa_ets_certValues,0,
+field_71699_aI,id_aa_contentReference,0,
+field_71700_aJ,id_aa_encrypKeyPref,0,
+field_71701_aK,id_aa_signingCertificate,0,
+field_71702_aL,id_aa_signingCertificateV2,0,
+field_71703_aM,id_aa_contentIdentifier,0,
+field_71704_aN,id_aa_signatureTimeStampToken,0,
+field_71705_aO,id_aa_ets_sigPolicyId,0,
+field_71706_aP,id_aa_ets_commitmentType,0,
+field_71707_aA,id_cti_ets_proofOfDelivery,0,
+field_71708_aB,id_cti_ets_proofOfSender,0,
+field_71709_aC,id_cti_ets_proofOfApproval,0,
+field_71710_aD,id_cti_ets_proofOfCreation,0,
+field_71711_aE,id_aa,0,
+field_71712_aF,id_aa_receiptRequest,0,
+field_71713_aG,id_aa_contentHint,0,
+field_71714_aH,id_aa_msgSigDigest,0,
+field_71715_az,id_cti_ets_proofOfReceipt,0,
+field_71716_ay,id_cti_ets_proofOfOrigin,0,
+field_71717_ba,id_aa_ets_archiveTimestamp,0,
+field_71718_at,id_ct_TSTInfo,0,
+field_71719_as,id_ct_authData,0,
+field_71720_ar,id_ct,0,
+field_71721_aq,sMIMECapabilitiesVersions,0,
+field_71722_ax,id_cti,0,
+field_71723_aw,id_ct_timestampedData,0,
+field_71724_av,id_ct_authEnvelopedData,0,
+field_71725_au,id_ct_compressedData,0,
+field_71726_ak,sdsiCertificate,0,
+field_71727_al,crlTypes,0,
+field_71728_ai,certTypes,0,
+field_71729_aj,x509Certificate,0,
+field_71730_ao,preferSignedData,0,
+field_71731_ap,canNotDecryptAny,0,
+field_71732_am,x509Crl,0,
+field_71733_an,id_alg_PWRI_KEK,0,
+field_71734_ac,pkcs_9_at_signingDescription,0,
+field_71735_ad,pkcs_9_at_extensionRequest,0,
+field_71736_aa,pkcs_9_at_unstructuredAddress,0,
+field_71737_ab,pkcs_9_at_extendedCertificateAttributes,0,
+field_71738_ag,pkcs_9_at_localKeyId,0,
+field_71739_ah,x509certType,0,
+field_71740_ae,pkcs_9_at_smimeCapabilities,0,
+field_71741_af,pkcs_9_at_friendlyName,0,
 field_71743_a,theDecitatedServer,0,Reference to the DecitatedServer object.
 field_71748_d,connections,0,
 field_71749_b,isListening,0,Whether the network listener object is listening.
@@ -699,6 +849,7 @@ field_71772_g,myServerAddress,0,
 field_71773_d,connectionCounter,0,
 field_71774_e,myServerSocket,0,
 field_71775_b,pendingConnections,0,
+field_71776_c,recentConnections,0,This map stores a list of InetAddresses and the last time which they connected at
 field_71777_a,logger,0,
 field_71778_h,myPort,0,
 field_71781_b,parameters,0,
@@ -706,6 +857,36 @@ field_71782_a,iv,0,
 field_71784_a,key,0,
 field_71787_b,strength,0,
 field_71788_a,random,0,
+field_71796_f,pgpCFB,0,
+field_71797_d,cipher,0,
+field_71798_e,partialBlockOkay,0,
+field_71799_b,bufOff,0,
+field_71800_c,forEncryption,0,
+field_71801_a,buf,0,
+field_71809_f,encrypting,0,
+field_71810_d,blockSize,0,
+field_71811_e,cipher,0,
+field_71812_b,cfbV,0,
+field_71813_c,cfbOutV,0,
+field_71814_a,IV,0,
+field_71824_f,T2,0,
+field_71825_g,T3,0,
+field_71826_d,T0,0,
+field_71827_e,T1,0,
+field_71828_b,Si,0,
+field_71829_c,rcon,0,
+field_71830_a,S,0,
+field_71831_n,C0,0,
+field_71832_o,C1,0,
+field_71833_l,ROUNDS,0,
+field_71834_m,WorkingKey,0,
+field_71835_j,Tinv2,0,
+field_71836_k,Tinv3,0,
+field_71837_h,Tinv0,0,
+field_71838_i,Tinv1,0,
+field_71839_r,forEncryption,0,
+field_71840_q,C3,0,
+field_71841_p,C2,0,
 field_71844_b,strength,0,
 field_71845_a,random,0,
 field_71938_D,lavaStill,0,Stationary lava source block
@@ -852,7 +1033,7 @@ field_72078_bL,redstoneLampIdle,0,
 field_72079_ak,stoneSingleSlab,0,stoneSingleSlab
 field_72080_bM,redstoneLampActive,0,
 field_72081_al,brick,0,
-field_72082_bJ,whiteStone,0,
+field_72082_bJ,whiteStone,0,The rock found in The End.
 field_72083_ai,blockSteel,0,
 field_72084_bK,dragonEgg,0,
 field_72085_aj,stoneDoubleSlab,0,stoneDoubleSlab
@@ -981,11 +1162,13 @@ field_72450_a,xCoord,0,X coordinate of Vec3D
 field_72451_a,theDecitatedServer,0,Instance of the DecitatedServer.
 field_72534_f,mcServer,0,Reference to the MinecraftServer object.
 field_72535_g,connectionTimer,0,
+field_72536_d,verifyToken,0,The 4 byte verify token read from a Packet252SharedKey
 field_72537_e,rand,0,The Random object used to generate serverId hex strings.
 field_72538_b,myTCPConnection,0,
 field_72539_c,connectionComplete,0,
 field_72540_a,logger,0,The Minecraft logger.
 field_72541_j,loginServerId,0,server ID that is randomly generated by this login handler.
+field_72542_k,sharedKey,0,Secret AES key obtained from the client's Packet252SharedKey
 field_72543_h,clientUsername,0,
 field_72554_f,disconnected,0,True if kicked or disconnected from the server.
 field_72555_g,netManager,0,Reference to the NetworkManager object.
@@ -1132,7 +1315,7 @@ field_72991_N,entitiesWithinAABBExcludingEntity,0,"entities within AxisAlignedBB
 field_72992_H,spawnPeacefulMobs,0,A flag indicating whether we should spawn peaceful mobs.
 field_72993_I,activeChunkSet,0,Positions to update
 field_72994_J,lightUpdateBlockList,0,"is a temporary list of blocks and light values used when updating light levels. Holds up to 32x32x32 blocks (the maximum influence of a light source.) Every element is a packed bit value: 0000000000LLLLzzzzzzyyyyyyxxxxxx. The 4-bit L is a light level used when darkening blocks. 6-bit numbers x, y and z represent the block's offset from the original block, plus 32 (i.e. value of 31 would mean a -1 offset"
-field_72995_K,isRemote,0,"This is set to true when you are a client connected to a multiplayer world, false otherwise. As of Minecraft 1.3 and the integrated server, this will always return true."
+field_72995_K,isRemote,0,"This is set to true for client worlds, and false for server worlds."
 field_72996_f,loadedEntityList,0,A list of all Entities in all currently-loaded chunks
 field_72997_g,unloadedEntityList,0,
 field_72998_d,collidingBoundingBoxes,0,
@@ -1152,7 +1335,6 @@ field_73011_w,provider,0,The WorldProvider instance that World uses.
 field_73012_v,rand,0,RNG for World.
 field_73013_u,difficultySetting,0,Option > Difficulty setting (0 - 3)
 field_73014_t,editingBlocks,0,true while the world is editing blocks
-field_73015_s,lightningFlash,0,"If > 0, the sky and skylight colors are illuminated by a lightning flash"
 field_73016_r,lastLightningBolt,0,Set to 2 whenever a lightning bolt is generated in SSP. Decrements if > 0 in updateWeather(). Value appears to be unused.
 field_73017_q,thunderingStrength,0,
 field_73018_p,prevThunderingStrength,0,
@@ -1203,7 +1385,7 @@ field_73126_f,lastScaledZPosition,0,
 field_73127_g,lastYaw,0,
 field_73128_d,lastScaledXPosition,0,
 field_73129_e,lastScaledYPosition,0,
-field_73130_b,BlocksDistanceThreshold,0,
+field_73130_b,blocksDistanceThreshold,0,
 field_73131_c,updateFrequency,0,check for sync when ticks % updateFrequency==0
 field_73132_a,myEntity,0,
 field_73133_n,playerEntitiesUpdated,0,
@@ -1293,7 +1475,7 @@ field_73247_e,currentChunkLoader,0,
 field_73248_b,chunksToUnload,0,"used by unload100OldestChunks to iterate the loadedChunkHashMap for unload (underlying assumption, first in, first out)"
 field_73249_c,defaultEmptyChunk,0,
 field_73250_a,loadChunkOnProvideRequest,0,"if this is false, the defaultEmptyChunk will be returned by the provider"
-field_73251_h,currentServer,0,
+field_73251_h,worldObj,0,
 field_73261_d,locationOfBlockChange,0,
 field_73262_e,numberOfTilesToUpdate,0,
 field_73263_b,playersInChunk,0,
@@ -1316,6 +1498,7 @@ field_73299_c,zPosition,0,Z coordinate of spawn.
 field_73300_a,xPosition,0,X coordinate of spawn.
 field_73301_a,time,0,The world time in minutes.
 field_73305_b,verifyToken,0,
+field_73306_c,sharedKey,0,Secret AES key decrypted from sharedSecret via the server's private RSA key
 field_73307_a,sharedSecret,0,
 field_73308_d,signLines,0,
 field_73309_b,yPosition,0,
@@ -1447,15 +1630,8 @@ field_73471_b,amount,0,
 field_73472_a,statisticId,0,
 field_73474_a,text,0,Sent by the client containing the text to be autocompleted. Sent by the server with possible completions separated by null (two bytes in UTF-16)
 field_73476_b,message,0,The message being sent.
+field_73477_c,isServer,0,
 field_73478_a,maxChatLength,0,Maximum number of characters allowed in chat string in each packet.
-field_73479_f,pitch,0,The item pitch.
-field_73480_g,roll,0,The item roll.
-field_73481_d,zPosition,0,The item Z position.
-field_73482_e,rotation,0,The item rotation.
-field_73483_b,xPosition,0,The item X position.
-field_73484_c,yPosition,0,The item Y position.
-field_73485_a,entityId,0,Unique entity ID.
-field_73487_h,itemID,0,
 field_73490_f,velocityX,0,
 field_73491_g,velocityY,0,
 field_73492_d,yPosition,0,The Y position of the entity.
@@ -1538,8 +1714,14 @@ field_73576_e,volume,0,1 is 100%. Can be more.
 field_73577_b,effectX,0,Effect X multiplied by 8
 field_73578_c,effectY,0,Effect Y multiplied by 8
 field_73579_a,soundName,0,e.g. step.grass
+field_73585_g,dataLength,0,total size of the compressed data
+field_73586_d,chunkPosZ,0,
+field_73587_e,chunkDataBuffer,0,The compressed chunk data buffer
+field_73589_c,chunkPostX,0,
+field_73591_h,chunkDataNotCompressed,0,
 field_73592_a,randomId,0,
 field_73595_f,chunkData,0,"The transmitted chunk data, decompressed."
+field_73596_g,compressedChunkData,0,The compressed chunk data
 field_73597_d,yChMax,0,"The y-position of the highest chunk Section in the transmitted chunk, in chunk coordinates."
 field_73598_e,includeInitialize,0,Whether to initialize the Chunk before applying the effect of the Packet51MapChunk.
 field_73599_b,zCh,0,"The z-position of the transmitted chunk, in chunk coordinates."
@@ -1555,9 +1737,9 @@ field_73613_e,chunkPositionRecords,0,
 field_73614_b,explosionY,0,
 field_73615_c,explosionZ,0,
 field_73616_a,explosionX,0,
-field_73618_b,bedState,0,"Either 1 or 2. 1 indicates to begin raining, 2 indicates to stop raining."
-field_73619_c,gameMode,0,"Used only when reason = 3. 0 is survival, 1 is creative."
-field_73620_a,bedChat,0,
+field_73618_b,eventType,0,"0: Invalid bed, 1: Rain starts, 2: Rain stops, 3: Game mode changed."
+field_73619_c,gameMode,0,"When reason==3, the game mode to set.  See EnumGameType for a list of values."
+field_73620_a,clientMessage,0,The client prints clientMessage[eventType] to chat when this packet is received.
 field_73621_d,bedZ,0,
 field_73623_b,bedX,0,
 field_73624_c,bedY,0,
@@ -1634,6 +1816,7 @@ field_73812_e,height,0,
 field_73813_b,xPos,0,
 field_73814_c,yPos,0,
 field_73815_a,fontRenderer,0,Have the font renderer from GuiScreen to render the textbox text into the screen.
+field_73816_n,lineScrollOffset,0,The current character index that should be used as start of the rendered text.
 field_73817_o,cursorPosition,0,
 field_73818_l,isFocused,0,"If this value is true along isEnabled, keyTyped will process the keys."
 field_73819_m,isEnabled,0,"If this value is true along isFocused, keyTyped will process the keys."
@@ -1714,8 +1897,6 @@ field_73943_n,worldNumber,0,World number to be deleted.
 field_73944_m,message2,0,Second line of text.
 field_73946_b,copyLinkButtonText,0,Label for the Copy to Clipboard button.
 field_73947_a,openLinkWarning,0,Text to warn players from opening unsafe links.
-field_73948_b,chatGui,0,
-field_73949_a,theChatClickData,0,Instance of ChatClickData.
 field_73964_d,guiTexturePackSlot,0,the GuiTexturePackSlot that contains all the texture packs and their descriptions
 field_73965_b,refreshTimer,0,
 field_73966_c,fileLocation,0,the absolute location of this texture pack
@@ -1865,6 +2046,7 @@ field_74219_p,lowerChestInventory,0,
 field_74220_o,upperChestInventory,0,
 field_74224_p,ySize_lo,0,"y size of the inventory window in pixels. Defined as float, passed as int."
 field_74225_o,xSize_lo,0,"x size of the inventory window in pixels. Defined as float, passed as int"
+field_74236_u,backupContainerSlots,0,Used to back up the ContainerCreative's inventory slots before filling it with the player's inventory slots for the inventory tab.
 field_74237_t,searchField,0,
 field_74238_s,wasClicking,0,True if the left mouse button was held down last time drawScreen was called.
 field_74239_r,isScrolling,0,True if the scrollbar is being dragged
@@ -1884,7 +2066,7 @@ field_74263_b,workingMessage,0,
 field_74264_c,currentProgress,0,
 field_74265_a,progressMessage,0,
 field_74267_a,mcServer,0,Reference to the MinecraftServer object.
-field_74268_a,simpleDateFormatLogFormatter,0,Date Formatter of Log/Console.
+field_74268_a,dateFormat,0,The date format to use in the console log.
 field_74270_a,mcServer,0,Reference to the MinecraftServer object.
 field_74272_a,mcServer,0,Reference to the MinecraftServer object.
 field_74274_a,mcServer,0,Reference to the MinecraftServer object.
@@ -1979,6 +2161,7 @@ field_74442_b,readPacketCache,0,
 field_74443_c,pairedConnection,0,
 field_74444_a,mySocketAddress,0,
 field_74445_h,gamePaused,0,
+field_74464_B,chunkDataPacketsDelay,0,Delay for sending pending chunk data packets (as opposed to pending non-chunk data packets)
 field_74465_f,isInputBeingDecrypted,0,
 field_74466_g,isOutputEncrypted,0,
 field_74472_n,isTerminating,0,Whether this network manager is currently terminating (and should ignore further errors).
@@ -2013,7 +2196,7 @@ field_74522_a,colorBuffer,0,Float buffer used to set OpenGL material colors
 field_74532_a,mc,0,A reference to the Minecraft object.
 field_74534_a,arguments,0,"Arguments that were passed to Minecraft.jar (username, sessionid etc)"
 field_74536_a,mc,0,Minecraft instance
-field_74537_a,logo,0,BufferedImage object containing the Majong logo.
+field_74537_a,logo,0,BufferedImage containing the Mojang logo.
 field_74541_b,lineString,0,
 field_74542_c,chatLineID,0,"int value to refer to existing Chat Lines, can be 0 which means unreferrable"
 field_74543_a,updateCounterCreated,0,GUI Update Counter value this Line was created at
@@ -2024,6 +2207,9 @@ field_74571_a,pushbackReader,0,
 field_74577_b,mc,0,A reference to the Minecraft object.
 field_74578_c,closing,0,Set to true when Minecraft is closing down.
 field_74579_a,resourcesFolder,0,The folder to store the resources in.
+field_74580_b,chunkExistFlag,0,
+field_74581_c,chunkHasAddSectionFlag,0,
+field_74582_a,compressedData,0,
 field_74586_f,rotationZ,0,The Z component of the entity's yaw rotation
 field_74587_g,rotationYZ,0,The Y component (scaled along the Z axis) of the entity's pitch rotation
 field_74588_d,rotationX,0,The X component of the entity's yaw rotation
@@ -2086,15 +2272,20 @@ field_74756_a,data,0,The byte value for the tag.
 field_74784_a,tagMap,0,"The key-value pairs for the tag. Each key is a UTF string, each value is a tag."
 field_74790_a,enumJsonNodeTypeMappingArray,0,A mapping helper array for EnumJsonNodeType's values.
 field_74791_a,escapedString,0,
+field_74801_a,theBouncyCastleProvider,0,
 field_74813_d,currentLanguage,0,
 field_74814_e,isUnicode,0,
 field_74815_b,translateTable,0,Contains all key/value pairs to be translated - is loaded from '/lang/en_US.lang' when the StringTranslate is created.
 field_74816_c,languageList,0,
 field_74817_a,instance,0,Is the private singleton instance of StringTranslate.
+field_74822_f,ASYMMETRIC_GENERIC,0,
+field_74823_g,ASYMMETRIC_CIPHERS,0,
 field_74824_d,keyInfoConverters,0,
+field_74825_e,SYMMETRIC_CIPHERS,0,
 field_74826_b,CONFIGURATION,0,
 field_74827_c,info,0,
 field_74828_a,PROVIDER_NAME,0,
+field_74829_h,DIGESTS,0,
 field_74831_f,dhThreadSpec,0,
 field_74832_d,BC_DH_PERMISSION,0,
 field_74833_e,ecThreadSpec,0,
@@ -2105,6 +2296,17 @@ field_74839_a,localizedName,0,
 field_74842_b,permissionMask,0,
 field_74843_a,actions,0,
 field_74845_a,errorObjects,0,
+field_74846_d,buf,0,
+field_74847_b,theStreamCipher,0,
+field_74848_c,oneByte,0,
+field_74849_a,theBufferedBlockCipher,0,
+field_74853_f,maxBuf,0,
+field_74854_g,finalized,0,
+field_74855_d,inBuf,0,
+field_74856_e,bufOff,0,
+field_74857_b,theStreamCipher,0,
+field_74858_c,buf,0,
+field_74859_a,theBufferedBlockCipher,0,
 field_74885_f,coordBaseMode,0,switches the Coordinate System base off the Bounding Box
 field_74886_g,componentType,0,The type ID of this component.
 field_74887_e,boundingBox,0,
@@ -2444,6 +2646,8 @@ field_75518_j,canPassOpenWoodenDoors,0,"Specifically, if a wooden door block is 
 field_75519_k,canPassClosedWoodenDoors,0,If door blocks are considered passable even when closed
 field_75520_h,ticksAtLastPos,0,The time when the last position check was done (to detect successful movement)
 field_75521_i,lastPosCheck,0,Coordinates of the entity's position last time a check was done (part of monitoring getting 'stuck')
+field_75524_b,seenEntities,0,Cache of entities which we can see
+field_75525_c,unseenEntities,0,Cache of entities which we cannot see
 field_75526_a,entityObj,0,
 field_75531_f,theVillage,0,Instance of Village.
 field_75537_a,worldObj,0,
@@ -2478,6 +2682,7 @@ field_75624_e,classToIDMapping,0,provides a mapping between an Entity Class and 
 field_75625_b,stringToClassMapping,0,Provides a mapping between entity classes and a string
 field_75626_c,classToStringMapping,0,Provides a mapping between a string and an entity classes
 field_75627_a,entityEggs,0,This is a HashMap of the Creative Entity Eggs/Spawners.
+field_75643_f,update,0,
 field_75644_d,posZ,0,
 field_75645_e,speed,0,The speed at which the entity should move
 field_75646_b,posX,0,
@@ -2497,6 +2702,7 @@ field_75675_d,watched,0,
 field_75676_b,dataValueId,0,id of max 31
 field_75677_c,watchedObject,0,
 field_75678_a,objectType,0,
+field_75694_d,lock,0,
 field_75695_b,watchedObjects,0,
 field_75696_c,objectChanged,0,true if one or more object was changed
 field_75697_a,dataTypes,0,
@@ -2760,6 +2966,7 @@ field_76257_i,leaves,0,
 field_76258_w,craftedSnow,0,The material for crafted snow.
 field_76259_v,snow,0,
 field_76260_u,ice,0,
+field_76261_t,coral,0,
 field_76262_s,tnt,0,
 field_76263_r,redstoneLight,0,
 field_76264_q,glass,0,
@@ -2788,7 +2995,6 @@ field_76292_a,itemWeight,0,The Weight is how often the item is chosen(higher num
 field_76295_d,theMinimumChanceToGenerateItem,0,The minimum chance of item generating.
 field_76296_e,theMaximumChanceToGenerateItem,0,The maximum chance of item generating.
 field_76297_b,theItemId,0,The Item/Block ID to generate in the Chest.
-field_76298_c,theItemDamage,0,The Item damage/metadata.
 field_76299_d,maxGroupCount,0,
 field_76300_b,entityClass,0,Holds the class of the entity to be spawned.
 field_76301_c,minGroupCount,0,
@@ -2818,11 +3024,13 @@ field_76371_c,lava,0,
 field_76372_a,inFire,0,
 field_76373_n,damageType,0,
 field_76374_o,isUnblockable,0,This kind of damage can be blocked or not.
+field_76375_l,explosion2,0,
 field_76376_m,magic,0,
 field_76377_j,generic,0,
 field_76378_k,explosion,0,
 field_76379_h,fall,0,
 field_76380_i,outOfWorld,0,
+field_76381_t,difficultyScaled,0,Whether this damage source will have its damage amount scaled based on the current difficulty.
 field_76382_s,projectile,0,This kind of damage is based on a projectile or not.
 field_76383_r,fireDamage,0,This kind of damage is based on fire or not.
 field_76384_q,hungerDamage,0,
@@ -3138,9 +3346,9 @@ field_76990_c,renderManager,0,
 field_76991_a,modelBase,0,
 field_76993_a,blockRenderer,0,
 field_76998_a,modelBoat,0,instance of ModelBoat for rendering
-field_77004_a,renderBlocks,0,
+field_77004_a,sandRenderBlocks,0,
 field_77013_a,modelMinecart,0,instance of ModelMinecart for rendering
-field_77022_g,renderBlocks,0,
+field_77022_g,itemRenderBlocks,0,
 field_77023_b,zLevel,0,Defines the zLevel of rendering of item on GUI.
 field_77025_h,random,0,The RNG used in RenderItem (for bobbing itemstacks on the ground)
 field_77027_a,itemIconIndex,0,"Have the icon index (in items.png) that will be used to render the image. Currently, eggs and snowballs uses this classes."
@@ -3474,7 +3682,7 @@ field_77775_ay,bucketLava,0,
 field_77776_ba,bed,0,
 field_77777_bU,maxStackSize,0,Maximum size of the stack.
 field_77778_at,appleGold,0,
-field_77779_bT,shiftedIndex,0,Item index + 256
+field_77779_bT,itemID,0,The ID of this item.
 field_77780_as,painting,0,
 field_77781_bS,record11,0,
 field_77782_ar,porkCooked,0,
@@ -3568,6 +3776,7 @@ field_77922_b,sugarEffect,0,
 field_77923_c,ghastTearEffect,0,
 field_77926_o,potionPrefixes,0,"An array of possible potion prefix names, as translation IDs."
 field_77927_l,potionRequirements,0,
+field_77928_m,potionAmplifiers,0,Potion effect amplifier map
 field_77929_j,glowstoneEffect,0,
 field_77930_k,gunpowderEffect,0,
 field_77931_h,magmaCreamEffect,0,
@@ -4151,6 +4360,7 @@ field_78948_c,entityPosZ,0,Entity position Z
 field_78949_a,entityPosX,0,Entity position X
 field_79002_a,mc,0,The Minecraft instance.
 field_80001_f,closestPlayer,0,The closest EntityPlayer to this orb.
+field_80002_g,xpTargetColor,0,Threshold color for tracking players
 field_80004_Q,updateEntityTick,0,
 field_80005_w,hideServerAddress,0,
 field_82121_b,skullRotation,0,The skull's rotation.
@@ -4162,7 +4372,9 @@ field_82136_e,levels,0,Level of this beacon's pyramid.
 field_82139_a,effectsList,0,List of effects that Beacon can apply
 field_82140_h,payment,0,Item given to this beacon as payment.
 field_82155_f,isAnvil,0,
+field_82156_g,fallHurtMax,0,Maximum amount of damage dealt to entities hit by falling block
 field_82157_e,isBreakingAnvil,0,
+field_82158_h,fallHurtAmount,0,Actual damage dealt to entities hit by falling block
 field_82172_bs,canPickUpLoot,0,Whether this entity can pick up items from the ground.
 field_82173_br,swingProgressInt,0,
 field_82174_bp,equipmentDropChances,0,Chances for each equipment piece from dropping when this entity dies.
@@ -4214,14 +4426,23 @@ field_82320_o,theSlot,0,
 field_82321_q,buttonsNotDrawn,0,
 field_82322_p,beaconConfirmButton,0,
 field_82323_o,beacon,0,
+field_82326_p,itemNameField,0,
+field_82327_o,repairContainer,0,
 field_82332_a,hangingDirection,0,
 field_82337_e,itemDropChance,0,Chance for this item frame's item to drop from the frame.
 field_82339_as,particleAlpha,0,Particle alpha
 field_82346_a,theContainer,0,Container of this anvil's block.
+field_82348_s,spawnRange,0,Range for spawning new entities with mob spawners
+field_82349_r,requiredPlayerRange,0,Required player range for mob spawning to occur
+field_82350_j,maxNearbyEntities,0,Maximum number of entities for limiting mob spawning
 field_82354_a,command,0,The command this block will execute when powered.
 field_82365_a,difficulties,0,
 field_82373_c,directions,0,
 field_82374_e,facings,0,
+field_82387_b,intListPattern,0,"This matches things like ""-1,,4"", and is used for getting x,y,z,range from the token's argument list."
+field_82388_c,keyValueListPattern,0,"This matches things like ""rm=4,c=2"" and is used for handling named token arguments."
+field_82389_a,tokenPattern,0,"This matches the at-tokens introduced for command blocks, including their arguments, if any."
+field_82391_c,instance,0,
 field_82397_a,skullRenderer,0,
 field_82401_a,skeletonHeadModel,0,The Skeleton's head model.
 field_82405_a,renderBlocksInstance,0,
@@ -4230,13 +4451,20 @@ field_82446_a,renderedBatSize,0,"not actually sure this is size, is not used as 
 field_82453_b,createFlatWorldGui,0,
 field_82458_b,flatPresetsGui,0,
 field_82470_g,playingSounds,0,Identifiers of all currently playing sounds. Type: HashSet<String>
+field_82471_f,minecartIsMoving,0,
+field_82472_g,silent,0,
+field_82473_d,playerSPRidingMinecart,0,
+field_82474_e,minecartIsDead,0,
 field_82475_b,theMinecart,0,Minecart which sound is being updated.
 field_82476_c,thePlayer,0,The player that is getting the minecart sound updates.
 field_82477_a,theSoundManager,0,
+field_82478_j,minecartRideSoundVolume,0,
+field_82479_k,minecartSpeed,0,
+field_82480_h,minecartSoundPitch,0,
+field_82481_i,minecartMoveSoundVolume,0,
 field_82483_a,itemDispenseBehaviorProvider,0,
 field_82484_c,defaultItemDispenseBehavior,0,Reference to the BehaviorDefaultDispenseItem object.
 field_82490_b,mcServer,0,
-field_82491_c,defaultItemDispenseBehavior,0,Reference to the BehaviorDefaultDispenseItem object.
 field_82492_b,mcServer,0,
 field_82493_c,defaultItemDispenseBehavior,0,Reference to the BehaviorDefaultDispenseItem object.
 field_82494_b,mcServer,0,Reference to the MinecraftServer object.
@@ -4265,11 +4493,10 @@ field_82537_a,sensible,0,"Whether this button is sensible to arrows, used by woo
 field_82539_a,types,0,The types of the wall.
 field_82548_a,theChunkCoordinates,0,
 field_82552_a,mcServer,0,
-field_82553_a,mcServer,0,
 field_82555_a,mcServer,0,
 field_82557_a,mcServer,0,Reference to the MinecraftServer object.
 field_82564_f,showCape,0,
-field_82575_g,dayTime,0,Total time for this world.
+field_82575_g,totalTime,0,Total time for this world.
 field_82576_c,generatorOptions,0,
 field_82577_x,theGameRules,0,
 field_82578_b,NBTTypes,0,
@@ -4278,10 +4505,16 @@ field_82587_b,theNBTTagCompound,0,
 field_82592_a,vec3dPool,0,
 field_82596_a,registryObjects,0,Objects registered on this registry.
 field_82597_b,defaultObject,0,"Default object for this registry, returned when an object is not found."
+field_82611_j,frontOffsetY,0,
+field_82612_k,frontOffsetZ,0,
+field_82614_i,frontOffsetX,0,
 field_82624_d,zPos,0,
 field_82625_b,xPos,0,
 field_82626_c,yPos,0,
 field_82627_a,worldObj,0,
+field_82628_b,y,0,
+field_82629_c,z,0,
+field_82630_a,x,0,
 field_82635_f,maxSpeedBoostTime,0,Maximum time the entity's speed should be boosted for.
 field_82636_d,speedBoosted,0,Whether the entity's speed is boosted.
 field_82637_e,speedBoostTime,0,"Counter for speed boosting, upon reaching maxSpeedBoostTime the speed boost will be disabled"
@@ -4304,8 +4537,14 @@ field_82680_c,cropTypeB,0,Second crop type for this field.
 field_82681_h,cropTypeD,0,Fourth crop type for this field.
 field_82682_h,hasWitch,0,Whether this swamp hut has a witch.
 field_82693_j,playerReputation,0,List of player reputations with this village
+field_82694_i,noBreedTicks,0,Timestamp of tick count when villager last bred
+field_82696_f,structureGenerators,0,
+field_82701_j,lavaLakeGenerator,0,
+field_82703_i,waterLakeGenerator,0,
 field_82707_i,isAnimal,0,Whether this creature type is an animal.
 field_82717_g,anvil,0,
+field_82723_d,isSplashPotion,0,Whether the potion is a splash potion
+field_82724_e,isAmbient,0,Whether the potion effect came from a beacon
 field_82727_n,wither,0,
 field_82728_o,anvil,0,
 field_82729_p,fallingBlock,0,
@@ -4340,7 +4579,7 @@ field_82809_c,soilId,0,Block ID of the soil this seed food should be planted on.
 field_82811_a,hangingEntityClass,0,
 field_82822_g,gameVersion,0,Game version for this server.
 field_82823_k,hideAddress,0,Whether to hide the IP address for this server.
-field_82826_b,statusBarLenght,0,
+field_82826_b,statusBarLength,0,
 field_82827_c,bossName,0,
 field_82828_a,healthScale,0,
 field_82843_f,itemFrame,0,"Item frame this stack is on, or null if not on an item frame."
@@ -4348,11 +4587,16 @@ field_82852_f,outputSlot,0,Here comes out item you merged and/or renamed.
 field_82853_g,inputSlots,0,The 2slots where you put your items in that you want to merge and/or rename.
 field_82854_e,maximumCost,0,The maximum cost of repairing/renaming in the anvil.
 field_82855_n,thePlayer,0,The player that has this container open.
+field_82856_l,stackSizeToBeUsedInRepair,0,determined by damage of input item and stackSize of repair materials
+field_82857_m,repairedItemName,0,
 field_82860_h,theWorld,0,
 field_82862_h,thePlayer,0,
 field_82864_f,beaconSlot,0,"This beacon's slot where you put in Emerald, Diamond, Gold or Iron Ingot."
 field_82866_e,theBeacon,0,
+field_82871_d,blockPosZ,0,
 field_82872_e,anvil,0,The anvil this slot belongs to.
+field_82873_b,blockPosX,0,
+field_82874_c,blockPosY,0,
 field_82875_a,theWorld,0,
 field_82876_a,beacon,0,The beacon this slot belongs to.
 field_82880_z,showCape,0,Whether to show your cape
@@ -4370,24 +4614,46 @@ field_82909_b,presetName,0,Name for this preset.
 field_82910_c,presetData,0,Data for this preset.
 field_82911_a,iconId,0,ID for the item used as icon for this preset.
 field_82915_S,theWorldGenerator,0,
+field_83001_bt,invulnerable,0,
 field_83004_a,theCrashReport,0,
 field_83016_L,theCalendar,0,
-field_83021_g,customMinX,0,Custom minimum X for rendering
-field_83022_l,customMaxZ,0,Custom maximum Z for rendering
-field_83023_m,useCustomBlockBounds,0,Use custom block bounds for the rendering
-field_83024_j,customMaxY,0,Custom maximum Y for rendering
-field_83025_k,customMinZ,0,Custom minimum Z for rendering
-field_83026_h,customMaxX,0,Custom maximum X for rendering
-field_83027_i,customMinY,0,Custom minimum Y for rendering
+field_83021_g,renderMinX,0,The minimum X value for rendering (default 0.0).
+field_83022_l,renderMaxZ,0,The maximum Z value for rendering (default 1.0).
+field_83023_m,lockBlockBounds,0,"Set by overrideBlockBounds, to keep this class from changing the visual bounding box."
+field_83024_j,renderMaxY,0,The maximum Y value for rendering (default 1.0).
+field_83025_k,renderMinZ,0,The minimum Z value for rendering (default 0.0).
+field_83026_h,renderMaxX,0,The maximum X value for rendering (default 1.0).
+field_83027_i,renderMinY,0,The minimum Y value for rendering (default 0.0).
+field_85037_d,aiArrowAttack,0,
+field_85038_e,aiAttackOnCollide,0,
 field_85045_v,returningStack,0,Used when touchscreen is enabled
 field_85046_u,returningStackTime,0,
 field_85047_t,returningStackDestSlot,0,
 field_85050_q,draggedStack,0,Used when touchscreen is enabled
 field_85051_p,clickedSlot,0,Used when touchscreen is enabled
+field_85053_h,throwerName,0,
+field_85075_d,stackTrace,0,
+field_85109_a,worldInfoInstance,0,
+field_85111_a,worldInfoInstance,0,
+field_85113_a,worldInfoInstance,0,
+field_85115_a,worldInfoInstance,0,
+field_85135_a,worldInfoInstance,0,
+field_85137_a,worldInfoInstance,0,
+field_85139_a,worldInfoInstance,0,
+field_85141_a,worldInfoInstance,0,
+field_85143_a,worldInfoInstance,0,
 field_85180_cf,recordWait,0,
 field_85185_A,touchscreen,0,
+field_85192_a,worldServerInstance,0,
 field_90017_e,isMacOs,0,
+field_90018_r,isRightMouseClick,0,Used when touchscreen is enabled
 field_90044_b,records,0,List of all record items and their names.
+field_92014_j,explosionStrength,0,The explosion radius of spawned fireballs.
+field_92055_b,lifetime,0,The lifetime of the firework in ticks. When the age reaches the lifetime the firework explodes.
+field_92056_a,fireworkAge,0,The age of the firework in ticks.
+field_92104_bU,firework,0,
+field_92105_bW,enchantedBook,0,
+field_92106_bV,fireworkCharge,0,
 field_70009_b,buffer,1,RCon string buffer for log
 field_70010_a,instance,1,Single instance of RConConsoleSource
 field_70121_D,boundingBox,1,Axis aligned bounding box.
@@ -4527,7 +4793,6 @@ field_70290_d,hoverStart,1,The EntityItem's random initial float height.
 field_70291_e,health,1,"The health of this EntityItem. (For example, damage for tools)"
 field_70292_b,age,1,The age of this EntityItem (used to animate it up and down as well as expire it)
 field_70293_c,delayBeforeCanPickup,1,
-field_70294_a,item,1,The item stack of this EntityItem.
 field_70323_b,classToNameMap,1,A HashMap storing the classes and mapping to the string names (reverse of nameToClassMap).
 field_70324_q,blockType,1,the Block type that this TileEntity is contained within
 field_70325_p,blockMetadata,1,
@@ -4615,6 +4880,8 @@ field_70482_c,inventoryContents,1,
 field_70483_a,inventoryTitle,1,
 field_70484_a,container,1,The brewing stand this slot belongs to.
 field_70488_a,associatedChest,1,
+field_70499_f,isInReverse,1,
+field_70500_g,matrix,1,Minecart rotational logic matrix
 field_70501_d,cargoItems,1,Array of item stacks stored in minecart (for storage minecarts).
 field_70502_e,fuel,1,
 field_70503_b,pushX,1,
@@ -4909,6 +5176,154 @@ field_71585_d,offsetsZForSide,1,gives the offset required for this axis to get t
 field_71586_b,offsetsXForSide,1,gives the offset required for this axis to get the block at that side.
 field_71587_c,offsetsYForSide,1,gives the offset required for this axis to get the block at that side.
 field_71588_a,faceToSide,1,Converts a face to a side.
+field_71589_f,bc_pbe_sha512,1,
+field_71590_g,bc_pbe_sha224,1,
+field_71591_d,bc_pbe_sha256,1,
+field_71592_e,bc_pbe_sha384,1,
+field_71593_b,bc_pbe,1,
+field_71594_c,bc_pbe_sha1,1,
+field_71595_a,bc,1,
+field_71596_n,bc_pbe_sha1_pkcs12_aes256_cbc,1,
+field_71597_o,bc_pbe_sha256_pkcs12_aes128_cbc,1,
+field_71598_l,bc_pbe_sha1_pkcs12_aes128_cbc,1,
+field_71599_m,bc_pbe_sha1_pkcs12_aes192_cbc,1,
+field_71600_j,bc_pbe_sha256_pkcs5,1,
+field_71601_k,bc_pbe_sha256_pkcs12,1,
+field_71602_h,bc_pbe_sha1_pkcs5,1,
+field_71603_i,bc_pbe_sha1_pkcs12,1,
+field_71604_q,bc_pbe_sha256_pkcs12_aes256_cbc,1,
+field_71605_p,bc_pbe_sha256_pkcs12_aes192_cbc,1,
+field_71610_b,cache,1,
+field_71611_a,identifier,1,
+field_71613_D,digestAlgorithm,1,
+field_71614_E,md2,1,
+field_71615_F,md4,1,
+field_71616_G,md5,1,
+field_71617_A,encryptionAlgorithm,1,
+field_71618_B,des_EDE3_CBC,1,
+field_71619_C,RC2_CBC,1,
+field_71620_L,id_hmacWithSHA512,1,
+field_71621_M,data,1,
+field_71622_N,signedData,1,
+field_71623_O,envelopedData,1,
+field_71624_H,id_hmacWithSHA1,1,
+field_71625_I,id_hmacWithSHA224,1,
+field_71626_J,id_hmacWithSHA256,1,
+field_71627_K,id_hmacWithSHA384,1,
+field_71628_U,pkcs_9_at_unstructuredName,1,
+field_71629_T,pkcs_9_at_emailAddress,1,
+field_71630_W,pkcs_9_at_messageDigest,1,
+field_71631_V,pkcs_9_at_contentType,1,
+field_71632_Q,digestedData,1,
+field_71633_P,signedAndEnvelopedData,1,
+field_71634_S,pkcs_9,1,
+field_71635_R,encryptedData,1,
+field_71636_Y,pkcs_9_at_counterSignature,1,
+field_71637_X,pkcs_9_at_signingTime,1,
+field_71638_Z,pkcs_9_at_challengePassword,1,
+field_71639_f,sha1WithRSAEncryption,1,
+field_71640_g,srsaOAEPEncryptionSET,1,
+field_71641_d,md4WithRSAEncryption,1,
+field_71642_e,md5WithRSAEncryption,1,
+field_71643_b,rsaEncryption,1,
+field_71644_c,md2WithRSAEncryption,1,
+field_71645_a,pkcs_1,1,
+field_71646_n,sha512WithRSAEncryption,1,
+field_71647_o,sha224WithRSAEncryption,1,
+field_71648_l,sha256WithRSAEncryption,1,
+field_71649_m,sha384WithRSAEncryption,1,
+field_71650_j,id_pSpecified,1,
+field_71651_k,id_RSASSA_PSS,1,
+field_71652_h,id_RSAES_OAEP,1,
+field_71653_i,id_mgf1,1,
+field_71654_w,pbeWithSHA1AndDES_CBC,1,
+field_71655_v,pbeWithMD5AndRC2_CBC,1,
+field_71656_u,pbeWithMD5AndDES_CBC,1,
+field_71657_t,pbeWithMD2AndRC2_CBC,1,
+field_71658_s,pbeWithMD2AndDES_CBC,1,
+field_71659_r,pkcs_5,1,
+field_71660_q,dhKeyAgreement,1,
+field_71661_p,pkcs_3,1,
+field_71662_z,id_PBKDF2,1,
+field_71663_y,id_PBES2,1,
+field_71664_x,pbeWithSHA1AndRC2_CBC,1,
+field_71665_bw,pbewithSHAAnd40BitRC2_CBC,1,
+field_71666_bv,pbeWithSHAAnd40BitRC2_CBC,1,
+field_71667_by,id_alg_CMSRC2wrap,1,
+field_71668_bx,id_alg_CMS3DESwrap,1,
+field_71669_bs,pbeWithSHAAnd3_KeyTripleDES_CBC,1,
+field_71670_br,pbeWithSHAAnd40BitRC4,1,
+field_71671_bu,pbeWithSHAAnd128BitRC2_CBC,1,
+field_71672_bt,pbeWithSHAAnd2_KeyTripleDES_CBC,1,
+field_71673_bn,secretBag,1,
+field_71674_bo,safeContentsBag,1,
+field_71675_bp,pkcs_12PbeIds,1,
+field_71676_bq,pbeWithSHAAnd128BitRC4,1,
+field_71677_bj,keyBag,1,
+field_71678_bk,pkcs8ShroudedKeyBag,1,
+field_71679_bl,certBag,1,
+field_71680_bm,crlBag,1,
+field_71681_bf,id_spq_ets_uri,1,
+field_71682_bg,id_spq_ets_unotice,1,
+field_71683_bh,pkcs_12,1,
+field_71684_bi,bagtypes,1,
+field_71685_bb,id_aa_sigPolicyId,1,
+field_71686_bc,id_aa_commitmentType,1,
+field_71687_bd,id_aa_signerLocation,1,
+field_71688_be,id_aa_otherSigCert,1,
+field_71689_aZ,id_aa_ets_certCRLTimestamp,1,
+field_71690_aY,id_aa_ets_escTimeStamp,1,
+field_71691_aR,id_aa_ets_signerAttr,1,
+field_71692_aQ,id_aa_ets_signerLocation,1,
+field_71693_aT,id_aa_ets_contentTimestamp,1,
+field_71694_aS,id_aa_ets_otherSigCert,1,
+field_71695_aV,id_aa_ets_revocationRefs,1,
+field_71696_aU,id_aa_ets_certificateRefs,1,
+field_71697_aX,id_aa_ets_revocationValues,1,
+field_71698_aW,id_aa_ets_certValues,1,
+field_71699_aI,id_aa_contentReference,1,
+field_71700_aJ,id_aa_encrypKeyPref,1,
+field_71701_aK,id_aa_signingCertificate,1,
+field_71702_aL,id_aa_signingCertificateV2,1,
+field_71703_aM,id_aa_contentIdentifier,1,
+field_71704_aN,id_aa_signatureTimeStampToken,1,
+field_71705_aO,id_aa_ets_sigPolicyId,1,
+field_71706_aP,id_aa_ets_commitmentType,1,
+field_71707_aA,id_cti_ets_proofOfDelivery,1,
+field_71708_aB,id_cti_ets_proofOfSender,1,
+field_71709_aC,id_cti_ets_proofOfApproval,1,
+field_71710_aD,id_cti_ets_proofOfCreation,1,
+field_71711_aE,id_aa,1,
+field_71712_aF,id_aa_receiptRequest,1,
+field_71713_aG,id_aa_contentHint,1,
+field_71714_aH,id_aa_msgSigDigest,1,
+field_71715_az,id_cti_ets_proofOfReceipt,1,
+field_71716_ay,id_cti_ets_proofOfOrigin,1,
+field_71717_ba,id_aa_ets_archiveTimestamp,1,
+field_71718_at,id_ct_TSTInfo,1,
+field_71719_as,id_ct_authData,1,
+field_71720_ar,id_ct,1,
+field_71721_aq,sMIMECapabilitiesVersions,1,
+field_71722_ax,id_cti,1,
+field_71723_aw,id_ct_timestampedData,1,
+field_71724_av,id_ct_authEnvelopedData,1,
+field_71725_au,id_ct_compressedData,1,
+field_71726_ak,sdsiCertificate,1,
+field_71727_al,crlTypes,1,
+field_71728_ai,certTypes,1,
+field_71729_aj,x509Certificate,1,
+field_71730_ao,preferSignedData,1,
+field_71731_ap,canNotDecryptAny,1,
+field_71732_am,x509Crl,1,
+field_71733_an,id_alg_PWRI_KEK,1,
+field_71734_ac,pkcs_9_at_signingDescription,1,
+field_71735_ad,pkcs_9_at_extensionRequest,1,
+field_71736_aa,pkcs_9_at_unstructuredAddress,1,
+field_71737_ab,pkcs_9_at_extendedCertificateAttributes,1,
+field_71738_ag,pkcs_9_at_localKeyId,1,
+field_71739_ah,x509certType,1,
+field_71740_ae,pkcs_9_at_smimeCapabilities,1,
+field_71741_af,pkcs_9_at_friendlyName,1,
 field_71743_a,theDecitatedServer,1,Reference to the DecitatedServer object.
 field_71748_d,connections,1,
 field_71749_b,isListening,1,Whether the network listener object is listening.
@@ -4926,6 +5341,36 @@ field_71778_h,myPort,1,
 field_71781_b,parameters,1,
 field_71782_a,iv,1,
 field_71784_a,key,1,
+field_71796_f,pgpCFB,1,
+field_71797_d,cipher,1,
+field_71798_e,partialBlockOkay,1,
+field_71799_b,bufOff,1,
+field_71800_c,forEncryption,1,
+field_71801_a,buf,1,
+field_71809_f,encrypting,1,
+field_71810_d,blockSize,1,
+field_71811_e,cipher,1,
+field_71812_b,cfbV,1,
+field_71813_c,cfbOutV,1,
+field_71814_a,IV,1,
+field_71824_f,T2,1,
+field_71825_g,T3,1,
+field_71826_d,T0,1,
+field_71827_e,T1,1,
+field_71828_b,Si,1,
+field_71829_c,rcon,1,
+field_71830_a,S,1,
+field_71831_n,C0,1,
+field_71832_o,C1,1,
+field_71833_l,ROUNDS,1,
+field_71834_m,WorkingKey,1,
+field_71835_j,Tinv2,1,
+field_71836_k,Tinv3,1,
+field_71837_h,Tinv0,1,
+field_71838_i,Tinv1,1,
+field_71839_r,forEncryption,1,
+field_71840_q,C3,1,
+field_71841_p,C2,1,
 field_71938_D,lavaStill,1,Stationary lava source block
 field_71939_E,sand,1,
 field_71940_F,gravel,1,
@@ -5198,11 +5643,13 @@ field_72450_a,xCoord,1,X coordinate of Vec3D
 field_72451_a,theDecitatedServer,1,Instance of the DecitatedServer.
 field_72534_f,mcServer,1,Reference to the MinecraftServer object.
 field_72535_g,loginTimer,1,"While waiting to login, if this field ++'s to 600 it will kick you."
+field_72536_d,verifyToken,1,The 4 byte verify token read from a Packet252SharedKey
 field_72537_e,rand,1,The Random object used to generate serverId hex strings.
 field_72538_b,myTCPConnection,1,
 field_72539_c,finishedProcessing,1,Returns if the login handler is finished and can be removed. It is set to true on either error or successful login.
 field_72540_a,logger,1,The Minecraft logger.
 field_72541_j,loginServerId,1,server ID that is randomly generated by this login handler.
+field_72542_k,sharedKey,1,Secret AES key obtained from the client's Packet252SharedKey
 field_72543_h,clientUsername,1,
 field_72571_f,currentTicks,1,incremented each tick
 field_72572_g,playerInAirTime,1,holds the amount of tick the player is floating
@@ -5232,11 +5679,11 @@ field_72614_f,serverSocketList,1,A list of registered ServerSockets
 field_72616_e,socketList,1,A list of registered DatagramSockets
 field_72617_b,server,1,Reference to the IServer object.
 field_72618_c,rconThread,1,Thread for this runnable class
-field_72619_a,running,1,True i
+field_72619_a,running,1,"True if the Thread is running, false otherwise"
 field_72629_g,lastAuthCheckTime,1,The time of the last client auth check
 field_72630_n,buffer,1,A buffer for incoming DatagramPackets
 field_72631_o,incomingPacket,1,Storage for incoming DatagramPackets
-field_72632_l,worldName,1,The name of the currently lo
+field_72632_l,worldName,1,The name of the currently loaded world
 field_72633_m,querySocket,1,The remote socket querying the server
 field_72634_j,maxPlayers,1,The maximum number of players allowed on the server
 field_72635_k,serverMotd,1,The current server message of the day
@@ -5294,7 +5741,7 @@ field_72991_N,entitiesWithinAABBExcludingEntity,1,"entities within AxisAlignedBB
 field_72992_H,spawnPeacefulMobs,1,A flag indicating whether we should spawn peaceful mobs.
 field_72993_I,activeChunkSet,1,populated by chunks that are within 9 chunks of any player
 field_72994_J,lightUpdateBlockList,1,"is a temporary list of blocks and light values used when updating light levels. Holds up to 32x32x32 blocks (the maximum influence of a light source.) Every element is a packed bit value: 0000000000LLLLzzzzzzyyyyyyxxxxxx. The 4-bit L is a light level used when darkening blocks. 6-bit numbers x, y and z represent the block's offset from the original block, plus 32 (i.e. value of 31 would mean a -1 offset"
-field_72995_K,isRemote,1,"This is set to true when you are a client connected to a multiplayer world, false otherwise."
+field_72995_K,isRemote,1,"This is set to true for client worlds, and false for server worlds."
 field_72996_f,loadedEntityList,1,A list of all Entities in all currently-loaded chunks
 field_72997_g,unloadedEntityList,1,
 field_72998_d,collidingBoundingBoxes,1,
@@ -5314,7 +5761,6 @@ field_73011_w,provider,1,The WorldProvider instance that World uses.
 field_73012_v,rand,1,RNG for World.
 field_73013_u,difficultySetting,1,"Whether monsters are enabled or not. (1 = on, 0 = off)"
 field_73014_t,editingBlocks,1,true while the server is editing blocks
-field_73015_s,lightningFlash,1,"If > 0, the sky and skylight colors are illuminated by a lightning flash"
 field_73016_r,lastLightningBolt,1,Set to 2 whenever a lightning bolt is generated in SSP. Decrements if > 0 in updateWeather(). Value appears to be unused.
 field_73017_q,thunderingStrength,1,
 field_73018_p,prevThunderingStrength,1,
@@ -5439,7 +5885,7 @@ field_73247_e,chunkLoader,1,
 field_73248_b,droppedChunksSet,1,
 field_73249_c,dummyChunk,1,"a dummy chunk, returned in place of an actual chunk."
 field_73250_a,chunkLoadOverride,1,"if set, this flag forces a request to load a chunk to load the chunk rather than defaulting to the dummy if possible"
-field_73251_h,world,1,
+field_73251_h,worldObj,1,
 field_73261_d,blocksToUpdate,1,array of blocks to update this tick
 field_73262_e,numBlocksToUpdate,1,the number of blocks that need to be updated next tick
 field_73263_b,players,1,the list of all players in this instance (chunk)
@@ -5462,6 +5908,7 @@ field_73299_c,zPosition,1,Z coordinate of spawn.
 field_73300_a,xPosition,1,X coordinate of spawn.
 field_73301_a,time,1,The world time in minutes.
 field_73305_b,verifyToken,1,
+field_73306_c,sharedKey,1,Secret AES key decrypted from sharedSecret via the server's private RSA key
 field_73307_a,sharedSecret,1,
 field_73308_d,signLines,1,
 field_73309_b,yPosition,1,
@@ -5593,15 +6040,8 @@ field_73471_b,amount,1,
 field_73472_a,statisticId,1,
 field_73474_a,text,1,Sent by the client containing the text to be autocompleted. Sent by the server with possible completions separated by null (two bytes in UTF-16)
 field_73476_b,message,1,The message being sent.
+field_73477_c,isServer,1,
 field_73478_a,maxChatLength,1,Maximum number of characters allowed in chat string in each packet.
-field_73479_f,pitch,1,The item pitch.
-field_73480_g,roll,1,The item roll.
-field_73481_d,zPosition,1,The item Z position.
-field_73482_e,rotation,1,The item rotation.
-field_73483_b,xPosition,1,The item X position.
-field_73484_c,yPosition,1,The item Y position.
-field_73485_a,entityId,1,Unique entity ID.
-field_73487_h,itemID,1,
 field_73490_f,velocityX,1,
 field_73491_g,velocityY,1,
 field_73492_d,yPosition,1,The Y position of the entity.
@@ -5684,8 +6124,14 @@ field_73576_e,volume,1,1 is 100%. Can be more.
 field_73577_b,effectX,1,Effect X multiplied by 8
 field_73578_c,effectY,1,Effect Y multiplied by 8
 field_73579_a,soundName,1,e.g. step.grass
+field_73585_g,dataLength,1,total size of the compressed data
+field_73586_d,chunkPosZ,1,
+field_73587_e,chunkDataBuffer,1,The compressed chunk data buffer
+field_73589_c,chunkPostX,1,
+field_73591_h,chunkDataNotCompressed,1,
 field_73592_a,randomId,1,
 field_73595_f,chunkData,1,"The transmitted chunk data, decompressed."
+field_73596_g,compressedChunkData,1,The compressed chunk data
 field_73597_d,yChMax,1,"The y-position of the highest chunk Section in the transmitted chunk, in chunk coordinates."
 field_73598_e,includeInitialize,1,Whether to initialize the Chunk before applying the effect of the Packet51MapChunk.
 field_73599_b,zCh,1,"The z-position of the transmitted chunk, in chunk coordinates."
@@ -5701,9 +6147,9 @@ field_73613_e,chunkPositionRecords,1,
 field_73614_b,explosionY,1,
 field_73615_c,explosionZ,1,
 field_73616_a,explosionX,1,
-field_73618_b,bedState,1,"Either 1 or 2. 1 indicates to begin raining, 2 indicates to stop raining."
-field_73619_c,gameMode,1,"Used only when reason = 3. 0 is survival, 1 is creative."
-field_73620_a,bedChat,1,
+field_73618_b,eventType,1,"0: Invalid bed, 1: Rain starts, 2: Rain stops, 3: Game mode changed."
+field_73619_c,gameMode,1,"When reason==3, the game mode to set.  See EnumGameType for a list of values."
+field_73620_a,clientMessage,1,The client prints clientMessage[eventType] to chat when this packet is received.
 field_73621_d,bedZ,1,
 field_73623_b,bedX,1,
 field_73624_c,bedY,1,
@@ -5757,6 +6203,14 @@ field_74270_a,mcServer,1,Reference to the MinecraftServer object.
 field_74272_a,mcServer,1,Reference to the MinecraftServer object.
 field_74274_a,mcServer,1,Reference to the MinecraftServer object.
 field_74417_a,theTcpConnection,1,
+field_74438_f,shutdownReason,1,
+field_74440_d,myNetHandler,1,
+field_74441_e,shuttingDown,1,"set to true by {server,network}Shutdown"
+field_74442_b,readPacketCache,1,
+field_74443_c,pairedConnection,1,
+field_74444_a,mySocketAddress,1,
+field_74445_h,gamePaused,1,
+field_74464_B,chunkDataPacketsDelay,1,Delay for sending pending chunk data packets (as opposed to pending non-chunk data packets)
 field_74465_f,isInputBeingDecrypted,1,
 field_74466_g,isOutputEncrypted,1,
 field_74472_n,isTerminating,1,Whether this network manager is currently terminating (and should ignore further errors).
@@ -5779,6 +6233,9 @@ field_74489_y,sendQueueByteLength,1,The length in bytes of the packets in both s
 field_74498_a,theTcpConnection,1,
 field_74501_a,theTcpConnection,1,
 field_74504_a,theTcpConnection,1,
+field_74580_b,chunkExistFlag,1,
+field_74581_c,chunkHasAddSectionFlag,1,
+field_74582_a,compressedData,1,
 field_74741_a,name,1,The UTF string key used to lookup values.
 field_74746_b,tagType,1,The type byte for the tags in the list - they must all be of the same type.
 field_74747_a,tagList,1,The array list containing the tags encapsulated in this list.
@@ -5792,15 +6249,20 @@ field_74754_a,byteArray,1,The byte array stored in the tag.
 field_74755_a,data,1,The double value for the tag.
 field_74756_a,data,1,The byte value for the tag.
 field_74784_a,tagMap,1,"The key-value pairs for the tag. Each key is a UTF string, each value is a tag."
+field_74801_a,theBouncyCastleProvider,1,
 field_74813_d,currentLanguage,1,
 field_74814_e,isUnicode,1,
 field_74815_b,translateTable,1,Contains all key/value pairs to be translated - is loaded from '/lang/en_US.lang' when the StringTranslate is created.
 field_74816_c,languageList,1,
 field_74817_a,instance,1,Is the private singleton instance of StringTranslate.
+field_74822_f,ASYMMETRIC_GENERIC,1,
+field_74823_g,ASYMMETRIC_CIPHERS,1,
 field_74824_d,keyInfoConverters,1,
+field_74825_e,SYMMETRIC_CIPHERS,1,
 field_74826_b,CONFIGURATION,1,
 field_74827_c,info,1,
 field_74828_a,PROVIDER_NAME,1,
+field_74829_h,DIGESTS,1,
 field_74831_f,dhThreadSpec,1,
 field_74832_d,BC_DH_PERMISSION,1,
 field_74833_e,ecThreadSpec,1,
@@ -5811,6 +6273,17 @@ field_74839_a,localizedName,1,
 field_74842_b,permissionMask,1,
 field_74843_a,actions,1,
 field_74845_a,errorObjects,1,
+field_74846_d,buf,1,
+field_74847_b,theStreamCipher,1,
+field_74848_c,oneByte,1,
+field_74849_a,theBufferedBlockCipher,1,
+field_74853_f,maxBuf,1,
+field_74854_g,finalized,1,
+field_74855_d,inBuf,1,
+field_74856_e,bufOff,1,
+field_74857_b,theStreamCipher,1,
+field_74858_c,buf,1,
+field_74859_a,theBufferedBlockCipher,1,
 field_74885_f,coordBaseMode,1,switches the Coordinate System base off the Bounding Box
 field_74886_g,componentType,1,The type ID of this component.
 field_74887_e,boundingBox,1,
@@ -6147,6 +6620,8 @@ field_75518_j,canPassOpenWoodenDoors,1,"Specifically, if a wooden door block is 
 field_75519_k,canPassClosedWoodenDoors,1,If door blocks are considered passable even when closed
 field_75520_h,ticksAtLastPos,1,The time when the last position check was done (to detect successful movement)
 field_75521_i,lastPosCheck,1,Coordinates of the entity's position last time a check was done (part of monitoring getting 'stuck')
+field_75524_b,seenEntities,1,Cache of entities which we can see
+field_75525_c,unseenEntities,1,Cache of entities which we cannot see
 field_75526_a,entityObj,1,
 field_75531_f,theVillage,1,Instance of Village.
 field_75537_a,worldObj,1,
@@ -6181,6 +6656,7 @@ field_75624_e,classToIDMapping,1,provides a mapping between an Entity Class and 
 field_75625_b,stringToClassMapping,1,Provides a mapping between entity classes and a string
 field_75626_c,classToStringMapping,1,Provides a mapping between a string and an entity classes
 field_75627_a,entityEggs,1,This is a HashMap of the Creative Entity Eggs/Spawners.
+field_75643_f,update,1,
 field_75644_d,posZ,1,
 field_75645_e,speed,1,The speed at which the entity should move
 field_75646_b,posX,1,
@@ -6200,6 +6676,7 @@ field_75675_d,watched,1,
 field_75676_b,dataValueId,1,id of max 31
 field_75677_c,watchedObject,1,
 field_75678_a,objectType,1,
+field_75694_d,lock,1,
 field_75695_b,watchedObjects,1,
 field_75696_c,objectChanged,1,true if one or more object was changed
 field_75697_a,dataTypes,1,
@@ -6448,6 +6925,7 @@ field_76257_i,leaves,1,
 field_76258_w,craftedSnow,1,The material for crafted snow.
 field_76259_v,snow,1,
 field_76260_u,ice,1,
+field_76261_t,coral,1,
 field_76262_s,tnt,1,
 field_76263_r,redstoneLight,1,
 field_76264_q,glass,1,
@@ -6476,7 +6954,6 @@ field_76292_a,itemWeight,1,The Weight is how often the item is chosen(higher num
 field_76295_d,theMinimumChanceToGenerateItem,1,The minimum chance of item generating.
 field_76296_e,theMaximumChanceToGenerateItem,1,The maximum chance of item generating.
 field_76297_b,theItemId,1,The Item/Block ID to generate in the Chest.
-field_76298_c,theItemDamage,1,The Item damage/metadata.
 field_76299_d,maxGroupCount,1,
 field_76300_b,entityClass,1,Holds the class of the entity to be spawned.
 field_76301_c,minGroupCount,1,
@@ -6506,11 +6983,13 @@ field_76371_c,lava,1,
 field_76372_a,inFire,1,
 field_76373_n,damageType,1,
 field_76374_o,isUnblockable,1,This kind of damage can be blocked or not.
+field_76375_l,explosion2,1,
 field_76376_m,magic,1,
 field_76377_j,generic,1,
 field_76378_k,explosion,1,
 field_76379_h,fall,1,
 field_76380_i,outOfWorld,1,
+field_76381_t,difficultyScaled,1,Whether this damage source will have its damage amount scaled based on the current difficulty.
 field_76382_s,projectile,1,This kind of damage is based on a projectile or not.
 field_76383_r,fireDamage,1,This kind of damage is based on fire or not.
 field_76384_q,hungerDamage,1,
@@ -6996,7 +7475,7 @@ field_77775_ay,bucketLava,1,
 field_77776_ba,bed,1,
 field_77777_bU,maxStackSize,1,Maximum size of the stack.
 field_77778_at,appleGold,1,
-field_77779_bT,shiftedIndex,1,Item index + 256
+field_77779_bT,itemID,1,The ID of this item.
 field_77780_as,painting,1,
 field_77781_bS,record11,1,
 field_77782_ar,porkCooked,1,
@@ -7090,6 +7569,7 @@ field_77922_b,sugarEffect,1,
 field_77923_c,ghastTearEffect,1,
 field_77926_o,potionPrefixes,1,"An array of possible potion prefix names, as translation IDs."
 field_77927_l,potionRequirements,1,
+field_77928_m,potionAmplifiers,1,Potion effect amplifier map
 field_77929_j,glowstoneEffect,1,
 field_77930_k,gunpowderEffect,1,
 field_77931_h,magmaCreamEffect,1,
@@ -7150,6 +7630,7 @@ field_79027_a,textField,1,Text field.
 field_79028_a,mcServerGui,1,Reference to the ServerGui object.
 field_79029_a,outputHandler,1,Reference to the GuiLogOutputHandler.
 field_80001_f,closestPlayer,1,The closest EntityPlayer to this orb.
+field_80002_g,xpTargetColor,1,Threshold color for tracking players
 field_80004_Q,updateEntityTick,1,
 field_82121_b,skullRotation,1,The skull's rotation.
 field_82122_c,extraType,1,"Extra data for this skull, used as player username by player heads"
@@ -7159,14 +7640,20 @@ field_82134_g,secondaryEffect,1,Secondary potion effect given by this beacon.
 field_82136_e,levels,1,Level of this beacon's pyramid.
 field_82139_a,effectsList,1,List of effects that Beacon can apply
 field_82140_h,payment,1,Item given to this beacon as payment.
+field_82153_h,timeInPortal,1,
 field_82155_f,isAnvil,1,
+field_82156_g,fallHurtMax,1,Maximum amount of damage dealt to entities hit by falling block
 field_82157_e,isBreakingAnvil,1,
+field_82158_h,fallHurtAmount,1,Actual damage dealt to entities hit by falling block
 field_82172_bs,canPickUpLoot,1,Whether this entity can pick up items from the ground.
 field_82173_br,swingProgressInt,1,
 field_82174_bp,equipmentDropChances,1,Chances for each equipment piece from dropping when this entity dies.
 field_82175_bq,isSwingInProgress,1,Whether an arm swing is currently in progress.
+field_82176_d,armorProbability,1,Probability to get armor
 field_82177_b,enchantmentProbability,1,An array of probabilities that determines whether a random enchantment should be added to the held item. Indexed by difficulty.
+field_82178_c,armorEnchantmentProbability,1,Probability to get enchanted armor
 field_82179_bU,persistenceRequired,1,Whether this entity should NOT despawn.
+field_82181_as,pickUpLootProability,1,Probability to pick up loot
 field_82182_bS,equipment,1,Equipment (armor and held item) for this entity.
 field_82184_d,aiControlledByPlayer,1,AI task for player control.
 field_82189_bL,lastBuyingPlayer,1,"Last player to trade with this villager, used for aggressivity."
@@ -7183,14 +7670,19 @@ field_82310_a,mcServer,1,Reference to the MinecraftServer object.
 field_82332_a,hangingDirection,1,
 field_82337_e,itemDropChance,1,Chance for this item frame's item to drop from the frame.
 field_82346_a,theContainer,1,Container of this anvil's block.
+field_82348_s,spawnRange,1,Range for spawning new entities with mob spawners
+field_82349_r,requiredPlayerRange,1,Required player range for mob spawning to occur
+field_82350_j,maxNearbyEntities,1,Maximum number of entities for limiting mob spawning
 field_82354_a,command,1,The command this block will execute when powered.
 field_82365_a,difficulties,1,
 field_82373_c,directions,1,
 field_82374_e,facings,1,
+field_82387_b,intListPattern,1,"This matches things like ""-1,,4"", and is used for getting x,y,z,range from the token's argument list."
+field_82388_c,keyValueListPattern,1,"This matches things like ""rm=4,c=2"" and is used for handling named token arguments."
+field_82389_a,tokenPattern,1,"This matches the at-tokens introduced for command blocks, including their arguments, if any."
 field_82483_a,itemDispenseBehaviorProvider,1,
 field_82484_c,defaultItemDispenseBehavior,1,Reference to the BehaviorDefaultDispenseItem object.
 field_82490_b,mcServer,1,
-field_82491_c,defaultItemDispenseBehavior,1,Reference to the BehaviorDefaultDispenseItem object.
 field_82492_b,mcServer,1,
 field_82493_c,defaultItemDispenseBehavior,1,Reference to the BehaviorDefaultDispenseItem object.
 field_82494_b,mcServer,1,Reference to the MinecraftServer object.
@@ -7219,22 +7711,28 @@ field_82537_a,sensible,1,"Whether this button is sensible to arrows, used by woo
 field_82539_a,types,1,The types of the wall.
 field_82548_a,theChunkCoordinates,1,
 field_82552_a,mcServer,1,
-field_82553_a,mcServer,1,
 field_82555_a,mcServer,1,
 field_82557_a,mcServer,1,Reference to the MinecraftServer object.
 field_82564_f,showCape,1,
-field_82575_g,totalWorldTime,1,Total time for this world.
+field_82575_g,totalTime,1,Total time for this world.
 field_82576_c,generatorOptions,1,
 field_82577_x,theGameRules,1,
 field_82578_b,NBTTypes,1,
 field_82584_b,theNBTTagCompound,1,
 field_82587_b,theNBTTagCompound,1,
+field_82592_a,vec3dPool,1,
 field_82596_a,registryObjects,1,Objects registered on this registry.
 field_82597_b,defaultObject,1,"Default object for this registry, returned when an object is not found."
+field_82611_j,frontOffsetY,1,
+field_82612_k,frontOffsetZ,1,
+field_82614_i,frontOffsetX,1,
 field_82624_d,zPos,1,
 field_82625_b,xPos,1,
 field_82626_c,yPos,1,
 field_82627_a,worldObj,1,
+field_82628_b,y,1,
+field_82629_c,z,1,
+field_82630_a,x,1,
 field_82635_f,maxSpeedBoostTime,1,Maximum time the entity's speed should be boosted for.
 field_82636_d,speedBoosted,1,Whether the entity's speed is boosted.
 field_82637_e,speedBoostTime,1,"Counter for speed boosting, upon reaching maxSpeedBoostTime the speed boost will be disabled"
@@ -7248,14 +7746,23 @@ field_82661_d,layerMinimumY,1,
 field_82662_b,layerFillBlock,1,Block type used on this set of layers.
 field_82663_c,layerFillBlockMeta,1,Block metadata used on this set of laeyrs.
 field_82664_a,layerCount,1,Amount of layers for this set of layers.
+field_82668_f,scatteredFeatureSpawnList,1,contains possible spawns for scattered features
+field_82669_g,maxDistanceBetweenScatteredFeatures,1,the maximum distance between scattered features
+field_82670_h,minDistanceBetweenScatteredFeatures,1,the minimum distance between scattered features
 field_82678_d,cropTypeC,1,Third crop type for this field.
 field_82679_b,cropTypeA,1,First crop type for this field.
 field_82680_c,cropTypeB,1,Second crop type for this field.
 field_82681_h,cropTypeD,1,Fourth crop type for this field.
 field_82682_h,hasWitch,1,Whether this swamp hut has a witch.
 field_82693_j,playerReputation,1,List of player reputations with this village
+field_82694_i,noBreedTicks,1,Timestamp of tick count when villager last bred
+field_82696_f,structureGenerators,1,
+field_82701_j,lavaLakeGenerator,1,
+field_82703_i,waterLakeGenerator,1,
 field_82707_i,isAnimal,1,Whether this creature type is an animal.
 field_82717_g,anvil,1,
+field_82723_d,isSplashPotion,1,Whether the potion is a splash potion
+field_82724_e,isAmbient,1,Whether the potion effect came from a beacon
 field_82727_n,wither,1,
 field_82728_o,anvil,1,
 field_82729_p,fallingBlock,1,
@@ -7292,15 +7799,42 @@ field_82852_f,outputSlot,1,Here comes out item you merged and/or renamed.
 field_82853_g,inputSlots,1,The 2slots where you put your items in that you want to merge and/or rename.
 field_82854_e,maximumCost,1,The maximum cost of repairing/renaming in the anvil.
 field_82855_n,thePlayer,1,The player that has this container open.
+field_82856_l,stackSizeToBeUsedInRepair,1,determined by damage of input item and stackSize of repair materials
+field_82857_m,repairedItemName,1,
 field_82860_h,theWorld,1,
 field_82862_h,thePlayer,1,
 field_82864_f,beaconSlot,1,"This beacon's slot where you put in Emerald, Diamond, Gold or Iron Ingot."
 field_82866_e,theBeacon,1,
+field_82871_d,blockPosZ,1,
 field_82872_e,anvil,1,The anvil this slot belongs to.
+field_82873_b,blockPosX,1,
+field_82874_c,blockPosY,1,
 field_82875_a,theWorld,1,
 field_82876_a,beacon,1,The beacon this slot belongs to.
 field_82915_S,theWorldGenerator,1,
+field_83001_bt,invulnerable,1,
 field_83004_a,theCrashReport,1,
 field_83016_L,theCalendar,1,
+field_85037_d,aiArrowAttack,1,
+field_85038_e,aiAttackOnCollide,1,
+field_85053_h,throwerName,1,
+field_85075_d,stackTrace,1,
+field_85109_a,worldInfoInstance,1,
+field_85111_a,worldInfoInstance,1,
+field_85113_a,worldInfoInstance,1,
+field_85115_a,worldInfoInstance,1,
+field_85135_a,worldInfoInstance,1,
+field_85137_a,worldInfoInstance,1,
+field_85139_a,worldInfoInstance,1,
+field_85141_a,worldInfoInstance,1,
+field_85143_a,worldInfoInstance,1,
 field_85180_cf,recordWait,1,
+field_85192_a,worldServerInstance,1,
 field_90044_b,records,1,List of all record items and their names.
+field_92009_j,explosionStrength,1,The explosion radius of spawned fireballs.
+field_92010_b,lifetime,1,The lifetime of the firework in ticks. When the age reaches the lifetime the firework explodes.
+field_92011_a,fireworkAge,1,The age of the firework in ticks.
+field_92017_j,spawnedMob,1,
+field_92052_bU,firework,1,
+field_92053_bW,enchantedBook,1,
+field_92054_bV,fireworkCharge,1,
