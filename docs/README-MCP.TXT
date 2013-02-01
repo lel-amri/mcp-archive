@@ -1,4 +1,4 @@
-Minecraft Coder Pack 7.30 for Minecraft 13w02b
+Minecraft Coder Pack 7.34 for Minecraft 13w05b
 ==============================================
 MCP is (c) Copyright by the MCP Team
 
@@ -215,6 +215,7 @@ and of course:
 
 History:
 ========
+7.34 - Updated to support Minecraft 13w05b and MinecraftServer 13w05b (snapshot)
 7.30 - Updated to support Minecraft 13w02b and MinecraftServer 13w02b (snapshot)
 7.26 - Updated to support Minecraft 1.4.7 and MinecraftServer 1.4.7
 7.25 - Updated to support Minecraft 1.4.6 and MinecraftServer 1.4.6
@@ -269,7 +270,7 @@ History:
 
 Roadmap:
 ========
-7.31+ - New awesome features, improvements and updates :)
+7.35+ - New awesome features, improvements and updates :)
 
 _________________________________________________________________________________________________________________
 _________________________________________________________________________________________________________________
