@@ -1,5 +1,5 @@
-Minecraft Coder Pack 7.34 for Minecraft 13w05b
-==============================================
+Mod Coder Pack 7.39 for Minecraft 13w09c
+========================================
 MCP is (c) Copyright by the MCP Team
 
 License and terms of use.
@@ -215,6 +215,7 @@ and of course:
 
 History:
 ========
+7.39 - Updated to support Minecraft 13w09c and MinecraftServer 13w09c (snapshot)
 7.34 - Updated to support Minecraft 13w05b and MinecraftServer 13w05b (snapshot)
 7.30 - Updated to support Minecraft 13w02b and MinecraftServer 13w02b (snapshot)
 7.26 - Updated to support Minecraft 1.4.7 and MinecraftServer 1.4.7
@@ -270,7 +271,7 @@ History:
 
 Roadmap:
 ========
-7.35+ - New awesome features, improvements and updates :)
+7.40+ - New awesome features, improvements and updates :)
 
 _________________________________________________________________________________________________________________
 _________________________________________________________________________________________________________________

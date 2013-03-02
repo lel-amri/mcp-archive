@@ -1,4 +1,4 @@
-MCP - Minecraft Coder Pack
+MCP - Mod Coder Pack
 MCP is (c) Copyright by the MCP Team
 
 License and terms of use.

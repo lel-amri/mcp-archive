@@ -143,7 +143,7 @@ def csv_header(csvfile):
 class Commands(object):
     """Contains the commands and initialisation for a full mcp run"""
 
-    MCPVersion = '7.34'
+    MCPVersion = '7.39'
     _default_config = 'conf/mcp.cfg'
     _version_config = 'conf/version.cfg'
 

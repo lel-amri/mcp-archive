@@ -328,7 +328,7 @@ field_70716_bi,newPosRotationIncrements,0,The number of updates over which the n
 field_70717_bb,attackingPlayer,0,The most recent player that has attacked this entity
 field_70718_bc,recentlyHit,0,"Set to 60 when hit by the player or the player's wolf, then decrements. Used to determine whether the entity should drop items on death."
 field_70720_be,arrowHitTimer,0,
-field_70721_aZ,legYaw,0,
+field_70721_aZ,limbYaw,0,
 field_70722_aY,prevLegYaw,0,
 field_70723_bA,senses,0,
 field_70724_aR,attackTime,0,
@@ -353,7 +353,7 @@ field_70749_g,lookHelper,0,
 field_70750_az,texture,0,the path for the texture of this entityLiving
 field_70751_d,lastAttackingEntity,0,
 field_70752_e,potionsNeedUpdate,0,Whether the DataWatcher needs to be updated with the active potions
-field_70754_ba,legSwing,0,Only relevant when legYaw is not 0(the entity is moving). Influences where in its swing legs and arms currently are.
+field_70754_ba,limbSwing,0,Only relevant when legYaw is not 0(the entity is moving). Influences where in its swing legs and arms currently are.
 field_70755_b,entityLivingToAttack,0,"is only being set, has no uses as of MC 1.1"
 field_70756_c,revengeTimer,0,
 field_70757_a,livingSoundTime,0,Number of ticks since this EntityLiving last produced its sound
@@ -919,7 +919,7 @@ field_71964_f,soundGravelFootstep,0,
 field_71965_g,soundGrassFootstep,0,
 field_71966_d,soundPowderFootstep,0,
 field_71967_e,soundWoodFootstep,0,
-field_71968_b,blockName,0,
+field_71968_b,unlocalizedName,0,The unlocalized name of this block.
 field_71969_a,displayOnCreativeTab,0,"used as foreach item, if item.tab = current tab, display it on the screen"
 field_71970_n,opaqueCubeLookup,0,An array of 4096 booleans corresponding to the result of the isOpaqueCube() method for each block ID
 field_71971_o,lightOpacity,0,How much light is subtracted for going through this block
@@ -1002,8 +1002,8 @@ field_72047_aN,oreRedstone,0,
 field_72048_aO,oreRedstoneGlowing,0,
 field_72049_aP,torchRedstoneIdle,0,
 field_72050_aA,tilledField,0,
-field_72051_aB,stoneOvenIdle,0,
-field_72052_aC,stoneOvenActive,0,
+field_72051_aB,furnaceIdle,0,
+field_72052_aC,furnaceBurning,0,
 field_72053_aD,signPost,0,
 field_72054_aE,doorWood,0,
 field_72055_aF,ladder,0,
@@ -1073,6 +1073,7 @@ field_72142_a,woodType,0,The type of tree this log came from.
 field_72152_a,woodType,0,The type of tree this block came from.
 field_72155_a,silverfishStoneTypes,0,Block names that can be a silverfish stone.
 field_72157_b,modelBlock,0,The block that is used as model for the stair.
+field_72158_c,modelBlockMetadata,0,
 field_72163_b,canDropItself,0,"If this field is true, the pane block drops itself when destroyed (like the iron fences), otherwise, it's just destroyed (like glass panes)"
 field_72164_a,sideTextureIndex,0,Holds the texture index of the side of the pane (the thin lateral side)
 field_72166_a,powered,0,Whether this lamp block is the powered version.
@@ -1151,7 +1152,7 @@ field_72411_j,whiteListedPlayers,0,The Set of all whitelisted players.
 field_72412_k,playerNBTManagerObj,0,Reference to the PlayerNBTManager object.
 field_72413_h,bannedIPs,0,
 field_72414_i,ops,0,A set containing the OPs.
-field_72416_e,tagsForLastWrittenPlayer,0,
+field_72416_e,hostPlayerData,0,"Holds the NBT data for the host player's save file, so this can be written to level.dat."
 field_72422_f,whiteList,0,
 field_72423_e,opsList,0,
 field_72428_a,server,0,
@@ -1389,7 +1390,7 @@ field_73130_b,blocksDistanceThreshold,0,
 field_73131_c,updateFrequency,0,check for sync when ticks % updateFrequency==0
 field_73132_a,trackedEntity,0,The entity that this EntityTrackerEntry tracks.
 field_73133_n,playerEntitiesUpdated,0,
-field_73134_o,trackedPlayers,0,
+field_73134_o,trackingPlayers,0,Holds references to all the players that are currently receiving position updates for this entity.
 field_73135_l,motionZ,0,
 field_73136_m,ticks,0,
 field_73137_j,motionX,0,
@@ -1852,7 +1853,7 @@ field_73883_a,selectedButton,0,The button that was just pressed.
 field_73884_l,guiParticles,0,
 field_73885_j,allowUserInput,0,
 field_73886_k,fontRenderer,0,The FontRenderer used by GuiScreen
-field_73887_h,controlList,0,A list of all the controls added to this container.
+field_73887_h,buttonList,0,A list of all the buttons in this container.
 field_73888_d,theChatOptions,0,
 field_73889_b,theGuiScreen,0,Instance of GuiScreen.
 field_73890_c,theSettings,0,Instance of GameSettings file.
@@ -1942,6 +1943,7 @@ field_74035_s,addClicked,0,The 'Add server' button was clicked
 field_74036_r,deleteClicked,0,The 'Delete' button was clicked
 field_74037_q,buttonDelete,0,The 'Delete' button
 field_74038_p,buttonSelect,0,The 'Join Server' button
+field_74039_z,ticksOpened,0,How many ticks this Gui is already opened
 field_74040_y,localServerFindThread,0,
 field_74041_x,localNetworkServerList,0,
 field_74044_d,theGameSettings,0,For saving the user's language selection to disk.
@@ -1965,9 +1967,9 @@ field_74077_a,parentScreen,0,A reference to the screen object that created this.
 field_74078_n,saveList,0,The save list for the world selection screen
 field_74079_o,worldSlotContainer,0,
 field_74080_m,selectedWorld,0,the currently selected world
-field_74081_v,buttonDelete,0,the delete button in the world selection gui
+field_74081_v,buttonRename,0,The rename button in the world selection GUI
 field_74082_u,buttonSelect,0,the select button in the world selection gui
-field_74083_t,buttonRename,0,the rename button in the world selection gui
+field_74083_t,buttonDelete,0,The delete button in the world selection GUI
 field_74084_s,deleting,0,set to true if you arein the process of deleteing a world/save
 field_74085_r,localizedGameModeText,0,The game mode text that is displayed with each world on the world selection list.
 field_74086_q,localizedMustConvertText,0,
@@ -3142,7 +3144,7 @@ field_76638_b,precipitationHeightMap,0,"A map, similar to heightMap, that tracks
 field_76639_c,updateSkylightColumns,0,Which columns need their skylightMaps updated.
 field_76640_a,isLit,0,Determines if the chunk is lit or not at a light value greater than 0.
 field_76641_n,lastSaveTime,0,The time according to World.worldTime when this chunk was last saved
-field_76642_o,deferRender,0,
+field_76642_o,sendUpdates,0,"Updates to this chunk will not be sent to clients if this is false. This field is set to true the first time the chunk is sent to a client, and never set to false."
 field_76643_l,isModified,0,Set to true if the chunk has been modified and needs to be updated internally.
 field_76644_m,hasEntities,0,Whether this Chunk has any Entities and thus requires saving on every tick
 field_76645_j,entityLists,0,Array of Lists containing the entities in this Chunk. Each List represents a 16 block subchunk.
@@ -3677,7 +3679,7 @@ field_77770_aF,leather,0,
 field_77771_aG,bucketMilk,0,
 field_77772_aH,brick,0,
 field_77773_az,minecartEmpty,0,
-field_77774_bZ,itemName,0,full name of item from language file
+field_77774_bZ,unlocalizedName,0,The unlocalized name of this item.
 field_77775_ay,bucketLava,0,
 field_77776_ba,bed,0,
 field_77777_bU,maxStackSize,0,Maximum size of the stack.
@@ -3764,7 +3766,7 @@ field_77881_a,armorType,0,"Stores the armor type: 0 is helmet, 1 is plate, 2 is 
 field_77882_bY,maxDamageArray,0,Holds the 'base' maxDamage that each armorType have.
 field_77885_a,blockID,0,The block ID of the Block associated with this ItemBlock
 field_77889_b,theHalfSlab,0,Instance of BlockHalfSlab.
-field_77890_c,theHalfSlab2,0,Instance of BlockHalfSlab.
+field_77890_c,doubleSlab,0,The double-slab block corresponding to this item.
 field_77891_a,isFullBlock,0,
 field_77895_b,blockNames,0,
 field_77896_a,blockRef,0,
@@ -4381,6 +4383,7 @@ field_82122_c,extraType,0,"Extra data for this skull, used as player username by
 field_82123_a,skullType,0,Entity type for this skull.
 field_82133_f,primaryEffect,0,Primary potion effect given by this beacon.
 field_82134_g,secondaryEffect,0,Secondary potion effect given by this beacon.
+field_82135_d,isBeaconActive,0,
 field_82136_e,levels,0,Level of this beacon's pyramid.
 field_82139_a,effectsList,0,List of effects that Beacon can apply
 field_82140_h,payment,0,Item given to this beacon as payment.
@@ -4427,6 +4430,7 @@ field_82283_n,heightLabel,0,
 field_82284_o,createFlatWorldListSlotGui,0,
 field_82285_m,layerMaterialLabel,0,
 field_82289_B,buttonCustomize,0,GuiButton in the more world options screen.
+field_82290_a,generatorOptionsToUse,0,Generator options to use when creating the world.
 field_82301_b,presets,0,List of defined flat world presets.
 field_82302_c,createFlatWorldGui,0,
 field_82303_q,theTextField,0,
@@ -4434,6 +4438,7 @@ field_82304_p,theButton,0,
 field_82305_a,presetIconRenderer,0,RenderItem instance used to render preset icons.
 field_82307_o,theFlatPresetsListSlot,0,
 field_82310_a,mcServer,0,Reference to the MinecraftServer object.
+field_82316_w,buttonRecreate,0,
 field_82317_b,commandBlock,0,Command block being edited.
 field_82318_a,commandTextField,0,Text field containing the command block's command.
 field_82320_o,theSlot,0,
@@ -4516,11 +4521,14 @@ field_82577_x,theGameRules,0,
 field_82578_b,NBTTypes,0,
 field_82584_b,theNBTTagCompound,0,
 field_82587_b,theNBTTagCompound,0,
-field_82592_a,vec3dPool,0,
+field_82592_a,fakePool,0,A global Vec3Pool that always creates new vectors instead of reusing them and is thread-safe.
 field_82596_a,registryObjects,0,Objects registered on this registry.
 field_82597_b,defaultObject,0,"Default object for this registry, returned when an object is not found."
+field_82603_g,order_a,0,Face order for D-U-N-S-E-W.
+field_82609_l,faceList,0,List of all values in EnumFacing. Order is D-U-N-S-E-W.
 field_82611_j,frontOffsetY,0,
 field_82612_k,frontOffsetZ,0,
+field_82613_h,order_b,0,Face order for U-D-S-N-W-E.
 field_82614_i,frontOffsetX,0,
 field_82624_d,zPos,0,
 field_82625_b,xPos,0,
@@ -4537,6 +4545,7 @@ field_82639_c,currentSpeed,0,
 field_82640_a,thisEntity,0,
 field_82641_b,rangedAttackEntityHost,0,The entity (as a RangedAttackMob) the AI instance has been applied to.
 field_82653_b,worldFeatures,0,List of world features enabled on this preset.
+field_82654_c,biomeToUse,0,
 field_82655_a,flatLayers,0,List of layers on this preset.
 field_82661_d,layerMinimumY,0,
 field_82662_b,layerFillBlock,0,Block type used on this set of layers.
@@ -4627,6 +4636,7 @@ field_82896_a,skeletonHead,0,
 field_82909_b,presetName,0,Name for this preset.
 field_82910_c,presetData,0,Data for this preset.
 field_82911_a,iconId,0,ID for the item used as icon for this preset.
+field_82914_M,spawnableCaveCreatureList,0,
 field_82915_S,theWorldGenerator,0,
 field_83001_bt,invulnerable,0,
 field_83004_a,theCrashReport,0,
@@ -4667,14 +4677,20 @@ field_92010_b,lifetime,0,The lifetime of the firework in ticks. When the age rea
 field_92011_a,fireworkAge,0,The age of the firework in ticks.
 field_92014_j,explosionStrength,0,The explosion radius of spawned fireballs.
 field_92017_j,spawnedMob,0,
+field_92039_az,fireworkExplosions,0,
 field_92052_bU,firework,0,
 field_92053_bW,enchantedBook,0,
 field_92054_bV,fireworkCharge,0,
 field_92055_b,lifetime,0,The lifetime of the firework in ticks. When the age reaches the lifetime the firework explodes.
 field_92056_a,fireworkAge,0,The age of the firework in ticks.
+field_92061_d,isChristmas,0,"If true, chests will be rendered with the Christmas present textures."
+field_92086_a,isBlank,0,When isBlank is true the DataWatcher is not watching any objects
 field_92104_bU,firework,0,
 field_92105_bW,enchantedBook,0,
 field_92106_bV,fireworkCharge,0,
+field_92117_D,heldItemTooltips,0,
+field_92118_B,overrideWidth,0,
+field_92119_C,overrideHeight,0,
 field_70009_b,buffer,1,RCon string buffer for log
 field_70010_a,consoleBuffer,1,only ever used by MinecraftServer.executeCommand
 field_70116_cv,serverPosZ,1,
@@ -5004,7 +5020,7 @@ field_70716_bi,newPosRotationIncrements,1,The number of updates over which the n
 field_70717_bb,attackingPlayer,1,The most recent player that has attacked this entity
 field_70718_bc,recentlyHit,1,"Set to 60 when hit by the player or the player's wolf, then decrements. Used to determine whether the entity should drop items on death."
 field_70720_be,arrowHitTimer,1,
-field_70721_aZ,legYaw,1,
+field_70721_aZ,limbYaw,1,
 field_70722_aY,prevLegYaw,1,
 field_70723_bA,senses,1,
 field_70724_aR,attackTime,1,
@@ -5029,7 +5045,7 @@ field_70749_g,lookHelper,1,
 field_70750_az,texture,1,the path for the texture of this entityLiving
 field_70751_d,lastAttackingEntity,1,
 field_70752_e,potionsNeedUpdate,1,Whether the DataWatcher needs to be updated with the active potions
-field_70754_ba,legSwing,1,Only relevant when legYaw is not 0(the entity is moving). Influences where in its swing legs and arms currently are.
+field_70754_ba,limbSwing,1,Only relevant when legYaw is not 0(the entity is moving). Influences where in its swing legs and arms currently are.
 field_70755_b,entityLivingToAttack,1,"is only being set, has no uses as of MC 1.1"
 field_70756_c,revengeTimer,1,
 field_70757_a,livingSoundTime,1,Number of ticks since this EntityLiving last produced its sound
@@ -5595,7 +5611,7 @@ field_71964_f,soundGravelFootstep,1,
 field_71965_g,soundGrassFootstep,1,
 field_71966_d,soundPowderFootstep,1,
 field_71967_e,soundWoodFootstep,1,
-field_71968_b,blockName,1,
+field_71968_b,unlocalizedName,1,The unlocalized name of this block.
 field_71969_a,displayOnCreativeTab,1,"used as foreach item, if item.tab = current tab, display it on the screen"
 field_71970_n,opaqueCubeLookup,1,An array of 4096 booleans corresponding to the result of the isOpaqueCube() method for each block ID
 field_71971_o,lightOpacity,1,How much light is subtracted for going through this block
@@ -5678,8 +5694,8 @@ field_72047_aN,oreRedstone,1,
 field_72048_aO,oreRedstoneGlowing,1,
 field_72049_aP,torchRedstoneIdle,1,
 field_72050_aA,tilledField,1,
-field_72051_aB,stoneOvenIdle,1,
-field_72052_aC,stoneOvenActive,1,
+field_72051_aB,furnaceIdle,1,
+field_72052_aC,furnaceBurning,1,
 field_72053_aD,signPost,1,
 field_72054_aE,doorWood,1,
 field_72055_aF,ladder,1,
@@ -5749,6 +5765,7 @@ field_72142_a,woodType,1,The type of tree this log came from.
 field_72152_a,woodType,1,The type of tree this block came from.
 field_72155_a,silverfishStoneTypes,1,Block names that can be a silverfish stone.
 field_72157_b,modelBlock,1,The block that is used as model for the stair.
+field_72158_c,modelBlockMetadata,1,
 field_72163_b,canDropItself,1,"If this field is true, the pane block drops itself when destroyed (like the iron fences), otherwise, it's just destroyed (like glass panes)"
 field_72164_a,sideTextureIndex,1,Holds the texture index of the side of the pane (the thin lateral side)
 field_72166_a,powered,1,Whether this lamp block is the powered version.
@@ -5827,7 +5844,7 @@ field_72411_j,whiteListedPlayers,1,The Set of all whitelisted players.
 field_72412_k,playerNBTManagerObj,1,Reference to the PlayerNBTManager object.
 field_72413_h,bannedIPs,1,
 field_72414_i,ops,1,A set containing the OPs.
-field_72416_e,tagsForLastWrittenPlayer,1,
+field_72416_e,hostPlayerData,1,"Holds the NBT data for the host player's save file, so this can be written to level.dat."
 field_72422_f,whiteList,1,
 field_72423_e,opsList,1,
 field_72428_a,server,1,
@@ -6065,7 +6082,7 @@ field_73130_b,blocksDistanceThreshold,1,
 field_73131_c,updateFrequency,1,check for sync when ticks % updateFrequency==0
 field_73132_a,trackedEntity,1,The entity that this EntityTrackerEntry tracks.
 field_73133_n,playerEntitiesUpdated,1,
-field_73134_o,trackedPlayers,1,
+field_73134_o,trackingPlayers,1,Holds references to all the players that are currently receiving position updates for this entity.
 field_73135_l,motionZ,1,
 field_73136_m,ticks,1,
 field_73137_j,motionX,1,
@@ -6528,7 +6545,7 @@ field_73883_a,selectedButton,1,The button that was just pressed.
 field_73884_l,guiParticles,1,
 field_73885_j,allowUserInput,1,
 field_73886_k,fontRenderer,1,The FontRenderer used by GuiScreen
-field_73887_h,controlList,1,A list of all the controls added to this container.
+field_73887_h,buttonList,1,A list of all the buttons in this container.
 field_73888_d,theChatOptions,1,
 field_73889_b,theGuiScreen,1,Instance of GuiScreen.
 field_73890_c,theSettings,1,Instance of GameSettings file.
@@ -6618,6 +6635,7 @@ field_74035_s,addClicked,1,The 'Add server' button was clicked
 field_74036_r,deleteClicked,1,The 'Delete' button was clicked
 field_74037_q,buttonDelete,1,The 'Delete' button
 field_74038_p,buttonSelect,1,The 'Join Server' button
+field_74039_z,ticksOpened,1,How many ticks this Gui is already opened
 field_74040_y,localServerFindThread,1,
 field_74041_x,localNetworkServerList,1,
 field_74044_d,theGameSettings,1,For saving the user's language selection to disk.
@@ -6641,9 +6659,9 @@ field_74077_a,parentScreen,1,A reference to the screen object that created this.
 field_74078_n,saveList,1,The save list for the world selection screen
 field_74079_o,worldSlotContainer,1,
 field_74080_m,selectedWorld,1,the currently selected world
-field_74081_v,buttonDelete,1,the delete button in the world selection gui
+field_74081_v,buttonRename,1,The rename button in the world selection GUI
 field_74082_u,buttonSelect,1,the select button in the world selection gui
-field_74083_t,buttonRename,1,the rename button in the world selection gui
+field_74083_t,buttonDelete,1,The delete button in the world selection GUI
 field_74084_s,deleting,1,set to true if you arein the process of deleteing a world/save
 field_74085_r,localizedGameModeText,1,The game mode text that is displayed with each world on the world selection list.
 field_74086_q,localizedMustConvertText,1,
@@ -7818,7 +7836,7 @@ field_76638_b,precipitationHeightMap,1,"A map, similar to heightMap, that tracks
 field_76639_c,updateSkylightColumns,1,Which columns need their skylightMaps updated.
 field_76640_a,isLit,1,Determines if the chunk is lit or not at a light value greater than 0.
 field_76641_n,lastSaveTime,1,The time according to World.worldTime when this chunk was last saved
-field_76642_o,deferRender,1,
+field_76642_o,sendUpdates,1,"Updates to this chunk will not be sent to clients if this is false. This field is set to true the first time the chunk is sent to a client, and never set to false."
 field_76643_l,isModified,1,Set to true if the chunk has been modified and needs to be updated internally.
 field_76644_m,hasEntities,1,Whether this Chunk has any Entities and thus requires saving on every tick
 field_76645_j,entityLists,1,Array of Lists containing the entities in this Chunk. Each List represents a 16 block subchunk.
@@ -8353,7 +8371,7 @@ field_77770_aF,leather,1,
 field_77771_aG,bucketMilk,1,
 field_77772_aH,brick,1,
 field_77773_az,minecartEmpty,1,
-field_77774_bZ,itemName,1,full name of item from language file
+field_77774_bZ,unlocalizedName,1,The unlocalized name of this item.
 field_77775_ay,bucketLava,1,
 field_77776_ba,bed,1,
 field_77777_bU,maxStackSize,1,Maximum size of the stack.
@@ -8440,7 +8458,7 @@ field_77881_a,armorType,1,"Stores the armor type: 0 is helmet, 1 is plate, 2 is 
 field_77882_bY,maxDamageArray,1,Holds the 'base' maxDamage that each armorType have.
 field_77885_a,blockID,1,The block ID of the Block associated with this ItemBlock
 field_77889_b,theHalfSlab,1,Instance of BlockHalfSlab.
-field_77890_c,theHalfSlab2,1,Instance of BlockHalfSlab.
+field_77890_c,doubleSlab,1,The double-slab block corresponding to this item.
 field_77891_a,isFullBlock,1,
 field_77895_b,blockNames,1,
 field_77896_a,blockRef,1,
@@ -9057,6 +9075,7 @@ field_82122_c,extraType,1,"Extra data for this skull, used as player username by
 field_82123_a,skullType,1,Entity type for this skull.
 field_82133_f,primaryEffect,1,Primary potion effect given by this beacon.
 field_82134_g,secondaryEffect,1,Secondary potion effect given by this beacon.
+field_82135_d,isBeaconActive,1,
 field_82136_e,levels,1,Level of this beacon's pyramid.
 field_82139_a,effectsList,1,List of effects that Beacon can apply
 field_82140_h,payment,1,Item given to this beacon as payment.
@@ -9103,6 +9122,7 @@ field_82283_n,heightLabel,1,
 field_82284_o,createFlatWorldListSlotGui,1,
 field_82285_m,layerMaterialLabel,1,
 field_82289_B,buttonCustomize,1,GuiButton in the more world options screen.
+field_82290_a,generatorOptionsToUse,1,Generator options to use when creating the world.
 field_82301_b,presets,1,List of defined flat world presets.
 field_82302_c,createFlatWorldGui,1,
 field_82303_q,theTextField,1,
@@ -9110,6 +9130,7 @@ field_82304_p,theButton,1,
 field_82305_a,presetIconRenderer,1,RenderItem instance used to render preset icons.
 field_82307_o,theFlatPresetsListSlot,1,
 field_82310_a,mcServer,1,Reference to the MinecraftServer object.
+field_82316_w,buttonRecreate,1,
 field_82317_b,commandBlock,1,Command block being edited.
 field_82318_a,commandTextField,1,Text field containing the command block's command.
 field_82320_o,theSlot,1,
@@ -9192,11 +9213,14 @@ field_82577_x,theGameRules,1,
 field_82578_b,NBTTypes,1,
 field_82584_b,theNBTTagCompound,1,
 field_82587_b,theNBTTagCompound,1,
-field_82592_a,vec3dPool,1,
+field_82592_a,fakePool,1,A global Vec3Pool that always creates new vectors instead of reusing them and is thread-safe.
 field_82596_a,registryObjects,1,Objects registered on this registry.
 field_82597_b,defaultObject,1,"Default object for this registry, returned when an object is not found."
+field_82603_g,order_a,1,Face order for D-U-N-S-E-W.
+field_82609_l,faceList,1,List of all values in EnumFacing. Order is D-U-N-S-E-W.
 field_82611_j,frontOffsetY,1,
 field_82612_k,frontOffsetZ,1,
+field_82613_h,order_b,1,Face order for U-D-S-N-W-E.
 field_82614_i,frontOffsetX,1,
 field_82624_d,zPos,1,
 field_82625_b,xPos,1,
@@ -9213,6 +9237,7 @@ field_82639_c,currentSpeed,1,
 field_82640_a,thisEntity,1,
 field_82641_b,rangedAttackEntityHost,1,The entity (as a RangedAttackMob) the AI instance has been applied to.
 field_82653_b,worldFeatures,1,List of world features enabled on this preset.
+field_82654_c,biomeToUse,1,
 field_82655_a,flatLayers,1,List of layers on this preset.
 field_82661_d,layerMinimumY,1,
 field_82662_b,layerFillBlock,1,Block type used on this set of layers.
@@ -9303,6 +9328,7 @@ field_82896_a,skeletonHead,1,
 field_82909_b,presetName,1,Name for this preset.
 field_82910_c,presetData,1,Data for this preset.
 field_82911_a,iconId,1,ID for the item used as icon for this preset.
+field_82914_M,spawnableCaveCreatureList,1,
 field_82915_S,theWorldGenerator,1,
 field_83001_bt,invulnerable,1,
 field_83004_a,theCrashReport,1,
@@ -9343,11 +9369,17 @@ field_92010_b,lifetime,1,The lifetime of the firework in ticks. When the age rea
 field_92011_a,fireworkAge,1,The age of the firework in ticks.
 field_92014_j,explosionStrength,1,The explosion radius of spawned fireballs.
 field_92017_j,spawnedMob,1,
+field_92039_az,fireworkExplosions,1,
 field_92052_bU,firework,1,
 field_92053_bW,enchantedBook,1,
 field_92054_bV,fireworkCharge,1,
 field_92055_b,lifetime,1,The lifetime of the firework in ticks. When the age reaches the lifetime the firework explodes.
 field_92056_a,fireworkAge,1,The age of the firework in ticks.
+field_92061_d,isChristmas,1,"If true, chests will be rendered with the Christmas present textures."
+field_92086_a,isBlank,1,When isBlank is true the DataWatcher is not watching any objects
 field_92104_bU,firework,1,
 field_92105_bW,enchantedBook,1,
 field_92106_bV,fireworkCharge,1,
+field_92117_D,heldItemTooltips,1,
+field_92118_B,overrideWidth,1,
+field_92119_C,overrideHeight,1,
