@@ -143,7 +143,7 @@ def csv_header(csvfile):
 class Commands(object):
     """Contains the commands and initialisation for a full mcp run"""
 
-    MCPVersion = '7.39'
+    MCPVersion = '7.42'
     _default_config = 'conf/mcp.cfg'
     _version_config = 'conf/version.cfg'
 
@@ -449,6 +449,8 @@ class Commands(object):
         self.deobsrgserver = os.path.normpath(config.get('SRGS', 'DeobfServer'))
         self.reobsrgclient = os.path.normpath(config.get('SRGS', 'ReobfClient'))
         self.reobsrgserver = os.path.normpath(config.get('SRGS', 'ReobfServer'))
+        self.reobsrgclientsrg = os.path.normpath(config.get('SRGS', 'ReobfClientSrg'))
+        self.reobsrgserversrg = os.path.normpath(config.get('SRGS', 'ReobfServerSrg'))
 
         # do we have full srg files
         self.has_srg = False
@@ -585,7 +587,7 @@ class Commands(object):
         if os.path.isfile(self.astyleconf):
             self.has_astyle_cfg = True
 
-    def creatergcfg(self, reobf=False, keep_lvt=False, keep_generics=False, rg_update=False):
+    def creatergcfg(self, reobf=False, keep_lvt=False, keep_generics=False, rg_update=False, srg_names=False):
         """Create the files necessary for RetroGuard"""
         if reobf:
             rgconfig_file = self.rgreobconfig
@@ -628,7 +630,10 @@ class Commands(object):
                 rgout.write('%s = %s\n' % ('script', self.rgconfig))
                 rgout.write('%s = %s\n' % ('log', self.rgclientlog))
             rgout.write('%s = %s\n' % ('deob', self.srgsclient))
-            rgout.write('%s = %s\n' % ('reob', self.reobsrgclient))
+            if srg_names:
+                rgout.write('%s = %s\n' % ('reob', self.reobsrgclientsrg))
+            else:
+                rgout.write('%s = %s\n' % ('reob', self.reobsrgclient))
             rgout.write('%s = %s\n' % ('nplog', self.rgclientdeoblog))
             rgout.write('%s = %s\n' % ('rolog', self.clientreoblog))
             rgout.write('%s = %s\n' % ('verbose', '0'))
@@ -655,7 +660,10 @@ class Commands(object):
                 rgout.write('%s = %s\n' % ('script', self.rgconfig))
                 rgout.write('%s = %s\n' % ('log', self.rgserverlog))
             rgout.write('%s = %s\n' % ('deob', self.srgsserver))
-            rgout.write('%s = %s\n' % ('reob', self.reobsrgserver))
+            if srg_names:
+                rgout.write('%s = %s\n' % ('reob', self.reobsrgserversrg))
+            else:
+                rgout.write('%s = %s\n' % ('reob', self.reobsrgserver))
             rgout.write('%s = %s\n' % ('nplog', self.rgserverdeoblog))
             rgout.write('%s = %s\n' % ('rolog', self.serverreoblog))
             rgout.write('%s = %s\n' % ('verbose', '0'))
@@ -1486,12 +1494,15 @@ class Commands(object):
                         bin_file = os.path.join(path, class_file)
                         zipjar.write(bin_file, class_name)
 
-    def unpackreobfclasses(self, side, reobf_all=False):
+    def unpackreobfclasses(self, side, reobf_all=False, srg_names=False):
         jarlk = {CLIENT: self.reobfjarclient, SERVER: self.reobfjarserver}
         md5lk = {CLIENT: self.md5client, SERVER: self.md5server}
         md5reoblk = {CLIENT: self.md5reobfclient, SERVER: self.md5reobfserver}
         outpathlk = {CLIENT: self.dirreobfclt, SERVER: self.dirreobfsrv}
-        srglk = {CLIENT: self.srgsclient, SERVER: self.srgsserver}
+        if srg_names:
+            srglk = {CLIENT: self.reobsrgclientsrg, SERVER: self.reobsrgserversrg}
+        else:
+            srglk = {CLIENT: self.srgsclient, SERVER: self.srgsserver}
 
         # HINT: We need a table for the old md5 and the new ones
         md5table = {}
@@ -1656,3 +1667,50 @@ class Commands(object):
                 except IOError:
                     self.logger.error('* File %s copy failed', in_class)
 
+    def createreobfsrg(self):
+        targsrg = {CLIENT: self.reobsrgclientsrg, SERVER: self.reobsrgserversrg}
+        deobsrg = {CLIENT: self.deobsrgclient, SERVER: self.deobsrgserver}
+        reobsrg = {CLIENT: self.reobsrgclient, SERVER: self.reobsrgserver}
+        
+        for side in [CLIENT, SERVER]:
+            if not os.path.isfile(reobsrg[side]):
+                continue
+            deob = self.loadsrg(deobsrg[side], reverse=True)
+            reob = self.loadsrg(reobsrg[side], reverse=False)
+            out = {'CL:': {}, 'MD:': {}, 'FD:': {}, 'PK:': {}}
+            
+            for type,de in deob.items():
+                re = reob[type]
+                out[type] = dict([[k,re[v]] for k,v in de.items()])
+            
+            if os.path.isfile(targsrg[side]):
+                os.remove(targsrg[side])
+            
+            with open(targsrg[side], 'wb') as fh:
+                for type in ['PK:', 'CL:', 'FD:', 'MD:']:
+                    for k in sorted(out[type], key=out[type].get):
+                        fh.write('%s %s %s\n' % (type, k, out[type][k]))
+    
+    def loadsrg(self, srg_file, reverse=False):
+        with open(srg_file, 'r') as fh:
+            lines = fh.readlines()
+        srg = {'CL:': {}, 'MD:': {}, 'FD:': {}, 'PK:': {}}
+        
+        for line in lines:
+            line = line.strip()
+            if len(line) == 0: continue
+            if line[0] == '#': continue
+            args = line.split(' ')
+            type = args[0]
+            
+            if type == 'PK:' or type == 'CL:' or type == 'FD:':
+                srg[type][args[1]] = args[2]
+            elif type == 'MD:':
+                srg[type][args[1] + ' ' + args[2]] = args[3] + ' ' + args[4]
+            else:
+                assert 'Unknown type %s' % line
+
+        if reverse:
+            for type,map in srg.items():
+                srg[type] = dict([[v,k] for k,v in map.items()])
+        return srg

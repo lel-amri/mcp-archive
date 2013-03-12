@@ -1,5 +1,5 @@
-Mod Coder Pack 7.39 for Minecraft 13w09c
-========================================
+Mod Coder Pack 7.42 for Minecraft 1.5
+=====================================
 MCP is (c) Copyright by the MCP Team
 
 License and terms of use.
@@ -215,6 +215,7 @@ and of course:
 
 History:
 ========
+7.42 - Updated to support Minecraft 1.5 and MinecraftServer 1.5
 7.39 - Updated to support Minecraft 13w09c and MinecraftServer 13w09c (snapshot)
 7.34 - Updated to support Minecraft 13w05b and MinecraftServer 13w05b (snapshot)
 7.30 - Updated to support Minecraft 13w02b and MinecraftServer 13w02b (snapshot)
