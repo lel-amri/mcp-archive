@@ -1,5 +1,5 @@
-Mod Coder Pack 7.42 for Minecraft 1.5
-=====================================
+Mod Coder Pack 7.44 for Minecraft 1.5.1
+=======================================
 MCP is (c) Copyright by the MCP Team
 
 License and terms of use.
@@ -215,6 +215,7 @@ and of course:
 
 History:
 ========
+7.44 - Updated to support Minecraft 1.5.1 and MinecraftServer 1.5.1
 7.42 - Updated to support Minecraft 1.5 and MinecraftServer 1.5
 7.39 - Updated to support Minecraft 13w09c and MinecraftServer 13w09c (snapshot)
 7.34 - Updated to support Minecraft 13w05b and MinecraftServer 13w05b (snapshot)
@@ -272,7 +273,7 @@ History:
 
 Roadmap:
 ========
-7.40+ - New awesome features, improvements and updates :)
+7.45+ - New awesome features, improvements and updates :)
 
 _________________________________________________________________________________________________________________
 _________________________________________________________________________________________________________________
