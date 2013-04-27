@@ -143,7 +143,7 @@ def csv_header(csvfile):
 class Commands(object):
     """Contains the commands and initialisation for a full mcp run"""
 
-    MCPVersion = '7.44'
+    MCPVersion = '7.51'
     _default_config = 'conf/mcp.cfg'
     _version_config = 'conf/version.cfg'
 
@@ -631,6 +631,7 @@ class Commands(object):
                 rgout.write('%s = %s\n' % ('log', self.rgclientlog))
             rgout.write('%s = %s\n' % ('deob', self.srgsclient))
             if srg_names:
+                rgout.write('%s = %s\n' % ('identifier', 'RGMCPSRG'))
                 rgout.write('%s = %s\n' % ('reob', self.reobsrgclientsrg))
             else:
                 rgout.write('%s = %s\n' % ('reob', self.reobsrgclient))
@@ -662,6 +663,7 @@ class Commands(object):
             rgout.write('%s = %s\n' % ('deob', self.srgsserver))
             if srg_names:
                 rgout.write('%s = %s\n' % ('reob', self.reobsrgserversrg))
+                rgout.write('%s = %s\n' % ('identifier', 'RGMCPSRG'))
             else:
                 rgout.write('%s = %s\n' % ('reob', self.reobsrgserver))
             rgout.write('%s = %s\n' % ('nplog', self.rgserverdeoblog))
