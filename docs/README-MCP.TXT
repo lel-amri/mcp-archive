@@ -1,4 +1,4 @@
-Mod Coder Pack 7.44 for Minecraft 1.5.1
+Mod Coder Pack 8.02 for Minecraft 1.6.1
 =======================================
 MCP is (c) Copyright by the MCP Team
 
@@ -42,8 +42,9 @@ Note: MCP versions 4.4 and higher should also work properly with JDK 1.7
 How to use:
 ===========
 1) Prepare the files:
-- Copy the "minecraft_server.jar" file into the "jars" folder.
-- Copy the folders "bin" and "resources" from your "%APPDATA$\.minecraft" folder into the "jars" folder.
+- Copy the "minecraft_server.1.6.1.jar" file into the "jars" folder.
+- Either copy the folders "assets", "libraries" and "versions" from "%APPDATA$\.minecraft" folder into the "jars" folder or let the decompile scripts do it automatically for you.
+- No need to copy the folders "bin" and "resources" from your "%APPDATA$\.minecraft" folder into the "jars" folder anymore - in fact, it does not work that way anymore.
 
 2) Decompilation and patching
 - Start the "decompile.bat" script in this folder.
@@ -153,8 +154,11 @@ Cryect
 * Created the awesome AdventureCraft mod
 LexManos
 * Helped Fesh0r to update MCP for Minecraft 1.0.0/1.0.1
+* Helped to update the scripts and mappings for the new structure introduced by Minecraft 1.6.x
 Mysterio N
 * Created the getmodsource scripts
+CPW
+* Helped to update the scripts and mappings for the new structure introduced by Minecraft 1.6.x
 
 == Former Contributors ==
 Generic
@@ -215,6 +219,8 @@ and of course:
 
 History:
 ========
+8.02 - Updated to support Minecraft 1.6.1 and MinecraftServer 1.6.1
+7.51 - Updated to support Minecraft 1.5.2 and MinecraftServer 1.5.2
 7.44 - Updated to support Minecraft 1.5.1 and MinecraftServer 1.5.1
 7.42 - Updated to support Minecraft 1.5 and MinecraftServer 1.5
 7.39 - Updated to support Minecraft 13w09c and MinecraftServer 13w09c (snapshot)
@@ -273,7 +279,7 @@ History:
 
 Roadmap:
 ========
-7.45+ - New awesome features, improvements and updates :)
+8.03+ - New awesome features, improvements and updates :)
 
 _________________________________________________________________________________________________________________
 _________________________________________________________________________________________________________________

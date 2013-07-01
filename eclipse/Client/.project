@@ -21,6 +21,11 @@
 			<locationURI>MCP_LOC/jars</locationURI>
 		</link>
 		<link>
+			<name>lib</name>
+			<type>2</type>
+			<locationURI>MCP_LOC/lib</locationURI>
+		</link>
+		<link>
 			<name>src</name>
 			<type>2</type>
 			<locationURI>MCP_LOC/src/minecraft</locationURI>
@@ -28,12 +33,21 @@
 	</linkedResources>
 	<filteredResources>
 		<filter>
-			<id>1307293455427</id>
+			<id>1372623752673</id>
 			<name>jars</name>
-			<type>13</type>
+			<type>9</type>
 			<matcher>
-				<id>org.eclipse.ui.ide.multiFilter</id>
-				<arguments>1.0-name-matches-false-false-bin</arguments>
+				<id>org.eclipse.ui.ide.orFilterMatcher</id>
+				<arguments>
+					<matcher>
+						<id>org.eclipse.ui.ide.multiFilter</id>
+						<arguments>1.0-name-matches-false-false-versions</arguments>
+					</matcher>
+					<matcher>
+						<id>org.eclipse.ui.ide.multiFilter</id>
+						<arguments>1.0-name-matches-false-false-libraries</arguments>
+					</matcher>
+				</arguments>
 			</matcher>
 		</filter>
 		<filter>
