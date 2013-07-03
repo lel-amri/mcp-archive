@@ -143,7 +143,7 @@ def csv_header(csvfile):
 class Commands(object):
     """Contains the commands and initialisation for a full mcp run"""
 
-    MCPVersion = '8.01'
+    MCPVersion = '8.03'
     _default_config = 'conf/mcp.cfg'
     _version_config = 'conf/version.cfg'
 
@@ -544,7 +544,7 @@ class Commands(object):
         osKeyword = MinecraftDiscovery.getNativesKeyword()
 
         if workdir == None:
-            if MinecraftDiscovery.checkCacheIntegrity(self.dirjars, self.jsonFile, osKeyword):
+            if MinecraftDiscovery.checkCacheIntegrity(self.dirjars, self.jsonFile, osKeyword, self.versionClient):
                 mcDir = self.dirjars
             else:
                 mcDir = MinecraftDiscovery.getMinecraftPath()
@@ -639,13 +639,13 @@ class Commands(object):
         self.binserver = os.path.normpath(config.get('RECOMPILE', 'BinServer'))
         self.clientrecomplog = os.path.normpath(config.get('RECOMPILE', 'LogClient'))
         self.serverrecomplog = os.path.normpath(config.get('RECOMPILE', 'LogServer'))
-        #cpathclient = config.get('RECOMPILE', 'ClassPathClient').split(',')
-#       %(DirJars)s/bin/minecraft.jar,%(DirJars)s/bin/jinput.jar,%(DirJars)s/bin/lwjgl.jar,%(DirJars)s/bin/lwjgl_util.jar
-        
+
+        configpathclient = config.get('RECOMPILE', 'ClassPathClient').split(',')        
         cpathclient = []
         cpathclient.append(os.path.join(self.dirjars,"versions", self.versionClient, "%s.jar"%self.versionClient))
         cpathclient.append(self.dirlib + '/')
         cpathclient.append(os.path.join(self.dirlib,'*'))
+        cpathclient.extend(configpathclient)
 
         for library in mcLibraries.values():
             cpathclient.append(os.path.join(self.dirjars,library['filename']))
@@ -653,10 +653,12 @@ class Commands(object):
         self.cpathclient = [os.path.normpath(p) for p in cpathclient]
         self.fixesclient = os.path.normpath(config.get('RECOMPILE', 'ClientFixes'))
 
+        configpathserver = config.get('RECOMPILE', 'ClassPathServer').split(',')        
         cpathserver = []
         cpathserver.append(self.dirlib + '/')
         cpathserver.append(os.path.join(self.dirlib,'*'))
         cpathserver.append(self.jarserver)
+        configpathserver.extend(configpathserver)
         self.cpathserver = [os.path.normpath(p) for p in cpathserver]
 
         if config.has_option('RECOMPILE', 'FixSound'):
@@ -845,6 +847,8 @@ class Commands(object):
                     results.append('')
                 except (CalledProcessError, OSError):
                     pass
+            if not results:
+                results.extend(whereis('javac.exe', os.getenv("JAVA_HOME")))
             if not results and 'ProgramW6432' in os.environ:
                 results.extend(whereis('javac.exe', os.environ['ProgramW6432']))
             if not results and 'ProgramFiles' in os.environ:
@@ -858,6 +862,8 @@ class Commands(object):
                     results.append('')
                 except (CalledProcessError, OSError):
                     pass
+            if not results:
+                results.extend(whereis('javac', os.getenv("JAVA_HOME")))
             if not results:
                 results.extend(whereis('javac', '/usr/bin'))
             if not results:
@@ -1330,21 +1336,21 @@ class Commands(object):
             self.logger.error('')
             raise
 
-    def startserver(self):
+    def startserver(self, mainclass, extraargs):
         classpath = [self.binserver] + self.cpathserver
         classpath = [os.path.join('..', p) for p in classpath]
         classpath = os.pathsep.join(classpath)
         os.chdir(self.dirjars)
-        forkcmd = self.cmdstartsrv.format(classpath=classpath)
+        forkcmd = self.cmdstartsrv.format(classpath=classpath, mainclass=mainclass, extraargs=extraargs)
         self.runmc(forkcmd)
 
-    def startclient(self):
-        classpath = [self.binclient] + self.cpathclient
+    def startclient(self, mainclass, extraargs):
+        classpath = [self.binclient, self.srcclient] + self.cpathclient
         classpath = [os.path.join('..', p) for p in classpath]
         classpath = os.pathsep.join(classpath)
         natives = os.path.join('..', self.dirnatives)
         os.chdir(self.dirjars)
-        forkcmd = self.cmdstartclt.format(classpath=classpath, natives=natives)
+        forkcmd = self.cmdstartclt.format(classpath=classpath, natives=natives, mainclass=mainclass, extraargs=extraargs)
         self.runmc(forkcmd)
 
     def runcmd(self, forkcmd, quiet=False, check_return=True, log_file=None):

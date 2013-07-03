@@ -1,17 +1,14 @@
 import os, sys
 import json
+import zipfile
 
 def getMinecraftPath():
-    winDir       = "~/AppData/Roaming/.minecraft"
-    posixDir     = "~/.minecraft"
-    macDir       = "~/.minecraft"
-    
     if   sys.platform.startswith('linux'):
-        return os.path.expanduser(posixDir)
+        return os.path.expanduser("~/.minecraft")
     elif sys.platform.startswith('win'):
-        return os.path.expanduser(winDir)
+        return os.path.join(os.getenv("APPDATA"), ".minecraft")
     elif sys.platform.startswith('darwin'):
-        return os.path.expanduser(macDir)
+        return os.path.expanduser("~/Library/Application Support/minecraft")
     else:
         print "Cannot detect of version : %s. Please report to your closest sysadmin"%sys.platform
         sys.exit()
@@ -39,18 +36,69 @@ def checkMCDir(src, version):
 def getJSONFilename(src, version):
     return os.path.join(os.path.join(src, "versions"), version, "%s.json"%version)
 
-def checkCacheIntegrity(src, jsonfile, osKeyword):
-    libraries = getLibraries(src, jsonfile, osKeyword)
+def checkCacheIntegrity(root, jsonfile, osKeyword, version):
+    libraries = getLibraries(root, jsonfile, osKeyword)
 
     if libraries == None:
         return False
 
     for library in libraries.values():
-        if not os.path.exists(os.path.join(src, library['filename'])):
+        if not checkLibraryExists(root, library):
             return False
+
+    if not checkMinecraftExists(root, version):
+        return False
+
+    natives = getNatives(root, libraries)
+
+    for native in natives.keys():
+        if not checkNativeExists(root, native, version):
+            return False
+
     return True
 
-def getLibraries(src, jsonfile, osKeyword):
+def checkLibraryExists(dst, library):
+    if os.path.exists(os.path.join(dst, library['filename'])):
+        return True
+    else:
+        return False
+
+def checkMinecraftExists(root, version):
+    if os.path.exists(os.path.join(root, "versions", version, '%s.jar'%version)) and \
+       os.path.exists(os.path.join(root, "versions", version, '%s.json'%version)):
+        return True
+    else:
+        return False
+
+def checkNativeExists(root, native, version):
+    nativePath = getNativePath(root, version)
+    if (os.path.exists(os.path.join(nativePath, native))):
+        return True
+    else:
+        return False
+
+def getNatives(root, libraries):
+    nativeList = {}
+    for library in libraries.values():
+        if library['extract']:
+
+            srcPath = os.path.join(root, library['filename'])
+            jarFile = zipfile.ZipFile(srcPath)
+            fileList = jarFile.namelist()
+
+            for _file in fileList:
+                exclude = False;
+                for entry in library['exclude']:
+                    if entry in _file:
+                        exclude = True
+                if not exclude:
+                    nativeList[_file] = library['filename']
+    return nativeList
+
+def getNativePath(root, version):
+    return os.path.join(root, "versions", version, "%s-natives"%version)
+
+def getLibraries(root, jsonfile, osKeyword):
     #We check the json exits
     if not os.path.exists(jsonfile):
         return None
@@ -87,7 +135,7 @@ def getLibraries(src, jsonfile, osKeyword):
             if 'exclude' in library['extract']:
                 exclude.extend(library['extract']['exclude'])
     
-        libFullPath  = os.path.join(os.path.join(src, "libraries"), libPath, libSubdir, libVersion, libFilename)
+        libFullPath  = os.path.join(os.path.join(root, "libraries"), libPath, libSubdir, libVersion, libFilename)
         libRelativePath = os.path.join("libraries", libPath, libSubdir, libVersion, libFilename)
     
         #if not os.path.exists(libFullPath):
@@ -97,3 +145,16 @@ def getLibraries(src, jsonfile, osKeyword):
         outLibraries[libSubdir] = {'name':library['name'], 'filename':libRelativePath, 'extract':extract, 'exclude':exclude}
 
     return outLibraries
+
+
+if __name__ == '__main__':
+    osKeyword = getNativesKeyword()
+    mcDir     = getMinecraftPath()
+    mcLibraries = getLibraries(mcDir, getJSONFilename(mcDir, "1.6.1"), osKeyword)
+    mcNatives = getNatives(mcDir, mcLibraries)
+
+    for native in mcNatives.keys():
+        if checkNativeExists("./jars", native, "1.6.1"):
+            print 'Found %s %s'%(native, mcNatives[native])
+        else:
+            print 'Not found %s %s'%(native, mcNatives[native])
