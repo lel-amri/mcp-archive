@@ -143,7 +143,7 @@ def csv_header(csvfile):
 class Commands(object):
     """Contains the commands and initialisation for a full mcp run"""
 
-    MCPVersion = '8.03'
+    MCPVersion = '8.04'
     _default_config = 'conf/mcp.cfg'
     _version_config = 'conf/version.cfg'
 
@@ -645,7 +645,8 @@ class Commands(object):
         cpathclient.append(os.path.join(self.dirjars,"versions", self.versionClient, "%s.jar"%self.versionClient))
         cpathclient.append(self.dirlib + '/')
         cpathclient.append(os.path.join(self.dirlib,'*'))
-        cpathclient.extend(configpathclient)
+        if not len(configpathclient) == 1 or not configpathclient[0] == '':
+            cpathclient.extend(configpathclient)
 
         for library in mcLibraries.values():
             cpathclient.append(os.path.join(self.dirjars,library['filename']))
@@ -847,7 +848,7 @@ class Commands(object):
                     results.append('')
                 except (CalledProcessError, OSError):
                     pass
-            if not results:
+            if not results and os.getenv("JAVA_HOME") != None:
                 results.extend(whereis('javac.exe', os.getenv("JAVA_HOME")))
             if not results and 'ProgramW6432' in os.environ:
                 results.extend(whereis('javac.exe', os.environ['ProgramW6432']))
@@ -862,7 +863,7 @@ class Commands(object):
                     results.append('')
                 except (CalledProcessError, OSError):
                     pass
-            if not results:
+            if not results and os.getenv("JAVA_HOME") != None:
                 results.extend(whereis('javac', os.getenv("JAVA_HOME")))
             if not results:
                 results.extend(whereis('javac', '/usr/bin'))
