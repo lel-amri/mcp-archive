@@ -1,0 +1,4 @@
+repo: 08e6ebf86bea57ebccda61befa1a17ca23f3c006
+node: 1614dadce76a624e2741ac2ee3eac002e5fd66b7
+branch: default
+tag: mcp 8.04
