@@ -125,9 +125,11 @@ def cmdsplit(args):
     return shlex.split(args)
 
 
+#def truncate(text, length):
+#    if len(text) > length:
+#        return text[:length] + '...'
+#    return text
 def truncate(text, length):
-    if len(text) > length:
-        return text[:length] + '...'
     return text
 
 
