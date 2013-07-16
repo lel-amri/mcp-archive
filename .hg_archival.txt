@@ -1,6 +1,0 @@
-repo: 08e6ebf86bea57ebccda61befa1a17ca23f3c006
-node: f44f0dae68ccf2bfa5681b4b51eabb8b4cbb155c
-branch: default
-latesttag: mcp 8.04
-latesttagdistance: 3
-changessincelatesttag: 3
