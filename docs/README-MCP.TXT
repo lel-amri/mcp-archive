@@ -1,4 +1,4 @@
-Mod Coder Pack 8.02 for Minecraft 1.6.1
+Mod Coder Pack 8.11 for Minecraft 1.6.4
 =======================================
 MCP is (c) Copyright by the MCP Team
 
@@ -219,6 +219,9 @@ and of course:
 
 History:
 ========
+8.11 - Updated to support Minecraft 1.6.4 and MinecraftServer 1.6.4
+8.09 - Updated to support Minecraft 1.6.3 and MinecraftServer 1.6.3
+8.04 - Updated to support Minecraft 1.6.2 and MinecraftServer 1.6.2
 8.02 - Updated to support Minecraft 1.6.1 and MinecraftServer 1.6.1
 7.51 - Updated to support Minecraft 1.5.2 and MinecraftServer 1.5.2
 7.44 - Updated to support Minecraft 1.5.1 and MinecraftServer 1.5.1
