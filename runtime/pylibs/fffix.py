@@ -17,6 +17,10 @@ from optparse import OptionParser
 _MODIFIERS = r'public|protected|private|static|abstract|final|native|synchronized|transient|volatile|strictfp'
 
 _REGEXP = {
+    # Remove synthetic bouncer methods
+    'synthetic': re.compile(r'(\s*// \$FF: (synthetic|bridge) method\n){1,2}\s*(?P<modifiers>(?:(?:' + _MODIFIERS + r') )*)(?P<return>.+?) (?P<method>.+?)\((?P<arguments>.*)\)\s*\{\n\s*return this\.(?P<method2>.+?)\((?P<arguments2>.*)\);\n\s*\}', re.MULTILINE),
+    'typecast': re.compile(r'\([\w\.]+\)'),
+    
     # Remove trailing whitespace
     'trailing': re.compile(r'[ \t]+$', re.MULTILINE),
 
@@ -132,6 +136,32 @@ def _process_file(src_file):
     with open(src_file, 'r') as fh:
         buf = fh.read()
 
+    def synthetic_match(match):
+        #This is designed to remove all the synthetic/bridge methods that the compiler will just generate again
+        #First off this only works on methods that bounce to methods that are named exactly alike.
+        if not match.group('method') == match.group('method2'):
+            return match.group(0)
+         
+        #Next, we normalize the arugment list, if the lists are the same then it's a simple bounce method.
+        #MC's code strips generic information so the compiler doesn't know to regen typecast methods
+        #Uncomment the two lines below if we ever inject generic info
+        arg1 = match.group('arguments')
+        arg2 = match.group('arguments2')
+        #arg1 = _REGEXP['typecast'].sub(r'', match.group('arguments'))
+        #arg2 = _REGEXP['typecast'].sub(r'', match.group('arguments2'))
+        
+        if arg1 == arg2 and arg1 == '':
+            return ''
+        
+        args = ', '.join([v.split(' ')[1] for v in match.group('arguments').split(', ')])
+        
+        if args == arg2:
+            return ''
+        
+        return match.group(0)
+    
+    buf = _REGEXP['synthetic'].sub(synthetic_match, buf)
+    
     buf = _REGEXP['trailing'].sub(r'', buf)
 
     def enum_match(match):

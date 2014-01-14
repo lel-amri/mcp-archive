@@ -145,7 +145,7 @@ def csv_header(csvfile):
 class Commands(object):
     """Contains the commands and initialisation for a full mcp run"""
 
-    MCPVersion = '8.09'
+    MCPVersion = '9.03'
     _default_config = 'conf/mcp.cfg'
     _version_config = 'conf/version.cfg'
 
@@ -389,6 +389,7 @@ class Commands(object):
         self.cmdjadretro = self.config.get('COMMANDS', 'CmdJadretro', raw=1) % (self.cmdjava, self.jadretro)
         self.cmdfernflower = self.config.get('COMMANDS', 'CmdFernflower', raw=1) % (self.cmdjava, self.fernflower)
         self.cmdexceptor = self.config.get('COMMANDS', 'CmdExceptor', raw=1) % (self.cmdjava, self.exceptor)
+        self.cmdexceptordry = self.config.get('COMMANDS', 'CmdExceptorDry', raw=1) % (self.cmdjava, self.exceptor)
         self.cmdrecomp = self.config.get('COMMANDS', 'CmdRecomp', raw=1) % self.cmdjavac
         if self.cmdscalac is None:
             self.cmdrecompscala = None
@@ -498,6 +499,8 @@ class Commands(object):
         self.reobsrgserver = os.path.normpath(config.get('SRGS', 'ReobfServer'))
         self.reobsrgclientsrg = os.path.normpath(config.get('SRGS', 'ReobfClientSrg'))
         self.reobsrgserversrg = os.path.normpath(config.get('SRGS', 'ReobfServerSrg'))
+        self.reobsrgclientcls = os.path.normpath(config.get('SRGS', 'ReobfClientCls'))
+        self.reobsrgservercls = os.path.normpath(config.get('SRGS', 'ReobfServerCls'))
 
         self.mcplogfile = os.path.normpath(config.get('MCP', 'LogFile'))
         self.mcperrlogfile = os.path.normpath(config.get('MCP', 'LogFileErr'))
@@ -587,12 +590,16 @@ class Commands(object):
         self.nullpkg = config.get('RETROGUARD', 'NullPkg')
 
         # HINT: We read keys relevant to exceptor
+        self.xclientjson = os.path.normpath(config.get('EXCEPTOR', 'XClientJson'))
+        self.xserverjson = os.path.normpath(config.get('EXCEPTOR', 'XServerJson'))
         self.xclientconf = os.path.normpath(config.get('EXCEPTOR', 'XClientCfg'))
         self.xserverconf = os.path.normpath(config.get('EXCEPTOR', 'XServerCfg'))
         self.xclientout = os.path.normpath(config.get('EXCEPTOR', 'XClientOut'))
         self.xserverout = os.path.normpath(config.get('EXCEPTOR', 'XServerOut'))
         self.xclientlog = os.path.normpath(config.get('EXCEPTOR', 'XClientLog'))
         self.xserverlog = os.path.normpath(config.get('EXCEPTOR', 'XServerLog'))
+        self.xclientlogdry = os.path.normpath(config.get('EXCEPTOR', 'XClientLogReobf'))
+        self.xserverlogdry = os.path.normpath(config.get('EXCEPTOR', 'XServerLogReobf'))
 
         # do we have the exc files
         self.has_exc = False
@@ -630,8 +637,9 @@ class Commands(object):
         if os.path.isfile(self.patchclient) and os.path.isfile(self.patchserver):
             self.has_jad_patch = True
         self.has_ff_patch = False
-        if os.path.isfile(self.ffpatchclient) and os.path.isfile(self.ffpatchserver):
-            self.has_ff_patch = True
+        if os.path.isdir(self.ffpatchclient) or os.path.isfile(self.ffpatchclient):
+            if os.path.isdir(self.ffpatchserver) or os.path.isfile(self.ffpatchserver):
+                self.has_ff_patch = True
         self.has_osx_patch = False
         if os.path.isfile(self.patchclient_osx) and os.path.isfile(self.patchserver_osx):
             self.has_osx_patch = True
@@ -1135,6 +1143,106 @@ class Commands(object):
             self.logger.error('')
             raise
 
+    def load_srg_arrays(self, file):
+        if  not os.path.isfile(file):
+            return None
+        srg_types = {'PK:': ['', ''], 'CL:': ['', ''], 'FD:': ['', ''], 'MD:': ['', '', '', '']}
+        parsed_dict = {'PK': [], 'CL': [], 'FD': [], 'MD': []}
+
+        def get_parsed_line(keyword, buf):
+            return [value[1] for value in zip(srg_types[keyword], [i.strip() for i in buf])]
+
+        with open(file, 'r') as srg_file:
+            for buf in srg_file:
+                buf = buf.strip()
+                if  '#' in buf: buf = buf[:buf.find('#')]
+                if buf == '' or buf[0] == '#':
+                    continue
+                buf = buf.split()
+                parsed_dict[buf[0][:2]].append(get_parsed_line(buf[0], buf[1:]))
+        return parsed_dict
+    
+    def createclssrg(self, side):
+        reobsrg = {CLIENT: self.reobsrgclient, SERVER: self.reobsrgserver}
+        clssrg  = {CLIENT: self.reobsrgclientcls, SERVER: self.reobsrgservercls}
+        #exclog = {CLIENT: self.xclientlog, SERVER: self.xserverlog}
+        exclog = {CLIENT: self.xclientconf, SERVER: self.xserverconf}
+
+        renames = {}
+        log = [l.strip() for l in open(exclog[side], 'r').readlines()]
+
+        for line in log:
+            #if 'MarkerID' in line:
+            if '=CL_00' in line:
+                columns = line.split("=")
+                renames[columns[0]] = columns[1] + '_' # This is added here just to make sure our numbers don't run on to anything else
+        
+        srg = self.load_srg_arrays(reobsrg[side])
+        os.remove(reobsrg[side])
+        
+        fixed = {'PK': [], 'CL': [], 'FD': [], 'MD': []}
+        fixed['PK'] = [v for v in srg['PK']]
+        def rename(match):
+            return 'L' + renames.get(match.group(1), match.group(1)) + ';'        
+        for v in srg['CL']:
+            fixed['CL'].append([v[0], renames.get(v[1], v[1])])
+        for v in srg['FD']:
+            mcp = v[1].rsplit('/', 1)
+            fixed['FD'].append([v[0], renames.get(mcp[0], mcp[0]) + '/' + mcp[1]])        
+        reg = re.compile(r'L([^;]+);')
+        for v in srg['MD']:
+            mcp = v[2].rsplit('/', 1)
+            fixed['MD'].append([v[0], v[1], renames.get(mcp[0], mcp[0]) + '/' + mcp[1], reg.sub(rename, v[3])])
+
+        lines =  ['PK: %s' % ' '.join(v) for v in fixed['PK']]
+        lines += ['CL: %s' % ' '.join(v) for v in sorted(fixed['CL'], key=lambda x: x[0])]
+        lines += ['FD: %s' % ' '.join(v) for v in sorted(fixed['FD'], key=lambda x: x[0])]
+        lines += ['MD: %s' % ' '.join(v) for v in sorted(fixed['MD'], key=lambda x: x[0] + x[1])]
+        with closing(open(clssrg[side], 'w')) as f:
+            f.write('\n'.join(lines))
+
+    def creatergreobfsrg(self, side):
+        clssrg     = {CLIENT: self.reobsrgclientcls, SERVER: self.reobsrgservercls}
+        reobsrg    = {CLIENT: self.reobsrgclient,    SERVER: self.reobsrgserver}
+        excconf    = {CLIENT: self.xclientconf,       SERVER: self.xclientconf}
+        exclogdry  = {CLIENT: self.xclientlogdry,    SERVER: self.xserverlogdry}
+        
+        if not os.path.isfile(exclogdry[side]):
+            raise Exception('Exceptor Log not found: ' + exclogdry[side])
+
+        renames = {}
+        log = [l.strip() for l in open(exclogdry[side], 'r').readlines()]
+        for line in log:
+            if 'MarkerID' in line:
+                columns = line.split()
+                renames[columns[2] + '_'] = columns[3]
+
+        # Fix for interfaces. We check the original joined.exc for the missing tags in the translation table.
+        # We also ignore all the tags with bad behaviors (client/server asymetry)
+        ignoreList = ['net/minecraft/server/MinecraftServer',
+                      'net/minecraft/network/NetworkSystem',
+                      'net/minecraft/creativetab/CreativeTabs']
+
+        origtags = {}
+        log = [l.strip() for l in open(excconf[side], 'r').readlines()]
+        for line in log:
+            if '=CL' in line:
+                columns = line.split('=')
+                origtags[columns[1] + '_'] = columns[0]
+
+        for tag, name in origtags.items():
+            if not tag in renames.keys() and name.split('$')[0] not in ignoreList:
+                renames[tag] = name
+        # -- End of fix --
+        
+        
+        reg = re.compile(r'CL_[0-9]+_')
+        with closing(open(clssrg[side], 'r')) as input:
+            with closing(open(reobsrg[side], 'w')) as output:
+                def mapname(match):
+                    return renames.get(match.group(0), match.group(0))
+                output.write(reg.sub(mapname, input.read()))
+
     def filterffjar(self, side):
         """Filter the exc output jar to only the things that Fernflower should decompile"""
         excoutput = {CLIENT: self.xclientout, SERVER: self.xserverout}[side]
@@ -1179,17 +1287,24 @@ class Commands(object):
 
         os.remove(jarout)
         
-    def applyexceptor(self, side, exc_update=False):
+    def applyexceptor(self, side, exc_update=False, dryrun=False):
         """Apply exceptor to the given side"""
         excinput = {CLIENT: self.rgclientout, SERVER: self.rgserverout}
+        excinputdry = {CLIENT: self.cmpjarclient, SERVER: self.cmpjarserver}        
         excoutput = {CLIENT: self.xclientout, SERVER: self.xserverout}
         excconf = {CLIENT: self.xclientconf, SERVER: self.xserverconf}
         exclog = {CLIENT: self.xclientlog, SERVER: self.xserverlog}
+        exclogdry = {CLIENT: self.xclientlogdry, SERVER: self.xserverlogdry}        
+        json = {CLIENT: self.xclientjson, SERVER: self.xserverjson}
 
-        forkcmd = self.cmdexceptor.format(input=excinput[side], output=excoutput[side], conf=excconf[side],
-                                          log=exclog[side])
+        if not dryrun:
+            forkcmd = self.cmdexceptor.format(input=excinput[side], output=excoutput[side], conf=excconf[side],
+                                            log=exclog[side], json=json[side])
+        else:
+            forkcmd = self.cmdexceptordry.format(input=excinputdry[side], conf=excconf[side], log=exclogdry[side], json=json[side])
+
         if exc_update:
-            forkcmd += ' %s.exc %s' % (exclog[side], self.mcpparamindex)
+            forkcmd += ' --mapOut %s.exc --index %s' % (exclog[side], self.mcpparamindex)
         self.runcmd(forkcmd)
 
     def applyjadretro(self, side):
@@ -1234,6 +1349,49 @@ class Commands(object):
 
         fffix(pathsrclk[side])
 
+    def cmpclassmarkers(self, side):
+        exclog = {CLIENT: self.xclientlog, SERVER: self.xserverlog}
+        exclogdry = {CLIENT: self.xclientlogdry, SERVER: self.xserverlogdry}
+
+        decompDict = {}
+        reobfDict  = {}
+
+        ignoreErrorDict = {CLIENT: [
+                                    "net/minecraft/creativetab/CreativeTabs",
+                                    "net/minecraft/server/MinecraftServer$3",
+                                    "net/minecraft/server/MinecraftServer$4",
+                                    "net/minecraft/server/MinecraftServer$5",
+                                    "net/minecraft/server/MinecraftServer$6"],
+                      SERVER: ["net/minecraft/creativetab/CreativeTabs",
+                               "net/minecraft/network/NetworkSystem$3",
+                               "net/minecraft/network/NetworkSystem$4"
+                               ]}
+
+        decompLogData = open(exclog[side], 'r').readlines()
+        reobfLogData = open(exclogdry[side], 'r').readlines()
+
+        for line in decompLogData:
+            if "MarkerID" in line:
+                columns = line.strip().split()
+                decompDict[columns[3]] = columns[2]
+
+        for line in reobfLogData:
+            if "MarkerID" in line:
+                columns = line.strip().split()
+                reobfDict[columns[3]] = columns[2]
+
+        for key in decompDict:
+            if key in ignoreErrorDict[side] or key.split('$')[0] in ignoreErrorDict[side]:
+                pass
+
+            elif not key in reobfDict:
+                raise Error("Class not found prereobfuscation : %s"%key)
+            #    print "Class not found prereobfuscation : %s"%key
+            #elif decompDict[key] != reobfDict[key]:
+            #    print 'Error : %s %s %s'%(key, decompDict[key],reobfDict[key])
+            elif decompDict[key] != reobfDict[key]: # and not key in ignoreErrorDict[side]:
+                raise Error("Mismatched ano class index : %s %s %s"%(key, decompDict[key],reobfDict[key]))
+
     def applypatches(self, side, use_ff=False, use_osx=False):
         """Applies the patches to the src directory"""
         pathsrclk = {CLIENT: self.srcclient, SERVER: self.srcserver}
@@ -1257,6 +1415,10 @@ class Commands(object):
                 self.logger.error('!! Missing jad patches. Aborting !!')
                 sys.exit(1)
 
+        if os.path.isdir(patchlk[side]):
+            self.apply_patch_dir(patchlk[side], pathsrclk[side])
+            return
+        
         # HINT: Here we transform the patches to match the directory separator of the specific platform
         # also normalise lineendings to platform default to keep patch happy
         normalisepatch(patchlk[side], self.patchtemp)
@@ -1276,6 +1438,44 @@ class Commands(object):
                     self.logger.warning(line)
             self.logger.warning('==================')
             self.logger.warning('')
+            
+    def apply_patch_dir(self, patch_dir, target_dir):
+        from glob import glob
+        patches = {}
+        for f in glob(os.path.join(patch_dir, '*.patch')):
+            base = os.path.basename(f)
+            patches[base] = [f]
+            for e in glob(os.path.join(patch_dir, base + '.*')):
+                patches[base].append(e)
+        
+        def apply_patchlist(list):
+            forkcmd = None
+            for patch in list:
+                self.logger.debug('Attempting patch: ' + patch)
+                normalisepatch(patch, self.patchtemp)
+                patchfile = os.path.relpath(self.patchtemp, target_dir)
+                forkcmd = self.cmdpatch.format(srcdir=target_dir, patchfile=patchfile)
+                try:
+                    self.runcmd(forkcmd + ' --dry-run', quiet=True)
+                    break # if we get here the command ran without a hitch meaning all chunks applied properly
+                except CalledProcessError as ex:
+                    pass
+            
+            #Lets actually apply the last patch that was tried, either it applies fine or it was the last patch in the list either way we have no better choice
+            try:
+                self.runcmd(forkcmd)
+            except CalledProcessError as ex:
+                self.logger.warning('')
+                self.logger.warning('== ERRORS FOUND ==')
+                self.logger.warning('')
+                for line in ex.output.splitlines():
+                    if 'saving rejects' in line:
+                        self.logger.warning(line)
+                self.logger.warning('==================')
+                self.logger.warning('')
+                
+        for k,v in patches.items():
+            apply_patchlist(v)
 
     def recompile(self, side):
         """Recompile the sources and produce the final bins"""
@@ -1464,7 +1664,7 @@ class Commands(object):
     def process_rename(self, side):
         """Rename the sources using the CSV data"""
         pathsrclk = {CLIENT: self.srcclient, SERVER: self.srcserver}
-        reoblk = {CLIENT: self.reobsrgclient, SERVER: self.reobsrgserver}
+        reoblk = {CLIENT: self.reobsrgclientcls, SERVER: self.reobsrgservercls}
 
         if not self.has_name_csv:
             self.logger.warning('!! renaming disabled due to no csvs !!')
@@ -1797,17 +1997,41 @@ class Commands(object):
             if key in ignore_classes:
                 continue
             if key not in md5table:
-                trgclasses.append(key)
-                if '$' in key:
-                    self.logger.info('> New inner class found: %s', key)
-                else:
-                    self.logger.info('> New class found      : %s', key)
+
+                # We get the classname by splitting the path first than splitting on '$'
+                mainname = os.path.basename(key).split('$')[0]
+                
+                # We recheck all the key to see if their main class is equivalent. If it is, we append the class to the marked classes
+                for subkey in md5reobtable.keys():
+                    subclassname = os.path.basename(subkey).split('$')[0]
+                    if subclassname == mainname and not subkey in trgclasses:
+                        trgclasses.append(subkey)
+
             elif md5table[key] != md5reobtable[key]:
-                trgclasses.append(key)
-                self.logger.info('> Modified class found : %s', key)
+                
+                # We get the classname by splitting the path first than splitting on '$'
+                mainname = os.path.basename(key).split('$')[0]
+                
+                # We recheck all the key to see if their main class is equivalent. If it is, we append the class to the marked classes
+                for subkey in md5reobtable.keys():
+                    subclassname = os.path.basename(subkey).split('$')[0]
+                    if subclassname == mainname and not subkey in trgclasses:
+                        trgclasses.append(subkey)
+
             elif reobf_all:
                 trgclasses.append(key)
-                self.logger.info('> Unchanged class found: %s', key)
+                #self.logger.info('> Unchanged class found: %s', key)
+                
+        for key in trgclasses:
+            if '$' in key and not key in md5table:
+                self.logger.info('> New inner class found: %s', key)
+            elif '$' in key and key in md5table:
+                self.logger.info('> Modified inner class found: %s', key)
+            elif not '$' in key and not key in md5table:
+                self.logger.info('> New class found: %s', key)
+            elif not '$' in key and key in md5table:    
+                self.logger.info('> Modified class found      : %s', key)                           
+                
         classes = {}
         srg_data = parse_srg(srglk[side])
         for row in srg_data['CL']:
@@ -1929,14 +2153,34 @@ class Commands(object):
         trgclasses = []
         for key in md5reobtable.keys():
             if key not in md5table:
-                trgclasses.append(key)
-                if '$' in key:
-                    self.logger.info('> New inner class found: %s', key)
-                else:
-                    self.logger.info('> New class found      : %s', key)
+                # We get the classname by splitting the path first than splitting on '$'
+                mainname = os.path.basename(key).split('$')[0]
+                
+                # We recheck all the key to see if their main class is equivalent. If it is, we append the class to the marked classes
+                for subkey in md5reobtable.keys():
+                    subclassname = os.path.basename(subkey).split('$')[0]
+                    if subclassname == mainname and not subkey in trgclasses:
+                        trgclasses.append(subkey)
+                    
             elif md5table[key] != md5reobtable[key]:
-                trgclasses.append(key)
-                self.logger.info('> Modified class found : %s', key)
+                # We get the classname by splitting the path first than splitting on '$'
+                mainname = os.path.basename(key).split('$')[0]
+                
+                # We recheck all the key to see if their main class is equivalent. If it is, we append the class to the marked classes
+                for subkey in md5reobtable.keys():
+                    subclassname = os.path.basename(subkey).split('$')[0]
+                    if subclassname == mainname and not subkey in trgclasses:
+                        trgclasses.append(subkey)
+
+        for key in trgclasses:
+            if '$' in key and not key in md5table:
+                self.logger.info('> New inner class found: %s', key)
+            elif '$' in key and key in md5table:
+                self.logger.info('> Modified inner class found: %s', key)
+            elif not '$' in key and not key in md5table:
+                self.logger.info('> New class found: %s', key)
+            elif not '$' in key and key in md5table:    
+                self.logger.info('> Modified class found      : %s', key)                           
 
         if not os.path.exists(outpathlk[side]):
             os.makedirs(outpathlk[side])

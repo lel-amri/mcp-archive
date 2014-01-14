@@ -11,7 +11,7 @@ public class Start
         // start minecraft game application
         // --version is just used as 'launched version' in snoop data and is required
         // Working directory is used as gameDir if not provided
-        Main.main(concat(new String[]{"--version", "mcp"}, args));
+        Main.main(concat(new String[]{"--version", "mcp", "--accessToken", "0", "--assetsDir", "assets/virtual/legacy"}, args));
     }
     
     public static <T> T[] concat(T[] first, T[] second)

@@ -1,4 +1,4 @@
-Mod Coder Pack 8.11 for Minecraft 1.6.4
+Mod Coder Pack 9.03 for Minecraft 1.7.2
 =======================================
 MCP is (c) Copyright by the MCP Team
 
@@ -42,7 +42,7 @@ Note: MCP versions 4.4 and higher should also work properly with JDK 1.7
 How to use:
 ===========
 1) Prepare the files:
-- Copy the "minecraft_server.1.6.1.jar" file into the "jars" folder.
+- Copy the "minecraft_server.1.7.2.jar" file into the "jars" folder.
 - Either copy the folders "assets", "libraries" and "versions" from "%APPDATA$\.minecraft" folder into the "jars" folder or let the decompile scripts do it automatically for you.
 - No need to copy the folders "bin" and "resources" from your "%APPDATA$\.minecraft" folder into the "jars" folder anymore - in fact, it does not work that way anymore.
 
@@ -219,6 +219,7 @@ and of course:
 
 History:
 ========
+9.03 - Updated to support Minecraft 1.7.2 and MinecraftServer 1.7.2
 8.11 - Updated to support Minecraft 1.6.4 and MinecraftServer 1.6.4
 8.09 - Updated to support Minecraft 1.6.3 and MinecraftServer 1.6.3
 8.04 - Updated to support Minecraft 1.6.2 and MinecraftServer 1.6.2
@@ -282,7 +283,7 @@ History:
 
 Roadmap:
 ========
-8.03+ - New awesome features, improvements and updates :)
+9.04+ - New awesome features, improvements and updates :)
 
 _________________________________________________________________________________________________________________
 _________________________________________________________________________________________________________________

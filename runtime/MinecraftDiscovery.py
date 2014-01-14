@@ -141,7 +141,7 @@ def getLibraries(root, jsonfile, osKeyword):
                         else:
                             os_ver = platform.release()
 
-                        if not re.match(rule['os']['version'], os_ver):
+                        if 'version' in rule['os'] and not re.match(rule['os']['version'], os_ver):
                             ruleApplies = False
 
                 if ruleApplies:

@@ -24,13 +24,14 @@ def main():
     parser.add_option('-g', '--generics', dest='keep_generics', action='store_true',
                       help='preserve generics as well as local variables', default=False)
     parser.add_option('-c', '--config', dest='config', help='additional configuration file')
-    parser.add_option('--srgnames', dest='srg_names', action='store_true', help='Obfusicate to MCP unique names', default=False)
+    parser.add_option('--srgnames', dest='srg_names', action='store_true', help='Obfuscate to MCP unique names', default=False)
+    parser.add_option('--rg', dest='force_rg', action='store_true', help='force use of RetroGuard even if SpecialSource available', default=False)
     options, _ = parser.parse_args()
     reobfuscate(options.config, options.reobf_all, options.keep_lvt, options.keep_generics, options.only_client,
-                options.only_server, options.srg_names)
+                options.only_server, options.srg_names, options.force_rg)
 
 
-def reobfuscate(conffile, reobf_all, keep_lvt, keep_generics, only_client, only_server, srg_names):
+def reobfuscate(conffile, reobf_all, keep_lvt, keep_generics, only_client, only_server, srg_names, force_rg):
     try:
         commands = Commands(conffile, verify=True)
 
@@ -44,18 +45,14 @@ def reobfuscate(conffile, reobf_all, keep_lvt, keep_generics, only_client, only_
             process_server = False
         if only_server and not only_client:
             process_client = False
-
-        if srg_names:
-            commands.logger.info('> Creating Retroguard maping files')
-            commands.createreobfsrg()
             
         commands.logger.info('> Creating Retroguard config files')
         commands.creatergcfg(reobf=True, keep_lvt=keep_lvt, keep_generics=keep_generics, srg_names=srg_names)
         
         if process_client:
-            reobfuscate_side(commands, CLIENT, reobf_all=reobf_all, srg_names=srg_names)
+            reobfuscate_side(commands, CLIENT, reobf_all=reobf_all, srg_names=srg_names, force_rg=force_rg)
         if process_server:
-            reobfuscate_side(commands, SERVER, reobf_all=reobf_all, srg_names=srg_names)
+            reobfuscate_side(commands, SERVER, reobf_all=reobf_all, srg_names=srg_names, force_rg=force_rg)
     except Exception:  # pylint: disable-msg=W0703
         logging.exception('FATAL ERROR')
         sys.exit(1)

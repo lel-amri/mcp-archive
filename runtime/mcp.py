@@ -34,6 +34,8 @@ def decompile_side(commands, side, use_ff=False, use_srg=False, no_comments=Fals
         commands.applyss(side, keep_lvt=keep_lvt, keep_generics=keep_generics)
     commands.logger.info('> Applying MCInjector')
     commands.applyexceptor(side, exc_update=exc_update)
+    commands.logger.info('> Creating renamed srg')
+    commands.createclssrg(side)
     if use_ff:
         commands.logger.info('> Filtering classes')
         commands.filterffjar(side)
@@ -160,6 +162,17 @@ def reobfuscate_side(commands, side, reobf_all=False, srg_names=False, force_rg=
     commands.gathermd5s(side, True)
     commands.logger.info('> Packing jar')
     commands.packbin(side)
+    commands.logger.info('> Generating class markers')
+    commands.applyexceptor(side, dryrun=True)
+
+    commands.cmpclassmarkers(side)
+    # List gen by MCInjector should be done here
+    commands.logger.info('> Creating reobf mapping')
+    commands.creatergreobfsrg(side)
+    if srg_names:
+        commands.logger.info('> Creating srg maping')
+        commands.createreobfsrg()
+
     commands.logger.info('> Reobfuscating jar')
     if force_rg:
         commands.applyrg(side, True)
