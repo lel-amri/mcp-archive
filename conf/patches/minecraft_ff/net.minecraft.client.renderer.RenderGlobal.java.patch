@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\client\renderer\RenderGlobal.java minecraft_patched\net\minecraft\client\renderer\RenderGlobal.java
 --- minecraft\net\minecraft\client\renderer\RenderGlobal.java
 +++ minecraft_patched\net\minecraft\client\renderer\RenderGlobal.java
-@@ -1566,7 +1566,7 @@
+@@ -1574,7 +1574,7 @@
           double var15 = this.field_72777_q.field_71451_h.field_70165_t - p_72726_2_;
           double var17 = this.field_72777_q.field_71451_h.field_70163_u - p_72726_4_;
           double var19 = this.field_72777_q.field_71451_h.field_70161_v - p_72726_6_;

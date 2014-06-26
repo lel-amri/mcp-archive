@@ -154,7 +154,7 @@ def getLibraries(root, jsonfile, osKeyword):
                 continue
 
         if 'natives' in library:
-            libFilename = "%s-%s-%s.jar"%(libSubdir, libVersion, library['natives'][osKeyword])
+            libFilename = "%s-%s-%s.jar"%(libSubdir, libVersion, substitueString(library['natives'][osKeyword]))
         else:
             libFilename = "%s-%s.jar"%(libSubdir, libVersion)
 
@@ -173,6 +173,17 @@ def getLibraries(root, jsonfile, osKeyword):
         outLibraries[libSubdir] = {'name':library['name'], 'filename':libRelativePath, 'extract':extract, 'exclude':exclude}
 
     return outLibraries
+
+def getArch():
+    machine = platform.machine()
+    if os.name == 'nt' and sys.version_info[:2] < (2,7):
+        machine = os.environ.get("PROCESSOR_ARCHITEW6432", os.environ.get('PROCESSOR_ARCHITECTURE', ''))
+    machine2bits = {'AMD64': '64', 'x86_64': '64', 'i386': '32', 'x86': '32'}
+    return machine2bits.get(machine, None)
+
+def substitueString(str):
+    str = str.replace("${arch}", getArch())
+    return str
 
 
 if __name__ == '__main__':

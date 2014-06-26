@@ -1,4 +1,4 @@
-Mod Coder Pack 9.03 for Minecraft 1.7.2
+Mod Coder Pack 9.08 for Minecraft 1.7.10
 =======================================
 MCP is (c) Copyright by the MCP Team
 
@@ -42,7 +42,7 @@ Note: MCP versions 4.4 and higher should also work properly with JDK 1.7
 How to use:
 ===========
 1) Prepare the files:
-- Copy the "minecraft_server.1.7.2.jar" file into the "jars" folder.
+- Copy the "minecraft_server.1.7.10.jar" file into the "jars" folder.
 - Either copy the folders "assets", "libraries" and "versions" from "%APPDATA$\.minecraft" folder into the "jars" folder or let the decompile scripts do it automatically for you.
 - No need to copy the folders "bin" and "resources" from your "%APPDATA$\.minecraft" folder into the "jars" folder anymore - in fact, it does not work that way anymore.
 
@@ -140,6 +140,13 @@ ZeuX
 * Did server patches for the most recent versions - if you run into any (patch-related) problems, it's his fault :P
 * Created the famous Techne model editor for Minecraft
 * Contributes features to the new mod system
+LexManos
+* Helped Fesh0r to update MCP for Minecraft 1.0.0/1.0.1
+* Helped to update the scripts and mappings for the new structure introduced by Minecraft 1.6.x
+* Did a lot of the work required to update to Minecraft 1.7.10
+CPW
+* Helped to update the scripts and mappings for the new structure introduced by Minecraft 1.6.x
+* Did a lot of the work required to update to Minecraft 1.7.10
 303
 * Wiki contributor
 * Tries to help out newbies in the IRC channels
@@ -152,13 +159,8 @@ Mr_okushama
 Cryect
 * Contributed a lot of deobfuscation mappings
 * Created the awesome AdventureCraft mod
-LexManos
-* Helped Fesh0r to update MCP for Minecraft 1.0.0/1.0.1
-* Helped to update the scripts and mappings for the new structure introduced by Minecraft 1.6.x
 Mysterio N
 * Created the getmodsource scripts
-CPW
-* Helped to update the scripts and mappings for the new structure introduced by Minecraft 1.6.x
 
 == Former Contributors ==
 Generic
@@ -219,6 +221,7 @@ and of course:
 
 History:
 ========
+9.08 - Updated to support Minecraft 1.7.2 and MinecraftServer 1.7.10
 9.03 - Updated to support Minecraft 1.7.2 and MinecraftServer 1.7.2
 8.11 - Updated to support Minecraft 1.6.4 and MinecraftServer 1.6.4
 8.09 - Updated to support Minecraft 1.6.3 and MinecraftServer 1.6.3
@@ -283,7 +286,7 @@ History:
 
 Roadmap:
 ========
-9.04+ - New awesome features, improvements and updates :)
+9.09+ - New awesome features, improvements and updates :)
 
 _________________________________________________________________________________________________________________
 _________________________________________________________________________________________________________________

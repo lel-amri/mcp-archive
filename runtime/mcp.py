@@ -165,7 +165,7 @@ def reobfuscate_side(commands, side, reobf_all=False, srg_names=False, force_rg=
     commands.logger.info('> Generating class markers')
     commands.applyexceptor(side, dryrun=True)
 
-    commands.cmpclassmarkers(side)
+    #commands.cmpclassmarkers(side)
     # List gen by MCInjector should be done here
     commands.logger.info('> Creating reobf mapping')
     commands.creatergreobfsrg(side)

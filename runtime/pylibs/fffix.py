@@ -21,6 +21,9 @@ _REGEXP = {
     'synthetic': re.compile(r'(\s*// \$FF: (synthetic|bridge) method\n){1,2}\s*(?P<modifiers>(?:(?:' + _MODIFIERS + r') )*)(?P<return>.+?) (?P<method>.+?)\((?P<arguments>.*)\)\s*\{\n\s*return this\.(?P<method2>.+?)\((?P<arguments2>.*)\);\n\s*\}', re.MULTILINE),
     'typecast': re.compile(r'\([\w\.]+\)'),
     
+    # Cleanup the argument names on abstract methods
+    'abstract': re.compile(r'^(?P<indent>[ \t\f\v]*)(?P<modifiers>(?:(?:' + _MODIFIERS + r') )*)(?P<return>[^ ]+) (?P<method>func_(?P<number>\d+)_[a-zA-Z_]+)\((?P<arguments>([^ ,]+ var\d+,? ?)*)\)(?: throws (?:[\w$.]+,? ?)+)?;$', re.MULTILINE),
+    
     # Remove trailing whitespace
     'trailing': re.compile(r'[ \t]+$', re.MULTILINE),
 
@@ -135,7 +138,7 @@ def _process_file(src_file):
     tmp_file = src_file + '.tmp'
     with open(src_file, 'r') as fh:
         buf = fh.read()
-
+    
     def synthetic_match(match):
         #This is designed to remove all the synthetic/bridge methods that the compiler will just generate again
         #First off this only works on methods that bounce to methods that are named exactly alike.
@@ -182,6 +185,19 @@ def _process_file(src_file):
     buf = _REGEXP['trailingzero'].sub(r'\g<value>\g<type>', buf)
 
     buf = _REGEXP['newlines'].sub(r'\n', buf)
+    
+    def abstract_match(match):
+        from pprint import pprint
+        if match.group('arguments') is None or match.group('arguments') == '':
+            return match.group(0)
+        
+        args = ''
+        for arg in match.group('arguments').split(', '):
+            args += '%s p_%s_%s_, ' % (arg.split(' ')[0], match.group('number'), arg.split(' ')[1][3:])
+        args = args[:-2]
+        
+        return match.group(0).replace(match.group('arguments'), args)
+    buf = _REGEXP['abstract'].sub(abstract_match, buf)
 
     with open(tmp_file, 'w') as fh:
         fh.write(buf)

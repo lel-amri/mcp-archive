@@ -145,7 +145,7 @@ def csv_header(csvfile):
 class Commands(object):
     """Contains the commands and initialisation for a full mcp run"""
 
-    MCPVersion = '9.03'
+    MCPVersion = '9.04'
     _default_config = 'conf/mcp.cfg'
     _version_config = 'conf/version.cfg'
 
@@ -600,6 +600,8 @@ class Commands(object):
         self.xserverlog = os.path.normpath(config.get('EXCEPTOR', 'XServerLog'))
         self.xclientlogdry = os.path.normpath(config.get('EXCEPTOR', 'XClientLogReobf'))
         self.xserverlogdry = os.path.normpath(config.get('EXCEPTOR', 'XServerLogReobf'))
+        self.xclientmeta = os.path.normpath(config.get('EXCEPTOR', 'XClientMeta'))
+        self.xservermeta = os.path.normpath(config.get('EXCEPTOR', 'XServerMeta'))
 
         # do we have the exc files
         self.has_exc = False
@@ -696,7 +698,7 @@ class Commands(object):
         self.serverreoblog = os.path.normpath(config.get('REOBF', 'ReobfServerLog'))
 
         self.mcprgindex = os.path.normpath(config.get('MCP', 'RGIndex'))
-        self.mcpparamindex = os.path.normpath(config.get('MCP', 'ParamIndex'))
+        #self.mcpparamindex = os.path.normpath(config.get('MCP', 'ParamIndex')) Stored in the exc file now
 
         # Get changed source
         self.srcmodclient = os.path.normpath(config.get('GETMODSOURCE', 'OutSRCClient'))
@@ -1204,44 +1206,92 @@ class Commands(object):
     def creatergreobfsrg(self, side):
         clssrg     = {CLIENT: self.reobsrgclientcls, SERVER: self.reobsrgservercls}
         reobsrg    = {CLIENT: self.reobsrgclient,    SERVER: self.reobsrgserver}
-        excconf    = {CLIENT: self.xclientconf,       SERVER: self.xclientconf}
+        excconf    = {CLIENT: self.xclientconf,      SERVER: self.xclientconf}
+        excmeta    = {CLIENT: self.xclientmeta,      SERVER: self.xclientmeta}
         exclogdry  = {CLIENT: self.xclientlogdry,    SERVER: self.xserverlogdry}
         
         if not os.path.isfile(exclogdry[side]):
             raise Exception('Exceptor Log not found: ' + exclogdry[side])
 
-        renames = {}
-        log = [l.strip() for l in open(exclogdry[side], 'r').readlines()]
-        for line in log:
-            if 'MarkerID' in line:
-                columns = line.split()
-                renames[columns[2] + '_'] = columns[3]
+        def splitAccessLine(line):
+            pts = line.split(' ', 3)
+            owner = pts[2].split('/access$')[0]
+            name = pts[2].split('(', 1)[0][len(owner)+1:]
+            desc = '(%s' % pts[2].split('(', 1)[1]
+            return {'owner' : owner, 'name' : name, 'desc' : desc, 'ops' : pts[3] }
+        
+        def readLog(file):
+            ret = { 'access' : {}, 'renames' : {} }
+            log = [l.strip() for l in open(file, 'r').readlines()]
+            for line in log:
+                if 'MarkerID' in line:
+                    columns = line.split()
+                    ret['renames'][columns[2] + '_'] = columns[3]
+                elif 'Access:' in line:
+                    acc = splitAccessLine(line)
+                    ret['access']['%s.%s%s' % (acc['owner'], acc['name'], acc['desc'])] = acc
+            return ret
+        
+        meta = {
+            'old' : readLog(excmeta[side]),
+            'new' : readLog(exclogdry[side])
+        }
 
         # Fix for interfaces. We check the original joined.exc for the missing tags in the translation table.
         # We also ignore all the tags with bad behaviors (client/server asymetry)
-        ignoreList = ['net/minecraft/server/MinecraftServer',
-                      'net/minecraft/network/NetworkSystem',
-                      'net/minecraft/creativetab/CreativeTabs']
+        #ignoreList = ['net/minecraft/server/MinecraftServer',
+        #              'net/minecraft/network/NetworkSystem',
+        #              'net/minecraft/creativetab/CreativeTabs']
 
-        origtags = {}
-        log = [l.strip() for l in open(excconf[side], 'r').readlines()]
-        for line in log:
-            if '=CL' in line:
-                columns = line.split('=')
-                origtags[columns[1] + '_'] = columns[0]
+        #origtags = {}
+        #log = [l.strip() for l in open(excconf[side], 'r').readlines()]
+        #for line in log:
+        #    if '=CL' in line:
+        #        columns = line.split('=')
+        #        origtags[columns[1] + '_'] = columns[0]
 
-        for tag, name in origtags.items():
-            if not tag in renames.keys() and name.split('$')[0] not in ignoreList:
-                renames[tag] = name
+        #for tag, name in origtags.items():
+        #    if not tag in renames.keys() and name.split('$')[0] not in ignoreList:
+        #        renames[tag] = name
         # -- End of fix --
         
+        # build map of access function changes
+        def filter_matched(key, value):
+            if not k in meta['old']['access']:
+                return False
+            return meta['old']['access'][k]['ops'] == value['ops']
+        access = [v for k,v in meta['new']['access'].items() if not filter_matched(k,v)]
+        
+        mapped = {}
+        unmapped = []
+        for acc in access:
+            matched = False
+            for k,v in meta['old']['access'].items():
+                if not v['owner'] == acc['owner'] or not v['desc'] == acc['desc'] or not v['ops'] == acc['ops']:
+                    continue
+                matched = True
+                mapped['%s/%s' % (v['owner'], v['name'])] = '%s/%s' % (acc['owner'], acc['name'])
+                break
+            if not matched:
+                unmapped.append(acc)
+        
+        #from pprint import pprint
+        #pprint(unmapped)
         
         reg = re.compile(r'CL_[0-9]+_')
         with closing(open(clssrg[side], 'r')) as input:
             with closing(open(reobsrg[side], 'w')) as output:
+                lines = [l.strip() for l in input.readlines()]
                 def mapname(match):
-                    return renames.get(match.group(0), match.group(0))
-                output.write(reg.sub(mapname, input.read()))
+                    return meta['new']['renames'].get(match.group(0), match.group(0))
+                for line in lines:
+                    line = reg.sub(mapname, line)
+                    if line.startswith('MD:'):
+                        pts = line.split(' ')
+                        if pts[3] in mapped:
+                            #print ('%s -> %s' % (pts[3], mapped[pts[3]]))
+                            line = '%s %s %s %s %s' % (pts[0], pts[1], pts[2], mapped[pts[3]], pts[4])
+                    output.write('%s\n' % line)
 
     def filterffjar(self, side):
         """Filter the exc output jar to only the things that Fernflower should decompile"""
@@ -1294,6 +1344,7 @@ class Commands(object):
         excoutput = {CLIENT: self.xclientout, SERVER: self.xserverout}
         excconf = {CLIENT: self.xclientconf, SERVER: self.xserverconf}
         exclog = {CLIENT: self.xclientlog, SERVER: self.xserverlog}
+        excmeta = {CLIENT: self.xclientmeta, SERVER: self.xservermeta}
         exclogdry = {CLIENT: self.xclientlogdry, SERVER: self.xserverlogdry}        
         json = {CLIENT: self.xclientjson, SERVER: self.xserverjson}
 
@@ -1304,8 +1355,11 @@ class Commands(object):
             forkcmd = self.cmdexceptordry.format(input=excinputdry[side], conf=excconf[side], log=exclogdry[side], json=json[side])
 
         if exc_update:
-            forkcmd += ' --mapOut %s.exc --index %s' % (exclog[side], self.mcpparamindex)
+            forkcmd += ' --mapOut %s.exc' % (exclog[side])
         self.runcmd(forkcmd)
+        
+        if not dryrun:
+            shutil.copyfile(exclog[side], excmeta[side])
 
     def applyjadretro(self, side):
         """Apply jadretro to the class output directory"""
@@ -1356,16 +1410,10 @@ class Commands(object):
         decompDict = {}
         reobfDict  = {}
 
-        ignoreErrorDict = {CLIENT: [
-                                    "net/minecraft/creativetab/CreativeTabs",
-                                    "net/minecraft/server/MinecraftServer$3",
-                                    "net/minecraft/server/MinecraftServer$4",
-                                    "net/minecraft/server/MinecraftServer$5",
-                                    "net/minecraft/server/MinecraftServer$6"],
-                      SERVER: ["net/minecraft/creativetab/CreativeTabs",
-                               "net/minecraft/network/NetworkSystem$3",
-                               "net/minecraft/network/NetworkSystem$4"
-                               ]}
+        ignoreErrorDict = {
+                      CLIENT: [],
+                      SERVER: []
+                      }
 
         decompLogData = open(exclog[side], 'r').readlines()
         reobfLogData = open(exclogdry[side], 'r').readlines()
@@ -1665,6 +1713,7 @@ class Commands(object):
         """Rename the sources using the CSV data"""
         pathsrclk = {CLIENT: self.srcclient, SERVER: self.srcserver}
         reoblk = {CLIENT: self.reobsrgclientcls, SERVER: self.reobsrgservercls}
+        excmeta = {CLIENT: self.xclientmeta, SERVER: self.xservermeta}
 
         if not self.has_name_csv:
             self.logger.warning('!! renaming disabled due to no csvs !!')
@@ -1715,6 +1764,8 @@ class Commands(object):
 
         # HINT: update reobf srg
         updatefile(reoblk[side])
+        # HINT: update exc log for access opcodes
+        updatefile(excmeta[side])
 
         # HINT: We pathwalk the sources
         for path, _, filelist in os.walk(pathsrclk[side], followlinks=True):
