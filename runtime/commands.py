@@ -145,7 +145,7 @@ def csv_header(csvfile):
 class Commands(object):
     """Contains the commands and initialisation for a full mcp run"""
 
-    MCPVersion = '9.04'
+    MCPVersion = '9.10'
     _default_config = 'conf/mcp.cfg'
     _version_config = 'conf/version.cfg'
 
@@ -1907,7 +1907,7 @@ class Commands(object):
                         name = fielddecl.group('name')
                         if name in fields:
                             desc = fields[name]
-                            if len(desc) < 70:
+                            if len(desc) < 70 and desc.find(r'\n') == -1:
                                 if prev_line != '' and prev_line != '{':
                                     buf_out.append('\n')
                                 buf_out.append(indent + '/** ')
@@ -1919,7 +1919,11 @@ class Commands(object):
                                 if prev_line != '' and prev_line != '{':
                                     buf_out.append('\n')
                                 buf_out.append(indent + '/**\n')
-                                buf_out.append(wrapper.fill(desc) + '\n')
+                                desc_lines = desc.split(r'\n')
+                                for desc_line in desc_lines:
+                                    wrapper.drop_whitespace = desc_line != ' '
+                                    buf_out.append(wrapper.fill(desc_line) + '\n')
+                                wrapper.drop_whitespace = True
                                 buf_out.append(indent + ' */\n')
                     elif methoddecl:
                         prev_line = buf_out[-1].strip()
@@ -1932,7 +1936,11 @@ class Commands(object):
                             if prev_line != '' and prev_line != '{':
                                 buf_out.append('\n')
                             buf_out.append(indent + '/**\n')
-                            buf_out.append(wrapper.fill(desc) + '\n')
+                            desc_lines = desc.split(r'\n')
+                            for desc_line in desc_lines:
+                                wrapper.drop_whitespace = desc_line != ' '
+                                buf_out.append(wrapper.fill(desc_line) + '\n')
+                            wrapper.drop_whitespace = True
                             buf_out.append(indent + ' */\n')
                     buf_out.append(line)
 

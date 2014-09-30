@@ -1,5 +1,5 @@
-Mod Coder Pack 9.08 for Minecraft 1.7.10
-=======================================
+Mod Coder Pack 9.10 for Minecraft 1.8
+=====================================
 MCP is (c) Copyright by the MCP Team
 
 License and terms of use.
@@ -143,10 +143,14 @@ ZeuX
 LexManos
 * Helped Fesh0r to update MCP for Minecraft 1.0.0/1.0.1
 * Helped to update the scripts and mappings for the new structure introduced by Minecraft 1.6.x
-* Did a lot of the work required to update to Minecraft 1.7.10
+* Did a lot of the work required to update to Minecraft 1.7.10 and 1.8
 CPW
 * Helped to update the scripts and mappings for the new structure introduced by Minecraft 1.6.x
 * Did a lot of the work required to update to Minecraft 1.7.10
+bspkrs
+* Created the new mapping database and worked on the new MCPBot-Reborn
+* Created the MCP mapping viewer tool
+* Worked on the update to Minecraft 1.8
 303
 * Wiki contributor
 * Tries to help out newbies in the IRC channels
@@ -221,7 +225,8 @@ and of course:
 
 History:
 ========
-9.08 - Updated to support Minecraft 1.7.2 and MinecraftServer 1.7.10
+9.10 - Updated to support Minecraft 1.8 and MinecraftServer 1.8
+9.08 - Updated to support Minecraft 1.7.10 and MinecraftServer 1.7.10
 9.03 - Updated to support Minecraft 1.7.2 and MinecraftServer 1.7.2
 8.11 - Updated to support Minecraft 1.6.4 and MinecraftServer 1.6.4
 8.09 - Updated to support Minecraft 1.6.3 and MinecraftServer 1.6.3
@@ -286,7 +291,7 @@ History:
 
 Roadmap:
 ========
-9.09+ - New awesome features, improvements and updates :)
+9.11+ - New awesome features, improvements and updates :)
 
 _________________________________________________________________________________________________________________
 _________________________________________________________________________________________________________________
