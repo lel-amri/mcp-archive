@@ -145,7 +145,7 @@ def csv_header(csvfile):
 class Commands(object):
     """Contains the commands and initialisation for a full mcp run"""
 
-    MCPVersion = '9.10'
+    MCPVersion = '9.18'
     _default_config = 'conf/mcp.cfg'
     _version_config = 'conf/version.cfg'
 
@@ -562,13 +562,13 @@ class Commands(object):
         if not (os.path.exists(self.jsonFile)):
             return False
 
-        mcLibraries = MinecraftDiscovery.getLibraries(mcDir, self.jsonFile, osKeyword)            
+        self.mcLibraries = MinecraftDiscovery.getLibraries(mcDir, self.jsonFile, osKeyword)            
         self.dirnatives = os.path.join(self.dirjars, "versions", self.versionClient, "%s-natives"%self.versionClient)
 
         jarslwjgl = []
-        jarslwjgl.append(os.path.join(self.dirjars,mcLibraries['jinput']['filename']))
-        jarslwjgl.append(os.path.join(self.dirjars,mcLibraries['lwjgl']['filename']))
-        jarslwjgl.append(os.path.join(self.dirjars,mcLibraries['lwjgl_util']['filename']))
+        jarslwjgl.append(os.path.join(self.dirjars,self.mcLibraries['jinput']['filename']))
+        jarslwjgl.append(os.path.join(self.dirjars,self.mcLibraries['lwjgl']['filename']))
+        jarslwjgl.append(os.path.join(self.dirjars,self.mcLibraries['lwjgl_util']['filename']))
 
         #jarslwjgl = config.get('JAR', 'LWJGL').split(',')
         self.jarslwjgl = [os.path.normpath(p) for p in jarslwjgl]
@@ -614,8 +614,12 @@ class Commands(object):
         self.clsclienttmp = os.path.normpath(config.get('DECOMPILE', 'ClsClientTemp'))
         self.clsservertmp = os.path.normpath(config.get('DECOMPILE', 'ClsServerTemp'))
         self.ffsource = config.get('DECOMPILE', 'FFSource')
-        self.ffclientin = config.get('DECOMPILE', 'FFClientIn')
-        self.ffserverin = config.get('DECOMPILE', 'FFServerIn')
+        self.ffclientin    = config.get('DECOMPILE', 'FFClientIn')
+        self.ffclientout   = config.get('DECOMPILE', 'FFClientOut')
+        self.ffclientextra = config.get('DECOMPILE', 'FFClientExtra')
+        self.ffserverin    = config.get('DECOMPILE', 'FFServerIn')
+        self.ffserverout   = config.get('DECOMPILE', 'FFServerOut')
+        self.ffserverextra = config.get('DECOMPILE', 'FFServerExtra')
 
         # HINT: We read the output directories
         self.binclienttmp = os.path.normpath(config.get('OUTPUT', 'BinClientTemp'))
@@ -660,7 +664,7 @@ class Commands(object):
         if not len(configpathclient) == 1 or not configpathclient[0] == '':
             cpathclient.extend(configpathclient)
 
-        for library in mcLibraries.values():
+        for library in self.mcLibraries.values():
             cpathclient.append(os.path.join(self.dirjars,library['filename']))
 
         self.cpathclient = [os.path.normpath(p) for p in cpathclient]
@@ -680,6 +684,10 @@ class Commands(object):
             self.fixsound = None
         self.fixstart = config.get('RECOMPILE', 'FixStart')
         self.ignorepkg = config.get('RECOMPILE', 'IgnorePkg').split(',')
+        self.recompjavasrcclient = os.path.normpath(config.get('RECOMPILE', 'JavaSrcClient'))
+        self.recompjavasrcserver = os.path.normpath(config.get('RECOMPILE', 'JavaSrcServer'))
+        self.recompscalasrcclient = os.path.normpath(config.get('RECOMPILE', 'ScalaSrcClient'))
+        self.recompscalasrcserver = os.path.normpath(config.get('RECOMPILE', 'ScalaSrcServer'))
 
         # HINT: Reobf related configs
         self.md5client = os.path.normpath(config.get('REOBF', 'MD5Client'))
@@ -1297,25 +1305,30 @@ class Commands(object):
         """Filter the exc output jar to only the things that Fernflower should decompile"""
         excoutput = {CLIENT: self.xclientout, SERVER: self.xserverout}[side]
         ffinput = {CLIENT: self.ffclientin, SERVER: self.ffserverin}[side]
+        extra = {CLIENT: self.ffclientextra, SERVER: self.ffserverextra}[side]
         
         if os.path.isfile(ffinput):
             os.remove(ffinput)
         
         with closing(zipfile.ZipFile(excoutput, mode='a')) as zip_in:
             with closing(zipfile.ZipFile(ffinput, 'w', zipfile.ZIP_DEFLATED)) as zip_out:
-                for i in zip_in.filelist:
-                    filtered = False
-                    for p in self.ignorepkg:
-                        if i.filename.startswith(p):
-                            filtered = True
-                            break
-                    if not filtered:
+                with closing(zipfile.ZipFile(extra, 'w', zipfile.ZIP_DEFLATED)) as zip_extra:
+                    for i in zip_in.filelist:
+                        filtered = False
+                        for p in self.ignorepkg:
+                            if i.filename.startswith(p):
+                                filtered = True
+                                break
                         c = zip_in.read(i.filename)
-                        zip_out.writestr(i.filename, c)
+                        if not filtered:
+                            zip_out.writestr(i.filename, c)
+                        else:
+                            zip_extra.writestr(i.filename, c)
     
     def applyff(self, side):
         """Apply fernflower to the given side"""
         ffinput = {CLIENT: self.ffclientin, SERVER: self.ffserverin}
+        ffoutput = {CLIENT: self.ffclientout, SERVER: self.ffserverout}
         pathsrclk = {CLIENT: self.srcclienttmp, SERVER: self.srcservertmp}
         
         # HINT: When ff processes a jar, it creates the output as {outputdir}/{inputjarname}
@@ -1325,17 +1338,22 @@ class Commands(object):
         reallyrmtree(pathsrclk[side])
         os.makedirs(pathsrclk[side])
 
+        extra = '-e="%s"' % self.ffserverextra
+        if side == CLIENT:
+            extra = ' '.join(['"-e=%s"' % os.path.join(self.dirjars, p['filename']) for p in self.mcLibraries.values()])
+        
         # HINT: We pass in the exec output jar, this skips the need to extract the jar, and copy classes to there own folder
-        forkcmd = self.cmdfernflower.format(indir=ffinput[side], outdir=pathsrclk[side])
+        forkcmd = self.cmdfernflower.format(indir=ffinput[side], outdir=pathsrclk[side], extra=extra)
         self.runcmd(forkcmd)
+        
+        #HINT: For debugging purposes we backup the decompiled jar file before we do anymore processing.
+        shutil.move(jarout, ffoutput[side])
 
         self.logger.info('> Unpacking jar')
         # HINT: We extract the jar to the right location
         # ideally we would do this in a seperate step, and do any fixes that are needed in memory.
-        with closing(zipfile.ZipFile(jarout)) as zipjar:
+        with closing(zipfile.ZipFile(ffoutput[side])) as zipjar:
             zipjar.extractall(pathsrclk[side])
-
-        os.remove(jarout)
         
     def applyexceptor(self, side, exc_update=False, dryrun=False):
         """Apply exceptor to the given side"""
@@ -1531,25 +1549,25 @@ class Commands(object):
         pathbinlk = {CLIENT: self.binclient, SERVER: self.binserver}
         pathsrclk = {CLIENT: self.srcclient, SERVER: self.srcserver}
         pathlog = {CLIENT: self.clientrecomplog, SERVER: self.serverrecomplog}
+        javasrc = {CLIENT: self.recompjavasrcclient, SERVER: self.recompjavasrcserver}
+        scalasrc = {CLIENT: self.recompscalasrcclient, SERVER: self.recompscalasrcserver}
 
         if not os.path.exists(pathbinlk[side]):
             os.makedirs(pathbinlk[side])
 
-        # HINT: We create the list of source directories based on the list of packages
-        # on windows we just pass wildcards, otherwise we pass the full file list
-        if self.osname == 'win':
-            all_files = False
-            append_pattern = True
-        else:
-            all_files = True
-            append_pattern = False
-        pkglist = filterdirs(pathsrclk[side], '*.java', append_pattern=append_pattern, all_files=all_files)
+        # HINT: We create a temp file containing all files to compile, this bypasses the OS command length limit
+        # we may need to also move the classpath, if mojang ever adds to many libraries
+        pkglist = filterdirs(pathsrclk[side], '*.java', all_files=True)
+        with open(javasrc[side], 'w') as f:
+            f.write('\n'.join(pkglist))
+        
         if self.cmdrecompscala: # Compile scala before java as scala scans java files, but not vice-versa
-            pkglistscala = pkglist[:]
-            pkglistscala.extend(filterdirs(pathsrclk[side], '*.scala', append_pattern=append_pattern, all_files=all_files))
-            dirs = ' '.join(pkglistscala)
+            pkglist = filterdirs(pathsrclk[side], '*.scala', all_files=True)
+            with open(scalasrc[side], 'w') as f:
+                f.write('\n'.join(pkglist))
             classpath = os.pathsep.join(cplk[side])
-            forkcmd = self.cmdrecompscala.format(classpath=classpath, sourcepath=pathsrclk[side], outpath=pathbinlk[side], pkgs=dirs)
+            forkcmd = self.cmdrecompscala.format(classpath=classpath, sourcepath=pathsrclk[side], outpath=pathbinlk[side], 
+                javasrc=javasrc[side], scalasrc=scalasrc[side])
             try:
                 self.runcmd(forkcmd, log_file=pathlog[side])
             except CalledProcessError as ex:
@@ -1567,10 +1585,9 @@ class Commands(object):
                 self.logger.error('================================')
                 self.logger.error('')
                 raise
-        dirs = ' '.join(pkglist)
         classpath = os.pathsep.join(cplk[side])
         forkcmd = self.cmdrecomp.format(classpath=classpath, sourcepath=pathsrclk[side], outpath=pathbinlk[side],
-                                        pkgs=dirs)
+                                        javasrc=javasrc[side])
         try:
             self.runcmd(forkcmd, log_file=pathlog[side])
         except CalledProcessError as ex:
@@ -2116,7 +2133,8 @@ class Commands(object):
                         
                 rename = False
                 for res in reserved:
-                    if out_class.upper().startswith(res):
+                    # Fixed to match exacty reserved file names (added + ".")
+                    if out_class.upper().startswith(res + "."):
                         rename = True
                         break
                         

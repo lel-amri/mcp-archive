@@ -33,10 +33,10 @@ def main():
                       help='disable source reformatting', default=False)
     parser.add_option('-n', '--norenamer', dest='no_renamer', action='store_true',
                       help='disable field and method renaming', default=False)
-    parser.add_option('-l', '--lvt', dest='keep_lvt', action='store_true', help='preserve local variable table',
-                      default=False)
-    parser.add_option('-g', '--generics', dest='keep_generics', action='store_true',
-                      help='preserve generics as well as local variables', default=False)
+    parser.add_option('-l', '--kill_lvt', dest='keep_lvt', action='store_false', help='erase local variable table',
+                      default=True)
+    parser.add_option('-g', '--kill_generics', dest='keep_generics', action='store_false',
+                      help='Destroy generics', default=True)
     parser.add_option('-o', '--onlypatch', dest='only_patch', action='store_true', help='only patch source',
                       default=False)
     parser.add_option('-p', dest='no_patch', action='store_true', help='Undocumented magic', default=False)

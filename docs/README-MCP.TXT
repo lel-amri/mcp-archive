@@ -1,5 +1,5 @@
-Mod Coder Pack 9.10 for Minecraft 1.8
-=====================================
+Mod Coder Pack 9.18 for Minecraft 1.8.8
+=======================================
 MCP is (c) Copyright by the MCP Team
 
 License and terms of use.
@@ -42,7 +42,7 @@ Note: MCP versions 4.4 and higher should also work properly with JDK 1.7
 How to use:
 ===========
 1) Prepare the files:
-- Copy the "minecraft_server.1.7.10.jar" file into the "jars" folder.
+- Copy the "minecraft_server.1.8.8.jar" file into the "jars" folder.
 - Either copy the folders "assets", "libraries" and "versions" from "%APPDATA$\.minecraft" folder into the "jars" folder or let the decompile scripts do it automatically for you.
 - No need to copy the folders "bin" and "resources" from your "%APPDATA$\.minecraft" folder into the "jars" folder anymore - in fact, it does not work that way anymore.
 
@@ -140,17 +140,19 @@ ZeuX
 * Did server patches for the most recent versions - if you run into any (patch-related) problems, it's his fault :P
 * Created the famous Techne model editor for Minecraft
 * Contributes features to the new mod system
-LexManos
-* Helped Fesh0r to update MCP for Minecraft 1.0.0/1.0.1
-* Helped to update the scripts and mappings for the new structure introduced by Minecraft 1.6.x
-* Did a lot of the work required to update to Minecraft 1.7.10 and 1.8
-CPW
-* Helped to update the scripts and mappings for the new structure introduced by Minecraft 1.6.x
-* Did a lot of the work required to update to Minecraft 1.7.10
 bspkrs
 * Created the new mapping database and worked on the new MCPBot-Reborn
 * Created the MCP mapping viewer tool
-* Worked on the update to Minecraft 1.8
+* Worked on the update to Minecraft 1.8 and 1.8.8
+LexManos
+* Helped Fesh0r to update MCP for Minecraft 1.0.0/1.0.1
+* Helped to update the scripts and mappings for the new structure introduced by Minecraft 1.6.x
+* Did a lot of the work required to update to Minecraft 1.7.10, 1.8 and 1.8.8
+CPW
+* Helped to update the scripts and mappings for the new structure introduced by Minecraft 1.6.x
+* Did a lot of the work required to update to Minecraft 1.7.10 and 1.8.8
+
+== Former Contributors ==
 303
 * Wiki contributor
 * Tries to help out newbies in the IRC channels
@@ -165,8 +167,6 @@ Cryect
 * Created the awesome AdventureCraft mod
 Mysterio N
 * Created the getmodsource scripts
-
-== Former Contributors ==
 Generic
 * Works on improving IngisKahn's bytecode compare tool
 * Added some important features to retroguard
@@ -219,12 +219,10 @@ Yamachi
 
 and of course:
 - Everybody who contributed to the google spreadsheet and MCPBot or who created some mods with MCP.
-- NOTCH and JEB for creating a game that is just awesome, I hope they do not feel offended by our decompiling efforts.
-        Please, Notch, support our ambitions to mod your game. I know people who bought it just because of
-        some great mods.
 
 History:
 ========
+9.18 - Updated to support Minecraft 1.8.8 and MinecraftServer 1.8.8
 9.10 - Updated to support Minecraft 1.8 and MinecraftServer 1.8
 9.08 - Updated to support Minecraft 1.7.10 and MinecraftServer 1.7.10
 9.03 - Updated to support Minecraft 1.7.2 and MinecraftServer 1.7.2
@@ -291,7 +289,7 @@ History:
 
 Roadmap:
 ========
-9.11+ - New awesome features, improvements and updates :)
+9.19+ - New awesome features, improvements and updates :)
 
 _________________________________________________________________________________________________________________
 _________________________________________________________________________________________________________________
