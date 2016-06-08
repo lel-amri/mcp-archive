@@ -81,10 +81,14 @@ used in Minecraft, Function, Predicate, and Comparator
 """
 
 _JAVA_IDENTIFIER = r'[a-zA-Z_$][\w_$\.]*'
+#Good regex but doesn't work on our windows portable install
+#_JAVA_ANNOTATION = r'(?:\@(?:' + _JAVA_IDENTIFIER + ')(?:\((?:.*)*\))? ?)'
+#Broken Regex cuz we use python 2.7.3, we need to update to 2.7.6+
+_JAVA_ANNOTATION = r'(?:\@(?:' + _JAVA_IDENTIFIER + ')(?:\((?:.+)*\))? ?)'
 _MODIFIERS = r'public|protected|private|static|abstract|final|native|synchronized|transient|volatile|strictfp'
 _MODIFIERS_INIT = r'public|protected|private'
-_PARAMETERS_VAR = r'(?:(?P<type>(?:[^ ,])+(?:<.*>)?(?: \.\.\.)?) var(?P<id>\d+)(?P<end>,? )?)'
-_PARAMETERS = r'(?:(?P<type>(?:[^ ,])+(?:<.*>)?(?: \.\.\.)?) (?P<name>' + _JAVA_IDENTIFIER + r')(?P<end>,? )?)'
+_PARAMETERS_VAR = r'(?:(?P<annotation>' + _JAVA_ANNOTATION + ')?(?P<type>(?:[^ ,])+(?:<.*>)?(?: \.\.\.)?) var(?P<id>\d+)(?P<end>,? )?)'
+_PARAMETERS = r'(?:(?P<annotation>' + _JAVA_ANNOTATION + ')?(?P<type>(?:[^ ,])+(?:<.*>)?(?: \.\.\.)?) (?P<name>' + _JAVA_IDENTIFIER + r')(?P<end>,? )?)'
 
 _REGEXP = {
     # Typecast marker

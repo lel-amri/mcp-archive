@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\entity\item\EntityFireworkRocket.java minecraft_patched\net\minecraft\entity\item\EntityFireworkRocket.java
 --- minecraft\net\minecraft\entity\item\EntityFireworkRocket.java
 +++ minecraft_patched\net\minecraft\entity\item\EntityFireworkRocket.java
-@@ -27,7 +27,7 @@
+@@ -28,7 +28,7 @@
     }
  
     protected void func_70088_a() {
@@ -10,7 +10,7 @@ diff -r -U 3 minecraft\net\minecraft\entity\item\EntityFireworkRocket.java minec
     }
  
     @SideOnly(Side.CLIENT)
-@@ -42,7 +42,7 @@
+@@ -43,7 +43,7 @@
        this.func_70107_b(p_i1763_2_, p_i1763_4_, p_i1763_6_);
        int i = 1;
        if(p_i1763_8_ != null && p_i1763_8_.func_77942_o()) {

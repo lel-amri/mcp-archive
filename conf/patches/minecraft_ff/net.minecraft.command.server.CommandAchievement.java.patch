@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\command\server\CommandAchievement.java minecraft_patched\net\minecraft\command\server\CommandAchievement.java
 --- minecraft\net\minecraft\command\server\CommandAchievement.java
 +++ minecraft_patched\net\minecraft\command\server\CommandAchievement.java
-@@ -126,7 +126,7 @@
+@@ -127,7 +127,7 @@
        if(p_184883_3_.length == 1) {
           return func_71530_a(p_184883_3_, new String[]{"give", "take"});
        } else if(p_184883_3_.length != 2) {

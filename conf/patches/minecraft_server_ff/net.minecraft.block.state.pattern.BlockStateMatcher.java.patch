@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft_server\net\minecraft\block\state\pattern\BlockStateMatcher.java minecraft_server_patched\net\minecraft\block\state\pattern\BlockStateMatcher.java
 --- minecraft_server\net\minecraft\block\state\pattern\BlockStateMatcher.java
 +++ minecraft_server_patched\net\minecraft\block\state\pattern\BlockStateMatcher.java
-@@ -40,7 +40,7 @@
+@@ -41,7 +41,7 @@
        }
     }
  

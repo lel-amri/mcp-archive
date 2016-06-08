@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\block\BlockFurnace.java minecraft_patched\net\minecraft\block\BlockFurnace.java
 --- minecraft\net\minecraft\block\BlockFurnace.java
 +++ minecraft_patched\net\minecraft\block\BlockFurnace.java
-@@ -69,6 +69,7 @@
+@@ -71,6 +71,7 @@
        }
     }
  

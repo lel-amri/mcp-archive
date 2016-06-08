@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft_server\net\minecraft\network\datasync\DataSerializers.java minecraft_server_patched\net\minecraft\network\datasync\DataSerializers.java
 --- minecraft_server\net\minecraft\network\datasync\DataSerializers.java
 +++ minecraft_server_patched\net\minecraft\network\datasync\DataSerializers.java
-@@ -73,7 +73,7 @@
+@@ -74,7 +74,7 @@
           p_187160_1_.func_179256_a(p_187160_2_);
        }
  
@@ -10,7 +10,7 @@ diff -r -U 3 minecraft_server\net\minecraft\network\datasync\DataSerializers.jav
           return p_187159_1_.func_179258_d();
        }
  
-@@ -86,7 +86,7 @@
+@@ -87,7 +87,7 @@
           p_187160_1_.func_150788_a((ItemStack)p_187160_2_.orNull());
        }
  
@@ -19,7 +19,7 @@ diff -r -U 3 minecraft_server\net\minecraft\network\datasync\DataSerializers.jav
           return Optional.<ItemStack>fromNullable(p_187159_1_.func_150791_c());
        }
  
-@@ -106,7 +106,7 @@
+@@ -107,7 +107,7 @@
  
        public Optional<IBlockState> func_187159_a(PacketBuffer p_187159_1_) {
           int i = p_187159_1_.func_150792_a();
@@ -28,7 +28,7 @@ diff -r -U 3 minecraft_server\net\minecraft\network\datasync\DataSerializers.jav
        }
  
        public DataParameter<Optional<IBlockState>> func_187161_a(int p_187161_1_) {
-@@ -164,7 +164,7 @@
+@@ -165,7 +165,7 @@
        }
  
        public Optional<BlockPos> func_187159_a(PacketBuffer p_187159_1_) {
@@ -37,7 +37,7 @@ diff -r -U 3 minecraft_server\net\minecraft\network\datasync\DataSerializers.jav
        }
  
        public DataParameter<Optional<BlockPos>> func_187161_a(int p_187161_1_) {
-@@ -194,7 +194,7 @@
+@@ -195,7 +195,7 @@
        }
  
        public Optional<UUID> func_187159_a(PacketBuffer p_187159_1_) {

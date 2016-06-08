@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft_server\net\minecraft\entity\item\EntityFireworkRocket.java minecraft_server_patched\net\minecraft\entity\item\EntityFireworkRocket.java
 --- minecraft_server\net\minecraft\entity\item\EntityFireworkRocket.java
 +++ minecraft_server_patched\net\minecraft\entity\item\EntityFireworkRocket.java
-@@ -25,7 +25,7 @@
+@@ -26,7 +26,7 @@
     }
  
     protected void func_70088_a() {
@@ -9,8 +9,8 @@ diff -r -U 3 minecraft_server\net\minecraft\entity\item\EntityFireworkRocket.jav
 +      this.field_70180_af.func_187214_a(field_184566_a, Optional.<ItemStack>absent());
     }
  
-    public EntityFireworkRocket(World p_i1763_1_, double p_i1763_2_, double p_i1763_4_, double p_i1763_6_, ItemStack p_i1763_8_) {
-@@ -35,7 +35,7 @@
+    public EntityFireworkRocket(World p_i1763_1_, double p_i1763_2_, double p_i1763_4_, double p_i1763_6_, @Nullable ItemStack p_i1763_8_) {
+@@ -36,7 +36,7 @@
        this.func_70107_b(p_i1763_2_, p_i1763_4_, p_i1763_6_);
        int i = 1;
        if(p_i1763_8_ != null && p_i1763_8_.func_77942_o()) {

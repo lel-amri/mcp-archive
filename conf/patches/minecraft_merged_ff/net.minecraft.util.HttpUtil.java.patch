@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\util\HttpUtil.java minecraft_patched\net\minecraft\util\HttpUtil.java
 --- minecraft\net\minecraft\util\HttpUtil.java
 +++ minecraft_patched\net\minecraft\util\HttpUtil.java
-@@ -220,7 +220,7 @@
+@@ -221,7 +221,7 @@
              }
           }
        });

@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft_server\net\minecraft\world\storage\loot\conditions\LootConditionManager.java minecraft_server_patched\net\minecraft\world\storage\loot\conditions\LootConditionManager.java
 --- minecraft_server\net\minecraft\world\storage\loot\conditions\LootConditionManager.java
 +++ minecraft_server_patched\net\minecraft\world\storage\loot\conditions\LootConditionManager.java
-@@ -28,7 +28,7 @@
+@@ -29,7 +29,7 @@
  
     public static <T extends LootCondition> void func_186639_a(LootCondition.Serializer<? extends T> p_186639_0_) {
        ResourceLocation resourcelocation = p_186639_0_.func_186602_a();

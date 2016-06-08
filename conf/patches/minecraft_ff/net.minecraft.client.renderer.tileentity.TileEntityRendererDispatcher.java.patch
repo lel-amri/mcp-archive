@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\client\renderer\tileentity\TileEntityRendererDispatcher.java minecraft_patched\net\minecraft\client\renderer\tileentity\TileEntityRendererDispatcher.java
 --- minecraft\net\minecraft\client\renderer\tileentity\TileEntityRendererDispatcher.java
 +++ minecraft_patched\net\minecraft\client\renderer\tileentity\TileEntityRendererDispatcher.java
-@@ -78,15 +78,15 @@
+@@ -79,16 +79,16 @@
     public <T extends TileEntity> TileEntitySpecialRenderer<T> func_147546_a(Class<? extends TileEntity> p_147546_1_) {
        TileEntitySpecialRenderer<? extends TileEntity> tileentityspecialrenderer = (TileEntitySpecialRenderer)this.field_147559_m.get(p_147546_1_);
        if(tileentityspecialrenderer == null && p_147546_1_ != TileEntity.class) {
@@ -14,7 +14,8 @@ diff -r -U 3 minecraft\net\minecraft\client\renderer\tileentity\TileEntityRender
 +      return (TileEntitySpecialRenderer<T>)tileentityspecialrenderer;
     }
  
-    public <T extends TileEntity> TileEntitySpecialRenderer<T> func_147547_b(TileEntity p_147547_1_) {
+    @Nullable
+    public <T extends TileEntity> TileEntitySpecialRenderer<T> func_147547_b(@Nullable TileEntity p_147547_1_) {
 -      return p_147547_1_ == null?null:this.func_147546_a(p_147547_1_.getClass());
 +      return (TileEntitySpecialRenderer<T>)(p_147547_1_ == null?null:this.func_147546_a(p_147547_1_.getClass()));
     }

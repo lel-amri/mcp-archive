@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft_server\net\minecraft\entity\EntityAreaEffectCloud.java minecraft_server_patched\net\minecraft\entity\EntityAreaEffectCloud.java
 --- minecraft_server\net\minecraft\entity\EntityAreaEffectCloud.java
 +++ minecraft_server_patched\net\minecraft\entity\EntityAreaEffectCloud.java
-@@ -218,14 +218,14 @@
+@@ -219,14 +219,14 @@
                 }
              }
  
@@ -22,7 +22,7 @@ diff -r -U 3 minecraft_server\net\minecraft\entity\EntityAreaEffectCloud.java mi
                 this.field_184504_g.clear();
              } else {
                 List<EntityLivingBase> list = this.field_70170_p.<EntityLivingBase>func_72872_a(EntityLivingBase.class, this.func_174813_aQ());
-@@ -238,7 +238,7 @@
+@@ -239,7 +239,7 @@
                          if(d2 <= (double)(f * f)) {
                             this.field_184504_g.put(entitylivingbase, Integer.valueOf(this.field_70173_aa + this.field_184507_at));
  

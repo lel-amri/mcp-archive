@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft_server\net\minecraft\network\NetworkManager.java minecraft_server_patched\net\minecraft\network\NetworkManager.java
 --- minecraft_server\net\minecraft\network\NetworkManager.java
 +++ minecraft_server_patched\net\minecraft\network\NetworkManager.java
-@@ -114,7 +114,7 @@
+@@ -115,7 +115,7 @@
     protected void channelRead0(ChannelHandlerContext p_channelRead0_1_, Packet<?> p_channelRead0_2_) throws Exception {
        if(this.field_150746_k.isOpen()) {
           try {

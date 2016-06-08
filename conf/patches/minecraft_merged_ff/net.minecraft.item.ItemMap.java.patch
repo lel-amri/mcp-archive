@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\item\ItemMap.java minecraft_patched\net\minecraft\item\ItemMap.java
 --- minecraft\net\minecraft\item\ItemMap.java
 +++ minecraft_patched\net\minecraft\item\ItemMap.java
-@@ -152,7 +152,7 @@
+@@ -153,7 +153,7 @@
                             i5 = 0;
                          }
  

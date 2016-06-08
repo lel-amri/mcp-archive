@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\util\IntIdentityHashBiMap.java minecraft_patched\net\minecraft\util\IntIdentityHashBiMap.java
 --- minecraft\net\minecraft\util\IntIdentityHashBiMap.java
 +++ minecraft_patched\net\minecraft\util\IntIdentityHashBiMap.java
-@@ -17,9 +17,9 @@
+@@ -18,9 +18,9 @@
  
     public IntIdentityHashBiMap(int p_i46830_1_) {
        p_i46830_1_ = (int)((float)p_i46830_1_ / 0.8F);
@@ -13,7 +13,7 @@ diff -r -U 3 minecraft\net\minecraft\util\IntIdentityHashBiMap.java minecraft_pa
     }
  
     public int func_186815_a(K p_186815_1_) {
-@@ -51,9 +51,9 @@
+@@ -53,9 +53,9 @@
     private void func_186807_d(int p_186807_1_) {
        K[] ak = this.field_186818_b;
        int[] aint = this.field_186819_c;

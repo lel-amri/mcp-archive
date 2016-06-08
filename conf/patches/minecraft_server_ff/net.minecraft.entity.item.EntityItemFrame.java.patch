@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft_server\net\minecraft\entity\item\EntityItemFrame.java minecraft_server_patched\net\minecraft\entity\item\EntityItemFrame.java
 --- minecraft_server\net\minecraft\entity\item\EntityItemFrame.java
 +++ minecraft_server_patched\net\minecraft\entity\item\EntityItemFrame.java
-@@ -35,7 +35,7 @@
+@@ -36,7 +36,7 @@
     }
  
     protected void func_70088_a() {
@@ -10,7 +10,7 @@ diff -r -U 3 minecraft_server\net\minecraft\entity\item\EntityItemFrame.java min
        this.func_184212_Q().func_187214_a(field_184526_d, Integer.valueOf(0));
     }
  
-@@ -126,7 +126,7 @@
+@@ -128,7 +128,7 @@
           p_174864_1_.func_82842_a(this);
        }
  

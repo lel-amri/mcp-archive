@@ -36,6 +36,7 @@ from pylibs.jadfix import jadfix
 from pylibs.fffix import fffix
 from pylibs.cleanup_src import strip_comments, src_cleanup
 from pylibs.normlines import normaliselines
+from pylibs.normlines import normaliselines_dir
 from pylibs.normpatch import normalisepatch
 
 CLIENT = 0
@@ -146,7 +147,7 @@ def csv_header(csvfile):
 class Commands(object):
     """Contains the commands and initialisation for a full mcp run"""
 
-    MCPVersion = '9.24'
+    MCPVersion = '9.27'
     _default_config = 'conf/mcp.cfg'
     _version_config = 'conf/version.cfg'
 
@@ -683,7 +684,30 @@ class Commands(object):
             self.fixsound = config.get('RECOMPILE', 'FixSound')
         else:
             self.fixsound = None
-        self.fixstart = config.get('RECOMPILE', 'FixStart')
+        if config.has_option('RECOMPILE', 'FixStart'):
+            self.fixstart = config.get('RECOMPILE', 'FixStart')
+        else:
+            self.fixstart = None
+        if config.has_option('RECOMPILE', 'InjectSrcClient'):
+            self.injectsrcclient = os.path.normpath(config.get('RECOMPILE', 'InjectSrcClient'))
+        else:
+            self.injectsrcclient = None
+        if config.has_option('RECOMPILE', 'InjectSrcServer'):
+            self.injectsrcserver = os.path.normpath(config.get('RECOMPILE', 'InjectSrcServer'))
+        else:
+            self.injectsrcserver = None
+        if config.has_option('RECOMPILE', 'InjectSrcCommon'):
+            self.injectsrccommon = os.path.normpath(config.get('RECOMPILE', 'InjectSrcCommon'))
+        else:
+            self.injectsrccommon = None
+        if config.has_option('RECOMPILE', 'PkgInfoClient'):
+            self.pkginfoclient = os.path.normpath(config.get('RECOMPILE', 'PkgInfoClient'))
+        else:
+            self.pkginfoclient = None
+        if config.has_option('RECOMPILE', 'PkgInfoServer'):
+            self.pkginfoserver = os.path.normpath(config.get('RECOMPILE', 'PkgInfoServer'))
+        else:
+            self.pkginfoserver = None
         self.ignorepkg = config.get('RECOMPILE', 'IgnorePkg').split(',')
         self.recompjavasrcclient = os.path.normpath(config.get('RECOMPILE', 'JavaSrcClient'))
         self.recompjavasrcserver = os.path.normpath(config.get('RECOMPILE', 'JavaSrcServer'))
@@ -1694,10 +1718,13 @@ class Commands(object):
                 os.makedirs(os.path.dirname(dest_file))
             shutil.copy(src_file, dest_file)
 
-    def copysrc(self, side):
+    def copysrc(self, side, pkginfos=True):
         """Copy the source files to the src directory defined in the config file"""
         pathsrctmplk = {CLIENT: self.srcclienttmp, SERVER: self.srcservertmp}
         pathsrclk = {CLIENT: self.srcclient, SERVER: self.srcserver}
+        pathinj = {CLIENT: self.injectsrcclient, SERVER: self.injectsrcserver}
+        srglk = {CLIENT: self.srgsconfclient, SERVER: self.srgsconfserver}
+        pkglk = {CLIENT: self.pkginfoclient, SERVER: self.pkginfoserver}
 
         # HINT: We check if the top output directory exists. If not, we create it
         if not os.path.exists(pathsrclk[side]):
@@ -1708,11 +1735,42 @@ class Commands(object):
 
         # HINT: copy Start and soundfix to source dir
         if side == CLIENT:
-            normaliselines(os.path.join(self.fixesclient, self.fixstart + '.java'),
-                           os.path.join(pathsrclk[side], self.fixstart + '.java'))
+            if self.fixstart:
+                normaliselines(os.path.join(self.fixesclient, self.fixstart + '.java'),
+                               os.path.join(pathsrclk[side], self.fixstart + '.java'))
             if self.fixsound:
                 normaliselines(os.path.join(self.fixesclient, self.fixsound + '.java'),
                                os.path.join(pathsrclk[side], self.fixsound + '.java'))
+        
+        if self.injectsrccommon:
+            normaliselines_dir(self.injectsrccommon, pathsrclk[side])
+        
+        if pathinj[side]:
+            normaliselines_dir(pathinj[side], pathsrclk[side])
+        
+        # HINT: generate package-info.java files for every package in the SRG
+        if pkglk[side]:
+            self.logger.info('> Generating package-info files')
+
+            template = 'LOADING %s TEMPLATE FAILED!' % pkglk[side]
+            regex_ending = re.compile(r'\r?\n')
+            with open(pkglk[side], 'rb') as in_file:
+                buf = in_file.read()
+                if os.linesep == '\r\n':
+                    template = regex_ending.sub(r'\r\n', buf)
+                else:
+                    template = buf.replace('\r\n', '\n')
+            
+            pkgs = []
+            for row in parse_srg(srglk[side])['CL']:
+                pkg = row['deobf_name'].rsplit('/', 1)[0]
+                if not pkg in pkgs:
+                    pkgs.append(pkg)
+                    dir = os.path.join(pathsrclk[side], pkg.replace('/', os.path.sep))
+                    if os.path.isdir(dir):
+                        tmp = template.replace('{PACKAGE}', pkg.replace('/', '.'))
+                        with open(os.path.join(dir, 'package-info.java'), 'wb') as out_file:
+                            out_file.write(tmp)
 
     def copyandfixsrc(self, src_dir, dest_dir):
         src_dir = os.path.normpath(src_dir)
@@ -2323,3 +2381,15 @@ class Commands(object):
             for type,map in srg.items():
                 srg[type] = dict([[v,k] for k,v in map.items()])
         return srg
+        
+    def setupjsr305(self):
+        artifact = ['com/google/code/findbugs', 'jsr305', '3.0.1']
+        dir = os.path.join(self.dirjars, 'libraries/%s/%s/%s/' % (artifact[0], artifact[1], artifact[2]))
+        if not os.path.exists(dir):
+            os.makedirs(dir)
+            
+        for f in ['%s-%s.jar' % (artifact[1], artifact[2]), '%s-%s-sources.jar' % (artifact[1], artifact[2])]:
+            dst = os.path.join(dir, f)
+            if not os.path.exists(dst):
+                self.logger.info('> Copying %s to Libraries' % f)
+                shutil.copy2(os.path.join('runtime/bin/', f), dst)

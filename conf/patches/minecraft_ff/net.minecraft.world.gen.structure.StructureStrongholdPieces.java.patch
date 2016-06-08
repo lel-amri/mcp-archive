@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\world\gen\structure\StructureStrongholdPieces.java minecraft_patched\net\minecraft\world\gen\structure\StructureStrongholdPieces.java
 --- minecraft\net\minecraft\world\gen\structure\StructureStrongholdPieces.java
 +++ minecraft_patched\net\minecraft\world\gen\structure\StructureStrongholdPieces.java
-@@ -25,6 +25,7 @@
+@@ -26,6 +26,7 @@
  import net.minecraft.world.gen.structure.StructureComponent;
  import net.minecraft.world.storage.loot.LootTableList;
  

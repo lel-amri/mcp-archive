@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\client\renderer\block\model\ModelBakery.java minecraft_patched\net\minecraft\client\renderer\block\model\ModelBakery.java
 --- minecraft\net\minecraft\client\renderer\block\model\ModelBakery.java
 +++ minecraft_patched\net\minecraft\client\renderer\block\model\ModelBakery.java
-@@ -261,7 +261,7 @@
+@@ -262,7 +262,7 @@
                 reader = new InputStreamReader(iresource.func_110527_b(), Charsets.UTF_8);
              }
  
@@ -10,7 +10,7 @@ diff -r -U 3 minecraft\net\minecraft\client\renderer\block\model\ModelBakery.jav
              lvt_5_1_.field_178317_b = p_177594_1_.toString();
              ModelBlock modelblock1 = lvt_5_1_;
              return modelblock1;
-@@ -397,7 +397,7 @@
+@@ -398,7 +398,7 @@
  
           IBakedModel ibakedmodel2 = multipartbakedmodel$builder.func_188647_a();
  

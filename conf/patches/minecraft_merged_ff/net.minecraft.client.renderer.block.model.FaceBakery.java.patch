@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\client\renderer\block\model\FaceBakery.java minecraft_patched\net\minecraft\client\renderer\block\model\FaceBakery.java
 --- minecraft\net\minecraft\client\renderer\block\model\FaceBakery.java
 +++ minecraft_patched\net\minecraft\client\renderer\block\model\FaceBakery.java
-@@ -21,22 +21,22 @@
+@@ -22,22 +22,22 @@
     private static final float field_178418_a = 1.0F / (float)Math.cos(0.39269909262657166D) - 1.0F;
     private static final float field_178417_b = 1.0F / (float)Math.cos(0.7853981852531433D) - 1.0F;
     private static FaceBakery.Rotation[] field_188016_c = new FaceBakery.Rotation[ModelRotation.values().length * EnumFacing.values().length];

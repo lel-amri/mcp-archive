@@ -128,6 +128,8 @@ def decompile(conffile, force_jad, force_csv, no_recompile, no_comments, no_refo
 
         if not nocopy:
             clientCopy.copyClientAssets(commands, workdir)
+            
+        commands.setupjsr305()
 
         try:
             if process_client:

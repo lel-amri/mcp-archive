@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\client\renderer\entity\RenderManager.java minecraft_patched\net\minecraft\client\renderer\entity\RenderManager.java
 --- minecraft\net\minecraft\client\renderer\entity\RenderManager.java
 +++ minecraft_patched\net\minecraft\client\renderer\entity\RenderManager.java
-@@ -270,18 +270,18 @@
+@@ -271,19 +271,19 @@
     public <T extends Entity> Render<T> func_78715_a(Class<? extends Entity> p_78715_1_) {
        Render<? extends Entity> render = (Render)this.field_78729_o.get(p_78715_1_);
        if(render == null && p_78715_1_ != Entity.class) {
@@ -11,12 +11,11 @@ diff -r -U 3 minecraft\net\minecraft\client\renderer\entity\RenderManager.java m
        }
  
 -      return render;
--   }
--
--   public <T extends Entity> Render<T> func_78713_a(Entity p_78713_1_) {
 +      return (Render<T>)render;
-+   }
-+
+    }
+ 
+    @Nullable
+-   public <T extends Entity> Render<T> func_78713_a(Entity p_78713_1_) {
 +   public <T extends Entity> Render<T> func_78713_a(T p_78713_1_) {
        if(p_78713_1_ instanceof AbstractClientPlayer) {
           String s = ((AbstractClientPlayer)p_78713_1_).func_175154_l();

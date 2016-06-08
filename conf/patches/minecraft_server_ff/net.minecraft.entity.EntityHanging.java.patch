@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft_server\net\minecraft\entity\EntityHanging.java minecraft_server_patched\net\minecraft\entity\EntityHanging.java
 --- minecraft_server\net\minecraft\entity\EntityHanging.java
 +++ minecraft_server_patched\net\minecraft\entity\EntityHanging.java
-@@ -209,6 +209,7 @@
+@@ -211,6 +211,7 @@
        return this.field_174861_a;
     }
  

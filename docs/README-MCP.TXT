@@ -1,5 +1,5 @@
-Mod Coder Pack 9.24 for Minecraft 1.9
-=====================================
+Mod Coder Pack 9.28 for Minecraft 1.9.4
+=======================================
 MCP is (c) Copyright by the MCP Team
 
 License and terms of use.
@@ -42,7 +42,7 @@ Note: MCP versions 4.4 and higher should also work properly with JDK 1.7
 How to use:
 ===========
 1) Prepare the files:
-- Copy the "minecraft_server.1.8.8.jar" file into the "jars" folder.
+- Copy the "minecraft_server.1.9.4.jar" file into the "jars" folder.
 - Either copy the folders "assets", "libraries" and "versions" from "%APPDATA$\.minecraft" folder into the "jars" folder or let the decompile scripts do it automatically for you.
 - No need to copy the folders "bin" and "resources" from your "%APPDATA$\.minecraft" folder into the "jars" folder anymore - in fact, it does not work that way anymore.
 
@@ -222,6 +222,7 @@ and of course:
 
 History:
 ========
+9.28 - Updated to support Minecraft 1.9.4 and MinecraftServer 1.9.4
 9.24 - Updated to support Minecraft 1.9 and MinecraftServer 1.9
 9.18 - Updated to support Minecraft 1.8.8 and MinecraftServer 1.8.8
 9.10 - Updated to support Minecraft 1.8 and MinecraftServer 1.8
@@ -290,7 +291,7 @@ History:
 
 Roadmap:
 ========
-9.25+ - New awesome features, improvements and updates :)
+9.29+ - New awesome features, improvements and updates :)
 
 _________________________________________________________________________________________________________________
 _________________________________________________________________________________________________________________

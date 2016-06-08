@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft_server\net\minecraft\block\BlockEndPortalFrame.java minecraft_server_patched\net\minecraft\block\BlockEndPortalFrame.java
 --- minecraft_server\net\minecraft\block\BlockEndPortalFrame.java
 +++ minecraft_server_patched\net\minecraft\block\BlockEndPortalFrame.java
-@@ -104,7 +104,7 @@
+@@ -106,7 +106,7 @@
  
     public static BlockPattern func_185661_e() {
        if(field_185664_e == null) {

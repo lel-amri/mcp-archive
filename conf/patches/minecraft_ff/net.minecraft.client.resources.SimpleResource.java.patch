@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\client\resources\SimpleResource.java minecraft_patched\net\minecraft\client\resources\SimpleResource.java
 --- minecraft\net\minecraft\client\resources\SimpleResource.java
 +++ minecraft_patched\net\minecraft\client\resources\SimpleResource.java
-@@ -62,7 +62,7 @@
+@@ -64,7 +64,7 @@
              }
           }
  
