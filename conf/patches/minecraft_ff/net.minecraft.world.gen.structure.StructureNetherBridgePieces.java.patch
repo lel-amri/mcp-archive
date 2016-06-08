@@ -2,8 +2,8 @@ diff -r -U 3 minecraft\net\minecraft\world\gen\structure\StructureNetherBridgePi
 --- minecraft\net\minecraft\world\gen\structure\StructureNetherBridgePieces.java
 +++ minecraft_patched\net\minecraft\world\gen\structure\StructureNetherBridgePieces.java
 @@ -17,6 +17,7 @@
- import net.minecraft.world.gen.structure.StructureBoundingBox;
  import net.minecraft.world.gen.structure.StructureComponent;
+ import net.minecraft.world.storage.loot.LootTableList;
  
 +@SuppressWarnings("incomplete-switch")
  public class StructureNetherBridgePieces {

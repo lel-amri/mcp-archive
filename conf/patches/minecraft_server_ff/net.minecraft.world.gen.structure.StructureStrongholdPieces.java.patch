@@ -1,9 +1,9 @@
 diff -r -U 3 minecraft_server\net\minecraft\world\gen\structure\StructureStrongholdPieces.java minecraft_server_patched\net\minecraft\world\gen\structure\StructureStrongholdPieces.java
 --- minecraft_server\net\minecraft\world\gen\structure\StructureStrongholdPieces.java
 +++ minecraft_server_patched\net\minecraft\world\gen\structure\StructureStrongholdPieces.java
-@@ -20,6 +20,7 @@
- import net.minecraft.world.gen.structure.StructureBoundingBox;
+@@ -25,6 +25,7 @@
  import net.minecraft.world.gen.structure.StructureComponent;
+ import net.minecraft.world.storage.loot.LootTableList;
  
 +@SuppressWarnings("incomplete-switch")
  public class StructureStrongholdPieces {

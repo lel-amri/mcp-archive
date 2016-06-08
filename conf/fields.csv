@@ -1,6 +1,5 @@
 searge,name,side,desc
 field_100013_f,isPotionDurationMax,0,"True if potion effect duration is at maximum, false otherwise."
-field_104003_g,isAggressive,2,
 field_104024_v,openGLWarningLink,0,Link to the Mojang Support about minimum requirements
 field_104025_t,threadLock,0,The Object object utilized as a thread lock when performing non thread-safe operations
 field_104057_T,isGamemodeForced,2,
@@ -8,7 +7,6 @@ field_110126_a,FOOTPRINT_TEXTURE,0,
 field_110127_a,EXPLOSION_TEXTURE,0,
 field_110150_bn,lastAttacker,2,
 field_110151_bq,absorptionAmount,2,
-field_110152_bk,newPosZ,2,
 field_110153_bc,lastDamage,2,Damage taken in the last hit. Mobs are resistant to damage less than this for a short time after taking damage.
 field_110154_aX,onGroundSpeedFactor,2,
 field_110155_d,attributeMap,2,
@@ -33,10 +31,7 @@ field_110192_bp,attackingSpeedBoostModifierUUID,2,
 field_110193_bq,attackingSpeedBoostModifier,2,
 field_110268_bz,horseTextures,2,
 field_110269_bA,HORSE_TEXTURES_ABBR,2,
-field_110270_bw,horseArmorTextures,2,
 field_110271_bv,horseJumpStrength,2,
-field_110272_by,armorValues,2,
-field_110273_bx,HORSE_ARMOR_TEXTURES_ABBR,2,
 field_110274_bs,temper,2,"""The higher this value, the more likely the horse is to be tamed next time a player rides it."""
 field_110275_br,horseJumping,2,
 field_110276_bu,horseBreedingSelector,2,
@@ -92,13 +87,13 @@ field_110481_b,textureClamp,0,
 field_110482_a,textureBlur,0,
 field_110498_b,frameTime,0,
 field_110499_a,frameIndex,0,
+field_110500_b,clazz,0,The class registered
+field_110502_a,section,0,The IMetadataSectionSerializer associated with the class registered
 field_110506_b,gsonBuilder,0,
 field_110507_c,gson,0,"Cached Gson instance. Set to null when more sections are registered, and then re-created from the builder."
 field_110508_a,metadataSectionSerializerRegistry,0,
 field_110520_f,locationTexturePackIcon,0,
 field_110521_d,rePackMetadataSection,0,
-field_110522_e,texturePackIcon,0,
-field_110523_b,resourcePackFile,0,
 field_110524_c,reResourcePack,0,
 field_110529_f,mcmetaJsonChecked,0,
 field_110530_g,mcmetaJson,0,
@@ -179,7 +174,6 @@ field_110721_y,backRightShin,0,
 field_110722_x,backRightLeg,0,
 field_110737_b,particleTextures,0,
 field_110778_a,shadowTextures,0,
-field_110780_a,arrowTextures,0,
 field_110782_f,boatTextures,0,
 field_110785_a,experienceOrbTextures,0,
 field_110787_a,enderCrystalTextures,0,
@@ -200,11 +194,6 @@ field_110839_f,endermanTextures,0,
 field_110842_f,enderDragonExplodingTextures,0,
 field_110843_g,enderDragonCrystalBeamTextures,0,
 field_110844_k,enderDragonTextures,0,
-field_110850_f,whiteHorseTextures,0,
-field_110851_g,muleTextures,0,
-field_110853_l,skeletonHorseTextures,0,
-field_110854_k,zombieHorseTextures,0,
-field_110855_h,donkeyTextures,0,
 field_110861_l,witherSkeletonTextures,0,
 field_110862_k,skeletonTextures,0,
 field_110864_q,zombieVillagerTextures,0,
@@ -264,9 +253,6 @@ field_110999_b,missingTextureData,0,
 field_111000_c,dataBuffer,0,
 field_111001_a,missingTexture,0,
 field_111053_a,numericVariablePattern,2,"Pattern that matches numeric variable placeholders in a resource string, such as ""%d"", ""%3$d"", ""%.2f"""
-field_111105_a,potionEffectId,2,
-field_111106_b,horseVariant,2,
-field_111107_a,horseType,2,
 field_111113_b,defaultValue,2,
 field_111114_c,shouldWatch,2,
 field_111115_a,unlocalizedName,2,
@@ -298,24 +284,24 @@ field_111180_a,horseHost,2,
 field_111188_I,attributeModifierMap,2,Contains a Map of the AttributeModifiers registered by potions
 field_111192_g,previousTotalWorldTime,2,time what is using to check if InhabitedTime should be calculated
 field_111193_e,playerInstanceList,2,This field is using when chunk should be processed (every 8000 ticks)
-field_111198_g,previousWorldTime,2,time what is using when chunk InhabitedTime is being calculated
 field_111203_a,moonPhaseFactors,2,
 field_111204_q,inhabitedTime,2,the cumulative number of ticks players have been in this chunk
 field_111210_e,itemModifierUUID,2,
 field_111230_s,enchantmentTypes,2,
 field_111242_f,theHorse,2,
 field_111243_a,horseInventory,2,
-field_111263_d,movementSpeed,2,
-field_111264_e,attackDamage,2,
-field_111265_b,followRange,2,
-field_111266_c,knockbackResistance,2,
-field_111267_a,maxHealth,2,
+field_111263_d,MOVEMENT_SPEED,2,
+field_111264_e,ATTACK_DAMAGE,2,
+field_111265_b,FOLLOW_RANGE,2,
+field_111266_c,KNOCKBACK_RESISTANCE,2,
+field_111267_a,MAX_HEALTH,2,
 field_111273_g,locationFontTexture,0,
 field_111274_c,unicodePageLocations,0,
 field_111284_a,DECIMALFORMAT,2,
 field_120014_b,ticks,1,
 field_120015_a,server,1,
 field_120021_b,server,1,
+field_120037_e,server,1,
 field_130068_bO,combinedHealth,2,"the total health of the player, includes actual health and absorption health. Updated every tick."
 field_130070_K,fileResourcepacks,0,
 field_130074_a,joinerResourcePacks,0,
@@ -467,15 +453,11 @@ field_146016_i,beamRenderCounter,0,
 field_146020_a,customName,2,
 field_146022_i,stacks,2,
 field_146032_b,partName,2,
-field_146036_f,FISH,2,
 field_146037_g,xTile,2,
 field_146038_az,ticksCatchableDelay,2,
-field_146039_d,JUNK,2,
 field_146040_ay,ticksCaughtDelay,2,
-field_146041_e,TREASURE,2,
 field_146042_b,angler,2,
 field_146043_c,caughtEntity,2,
-field_146044_a,shake,2,
 field_146045_ax,ticksCatchable,2,
 field_146046_j,inTile,2,
 field_146047_aw,ticksInAir,2,
@@ -544,6 +526,7 @@ field_146249_a,logger,0,
 field_146250_j,scrollPos,0,
 field_146251_k,isScrolled,0,
 field_146252_h,chatLines,0,Chat lines to be displayed in the chat box
+field_146253_i,drawnChatLines,0,List of the ChatLines currently drawn
 field_146259_f,mc,0,
 field_146260_g,width,0,
 field_146261_a,achievementBg,0,
@@ -565,7 +548,7 @@ field_146294_l,width,0,The width of the screen object.
 field_146295_m,height,0,The height of the screen object.
 field_146296_j,itemRender,0,"Holds a instance of RenderItem, used to draw the achievement icons on screen (is based on ItemStack)"
 field_146297_k,mc,0,Reference to the Minecraft object.
-field_146298_h,touchValue,0,"Incremented when the game is in touchscreen mode and the screen is tapped, decremented if the screen isn't tapped. Does not appear to be used."
+field_146298_h,touchValue,0,Tracks the number of fingers currently on the screen. Prevents subsequent fingers registering as clicks.
 field_146304_f,message,0,
 field_146305_g,multilineMessage,0,
 field_146306_a,reason,0,
@@ -577,16 +560,29 @@ field_146311_h,serverData,0,
 field_146320_D,btnMapType,0,
 field_146321_E,btnAllowCommands,0,
 field_146322_F,btnCustomizeType,0,
+field_146323_G,gameModeDesc1,0,
 field_146324_A,btnMoreOptions,0,
 field_146325_B,btnMapFeatures,0,
 field_146326_C,btnBonusItems,0,
 field_146327_L,disallowedFilenames,0,These filenames are known to be restricted on one or more OS's.
+field_146328_H,gameModeDesc2,0,
+field_146329_I,worldSeed,0,
+field_146330_J,worldName,0,
 field_146331_K,selectedIndex,0,
 field_146332_f,parentScreen,0,
+field_146333_g,worldNameField,0,
 field_146334_a,chunkProviderSettingsJson,0,
+field_146335_h,worldSeedField,0,
+field_146336_i,saveDirName,0,
+field_146337_w,hardCoreMode,0,"Set to true when ""hardcore"" is the currently-selected gamemode"
+field_146338_v,bonusChestEnabled,0,
+field_146339_u,allowCheatsWasSetByUser,0,"User explicitly clicked ""Allow Cheats"" at some point\nPrevents value changes due to changing game mode"
 field_146340_t,allowCheats,0,If cheats are allowed
+field_146341_s,generateStructuresEnabled,0,
 field_146342_r,gameMode,0,
 field_146343_z,btnGameMode,0,
+field_146344_y,inMoreWorldOptionsDisplay,0,
+field_146345_x,alreadyGenerated,0,
 field_146347_a,enableButtonsTimer,0,The integer value containing the number of ticks that have passed since the player's death
 field_146349_a,logger,0,
 field_146351_f,messageLine1,0,
@@ -614,12 +610,8 @@ field_146400_h,game_settings,0,
 field_146408_f,logger,0,
 field_146409_v,defaultInputFieldText,0,is the text that appears when you press the chat key and the input box appears pre-filled
 field_146410_g,historyBuffer,0,
-field_146412_t,foundPlayerNames,0,
-field_146413_s,autocompleteIndex,0,
-field_146414_r,waitingOnAutocomplete,0,
 field_146415_a,inputField,0,Chat entry field
 field_146416_h,sentHistoryCursor,0,"keeps position of which chat message you will select when you press up, (does not increase for duplicated messages sent immediately after each other)"
-field_146417_i,playerNamesFound,0,
 field_146431_f,FLAT_WORLD_PRESETS,0,
 field_146432_g,parentScreen,0,The parent GUI
 field_146438_h,presetsTitle,0,
@@ -654,7 +646,6 @@ field_146484_x,currPage,0,
 field_146485_f,commandTextField,0,Text field containing the command block's command.
 field_146486_g,previousOutputTextField,0,
 field_146487_r,cancelBtn,0,
-field_146489_h,localCommandBlock,0,Command block being edited.
 field_146490_i,doneBtn,0,"""Done"" button for the GUI."
 field_146491_f,buttonId,0,The ID of the button that has been pressed.
 field_146492_g,optionsArr,0,
@@ -685,8 +676,6 @@ field_146562_a,parentScreen,0,
 field_146576_f,MINECRAFT_LOGO,0,
 field_146577_g,VIGNETTE_TEXTURE,0,
 field_146580_a,logger,0,
-field_146584_g,saveName,0,
-field_146585_a,parentScreen,0,
 field_146587_f,scaledResolution,0,
 field_146588_g,framebuffer,0,
 field_146590_g,progress,0,
@@ -694,10 +683,7 @@ field_146592_h,doneWorking,0,
 field_146593_f,progress,0,
 field_146594_a,netHandlerPlayClient,0,
 field_146603_f,game_settings_2,0,Reference to the GameSettings object.
-field_146629_g,logger,0,
 field_146630_A,renameButton,0,
-field_146631_B,recreateButton,0,
-field_146632_a,parentScreen,0,
 field_146641_z,selectButton,0,
 field_146642_y,deleteButton,0,
 field_146797_f,oldServerPinger,0,
@@ -724,7 +710,6 @@ field_146852_i,doneBtn,0,"""Done"" button for the GUI."
 field_146965_f,parentScreen,0,
 field_146966_g,availableResourcePacks,0,List of available resource packs
 field_146967_r,selectedResourcePacksList,0,List component that contains the selected resource packs
-field_146968_a,logger,0,
 field_146969_h,selectedResourcePacks,0,List of selected resource packs
 field_146970_i,availableResourcePacksList,0,List component that contains the available resource packs
 field_146972_A,openGLWarning2,0,OpenGL graphics card warning.
@@ -825,11 +810,9 @@ field_147146_q,random,2,
 field_147147_p,statusResponse,2,
 field_147148_h,logger,0,
 field_147150_a,logger,2,
-field_147166_l,categoryName,0,
-field_147167_m,categoryId,0,
-field_147168_j,NAME_CATEGORY_MAP,0,
-field_147169_k,ID_CATEGORY_MAP,0,
 field_147175_a,logger,2,
+field_147206_b,profileStartTime,2,The time (in milliseconds) that profiling was started
+field_147207_c,profileStartTick,2,The tick number that profiling was started on
 field_147208_a,logger,2,
 field_147228_b,logger,0,
 field_147229_c,pingDestinations,0,A list of NetworkManagers that have pending pings
@@ -841,6 +824,7 @@ field_147302_e,netManager,0,The NetworkManager instance used to communicate with
 field_147304_c,currentServerMaxPlayers,0,
 field_147306_l,avRandomizer,0,"Just an ordinary random number generator, used to randomize audio pitch of item/orb pickup and randomize both particlespawn offset and velocity"
 field_147307_j,guiScreenServer,0,Seems to be either null (integrated server) or an instance of either GuiMultiplayer (when connecting to a server) or GuiScreenReamlsTOS (when connecting to MCO server)
+field_147308_k,hasStatistics,0,
 field_147309_h,doneLoadingTerrain,0,"True if the client has finished downloading terrain and may spawn. Set upon receipt of S08PacketPlayerPosLook, reset upon respawning"
 field_147310_i,playerInfoMap,0,A mapping from player names to their respective GuiPlayerInfo (specifies the clients response time to the server)
 field_147313_b,networkManager,2,
@@ -862,14 +846,10 @@ field_147368_e,networkTickCount,2,
 field_147369_b,playerEntity,2,
 field_147370_c,logger,2,
 field_147371_a,netManager,2,
-field_147373_o,lastPosX,2,
 field_147374_l,chatSpamThresholdCount,2,"Incremented by 20 each time a user sends a chat message, decreased by one every tick. Non-ops kicked when over 200"
 field_147375_m,itemDropThreshold,2,
 field_147377_k,lastSentPingPacket,2,
 field_147379_i,lastPingTime,2,
-field_147380_r,hasMoved,2,
-field_147381_q,lastPosZ,2,
-field_147382_p,lastPosY,2,
 field_147384_b,networkManager,0,
 field_147385_a,mcServer,0,
 field_147386_b,networkManager,2,
@@ -882,13 +862,13 @@ field_147411_m,serverIcon,0,
 field_147412_i,playerList,0,
 field_147415_a,logger,0,
 field_147417_b,logger,2,
-field_147433_r,parabolicField,2,
 field_147436_a,logger,0,
 field_147481_N,processingLoadedTiles,2,
 field_147482_g,loadedTileEntityList,2,A list of the loaded tile entities in the world
 field_147483_b,tileEntitiesToBeRemoved,2,
 field_147484_a,addedTileEntityList,2,
 field_147489_T,blockEventCacheIndex,2,
+field_147490_S,blockEventQueue,2,
 field_147491_a,logger,2,
 field_147501_a,rendererDispatcher,0,
 field_147503_f,textureChristmas,0,
@@ -897,7 +877,7 @@ field_147505_d,textureNormalDouble,0,
 field_147506_e,textureTrapped,0,
 field_147507_b,textureTrappedDouble,0,
 field_147508_c,textureChristmasDouble,0,
-field_147509_j,isChristams,0,
+field_147509_j,isChristmas,0,
 field_147510_h,simpleChest,0,
 field_147511_i,largeChest,0,
 field_147513_b,SIGN_TEXTURE,0,
@@ -1074,6 +1054,8 @@ field_148189_l,mc,0,
 field_148190_m,listEntries,0,
 field_148196_n,lanScanEntry,0,
 field_148197_o,selectedSlotIndex,0,
+field_148198_l,serverListInternet,0,
+field_148199_m,serverListLan,0,
 field_148200_k,owner,0,
 field_148205_k,mc,0,
 field_148216_n,statSorter,0,
@@ -1100,7 +1082,10 @@ field_148286_c,labelWidth,0,
 field_148288_a,mc,0,
 field_148293_a,mc,0,
 field_148300_d,mc,0,
+field_148301_e,server,0,
+field_148303_c,owner,0,
 field_148304_a,logger,0,
+field_148306_i,serverIcon,0,
 field_148315_b,resourcePacksGUI,0,
 field_148316_c,RESOURCE_PACKS_TEXTURE,0,
 field_148317_a,mc,0,
@@ -1114,19 +1099,11 @@ field_148337_c,namePartsArray,0,
 field_148338_a,instance,0,
 field_148532_f,resourcePackInstance,0,
 field_148534_e,dirServerResourcepacks,0,
-field_148536_c,listMipmaps,0,
 field_148546_d,logger,2,
 field_148547_k,playerStatFiles,2,
 field_148550_b,logger,0,
-field_148564_f,streaming,0,
-field_148565_d,weight,0,
-field_148566_e,type,0,
-field_148567_b,volume,0,
-field_148568_c,pitch,0,
-field_148569_a,name,0,
+field_148551_a,ATOMIC_COUNTER,0,
 field_148575_b,replaceExisting,0,if true it will override all the sounds from the resourcepacks loaded before
-field_148576_c,category,0,
-field_148577_a,soundList,0,
 field_148589_c,type,0,
 field_148617_f,loaded,0,Set to true when the SoundManager has been initialised.
 field_148618_g,playTime,0,A counter for how long the sound manager has been running
@@ -1138,26 +1115,13 @@ field_148623_a,LOG_MARKER,0,The marker used for logging
 field_148624_n,playingSoundsStopTime,0,"The future time in which to stop this sound.  Type: HashMap<String, Integer>"
 field_148625_l,tickableSounds,0,"A subset of playingSounds, this contains only ITickableSounds"
 field_148626_m,delayedSounds,0,"Contains sounds to play in n ticks.  Type: HashMap<ISound, Integer>"
-field_148627_j,playingSoundPoolEntries,0,"A HashMap<String, SoundPoolEntry> of the playing sounds."
-field_148628_k,categorySounds,0,"Contains sounds mapped by category. Type: Multimap<SoundCategory, String>"
 field_148629_h,playingSounds,0,"Identifiers of all currently playing sounds. Type: HashBiMap<String, ISound>"
 field_148630_i,invPlayingSounds,0,"Inverse map of currently playing sounds, automatically mirroring changes in original map"
 field_148643_j,maxDelay,0,
 field_148645_h,musicLocation,0,
 field_148646_i,minDelay,0,
-field_148653_d,volume,0,
-field_148654_b,streamingSound,0,
-field_148655_c,pitch,0,
-field_148656_a,location,0,
 field_148657_b,logger,0,
-field_148731_f,eventVolume,0,
-field_148732_d,category,0,
-field_148733_e,eventPitch,0,
 field_148734_b,rnd,0,
-field_148735_c,soundLocation,0,
-field_148736_a,soundPool,0,A composite (List) of ISoundEventAccessors
-field_148738_b,weight,0,
-field_148739_a,entry,0,
 field_148743_a,logger,2,
 field_148748_b,objectList,2,
 field_148749_a,identityMap,2,
@@ -1202,10 +1166,11 @@ field_148953_d,y,2,
 field_148954_e,z,2,
 field_148956_c,x,2,
 field_148957_a,entityId,2,
-field_148959_h,currentItem,2,
+field_148958_j,dataManagerEntries,2,
 field_148960_i,watcher,2,
 field_148968_f,title,2,
 field_148973_a,entityID,2,
+field_148976_a,statisticMap,2,
 field_148980_b,type,2,
 field_148981_a,entityId,2,
 field_148988_d,posZ,2,
@@ -1221,6 +1186,7 @@ field_149016_b,x,2,
 field_149017_c,y,2,
 field_149018_a,entityId,2,
 field_149019_j,type,2,
+field_149020_k,data,2,
 field_149021_h,pitch,2,
 field_149022_i,yaw,2,
 field_149036_f,velocityX,2,
@@ -1230,6 +1196,7 @@ field_149039_e,z,2,
 field_149040_b,type,2,
 field_149041_c,x,2,
 field_149042_a,entityId,2,
+field_149043_l,dataManager,2,
 field_149044_m,watcher,2,
 field_149045_j,pitch,2,
 field_149046_k,headPitch,2,
@@ -1263,11 +1230,14 @@ field_149119_a,invulnerable,2,
 field_149136_a,id,2,
 field_149140_b,state,2,
 field_149142_a,MESSAGE_NAMES,2,
+field_149152_f,motionX,2,
+field_149153_g,motionY,2,
 field_149154_d,strength,2,
 field_149155_e,affectedBlockPositions,2,
 field_149156_b,posY,2,
 field_149157_c,posZ,2,
 field_149158_a,posX,2,
+field_149159_h,motionZ,2,
 field_149163_b,logicOpcode,2,
 field_149164_a,entityId,2,
 field_149167_a,reason,2,
@@ -1304,9 +1274,6 @@ field_149238_i,particleCount,2,
 field_149246_f,serverWide,2,If true the sound is played across the server
 field_149249_b,soundData,2,can be a block/item id or other depending on the soundtype
 field_149251_a,soundType,2,
-field_149264_b,zPositions,2,
-field_149266_a,xPositions,2,
-field_149267_h,isOverworld,2,
 field_149282_b,chunkZ,2,
 field_149284_a,chunkX,2,
 field_149290_a,clientTime,2,
@@ -1316,6 +1283,13 @@ field_149297_a,GSON,2,
 field_149301_b,verifyTokenEncrypted,2,
 field_149302_a,secretKeyEncrypted,2,
 field_149305_a,profile,2,
+field_149314_f,action,2,
+field_149315_g,friendlyFlags,2,
+field_149316_d,suffix,2,
+field_149317_e,players,2,
+field_149318_b,displayName,2,
+field_149319_c,prefix,2,
+field_149320_a,name,2,
 field_149326_d,action,2,
 field_149327_b,objective,2,
 field_149328_c,value,2,
@@ -1324,6 +1298,7 @@ field_149334_b,foodLevel,2,
 field_149335_c,saturationLevel,2,
 field_149336_a,health,2,
 field_149341_b,objectiveValue,2,
+field_149342_c,action,2,
 field_149343_a,objectiveName,2,
 field_149349_d,lines,2,
 field_149356_b,entityId,2,
@@ -1332,6 +1307,7 @@ field_149368_b,worldTime,2,
 field_149369_a,totalWorldTime,2,
 field_149373_b,scoreName,2,
 field_149374_a,position,2,
+field_149378_b,dataManagerEntries,2,
 field_149379_a,entityId,2,
 field_149383_b,yaw,2,
 field_149384_a,entityId,2,
@@ -1343,7 +1319,6 @@ field_149399_b,totalExperience,2,
 field_149400_c,level,2,
 field_149406_b,entityId,2,
 field_149407_c,vehicleEntityId,2,
-field_149408_a,leash,2,
 field_149414_d,motionZ,2,
 field_149415_b,motionX,2,
 field_149416_c,motionY,2,
@@ -1404,7 +1379,6 @@ field_149567_a,entityId,2,
 field_149577_f,facingX,2,
 field_149578_g,facingY,2,
 field_149579_d,placedBlockDirection,2,
-field_149580_e,stack,2,
 field_149584_h,facingZ,2,
 field_149590_d,lines,2,
 field_149597_d,requestedState,2,
@@ -1424,31 +1398,14 @@ field_149624_a,strafeSpeed,2,"Positive for left strafe, negative for right"
 field_149628_b,stack,2,
 field_149629_a,slotId,2,
 field_149632_a,matches,2,
-field_149754_D,minZ,2,
-field_149755_E,maxX,2,
-field_149756_F,maxY,2,
-field_149757_G,maxZ,2,
 field_149758_A,isBlockContainer,2,true if the Block contains a Tile Entity
-field_149759_B,minX,2,
-field_149760_C,minY,2,
 field_149762_H,stepSound,2,Sound of stepping on the block
 field_149763_I,blockParticleGravity,2,
 field_149764_J,blockMaterial,2,
 field_149765_K,slipperiness,2,Determines how much velocity is maintained while moving on top of this block
-field_149766_f,soundTypeWood,2,the wood sound type
-field_149767_g,soundTypeGravel,2,the gravel sound type
-field_149769_e,soundTypeStone,2,
 field_149770_b,unlocalizedName,2,
 field_149771_c,blockRegistry,2,
 field_149772_a,displayOnCreativeTab,2,
-field_149773_n,soundTypeSnow,2,
-field_149774_o,soundTypeLadder,2,
-field_149775_l,soundTypeCloth,2,
-field_149776_m,soundTypeSand,2,
-field_149777_j,soundTypeMetal,2,
-field_149778_k,soundTypeGlass,2,
-field_149779_h,soundTypeGrass,2,
-field_149780_i,soundTypePiston,2,
 field_149781_w,blockResistance,2,Indicates how much this block can resist explosions
 field_149782_v,blockHardness,2,Indicates how many hits it takes to break a block.
 field_149783_u,useNeighborBrightness,2,Flag if block should use the brightest neighbor light value as its own
@@ -1456,7 +1413,6 @@ field_149784_t,lightValue,2,Amount of light emitted
 field_149785_s,translucent,2,
 field_149786_r,lightOpacity,2,How much light is subtracted for going through this block
 field_149787_q,fullBlock,2,
-field_149788_p,soundTypeAnvil,2,
 field_149789_z,needsRandomTick,2,Flags whether or not this block is of a type that needs random ticking. Ref-counted by ExtendedBlockStorage in order to broadly cull a chunk from the random chunk update list for efficiency's sake.
 field_149790_y,enableStats,2,
 field_149815_a,adjacentSourceBlocks,2,
@@ -1479,13 +1435,9 @@ field_150082_a,isSticky,2,This piston is the sticky one?
 field_150099_b,canDrop,2,
 field_150112_b,toggles,2,
 field_150113_a,isOn,2,
-field_150121_P,fancyGraphics,2,
-field_150127_b,iconIndex,0,
 field_150128_a,surroundings,2,
 field_150149_b,modelBlock,2,
 field_150151_M,modelState,2,
-field_150152_N,hasRaytraced,2,
-field_150153_O,rayTracePass,2,
 field_150171_a,isOn,2,
 field_150179_b,blocksNeedingUpdate,2,List of blocks to update with redstone.
 field_150181_a,canProvidePower,2,
@@ -1509,8 +1461,6 @@ field_150276_d,key,2,
 field_150277_e,formatArgs,2,
 field_150278_b,children,2,"The discrete elements that make up this component.  For example, this would be [""Prefix, "", ""FirstArg"", ""SecondArg"", "" again "", ""SecondArg"", "" and "", ""FirstArg"", "" lastly "", ""ThirdArg"", "" and also "", ""FirstArg"", "" again!""] for ""translation.test.complex"" (see en-US.lang)"
 field_150279_c,stringVariablePattern,2,
-field_150280_b,dataSize,2,
-field_150282_a,data,2,
 field_150317_a,logger,2,
 field_150318_D,golden_rail,2,
 field_150319_E,detector_rail,2,
@@ -1680,16 +1630,14 @@ field_150486_ae,chest,2,
 field_150487_bG,birch_stairs,2,
 field_150488_af,redstone_wire,2,
 field_150490_a,json,2,
+field_150491_b,tagList,2,
+field_150492_b,tagList,2,
 field_150493_b,jsonValue,2,The value to be parsed into a tag.
-field_150499_b,volume,2,
-field_150500_c,frequency,2,
-field_150501_a,soundName,2,
 field_150507_a,cipher,2,
 field_150509_a,decryptionCodec,2,
 field_150511_e,lastUpdateTimeInMilliseconds,2,"The time, in milliseconds since epoch, that this instance was last updated"
 field_150514_p,yellowFlowerGen,2,
 field_150517_a,block,2,
-field_150520_a,baseBlockRequired,2,
 field_150521_a,block,2,
 field_150527_b,woodMetadata,2,
 field_150528_a,leavesMetadata,2,
@@ -1716,24 +1664,12 @@ field_150586_aC,logger,2,
 field_150587_Y,savannaPlateau,2,
 field_150588_X,savanna,2,
 field_150589_Z,mesa,2,
-field_150590_f,height_MidPlains,2,
-field_150591_g,height_LowHills,2,
-field_150592_d,height_DeepOceans,2,
-field_150593_e,height_LowPlains,2,
-field_150594_b,height_ShallowWaters,2,
-field_150595_c,height_Oceans,2,
-field_150596_a,height_Default,2,
+field_150590_f,mutated_taiga,2,
 field_150597_n,explorationBiomesList,2,
-field_150598_l,height_LowIslands,2,
-field_150599_m,height_PartiallySubmerged,2,
-field_150600_j,height_Shores,2,
-field_150601_k,height_RockyWaters,2,
-field_150602_h,height_HighPlateaus,2,
-field_150603_i,height_MidHills,2,
+field_150599_m,mutated_swampland,2,
 field_150605_ac,temperatureNoise,2,
 field_150607_aa,mesaPlateau_F,2,
 field_150608_ab,mesaPlateau,2,
-field_150611_aD,baseBiome,2,
 field_150656_f,isPowered,2,
 field_150660_b,world,2,
 field_150670_b,value,2,
@@ -1747,9 +1683,6 @@ field_150691_e,allowedInChat,2,
 field_150700_a,GSON,2,
 field_150703_b,value,2,
 field_150704_a,action,2,
-field_150710_d,enchantable,2,
-field_150711_b,returnStack,2,
-field_150712_c,maxDamagePercent,2,
 field_150735_g,logger,2,
 field_150738_b,logMarkerPackets,2,
 field_150739_c,attrKeyConnectionState,2,
@@ -1765,8 +1698,6 @@ field_150762_g,id,2,
 field_150764_e,STATES_BY_ID,2,
 field_150773_b,futureListeners,2,
 field_150774_a,packet,2,
-field_150776_b,variation,2,
-field_150777_a,rootHeight,2,
 field_150794_a,buf,2,
 field_150797_b,RECEIVED_PACKET_MARKER,2,
 field_150798_a,logger,2,
@@ -1793,21 +1724,14 @@ field_150917_c,EFFECTIVE_ON,2,
 field_150922_c,dyeColors,2,
 field_150925_a,crops,2,
 field_150928_b,RECORDS,2,
-field_150929_a,recordName,2,The name of the record.
 field_150933_b,material,2,
 field_150934_a,attackDamage,2,
 field_150935_a,block,2,
 field_150939_a,block,2,
 field_150940_b,leaves,2,
-field_150944_b,coloredBlock,2,
 field_150945_c,subtypeNames,2,
 field_150949_c,singleSlab,2,
-field_150961_L,exploreAllBiomes,2,Is the 'Adventuring Time' achievement
-field_150962_H,breedCow,2,Is the 'Repopulation' achievement
-field_150963_I,spawnWither,2,Is the 'The Beginning?' achievement
-field_150964_J,killWither,2,Is the 'The Beginning.' achievement
-field_150965_K,fullBeacon,2,Is the 'Beaconator' achievement
-field_150966_x,diamondsToYou,2,
+field_150957_c,objectiveCriteria,2,
 field_150980_f,meta,2,The item damage value on an ItemStack that represents this fish type
 field_150981_g,unlocalizedName,2,"The value that this fish type uses to replace ""XYZ"" in: ""fish.XYZ.raw"" / ""fish.XYZ.cooked"" for the unlocalized name and ""fish_XYZ_raw"" / ""fish_XYZ_cooked"" for the icon string."
 field_150983_e,META_LOOKUP,2,Maps an item damage value for an ItemStack to the corresponding FishType value.
@@ -1987,9 +1911,6 @@ field_151172_bF,carrot,2,
 field_151173_ae,diamond_leggings,2,
 field_151174_bG,potato,2,
 field_151175_af,diamond_boots,2,
-field_151183_A,junkFishedStat,2,
-field_151184_B,treasureFishedStat,2,
-field_151185_q,distanceByHorseStat,2,
 field_151186_x,animalsBredStat,2,the number of animals you have bred
 field_151191_b,jsonSerializableValue,2,
 field_151192_a,integerValue,2,
@@ -1999,7 +1920,6 @@ field_151234_b,logger,2,
 field_151242_b,multiplyDeBruijnBitPosition,2,"Though it looks like an array, this is really more like a mapping.  Key (index of this array) is the upper 5 bits of the result of multiplying a 32-bit unsigned integer by the B(2, 5) De Bruijn sequence 0x077CB531.  Value (value stored in the array) is the unique index (from the right) of the leftmost one-bit in a 32-bit unsigned integer that can cause the upper 5 bits to get that value.  Used for highly optimized ""find the log-base-2 of this number"" calculations."
 field_151245_t,iconItemStack,0,
 field_151249_a,logger,2,
-field_151254_d,locationOfBlockChange,2,
 field_151257_b,networkSystem,2,
 field_151258_a,logger,2,
 field_151262_p,logger,2,
@@ -2031,9 +1951,9 @@ field_151365_b,target,2,The target entity being damaged
 field_151366_a,user,2,The user of the enchantment
 field_151369_A,lure,2,
 field_151370_z,luckOfTheSea,2,
+field_151382_b,exceptionMessage,0,
 field_151388_d,ENCHANTMENT_ITERATOR_HURT,2,
 field_151389_e,ENCHANTMENT_ITERATOR_DAMAGE,2,
-field_151423_m,pufferfishEffect,2,
 field_151430_f,resourceKey,2,
 field_151432_d,ID_LOOKUP,2,
 field_151433_e,chatVisibility,2,
@@ -2041,7 +1961,6 @@ field_151441_H,showInventoryAchievementHint,0,
 field_151442_I,mipmapLevels,0,
 field_151444_V,keyBindSprint,0,
 field_151445_Q,keyBindInventory,0,
-field_151446_aD,mapSoundLevels,0,
 field_151447_Z,keyBindScreenshot,0,
 field_151448_g,fboEnable,0,
 field_151449_az,typeListString,0,
@@ -2054,6 +1973,7 @@ field_151455_aw,forceUnicodeFont,0,
 field_151456_ac,keyBindsHotbar,0,
 field_151457_aa,keyBindTogglePerspective,0,
 field_151458_ab,keyBindSmoothCamera,0,
+field_151459_g,stat,2,
 field_151471_f,keyCategory,0,
 field_151472_e,keyCodeDefault,0,
 field_151473_c,keybindSet,0,
@@ -2064,6 +1984,7 @@ field_151479_b,logger,2,
 field_151480_b,logger,2,
 field_151481_a,logger,2,
 field_151484_k,temptItem,2,
+field_151493_a,ocelot,2,
 field_151495_j,targetY,2,
 field_151496_k,targetZ,2,
 field_151497_i,targetX,2,
@@ -2073,7 +1994,6 @@ field_151502_a,eatingGrassTimer,2,Number of ticks since the entity started to ea
 field_151504_e,doorBlock,2,The wooden door block
 field_151505_a,logger,2,
 field_151506_a,logger,2,
-field_151511_a,owner,2,
 field_151516_b,logger,2,
 field_151520_r,damageIsAbsolute,2,Whether or not the damage ignores modification by potion effects or enchantments.
 field_151527_f,difficultyId,2,
@@ -2155,16 +2075,11 @@ field_151680_x,silverColor,2,
 field_151687_a,logger,2,
 field_152110_j,playerProfile,2,
 field_152118_bv,chickenJockey,2,
-field_152127_m,streamIndicator,0,
 field_152176_i,serverResourcePacks,0,
 field_152177_g,time,0,
-field_152317_g,parentScreen,0,
-field_152325_g,parentScreen,0,
-field_152333_s,stream,0,
 field_152350_aA,skinManager,0,
 field_152351_aB,scheduledTasks,0,
 field_152352_aC,mcThread,0,
-field_152353_at,stream,0,
 field_152354_ay,mojangLogo,0,
 field_152355_az,sessionService,0,
 field_152356_J,twitchDetails,0,
@@ -2172,32 +2087,11 @@ field_152364_T,authService,2,
 field_152365_W,profileRepo,2,
 field_152366_X,profileCache,2,
 field_152367_a,USER_CACHE_FILE,2,
-field_152391_aS,STREAM_COMPRESSIONS,0,
-field_152392_aT,STREAM_CHAT_MODES,0,
-field_152393_aU,STREAM_CHAT_FILTER_MODES,0,
-field_152394_aV,STREAM_MIC_MODES,0,
 field_152395_am,keyBindFullscreen,0,
-field_152396_an,keyBindStreamStartStop,0,
-field_152397_ao,keyBindStreamPauseUnpause,0,
-field_152398_ap,keyBindStreamCommercials,0,
-field_152399_aq,keyBindStreamToggleMic,0,
-field_152400_J,streamBytesPerPixel,0,
-field_152401_K,streamMicVolume,0,
-field_152402_L,streamGameVolume,0,
-field_152403_M,streamKbps,0,
-field_152404_N,streamFps,0,
-field_152405_O,streamCompression,0,
-field_152406_P,streamSendMetadata,0,
-field_152407_Q,streamPreferredServer,0,
-field_152408_R,streamChatEnabled,0,
-field_152409_S,streamChatUserFilter,0,
-field_152410_T,streamMicToggleBehavior,0,
 field_152425_c,SESSION_TYPES,0,
 field_152426_d,sessionType,0,
 field_152429_d,sessionType,0,
 field_152434_e,cacheFile,0,
-field_152441_a,locationStreamIndicator,0,
-field_152442_b,mc,0,
 field_152451_a,INFINITE,2,
 field_152452_b,max,2,
 field_152453_c,read,2,
@@ -2211,14 +2105,13 @@ field_152613_a,FILE_PLAYERBANS,2,
 field_152614_b,FILE_IPBANS,2,
 field_152615_c,FILE_OPS,2,
 field_152616_d,FILE_WHITELIST,2,
-field_152627_a,pmLogger,2,
 field_152642_a,value,2,
+field_152645_a,permissionLevel,2,
 field_152659_a,dateFormat,2,
 field_152660_b,gson,2,
 field_152661_c,usernameToProfileEntryMap,2,A map between player usernames and {@link ProfileEntry profile entries}
 field_152662_d,uuidToProfileEntryMap,2,A map between {@link UUID UUID's} and {@link ProfileEntry ProfileEntries}
 field_152663_e,gameProfiles,2,A list of all the cached {@link GameProfile GameProfiles}
-field_152664_f,mcServer,2,
 field_152665_g,usercacheFile,2,
 field_152666_h,TYPE,2,
 field_152672_b,gameProfile,2,The player's GameProfile
@@ -2234,7 +2127,8 @@ field_152729_b,OLD_PLAYERBAN_FILE,2,
 field_152730_c,OLD_OPS_FILE,2,
 field_152731_d,OLD_WHITELIST_FILE,2,
 field_152732_e,LOGGER,2,
-field_152781_b,mapAssets,0,
+field_152773_a,snooperStats,2,The snooper Map of stats
+field_152774_b,clientStats,2,The client Map of stats
 field_152783_a,logger,0,
 field_152784_b,resourceMap,0,
 field_152785_b,IS_STANDALONE,2,Selects only entities which are neither ridden by anything nor ride on anything
@@ -2243,32 +2137,6 @@ field_152795_c,textureManager,0,
 field_152796_d,skinCacheDir,0,
 field_152797_e,sessionService,0,
 field_152798_f,skinCacheLoader,0,
-field_152812_b,name,0,
-field_152813_c,description,0,
-field_152814_d,payload,0,
-field_152861_B,logger,0,
-field_152864_E,errorCode,0,
-field_152867_c,broadcastListener,0,
-field_152879_o,broadcastState,0,
-field_152881_q,videoParamaters,0,
-field_152882_r,audioParamaters,0,
-field_152883_s,ingestList,0,
-field_152885_u,authenticationToken,0,
-field_152886_v,channelInfo,0,
-field_152887_w,userInfo,0,
-field_152888_x,streamInfo,0,
-field_152949_a,STREAM_MARKER,0,
-field_152950_b,LOGGER,0,
-field_152951_c,broadcastController,0,
-field_152952_d,chatController,0,
-field_152953_e,mc,0,the minecraft instance
-field_152954_f,twitchComponent,0,
-field_152956_h,framebuffer,0,
-field_152958_j,targetFPS,0,stream's target fps
-field_152961_m,loggedIn,0,
-field_152964_p,authFailureReason,0,
-field_153018_p,LOGGER,0,
-field_153053_k,audioParameters,0,
 field_153196_B,logText,0,
 field_153197_d,nvidia,0,
 field_153198_e,GL_FRAMEBUFFER,0,
@@ -2290,6 +2158,7 @@ field_153213_x,shadersAvailable,0,
 field_153214_y,arbShaders,0,
 field_153215_z,arbMultitexture,0,
 field_154318_o,realmsButton,0,
+field_154330_a,proxy,0,
 field_154332_n,eula,1,
 field_154340_k,selectionList,0,
 field_154349_a,LOG,1,
@@ -2307,6 +2176,7 @@ field_174835_g,isOutsideBorder,2,
 field_174836_a,ZERO_AABB,2,
 field_174837_as,cmdResultStats,2,The command result statistics for this Entity.
 field_174844_a,entity,0,
+field_174847_a,sourceState,0,
 field_174848_a,RANDOM,0,
 field_174849_az,particleTypes,0,
 field_174850_ay,lifetime,0,
@@ -2371,10 +2241,10 @@ field_175014_r,vertexBufferFormat,0,
 field_175015_z,entityOutlineFramebuffer,0,
 field_175024_d,chestRenderer,0,
 field_175025_e,fluidRenderer,0,
-field_175026_b,gameSettings,0,
 field_175027_c,blockModelRenderer,0,
 field_175028_a,blockModelShapes,0,
 field_175057_n,textureManager,0,
+field_175058_l,notRenderingEffectsInGUI,0,False when the renderer is rendering the item's effects into a GUI
 field_175059_m,itemModelMesher,0,
 field_175073_D,drawBlockOutline,0,
 field_175074_C,renderHand,0,
@@ -2417,11 +2287,18 @@ field_175172_bI,lastReportedPosX,0,"The last X position which was transmitted to
 field_175189_D,lastPlayerHealth,0,
 field_175190_E,lastSystemTime,0,The last recorded system time
 field_175191_F,healthUpdateCounter,0,Used with updateCounter to make the heart bar flash
+field_175192_A,titleDisplayTime,0,The time that the title is display
+field_175193_B,titleFadeOut,0,The time that the title take to fade out
 field_175194_C,playerHealth,0,
+field_175195_w,titlesTimer,0,A timer for the current title and subtitle displayed
 field_175196_v,overlayPlayerList,0,
 field_175197_u,spectatorGui,0,The spectator GUI for this in-game GUI instance
 field_175198_t,overlayDebug,0,
+field_175199_z,titleFadeIn,0,The time that the title take to fade in
+field_175200_y,displayedSubTitle,0,The current sub-title displayed
+field_175201_x,displayedTitle,0,The current title displayed
 field_175208_g,id,0,
+field_175209_y,validator,0,Called to check if the text is valid
 field_175214_q,guiResponder,0,The GuiResponder Object reference.
 field_175215_p,localizationStr,0,The localization string used by this control.
 field_175222_u,formatHelper,0,
@@ -2445,6 +2322,7 @@ field_175285_g,NEWLINE_SPLITTER,0,
 field_175286_t,clickedLinkURI,0,
 field_175287_a,LOGGER,0,
 field_175289_s,changed,0,
+field_175300_s,savedGameMode,0,"Used to save away the game mode when the current ""debug"" world type is chosen (forcing it to spectator mode)"
 field_175337_G,random,0,A Random instance for this world customization
 field_175360_f,title,0,The title of the GUI.
 field_175361_a,parentScreen,0,The parent GUI for this GUI
@@ -2457,7 +2335,6 @@ field_175383_v,playerInventory,0,The player inventory bound to this GUI.
 field_175384_v,playerInventory,0,The player inventory bound to this GUI.
 field_175401_bS,spectatingEntity,2,The entity the player is currently spectating through.
 field_175429_f,DEFAULT_RIGHTLEG_ROTATION,2,
-field_175430_g,contents,2,
 field_175431_d,DEFAULT_RIGHTARM_ROTATION,2,
 field_175432_e,DEFAULT_LEFTLEG_ROTATION,2,
 field_175433_b,DEFAULT_BODY_ROTATION,2,
@@ -2484,9 +2361,7 @@ field_175504_a,growingAge,2,
 field_175506_bl,spawnableBlock,2,
 field_175514_bm,DYE_TO_RGB,2,Map from EnumDyeColor to RGB values for passage to GlStateManager.color()
 field_175538_bq,currentMoveTypeDuration,2,
-field_175539_bk,aiAvoidWolves,2,
 field_175541_bs,carrotTicks,2,
-field_175542_br,moveType,2,
 field_175545_bm,avoidEntity,2,
 field_175560_bz,villagerInventory,2,
 field_175561_bA,DEFAULT_TRADE_LIST_MAP,2,"A multi-dimensional array mapping the various professions, careers and career levels that a Villager may offer"
@@ -2522,11 +2397,9 @@ field_175747_C,colorIndex,2,The numerical index that represents this color
 field_175748_y,name,2,The name of this color/formatting
 field_175774_a,LOGGER,2,
 field_175785_a,SHORTCUTS,2,
-field_175893_a,CHEST_CONTENT_WEIGHT_LIST,2,
+field_175901_b,layerMaterial,2,
 field_175907_a,tallGrassState,2,
-field_175909_a,chestItems,2,
 field_175916_b,SPAWNERTYPES,2,
-field_175917_c,CHESTCONTENT,2,
 field_175919_c,predicate,2,
 field_175920_a,oreBlock,2,
 field_175943_g,trunkSize,2,
@@ -2565,6 +2438,10 @@ field_176103_f,minY,2,
 field_176104_g,maxX,2,
 field_176106_e,minX,2,
 field_176108_h,maxY,2,
+field_176114_d,w,2,
+field_176115_b,y,2,
+field_176116_c,z,2,
+field_176117_a,x,2,
 field_176146_D,borderSize,2,
 field_176147_E,borderSizeLerpTime,2,
 field_176148_F,borderSizeLerpTarget,2,
@@ -2585,7 +2462,6 @@ field_176168_c,entitySizeX,2,
 field_176169_a,blockaccess,2,
 field_176180_f,canEnterDoors,2,
 field_176181_g,canBreakDoors,2,
-field_176182_j,shouldAvoidWater,2,
 field_176183_h,avoidsWater,2,
 field_176184_i,canSwim,2,
 field_176190_c,nodeProcessor,2,
@@ -2593,10 +2469,8 @@ field_176227_L,blockState,2,
 field_176228_M,defaultBlockState,2,
 field_176229_d,BLOCK_STATE_IDS,2,
 field_176230_a,AIR_ID,2,ResourceLocation for the Air block
-field_176231_q,SLIME_SOUND,2,
 field_176236_b,CHECK_DECAY,2,
 field_176237_a,DECAYABLE,2,
-field_176238_O,isTransparent,0,
 field_176239_P,VARIANT,2,
 field_176240_P,VARIANT,2,
 field_176241_b,NORTH,2,
@@ -2620,7 +2494,6 @@ field_176259_O,WEST,2,
 field_176263_b,POWERED,2,
 field_176264_a,FACING,2,
 field_176265_M,ATTACHED,2,
-field_176266_N,SUSPENDED,2,
 field_176273_b,NORTH,2,
 field_176274_P,ALL_FACES,2,
 field_176277_a,UP,2,
@@ -2631,7 +2504,6 @@ field_176283_b,OPEN,2,
 field_176284_a,FACING,2,
 field_176285_M,HALF,2,
 field_176289_Q,SOUTH,2,
-field_176290_b,SUSPENDED,2,
 field_176291_P,EAST,2,
 field_176292_R,WEST,2,
 field_176293_a,POWERED,2,
@@ -2649,9 +2521,7 @@ field_176310_M,SHAPE,2,
 field_176313_a,WET,2,
 field_176315_a,LAYERS,2,
 field_176320_b,EXTENDED,2,
-field_176321_a,FACING,2,
 field_176325_b,TYPE,2,
-field_176326_a,FACING,2,
 field_176327_M,SHORT,2,
 field_176330_a,COLOR,2,
 field_176331_b,ROUGH_META,2,
@@ -2708,7 +2578,6 @@ field_176447_a,FACING,2,
 field_176448_b,ROTATION,2,
 field_176449_a,FACING,2,
 field_176451_a,HAS_BOTTLE,2,
-field_176452_a,TRIGGERED,2,
 field_176459_a,FACING,2,
 field_176463_b,MODE,2,
 field_176464_a,POWERED,2,
@@ -2745,11 +2614,9 @@ field_176527_M,SOUTH,2,Whether this fence connects in the southern direction
 field_176528_N,WEST,2,Whether this fence connects in the western direction
 field_176531_a,MOISTURE,2,
 field_176539_Q,WEST,2,
-field_176540_b,FLIP,2,
 field_176541_P,SOUTH,2,
 field_176542_R,UPPER,2,
 field_176543_a,AGE,2,
-field_176544_M,ALT,2,
 field_176545_N,NORTH,2,
 field_176546_O,EAST,2,
 field_176547_a,COLOR,2,
@@ -2769,7 +2636,6 @@ field_176579_a,POWER,2,
 field_176580_a,POWERED,2,
 field_176581_a,COLOR,2,
 field_176584_b,POWERED,2,
-field_176585_a,FACING,2,
 field_176587_a,AGE,2,
 field_176589_a,BITES,2,
 field_176591_a,LEVEL,2,
@@ -2777,8 +2643,6 @@ field_176596_a,FACING,2,
 field_176599_b,ITEM,0,
 field_176600_a,BLOCK,0,
 field_176605_b,interpolatedFrameData,0,
-field_176606_q,locationNameCompass,0,
-field_176607_p,locationNameClock,0,
 field_176615_f,meta,2,
 field_176616_g,name,2,
 field_176618_e,META_LOOKUP,2,
@@ -2887,8 +2751,8 @@ field_177073_g,mapModel,0,
 field_177074_h,itemRenderer,0,
 field_177080_a,itemRenderer,0,
 field_177095_g,brightnessBuffer,0,
+field_177096_e,textureBrightness,0,
 field_177097_h,layerRenderers,0,
-field_177098_i,renderOutlines,0,
 field_177103_a,TEXTURE_ARMOR_STAND,0,"A constant instance of the armor stand texture, wrapped inside a ResourceLocation wrapper."
 field_177108_a,ENDERMITE_TEXTURES,0,
 field_177114_e,GUARDIAN_TEXTURE,0,
@@ -2927,12 +2791,16 @@ field_177172_a,LIGHTNING_TEXTURE,0,
 field_177174_a,endermanRenderer,0,
 field_177184_f,colorR,0,
 field_177185_g,colorG,0,
+field_177186_d,modelArmor,0,
 field_177187_e,alpha,0,
 field_177188_b,ENCHANTED_ITEM_GLINT_RES,0,
+field_177189_c,modelLeggings,0,
 field_177190_a,renderer,0,
 field_177191_j,ARMOR_TEXTURE_RES_MAP,0,
 field_177192_h,colorB,0,
+field_177193_i,skipRenderGlint,0,
 field_177202_b,endermanRenderer,0,
+field_177203_a,RES_ENDERMAN_EYES,0,
 field_177205_a,mooshroomRenderer,0,
 field_177206_a,livingEntityRenderer,0,
 field_177208_a,playerRenderer,0,
@@ -2963,6 +2831,10 @@ field_177290_Q,patternCraftingStack,2,An ItemStack used to apply this pattern.
 field_177291_P,craftingLayers,2,An array of three strings where each string represents a layer in the crafting grid. Goes from top to bottom.
 field_177320_c,logger,0,
 field_177321_h,lock,0,
+field_177322_i,downloadingPacks,0,ResourcesPack currently beeing downloaded
+field_177328_b,message,0,
+field_177329_c,isClosed,0,
+field_177330_a,inputStream,0,
 field_177336_b,TEXTURE_ALEX,0,The default skin for the Alex model.
 field_177337_a,TEXTURE_STEVE,0,The default skin for the Steve model.
 field_177351_f,uvOffsetsById,0,
@@ -2987,8 +2859,6 @@ field_177408_i,displayName,0,
 field_177447_w,tileEntityPosQueue,2,"""queue containing the BlockPos of tile entities queued for creation"""
 field_177454_f,uuidToPlayerMap,2,A map containing the key-value pairs for UUIDs and their EntityPlayerMP objects.
 field_177463_c,world,2,
-field_177474_A,oceanMonumentGenerator,2,
-field_177477_r,settings,2,
 field_177488_d,data,2,
 field_177511_d,tileEntity,2,
 field_177512_e,tileEntityInitialized,2,
@@ -3030,14 +2900,10 @@ field_177613_u,variantNames,0,
 field_177614_t,blockDefinitions,0,
 field_177615_s,itemLocations,0,
 field_177616_r,MODEL_ENTITY,0,
-field_177617_q,MODEL_CLOCK,0,
-field_177618_p,MODEL_COMPASS,0,
 field_177624_d,properties,2,
 field_177625_e,validStates,2,
 field_177626_b,GET_NAME_FUNC,2,Function that converts a Property into it's name.
 field_177627_c,block,2,
-field_177628_a,COMMA_JOINER,2,
-field_177636_b,model,0,
 field_177640_b,propertyPredicates,2,
 field_177641_a,blockstate,2,
 field_177644_a,block,2,
@@ -3267,6 +3133,7 @@ field_178032_d,counter,0,
 field_178034_b,facing,0,
 field_178035_c,setFacing,0,
 field_178036_a,renderChunk,0,
+field_178046_u,proxy,0,
 field_178090_d,modelManager,0,
 field_178091_b,simpleShapesCache,0,
 field_178092_c,shapers,0,
@@ -3284,6 +3151,10 @@ field_178145_h,pos,2,Position of the workbench
 field_178146_a,dispenserInventory,2,
 field_178149_f,xpSeed,2,
 field_178150_j,position,2,
+field_178152_f,cookTime,2,
+field_178153_g,totalCookTime,2,
+field_178154_h,furnaceBurnTime,2,
+field_178155_i,currentItemBurnTime,2,
 field_178156_j,selfPosition,2,
 field_178164_f,renderChunks,0,
 field_178165_d,countChunksX,0,
@@ -3294,6 +3165,7 @@ field_178169_a,renderGlobal,0,
 field_178179_a,vertexBuffer,0,
 field_178182_b,vboUploader,0,
 field_178183_a,worldRenderer,0,
+field_178199_k,VALUES,0,
 field_178206_b,vertexColorMultiplier,0,
 field_178207_c,vertexBrightness,0,
 field_178213_b,tintIndex,0,
@@ -3312,6 +3184,7 @@ field_178245_c,tintIndex,0,
 field_178246_a,FACING_DEFAULT,0,
 field_178271_b,atlasSpritesWater,0,
 field_178272_a,atlasSpritesLava,0,
+field_178282_n,VALUES,0,
 field_178313_f,LOGGER,0,
 field_178314_g,elements,0,
 field_178315_d,parent,0,
@@ -3334,8 +3207,6 @@ field_178350_b,rotation,0,
 field_178351_a,uvs,0,
 field_178353_d,head,0,
 field_178354_e,gui,0,
-field_178355_b,thirdPerson,0,
-field_178356_c,firstPerson,0,
 field_178357_a,DEFAULT,0,
 field_178360_b,TRANSLATION_DEFAULT,0,
 field_178361_c,SCALE_DEFAULT,0,
@@ -3347,12 +3218,8 @@ field_178366_a,DEFAULT,0,
 field_178376_e,facing,0,
 field_178389_a,spanFacing,0,
 field_178398_a,LAYERS,0,
-field_178422_b,listVariants,0,
-field_178423_a,name,0,
-field_178434_d,weight,0,
-field_178435_b,modelRotation,0,
-field_178436_c,uvLock,0,
-field_178437_a,modelLocation,0,
+field_178417_b,SCALE_ROTATION_GENERAL,0,
+field_178418_a,SCALE_ROTATION_22_5,0,
 field_178443_b,suffix,0,
 field_178444_c,ignored,0,
 field_178445_a,name,0,
@@ -3360,13 +3227,10 @@ field_178449_b,setBuiltInBlocks,0,
 field_178450_a,blockStateMap,0,
 field_178460_a,DESTROY_STAGES,0,
 field_178462_c,blockRenderer,0,
-field_178464_d,BANNERTEXTURES,0,
 field_178465_e,bannerModel,0,
 field_178466_c,DESIGNS,0,An array of all the patterns that are being currently rendered.
 field_178467_h,skeletonHead,0,
 field_178468_i,humanoidHead,0,
-field_178471_b,bannerTexture,0,The layered texture for the banner to render out.
-field_178472_a,systemTime,0,"The current system time, in milliseconds."
 field_178477_b,chunkRenderDispatcher,0,
 field_178478_c,regionRenderCacheBuilder,0,
 field_178496_f,setVisibility,0,
@@ -3489,15 +3353,15 @@ field_178812_b,MODELVIEW,0,The current GL modelview matrix
 field_178813_c,PROJECTION,0,The current GL projection matrix
 field_178814_a,VIEWPORT,0,The current GL viewport
 field_178817_f,locked,2,
-field_178862_f,locationCape,0,
+field_178818_g,forceUpdate,2,
+field_178827_f,id,2,
+field_178830_e,internalName,2,
 field_178863_g,skinType,0,
 field_178864_d,playerTexturesLoaded,0,
-field_178865_e,locationSkin,0,
 field_178866_b,gameType,0,
 field_178867_a,gameProfile,0,The GameProfile for the player represented by this NetworkPlayerInfo instance
 field_178872_h,displayName,0,"When this is non-null, it is displayed instead of the player's real name"
 field_178879_v,reducedDebugInfo,0,
-field_178880_u,allowBlockAlternatives,0,
 field_178881_t,useVbo,0,
 field_178882_aU,setModelParts,0,
 field_178883_an,keyBindSpectatorOutlines,0,
@@ -3521,11 +3385,29 @@ field_179024_e,banner,0,
 field_179029_g,facings,0,
 field_179035_h,vertexInfos,0,
 field_179040_a,worldRenderers,0,
+field_179041_d,units,0,
+field_179042_b,polygonOffsetLine,0,
+field_179043_c,factor,0,
+field_179044_a,polygonOffsetFill,0,
+field_179045_d,start,0,
+field_179046_e,end,0,
+field_179047_b,mode,0,
+field_179048_c,density,0,
+field_179049_a,fog,0,
 field_179050_b,maskEnabled,0,
 field_179051_c,depthFunc,0,
 field_179052_a,depthTest,0,
+field_179053_b,mode,0,
+field_179054_a,cullFace,0,
 field_179059_b,textureName,0,
 field_179060_a,texture2DState,0,
+field_179061_d,q,0,
+field_179062_b,t,0,
+field_179063_c,r,0,
+field_179064_a,s,0,
+field_179065_b,coord,0,
+field_179066_c,param,0,
+field_179067_a,textureGen,0,
 field_179154_f,depthState,0,
 field_179155_g,fogState,0,
 field_179156_d,colorMaterialState,0,
@@ -3552,22 +3434,34 @@ field_179178_e,DOWN_INDEX,0,
 field_179179_b,UP_INDEX,0,
 field_179180_c,EAST_INDEX,0,
 field_179181_a,SOUTH_INDEX,0,
+field_179182_b,yIndex,0,
+field_179183_c,zIndex,0,
+field_179184_a,xIndex,0,
 field_179185_d,alpha,0,
 field_179186_b,green,0,
 field_179187_c,blue,0,
 field_179188_a,red,0,
+field_179189_b,face,0,
+field_179190_c,mode,0,
+field_179191_a,colorMaterial,0,
 field_179192_d,alpha,0,
 field_179193_b,green,0,
 field_179194_c,blue,0,
 field_179195_a,red,0,
+field_179196_b,opcode,0,
+field_179197_a,colorLogicOp,0,
 field_179201_b,currentState,0,
 field_179202_a,capability,0,
+field_179203_b,color,0,
+field_179205_a,depth,0,
 field_179206_b,func,0,
 field_179207_c,ref,0,
+field_179208_a,alphaTest,0,
 field_179209_d,srcFactorAlpha,0,
 field_179210_e,dstFactorAlpha,0,
 field_179211_b,srcFactor,0,
 field_179212_c,dstFactor,0,
+field_179213_a,blend,0,
 field_179220_a,BLOCK_TO_ITEM,2,
 field_179226_c,doubleSlab,2,
 field_179227_b,theBlock,2,
@@ -3584,6 +3478,7 @@ field_179265_c,DOUBLE,2,
 field_179266_j,SPLITTER,2,
 field_179267_h,INTEGER,2,
 field_179268_i,DOUBLE_UNTYPED,2,
+field_179273_b,INT_ARRAY_MATCHER,2,
 field_179282_b,isLoaded,2,
 field_179283_a,value,2,
 field_179294_g,direction,2,
@@ -3603,12 +3498,18 @@ field_179340_h,partId,0,
 field_179341_i,partMask,0,
 field_179365_U,PARTICLES,2,
 field_179366_T,argumentCount,2,
-field_179368_V,PARTICLE_NAMES,2,
 field_179369_Q,particleName,2,
 field_179371_S,shouldIgnoreRange,2,
 field_179372_R,particleID,2,
+field_179402_b,priceInfo,2,"The price info for the amount of emeralds to sell for, or if negative, the amount of the item to buy for an emerald."
+field_179403_a,itemToBuy,2,The item that is being bought for emeralds
 field_179404_b,price,2,
 field_179405_a,sellItem,2,
+field_179406_b,priceInfo,2,The price info determining the amount of emeralds to trade in for the enchanted item
+field_179407_a,enchantedItemStack,2,The enchanted item stack to sell
+field_179409_b,buyingPriceInfo,2,The price info defining the amount of the buying item required with 1 emerald to match the selling item.
+field_179410_c,sellingItemstack,2,"The itemstack to sell. The item and damage value are used only, any tag data is not retained."
+field_179411_a,buyingItemStack,2,"The itemstack to buy with an emerald. The Item and damage value is used only, any tag data is not retained."
 field_179417_b,y,2,Rotation on the Y axis
 field_179418_c,z,2,Rotation on the Z axis
 field_179419_a,x,2,Rotation on the X axis
@@ -3619,6 +3520,14 @@ field_179426_a,index,2,
 field_179427_a,typeData,2,
 field_179428_b,iterables,2,
 field_179429_a,clazz,2,
+field_179432_d,sorter,2,Used to compare two entities
+field_179433_e,entityTarget,2,The current target
+field_179434_b,entityLiving,2,The entity that use this AI
+field_179435_c,predicate,2,Use to determine if an entity correspond to specification
+field_179436_a,LOGGER,2,
+field_179441_e,target,2,
+field_179442_b,mob,2,
+field_179444_a,LOGGER,2,
 field_179447_c,targetClasses,2,
 field_179448_g,player,2,The player
 field_179449_j,enderman,2,
@@ -3642,6 +3551,7 @@ field_179478_e,interactionDelay,2,The delay before the villager throws an itemst
 field_179481_f,executionChance,2,
 field_179482_g,mustUpdate,2,
 field_179483_b,facing,2,
+field_179485_a,silverfish,2,
 field_179486_b,theEntity,2,
 field_179491_g,isAboveDestination,2,
 field_179492_d,movementSpeed,2,
@@ -3650,6 +3560,7 @@ field_179494_b,destinationBlock,2,Block to move to
 field_179495_c,theEntity,2,
 field_179496_a,runDelay,2,Controls task execution delay
 field_179497_h,searchLength,2,
+field_179500_c,rabbit,2,
 field_179502_d,hasFarmItem,2,
 field_179504_c,theVillager,2,Villager that is harvesting
 field_179507_b,doorPosition,2,
@@ -3660,9 +3571,7 @@ field_179511_d,entityInstance,2,
 field_179525_d,description,2,
 field_179528_c,offset,2,
 field_179535_b,blockState,2,
-field_179538_n,rabbitFootEffect,2,
-field_179539_o,potionRequirements,2,
-field_179540_p,potionAmplifiers,2,
+field_179537_a,pos,2,
 field_179550_j,canPlaceOnCacheBlock,2,
 field_179551_k,canPlaceOnCacheResult,2,
 field_179552_h,canDestroyCacheBlock,2,
@@ -3688,10 +3597,11 @@ field_179572_au,acacia_door,2,
 field_179639_f,typeID,2,The integer ID of the Result Type.
 field_179640_g,typeName,2,The string representation of the type.
 field_179666_d,WORLD_BINDING_ARGS,2,A set of arguments that will change the selector's world list to the sender's world instead of all the worlds when present
+field_179673_d,objectives,2,List of all the Objectives names
 field_179674_b,STRING_RESULT_TYPES,2,
+field_179675_c,entitiesID,2,"List of entityID who set a stat, username for a player, UUID for all entities"
 field_179676_a,NUM_RESULT_TYPES,2,The number of result command result types that are possible.
 field_179681_j,pathFinder,2,
-field_179682_i,heightRequirement,2,
 field_179694_f,shouldAvoidSun,2,
 field_179695_a,nodeProcessor,2,
 field_179696_f,targetPosition,2,Current path navigation target
@@ -3700,7 +3610,6 @@ field_179702_b,footer,2,
 field_179703_a,header,2,
 field_179705_b,blockPos,2,
 field_179706_a,world,2,
-field_179708_e,hideParticles,2,
 field_179710_b,targetBlock,2,
 field_179711_e,modelPartFlags,2,
 field_179713_c,hitVec,2,
@@ -3725,10 +3634,6 @@ field_179747_b,soundPos,2,
 field_179751_a,particleType,2,
 field_179752_j,longDistance,2,
 field_179753_k,particleArguments,2,These are the block/item ids and possibly metaData ids that are used to color or texture the particle.
-field_179755_c,chunksData,2,
-field_179758_c,extractedData,2,
-field_179765_b,tagCompound,2,
-field_179766_a,entityId,2,
 field_179769_b,players,2,
 field_179770_a,action,2,
 field_179773_e,deathMessage,2,
@@ -3753,6 +3658,8 @@ field_179809_e,fadeOutTime,2,
 field_179810_b,message,2,
 field_179811_c,fadeInTime,2,
 field_179812_a,type,2,
+field_179815_f,color,2,
+field_179816_e,nameTagVisibility,2,
 field_179818_c,type,2,
 field_179820_b,playerId,2,
 field_179822_b,position,2,
@@ -3761,6 +3668,7 @@ field_179826_a,blockPosition,2,
 field_179828_a,blockPosition,2,
 field_179832_b,difficultyLocked,2,
 field_179833_a,difficulty,2,
+field_179835_f,flags,2,
 field_179838_b,position,2,
 field_179839_c,facing,2,
 field_179842_b,type,2,
@@ -3772,6 +3680,7 @@ field_179871_c,LOGGER,2,
 field_179872_a,SYSOUT,2,
 field_179883_b,domain,2,
 field_179884_a,LOGGER,2,
+field_179886_a,INSTANCE,2,
 field_179916_a,parentEntity,2,
 field_179925_i,slime,2,
 field_179927_g,parentEntity,2,
@@ -3787,12 +3696,7 @@ field_179993_b,selector,2,The selector used to find the matching entities of thi
 field_179998_d,value,2,The value displayed instead of the real score (may be null)
 field_179999_b,name,2,
 field_180000_c,objective,2,
-field_180049_j,name,2,
-field_180051_h,ID_LOOKUP,2,
-field_180052_i,networkID,2,
 field_180070_c,theEntity,2,
-field_180076_f,speed,2,
-field_180084_h,duration,2,
 field_180091_b,chunkPosCrammed,2,contains the bitshifted location of the block in the chunk
 field_180092_c,blockState,2,
 field_180110_a,ENTITY_PLACEMENTS,2,
@@ -3803,7 +3707,6 @@ field_180137_b,lightningBolt,2,
 field_180140_r,isThornsDamage,2,Whether this EntityDamageSource is from an entity wearing Thorns-enchanted armor.
 field_180152_w,healthBoost,2,The health boost Potion object.
 field_180155_a,LOGGER,2,
-field_180156_h,showParticles,2,
 field_180161_b,lock,2,
 field_180162_a,EMPTY_CODE,2,
 field_180171_b,additionalDifficulty,2,
@@ -3812,15 +3715,9 @@ field_180177_a,RANDOM,2,
 field_180189_a,SQRT_2,2,
 field_180198_a,LOGGER,2,
 field_180201_c,mask,2,
-field_180205_F,timesTalkedToVillagerStat,2,
-field_180206_G,timesTradedWithVillagerStat,2,
-field_180207_j,distanceCrouchedStat,2,
-field_180208_k,distanceSprintedStat,2,
-field_180209_h,timeSinceDeathStat,2,
 field_180216_b,knownKeys,2,
 field_180217_c,baseClass,2,
 field_180218_a,map,2,
-field_180219_M,overpowered,2,
 field_180232_b,SERVER_LOCAL_EVENTLOOP,2,
 field_180234_y,onGround,2,
 field_180247_b,position,0,
@@ -3831,27 +3728,24 @@ field_180256_e,type,2,
 field_180268_a,MOB_COUNT_DIV,2,
 field_180271_f,CUSTOMIZED,2,
 field_180272_g,DEBUG_WORLD,2,
-field_180278_o,BIOME_ID_MAP,2,
+field_180279_ad,DEFAULT,2,
 field_180280_ag,DOUBLE_PLANT_GENERATOR,2,
 field_180281_af,GRASS_COLOR_NOISE,2,
 field_180282_a,position,2,
+field_180289_b,FOLIAGE_COLOR,0,
+field_180290_c,WATER_COLOR,0,
+field_180291_a,GRASS_COLOR,0,
 field_180293_d,chunkProviderSettings,2,
 field_180295_l,andesiteGen,2,
 field_180296_j,graniteGen,2,
 field_180297_k,dioriteGen,2,
 field_180298_q,diamondGen,2,
 field_180299_p,redstoneGen,2,
-field_180307_E,locationEnchantments,2,
 field_180308_g,projectileProtection,2,
 field_180309_e,featherFalling,2,
 field_180310_c,protection,2,
-field_180311_a,enchantmentsList,2,
 field_180312_n,baneOfArthropods,2,
 field_180313_o,knockback,2,
-field_180314_l,sharpness,2,
-field_180315_m,smite,2,
-field_180316_k,depthStrider,2,
-field_180317_h,respiration,2,
 field_180323_f,rewardsExp,2,
 field_180329_a,position,2,
 field_180338_e,layerName,0,
@@ -3889,8 +3783,42 @@ field_180411_ar,jungle_door,2,
 field_180412_aq,birch_door,2,
 field_180413_ao,oak_door,2,
 field_180414_ap,spruce_door,2,
+field_181016_an,lastPortalPos,2,The position of the last portal the entity was in
+field_181017_ao,lastPortalVec,2,A horizontal vector related to the position of the last portal the entity was in
+field_181018_ap,teleportDirection,2,A direction related to the position of the last portal the entity was in
+field_181019_az,sourcePos,0,
+field_181024_n,setTileEntities,0,
+field_181025_l,player,2,
+field_181038_N,profileProperties,0,The player's GameProfile properties
+field_181042_l,lanServer,0,True if the server is a LAN server
+field_181056_j,setTileEntities,0,
+field_181059_a,x,0,The X coordinate
+field_181060_b,y,0,The Y coordinate
+field_181061_c,z,0,The Z coordinate
+field_181062_Q,vboSupportedAti,0,
+field_181063_b,ati,0,
+field_181064_i,classToAvoid,2,Class of entity this behavior seeks to avoid
+field_181071_k,mapColor,2,The color that represents this entry on a map.
+field_181083_K,blockMapColor,2,The Block's MapColor
+field_181084_N,FACING,2,
+field_181125_e,CLIENT_EPOLL_EVENTLOOP,2,
+field_181141_b,SERVER_EPOLL_EVENTLOOP,2,
+field_181149_aW,CLOUDS_TYPES,0,
+field_181150_U,useNativeTransport,0,
+field_181151_V,entityShadows,0,
+field_181172_c,profileProperties,0,
+field_181541_X,connectedToRealms,0,True if the player is connected to a realms server
+field_181542_y,frameTimer,0,The FrameTimer's instance
+field_181543_z,startNanoTime,0,Time in nanoseconds of when the class is loaded
+field_181546_a,seaLevel,2,
+field_181657_aC,showLagometer,0,
+field_181676_c,rawShortBuffer,0,
+field_181677_f,vertexFormatElement,0,
+field_181678_g,vertexFormatIndex,0,
+field_181680_j,readWriteLock,2,
 field_181699_o,ground,0,
 field_181700_p,fixed,0,
+field_181702_p,mapEnumFacing,0,
 field_181703_c,OLDMODEL_POSITION_TEX_NORMAL,0,
 field_181704_d,PARTICLE_POSITION_TEX_COLOR_LMAP,0,
 field_181705_e,POSITION,0,
@@ -3907,8 +3835,1063 @@ field_181715_o,TEX_2F,0,
 field_181716_p,TEX_2S,0,
 field_181717_q,NORMAL_3B,0,
 field_181718_r,PADDING_1B,0,
+field_181745_e,values,2,
+field_181752_a,frames,0,An array with the last 240 frames
+field_181753_b,lastIndex,0,The last index used when 240 frames have been set
+field_181754_c,counter,0,A counter
+field_181755_d,index,0,The next index to use in the array
+field_181757_a,CACHE,0,
+field_183007_a,EXIT_MESSAGE,2,
+field_183008_d,handled,2,
+field_183018_l,incompatibleResourcePacks,0,
+field_183025_b,bypassesPlayerLimit,2,
+field_183030_aa,cpu,0,
+field_183509_X,realmsNotifications,0,
+field_184049_t,overlaySubtitle,0,
+field_184050_w,overlayBoss,0,
+field_184112_s,dataFixer,2,
+field_184131_U,dataFixer,0,
+field_184151_B,lootTable,2,
+field_184152_t,pathListener,2,
+field_184171_b,server,2,
+field_184233_aA,CUSTOM_NAME_VISIBLE,2,
+field_184234_aB,SILENT,2,
+field_184236_aF,tags,2,
+field_184238_ar,glowing,2,
+field_184239_as,ridingEntity,2,
+field_184240_ax,FLAGS,2,
+field_184241_ay,AIR,2,
+field_184242_az,CUSTOM_NAME,2,
+field_184243_a,LOGGER,2,
+field_184244_h,riddenByEntities,2,List of entities that are riding this entity
+field_184259_a,powered,2,
+field_184260_f,auto,2,
+field_184261_g,conditionMet,2,
+field_184278_m,fuel,2,
+field_184284_m,lootTable,2,
+field_184285_n,lootTableSeed,2,
+field_184298_j,profileCache,2,
+field_184299_k,sessionService,2,
+field_184314_a,LOGGER,2,
+field_184315_f,age,2,
+field_184317_h,exitPortal,2,
+field_184318_i,exactTeleport,2,
+field_184420_a,name,2,
+field_184421_f,author,2,
+field_184422_g,metadata,2,
+field_184423_h,position,2,
+field_184424_i,size,2,
+field_184425_j,mirror,2,
+field_184426_k,rotation,2,
+field_184427_l,mode,2,
+field_184428_m,ignoreEntities,2,
+field_184460_a,TIME_SINCE_HIT,2,
+field_184462_b,FORWARD_DIRECTION,2,
+field_184464_c,DAMAGE_TAKEN,2,
+field_184466_d,BOAT_TYPE,2,
+field_184498_a,RADIUS,2,
+field_184501_d,PARTICLE,2,
+field_184505_h,duration,2,
+field_184506_as,waitTime,2,
+field_184507_at,reapplicationDelay,2,
+field_184509_av,durationOnUse,2,
+field_184510_aw,radiusOnUse,2,
+field_184511_ax,radiusPerTick,2,
+field_184513_az,ownerUniqueId,2,
+field_184521_b,BEAM_TARGET,2,
+field_184522_c,SHOW_BOTTOM,2,
+field_184526_d,ROTATION,2,
+field_184529_d,isEffect,2,
+field_184537_a,FUSE,2,
+field_184554_g,CRITICAL,2,
+field_184559_f,COLOR,2,
+field_184562_f,duration,2,
+field_184565_e,INVULNERABLE,2,
+field_184566_a,FIREWORK_ITEM,2,
+field_184631_bt,armorArray,2,The array of item stacks that are used for armor in a living inventory.
+field_184634_g,HIDE_PARTICLES,2,
+field_184635_h,ARROW_COUNT_IN_ENTITY,2,
+field_184653_bB,deathLootTableSeed,2,
+field_184654_a,AI_FLAGS,2,"First bit used for AI disabling, second bit used for marking entity as left handed"
+field_184655_bs,inventoryArmorDropChances,2,Chances for armor dropping when this entity dies.
+field_184656_bv,inventoryHands,2,
+field_184657_bw,inventoryArmor,2,
+field_184659_bA,deathLootTable,2,
+field_184660_a,HANGING,2,
+field_184673_bv,dragonPartNeck,2,
+field_184674_a,PHASE,2,
+field_184675_bH,LOGGER,2,
+field_184676_bI,fightManager,2,
+field_184677_bJ,phaseManager,2,
+field_184683_a,ATTACKING,2,
+field_184700_a,ATTACHED_FACE,2,
+field_184701_b,ATTACHED_BLOCK_POS,2,
+field_184702_c,PEEK_TICK,2,
+field_184703_bv,COVERED_ARMOR_BONUS_ID,2,
+field_184704_bw,COVERED_ARMOR_BONUS_MODIFIER,2,
+field_184711_bt,SLIME_SIZE,2,
+field_184712_c,ON_FIRE,2,
+field_184713_a,STATE,2,
+field_184714_b,POWERED,2,
+field_184715_c,IGNITED,2,
+field_184718_bv,CARRIED_BLOCK,2,
+field_184719_bw,SCREAMING,2,
+field_184722_a,STATUS,2,
+field_184723_b,TARGET_ENTITY,2,
+field_184727_a,SKELETON_VARIANT,2,
+field_184731_c,IS_AGGRESSIVE,2,
+field_184737_bv,IS_CHILD,2,
+field_184738_bw,VILLAGER_TYPE,2,
+field_184739_bx,CONVERTING,2,
+field_184740_by,ARMS_RAISED,2,
+field_184746_bw,INVULNERABILITY_TIME,2,
+field_184749_a,PUMPKIN_EQUIPPED,2,
+field_184750_a,PLAYER_CREATED,2,
+field_184752_bw,PROFESSION,2,
+field_184755_bv,TAMED,2,
+field_184757_bz,OCELOT_VARIANT,2,
+field_184758_bB,COLLAR_COLOR,2,
+field_184760_bA,BEGGING,2,
+field_184763_bv,SADDLED,2,
+field_184773_bv,RABBIT_TYPE,2,
+field_184774_bv,DYE_COLOR,2,
+field_184787_bE,STATUS,2,
+field_184788_bF,HORSE_TYPE,2,
+field_184789_bG,HORSE_VARIANT,2,
+field_184790_bH,OWNER_UNIQUE_ID,2,
+field_184791_bI,HORSE_ARMOR,2,
+field_184802_b,HEAD_ROTATION,2,
+field_184803_c,BODY_ROTATION,2,
+field_184804_d,LEFT_ARM_ROTATION,2,
+field_184805_e,RIGHT_ARM_ROTATION,2,
+field_184806_f,LEFT_LEG_ROTATION,2,
+field_184807_g,RIGHT_LEG_ROTATION,2,
+field_184827_bp,PLAYER_MODEL_FLAG,2,
+field_184828_bq,MAIN_HAND,2,
+field_184829_a,ABSORPTION,2,The absorption data parameter
+field_184830_b,PLAYER_SCORE,2,
+field_184832_bU,cooldownTracker,2,
+field_184880_a,server,2,
+field_184901_a,seargeSays,2,
+field_184902_b,rand,2,
+field_185051_m,properties,2,
+field_185057_a,type,2,
+field_185149_a,player,2,
+field_185150_aH,spruce_boat,2,
+field_185151_aI,birch_boat,2,
+field_185152_aJ,jungle_boat,2,
+field_185153_aK,acacia_boat,2,
+field_185154_aL,dark_oak_boat,2,
+field_185155_bH,splash_potion,2,
+field_185156_bI,lingering_potion,2,
+field_185157_bK,dragon_breath,2,
+field_185158_cP,end_crystal,2,
+field_185159_cQ,shield,2,
+field_185160_cR,elytra,2,
+field_185161_cS,chorus_fruit,2,
+field_185162_cT,chorus_fruit_popped,2,
+field_185163_cU,beetroot_seeds,2,
+field_185164_cV,beetroot,2,
+field_185165_cW,beetroot_soup,2,
+field_185166_h,spectral_arrow,2,
+field_185167_i,tipped_arrow,2,
+field_185176_a,REGISTRY,2,
+field_185177_b,WATER,2,
+field_185179_d,name,2,
+field_185180_e,effects,2,
+field_185218_A,long_poison,2,
+field_185219_B,strong_poison,2,
+field_185220_C,regeneration,2,
+field_185221_D,long_regeneration,2,
+field_185222_E,strong_regeneration,2,
+field_185223_F,strength,2,
+field_185224_G,long_strength,2,
+field_185225_H,strong_strength,2,
+field_185226_I,weakness,2,
+field_185227_J,long_weakness,2,
+field_185228_K,CACHE,2,
+field_185229_a,empty,2,
+field_185230_b,water,2,
+field_185231_c,mundane,2,
+field_185232_d,thick,2,
+field_185233_e,awkward,2,
+field_185234_f,night_vision,2,
+field_185235_g,long_night_vision,2,
+field_185236_h,invisibility,2,
+field_185237_i,long_invisibility,2,
+field_185238_j,leaping,2,
+field_185239_k,long_leaping,2,
+field_185240_l,strong_leaping,2,
+field_185241_m,fire_resistance,2,
+field_185242_n,long_fire_resistance,2,
+field_185243_o,swiftness,2,
+field_185244_p,long_swiftness,2,
+field_185245_q,strong_swiftness,2,
+field_185246_r,slowness,2,
+field_185247_s,long_slowness,2,
+field_185248_t,water_breathing,2,
+field_185249_u,long_water_breathing,2,
+field_185250_v,healing,2,
+field_185251_w,strong_healing,2,
+field_185252_x,harming,2,
+field_185253_y,strong_harming,2,
+field_185254_z,poison,2,
+field_185263_a,applicableEquipmentTypes,2,"Where this enchantment has an effect, e.g. offhand, pants"
+field_185264_b,enchantmentRegistry,2,
+field_185275_e,weight,2,The weight of the Rarity.
+field_185296_A,mending,2,
+field_185297_d,blastProtection,2,
+field_185298_f,respiration,2,
+field_185299_g,aquaAffinity,2,
+field_185300_i,depthStrider,2,
+field_185301_j,frostWalker,2,
+field_185302_k,sharpness,2,
+field_185303_l,smite,2,
+field_185304_p,looting,2,
+field_185305_q,efficiency,2,
+field_185306_r,silkTouch,2,
+field_185307_s,unbreaking,2,
+field_185308_t,fortune,2,
+field_185309_u,power,2,
+field_185310_v,punch,2,
+field_185311_w,flame,2,
+field_185312_x,infinity,2,
+field_185335_c,LOGGER,2,
+field_185347_c,x,2,
+field_185348_d,y,2,
+field_185349_e,z,2,
+field_185350_f,released,2,
+field_185351_g,POOL,2,
+field_185364_H,baseBiomeRegName,2,The unique identifier of the biome for which this is a mutation of.
+field_185365_a,STONE,2,
+field_185366_b,AIR,2,
+field_185367_c,BEDROCK,2,
+field_185368_d,GRAVEL,2,
+field_185369_e,RED_SANDSTONE,2,
+field_185370_f,SANDSTONE,2,
+field_185371_g,ICE,2,
+field_185372_h,WATER,2,
+field_185373_j,MUTATION_TO_BASE_ID_MAP,2,
+field_185377_q,biomeRegistry,2,
+field_185412_a,biomeName,2,
+field_185413_b,baseHeight,2,
+field_185414_c,heightVariation,2,
+field_185415_d,temperature,2,
+field_185416_e,rainfall,2,
+field_185417_f,waterColor,2,
+field_185418_g,enableSnow,2,
+field_185419_h,enableRain,2,
+field_185420_i,baseBiomeRegName,2,
+field_185429_aa,mutated_birch_forest_hills,2,
+field_185430_ab,mutated_roofed_forest,2,
+field_185431_ac,mutated_taiga_cold,2,
+field_185432_ad,mutated_redwood_taiga,2,
+field_185433_ae,mutated_redwood_taiga_hills,2,
+field_185434_af,mutated_extreme_hills_with_trees,2,
+field_185435_ag,mutated_savanna,2,
+field_185436_ah,mutated_savanna_rock,2,
+field_185437_ai,mutated_mesa,2,
+field_185438_aj,mutated_mesa_rock,2,
+field_185439_ak,mutated_mesa_clear_rock,2,
+field_185440_P,voidBiome,2,
+field_185441_Q,mutated_plains,2,
+field_185442_R,mutated_desert,2,
+field_185443_S,mutated_extreme_hills,2,
+field_185444_T,mutated_forest,2,
+field_185445_W,mutated_ice_flats,2,
+field_185446_X,mutated_jungle,2,
+field_185447_Y,mutated_jungle_edge,2,
+field_185448_Z,mutated_birch_forest,2,
+field_185505_j,FULL_BLOCK_AABB,2,
+field_185506_k,NULL_AABB,2,
+field_185512_D,FACING,2,
+field_185564_a,FACING,2,
+field_185565_b,CONDITIONAL,2,
+field_185587_a,MODE,2,
+field_185607_a,AGE,2,
+field_185609_a,NORTH,2,
+field_185610_b,EAST,2,
+field_185611_c,SOUTH,2,
+field_185612_d,WEST,2,
+field_185613_e,UP,2,
+field_185614_f,DOWN,2,
+field_185678_d,VARIANT,2,
+field_185682_a,AGE,2,
+field_185764_cQ,end_rod,2,
+field_185765_cR,chorus_plant,2,
+field_185766_cS,chorus_flower,2,
+field_185767_cT,purpur_block,2,
+field_185768_cU,purpur_pillar,2,
+field_185769_cV,purpur_stairs,2,
+field_185770_cW,purpur_double_slab,2,
+field_185771_cX,purpur_slab,2,
+field_185772_cY,end_bricks,2,
+field_185773_cZ,beetroots,2,
+field_185774_da,grass_path,2,
+field_185775_db,end_gateway,2,
+field_185776_dc,repeating_command_block,2,
+field_185777_dd,chain_command_block,2,
+field_185778_de,frosted_ice,2,
+field_185779_df,structure_block,2,
+field_185780_dg,CACHE,2,
+field_185848_a,WOOD,2,
+field_185849_b,GROUND,2,
+field_185850_c,PLANT,2,
+field_185851_d,STONE,2,
+field_185852_e,METAL,2,
+field_185853_f,GLASS,2,
+field_185854_g,CLOTH,2,
+field_185855_h,SAND,2,
+field_185856_i,SNOW,2,
+field_185857_j,LADDER,2,
+field_185858_k,ANVIL,2,
+field_185859_l,SLIME,2,
+field_185934_a,AIR_DEFAULT_STATE,2,
+field_185935_b,BARRIER_DEFAULT_STATE,2,
+field_185940_a,AIR_DEFAULT_STATE,2,
+field_185941_b,NETHERRACK_DEFAULT_STATE,2,
+field_185942_c,BEDROCK_DEFAULT_STATE,2,
+field_185943_d,LAVA_DEFAULT_STATE,2,
+field_185944_e,GRAVEL_DEFAULT_STATE,2,
+field_185945_f,SOUL_SAND_DEFAULT_STATE,2,
+field_185952_n,world,2,
+field_185954_p,rand,2,
+field_185964_a,END_STONE_DEFAULT_STATE,2,
+field_185965_b,AIR_DEFAULT_STATE,2,
+field_185979_A,ravineGenerator,2,
+field_185980_B,oceanMonumentGenerator,2,
+field_185981_C,biomesForGeneration,2,
+field_185982_a,STONE_DEFAULT_STATE,2,
+field_185990_i,rand,2,
+field_185995_n,worldObj,2,
+field_185996_o,mapFeaturesEnabled,2,
+field_185997_p,terrainType,2,
+field_185998_q,heightMap,2,
+field_186000_s,settings,2,
+field_186001_t,oceanBlock,2,
+field_186003_v,caveGenerator,2,
+field_186004_w,strongholdGenerator,2,
+field_186005_x,villageGenerator,2,
+field_186006_y,mineshaftGenerator,2,
+field_186007_z,scatteredFeatureGenerator,2,
+field_186029_c,chunkGenerator,2,
+field_186036_a,NULL_BLOCK_STORAGE,2,
+field_186064_g,dragonFightManager,2,
+field_186074_d,id,2,
+field_186075_e,name,2,
+field_186076_f,suffix,2,
+field_186077_g,clazz,2,
+field_186107_a,LOGGER,2,
+field_186109_c,bossInfo,2,
+field_186110_d,world,2,
+field_186117_k,dragonKilled,2,
+field_186118_l,previouslyKilled,2,
+field_186119_m,dragonUniqueId,2,
+field_186121_o,exitPortalLocation,2,
+field_186122_p,respawnState,2,
+field_186210_e,trackingPosition,2,
+field_186240_a,templates,2,
+field_186342_h,structureTemplateManager,2,
+field_186349_b,versionName,2,
+field_186350_c,versionId,2,
+field_186351_d,versionSnapshot,2,
+field_186354_b,dataFixer,2,
+field_186358_i,versionName,0,
+field_186359_j,versionId,0,
+field_186360_k,versionSnapshot,0,
+field_186364_c,weight,2,
+field_186365_d,quality,2,
+field_186366_e,conditions,2,
+field_186369_b,functions,2,
+field_186376_aa,ENTITIES_SHEEP_BLACK,2,
+field_186377_ab,ENTITIES_BAT,2,
+field_186378_ac,ENTITIES_SLIME,2,
+field_186379_ad,ENTITIES_MAGMA_CUBE,2,
+field_186380_ae,ENTITIES_GHAST,2,
+field_186381_af,ENTITIES_SQUID,2,
+field_186382_ag,ENTITIES_ENDERMITE,2,
+field_186383_ah,ENTITIES_ZOMBIE,2,
+field_186384_ai,ENTITIES_ZOMBIE_PIGMAN,2,
+field_186385_aj,ENTITIES_SKELETON,2,
+field_186386_ak,ENTITIES_WITHER_SKELETON,2,
+field_186387_al,GAMEPLAY_FISHING,2,
+field_186388_am,GAMEPLAY_FISHING_JUNK,2,
+field_186389_an,GAMEPLAY_FISHING_TREASURE,2,
+field_186390_ao,GAMEPLAY_FISHING_FISH,2,
+field_186393_A,ENTITIES_RABBIT,2,
+field_186394_B,ENTITIES_CHICKEN,2,
+field_186395_C,ENTITIES_PIG,2,
+field_186396_D,ENTITIES_HORSE,2,
+field_186397_E,ENTITIES_ZOMBIE_HORSE,2,
+field_186398_F,ENTITIES_SKELETON_HORSE,2,
+field_186399_G,ENTITIES_COW,2,
+field_186400_H,ENTITIES_MUSHROOM_COW,2,
+field_186401_I,ENTITIES_WOLF,2,
+field_186402_J,ENTITIES_OCELOT,2,
+field_186403_K,ENTITIES_SHEEP,2,
+field_186404_L,ENTITIES_SHEEP_WHITE,2,
+field_186405_M,ENTITIES_SHEEP_ORANGE,2,
+field_186406_N,ENTITIES_SHEEP_MAGENTA,2,
+field_186407_O,ENTITIES_SHEEP_LIGHT_BLUE,2,
+field_186408_P,ENTITIES_SHEEP_YELLOW,2,
+field_186409_Q,ENTITIES_SHEEP_LIME,2,
+field_186410_R,ENTITIES_SHEEP_PINK,2,
+field_186411_S,ENTITIES_SHEEP_GRAY,2,
+field_186412_T,ENTITIES_SHEEP_SILVER,2,
+field_186413_U,ENTITIES_SHEEP_CYAN,2,
+field_186414_V,ENTITIES_SHEEP_PURPLE,2,
+field_186415_W,ENTITIES_SHEEP_BLUE,2,
+field_186416_X,ENTITIES_SHEEP_BROWN,2,
+field_186417_Y,ENTITIES_SHEEP_GREEN,2,
+field_186418_Z,ENTITIES_SHEEP_RED,2,
+field_186419_a,EMPTY,2,
+field_186420_b,CHESTS_SPAWN_BONUS_CHEST,2,
+field_186421_c,CHESTS_END_CITY_TREASURE,2,
+field_186422_d,CHESTS_SIMPLE_DUNGEON,2,
+field_186423_e,CHESTS_VILLAGE_BLACKSMITH,2,
+field_186424_f,CHESTS_ABANDONED_MINESHAFT,2,
+field_186425_g,CHESTS_NETHER_BRIDGE,2,
+field_186426_h,CHESTS_STRONGHOLD_LIBRARY,2,
+field_186427_i,CHESTS_STRONGHOLD_CROSSING,2,
+field_186428_j,CHESTS_STRONGHOLD_CORRIDOR,2,
+field_186429_k,CHESTS_DESERT_PYRAMID,2,
+field_186430_l,CHESTS_JUNGLE_TEMPLE,2,
+field_186431_m,CHESTS_IGLOO_CHEST,2,
+field_186432_n,ENTITIES_WITCH,2,
+field_186433_o,ENTITIES_BLAZE,2,
+field_186434_p,ENTITIES_CREEPER,2,
+field_186435_q,ENTITIES_SPIDER,2,
+field_186436_r,ENTITIES_CAVE_SPIDER,2,
+field_186437_s,ENTITIES_GIANT,2,
+field_186438_t,ENTITIES_SILVERFISH,2,
+field_186439_u,ENTITIES_ENDERMAN,2,
+field_186440_v,ENTITIES_GUARDIAN,2,
+field_186441_w,ENTITIES_ELDER_GUARDIAN,2,
+field_186442_x,ENTITIES_SHULKER,2,
+field_186443_y,ENTITIES_IRON_GOLEM,2,
+field_186444_z,ENTITIES_SNOWMAN,2,
+field_186464_a,EMPTY_LOOT_TABLE,2,
+field_186498_a,luck,2,
+field_186499_b,worldObj,2,
+field_186501_d,lootedEntity,2,
+field_186502_e,player,2,
+field_186503_f,damageSource,2,
+field_186504_g,lootTables,2,
+field_186514_a,min,2,
+field_186515_b,max,2,
+field_186525_a,LOGGER,2,
+field_186555_a,conditions,2,
+field_186620_a,inverse,2,
+field_186627_a,chance,2,
+field_186628_b,lootingMultiplier,2,
+field_186630_a,chance,2,
+field_186642_a,NAME_TO_SERIALIZER_MAP,2,
+field_186643_b,CLASS_TO_SERIALIZER_MAP,2,
+field_186647_a,NAME_TO_SERIALIZER_MAP,2,
+field_186648_b,CLASS_TO_SERIALIZER_MAP,2,
+field_186659_a,onFire,2,
+field_186680_a,ZERO,2,
+field_186683_l,collisionRule,2,
+field_186693_e,name,2,
+field_186694_f,id,2,
+field_186695_g,nameMap,2,
+field_186697_g,nameMap,2,
+field_186698_h,FOOD,2,
+field_186699_i,AIR,2,
+field_186700_j,ARMOR,2,
+field_186701_k,XP,2,
+field_186702_l,LEVEL,2,
+field_186749_a,name,2,
+field_186750_b,percent,2,
+field_186751_c,color,2,
+field_186752_d,overlay,2,
+field_186753_e,darkenSky,2,
+field_186754_f,playEndBossMusic,2,
+field_186755_g,createFog,2,
+field_186756_h,uniqueId,2,
+field_186762_h,players,2,
+field_186763_i,readOnlyPlayers,2,
+field_186764_j,visible,2,
+field_186766_h,rawPercent,0,
+field_186767_i,percentSetTime,0,
+field_186802_b,values,2,
+field_186883_b,uniqueId,2,
+field_186894_b,uniqueId,2,
+field_186896_b,uniqueId,2,
+field_186911_a,uniqueId,2,
+field_186912_b,operation,2,
+field_186913_c,name,2,
+field_186914_d,percent,2,
+field_186915_e,color,2,
+field_186916_f,overlay,2,
+field_186917_g,darkenSky,2,
+field_186918_h,playEndBossMusic,2,
+field_186919_i,createFog,2,
+field_186923_a,item,2,
+field_186924_b,ticks,2,
+field_186933_b,category,2,
+field_186942_a,x,2,
+field_186943_b,z,2,
+field_186960_a,x,2,
+field_186961_b,y,2,
+field_186962_c,z,2,
+field_186963_d,yaw,2,
+field_186964_e,pitch,2,
+field_186966_g,teleportId,2,
+field_186973_a,entityId,2,
+field_186974_b,passengerIds,2,
+field_186976_f,collisionRule,2,
+field_186979_a,sound,2,
+field_186980_b,category,2,
+field_186988_a,telportId,2,
+field_186990_b,hasTargetBlock,2,
+field_186995_d,hand,2,
+field_187007_a,x,2,
+field_187008_b,y,2,
+field_187009_c,z,2,
+field_187010_d,yaw,2,
+field_187011_e,pitch,2,
+field_187019_a,hand,2,
+field_187027_c,hand,2,
+field_187029_a,hand,2,
+field_187053_c,versionType,0,"Defaults to ""release"""
+field_187075_l,leftArmPose,0,
+field_187076_m,rightArmPose,0,
+field_187107_a,playerTextures,0,
+field_187119_C,particleTexture,0,
+field_187157_a,id,2,
+field_187158_b,serializer,2,
+field_187191_a,BYTE,2,
+field_187192_b,VARINT,2,
+field_187193_c,FLOAT,2,
+field_187194_d,STRING,2,
+field_187195_e,TEXT_COMPONENT,2,
+field_187196_f,OPTIONAL_ITEM_STACK,2,
+field_187197_g,OPTIONAL_BLOCK_STATE,2,
+field_187198_h,BOOLEAN,2,
+field_187199_i,ROTATIONS,2,
+field_187200_j,BLOCK_POS,2,
+field_187201_k,OPTIONAL_BLOCK_POS,2,
+field_187202_l,FACING,2,
+field_187203_m,OPTIONAL_UNIQUE_ID,2,
+field_187211_a,key,2,
+field_187212_b,value,2,
+field_187213_c,dirty,2,
+field_187232_a,NEXT_ID_MAP,2,
+field_187233_b,owner,2,
+field_187234_c,entries,2,
+field_187235_d,lock,2,
+field_187236_e,empty,2,
+field_187237_f,dirty,2,
+field_187281_a,logger,2,
+field_187283_c,players,2,
+field_187322_c,onlineMode,2,
+field_187323_g,profileRepo,2,
+field_187450_a,BUF_FLOAT_16,0,
+field_187451_b,BUF_FLOAT_4,0,
+field_187505_a,soundEventRegistry,2,
+field_187506_b,soundName,2,
+field_187509_d,sprite,0,
+field_187511_aA,entity_egg_throw,2,
+field_187512_aB,entity_elder_guardian_ambient,2,
+field_187513_aC,entity_elderguardian_ambientland,2,
+field_187514_aD,entity_elder_guardian_curse,2,
+field_187515_aE,entity_elder_guardian_death,2,
+field_187516_aF,entity_elder_guardian_death_land,2,
+field_187517_aG,entity_elder_guardian_hurt,2,
+field_187518_aH,entity_elder_guardian_hurt_land,2,
+field_187519_aI,block_enderchest_close,2,
+field_187520_aJ,block_enderchest_open,2,
+field_187521_aK,entity_enderdragon_ambient,2,
+field_187522_aL,entity_enderdragon_death,2,
+field_187523_aM,entity_enderdragon_fireball_epld,2,
+field_187524_aN,entity_enderdragon_flap,2,
+field_187525_aO,entity_enderdragon_growl,2,
+field_187526_aP,entity_enderdragon_hurt,2,
+field_187527_aQ,entity_enderdragon_shoot,2,
+field_187528_aR,entity_endereye_launch,2,
+field_187529_aS,entity_endermen_ambient,2,
+field_187530_aT,entity_endermen_death,2,
+field_187531_aU,entity_endermen_hurt,2,
+field_187532_aV,entity_endermen_scream,2,
+field_187533_aW,entity_endermen_stare,2,
+field_187534_aX,entity_endermen_teleport,2,
+field_187535_aY,entity_endermite_ambient,2,
+field_187536_aZ,entity_endermite_death,2,
+field_187537_bA,entity_generic_eat,2,
+field_187538_aa,entity_chicken_step,2,
+field_187539_bB,entity_generic_explode,2,
+field_187540_ab,block_chorus_flower_death,2,
+field_187541_bC,entity_generic_extinguish_fire,2,
+field_187542_ac,block_chorus_flower_grow,2,
+field_187543_bD,entity_generic_hurt,2,
+field_187544_ad,item_chorus_fruit_teleport,2,
+field_187545_bE,entity_generic_small_fall,2,
+field_187546_ae,block_cloth_break,2,
+field_187547_bF,entity_generic_splash,2,
+field_187548_af,block_cloth_fall,2,
+field_187549_bG,entity_generic_swim,2,
+field_187550_ag,block_cloth_hit,2,
+field_187551_bH,entity_ghast_ambient,2,
+field_187552_ah,block_cloth_place,2,
+field_187553_bI,entity_ghast_death,2,
+field_187554_ai,block_cloth_step,2,
+field_187555_bJ,entity_ghast_hurt,2,
+field_187556_aj,block_comparator_click,2,
+field_187557_bK,entity_ghast_shoot,2,
+field_187558_ak,entity_cow_ambient,2,
+field_187559_bL,entity_ghast_warn,2,
+field_187560_al,entity_cow_death,2,
+field_187561_bM,block_glass_break,2,
+field_187562_am,entity_cow_hurt,2,
+field_187563_bN,block_glass_fall,2,
+field_187564_an,entity_cow_milk,2,
+field_187565_bO,block_glass_hit,2,
+field_187566_ao,entity_cow_step,2,
+field_187567_bP,block_glass_place,2,
+field_187568_ap,entity_creeper_death,2,
+field_187569_bQ,block_glass_step,2,
+field_187570_aq,entity_creeper_hurt,2,
+field_187571_bR,block_grass_break,2,
+field_187572_ar,entity_creeper_primed,2,
+field_187573_bS,block_grass_fall,2,
+field_187574_as,block_dispenser_dispense,2,
+field_187575_bT,block_grass_hit,2,
+field_187576_at,block_dispenser_fail,2,
+field_187577_bU,block_grass_place,2,
+field_187578_au,block_dispenser_launch,2,
+field_187579_bV,block_grass_step,2,
+field_187580_av,entity_donkey_ambient,2,
+field_187581_bW,block_gravel_break,2,
+field_187582_aw,entity_donkey_angry,2,
+field_187583_bX,block_gravel_fall,2,
+field_187584_ax,entity_donkey_chest,2,
+field_187585_bY,block_gravel_hit,2,
+field_187586_ay,entity_donkey_death,2,
+field_187587_bZ,block_gravel_place,2,
+field_187588_az,entity_donkey_hurt,2,
+field_187589_cA,entity_hostile_small_fall,2,
+field_187590_ba,entity_endermite_hurt,2,
+field_187591_cB,entity_hostile_splash,2,
+field_187592_bb,entity_endermite_step,2,
+field_187593_cC,entity_hostile_swim,2,
+field_187594_A,entity_blaze_ambient,2,
+field_187595_bc,entity_enderpearl_throw,2,
+field_187596_cD,entity_irongolem_attack,2,
+field_187597_B,entity_blaze_burn,2,
+field_187598_bd,block_end_gateway_spawn,2,
+field_187599_cE,entity_irongolem_death,2,
+field_187600_C,entity_blaze_death,2,
+field_187601_be,entity_experience_bottle_throw,2,
+field_187602_cF,entity_irongolem_hurt,2,
+field_187603_D,entity_blaze_hurt,2,
+field_187604_bf,entity_experience_orb_pickup,2,
+field_187605_cG,entity_irongolem_step,2,
+field_187606_E,entity_blaze_shoot,2,
+field_187607_bg,entity_experience_orb_touch,2,
+field_187608_cH,block_iron_door_close,2,
+field_187609_F,entity_bobber_splash,2,
+field_187610_bh,block_fence_gate_close,2,
+field_187611_cI,block_iron_door_open,2,
+field_187612_G,entity_bobber_throw,2,
+field_187613_bi,block_fence_gate_open,2,
+field_187614_cJ,block_iron_trapdoor_close,2,
+field_187615_H,item_bottle_fill,2,
+field_187616_bj,item_firecharge_use,2,
+field_187617_cK,block_iron_trapdoor_open,2,
+field_187618_I,item_bottle_fill_dragonbreath,2,
+field_187619_bk,entity_firework_blast,2,
+field_187620_cL,entity_itemframe_add_item,2,
+field_187621_J,block_brewing_stand_brew,2,
+field_187622_bl,entity_firework_blast_far,2,
+field_187623_cM,entity_itemframe_break,2,
+field_187624_K,item_bucket_empty,2,
+field_187625_bm,entity_firework_large_blast,2,
+field_187626_cN,entity_itemframe_place,2,
+field_187627_L,item_bucket_empty_lava,2,
+field_187628_bn,entity_firework_large_blast_far,2,
+field_187629_cO,entity_itemframe_remove_item,2,
+field_187630_M,item_bucket_fill,2,
+field_187631_bo,entity_firework_launch,2,
+field_187632_cP,entity_itemframe_rotate_item,2,
+field_187633_N,item_bucket_fill_lava,2,
+field_187634_bp,entity_firework_shoot,2,
+field_187635_cQ,entity_item_break,2,
+field_187636_O,entity_cat_ambient,2,
+field_187637_bq,entity_firework_twinkle,2,
+field_187638_cR,entity_item_pickup,2,
+field_187639_P,entity_cat_death,2,
+field_187640_br,entity_firework_twinkle_far,2,
+field_187641_cS,block_ladder_break,2,
+field_187642_Q,entity_cat_hurt,2,
+field_187643_bs,block_fire_ambient,2,
+field_187644_cT,block_ladder_fall,2,
+field_187645_R,entity_cat_purr,2,
+field_187646_bt,block_fire_extinguish,2,
+field_187647_cU,block_ladder_hit,2,
+field_187648_S,entity_cat_purreow,2,
+field_187649_bu,item_flintandsteel_use,2,
+field_187650_cV,block_ladder_place,2,
+field_187651_T,block_chest_close,2,
+field_187652_bv,block_furnace_fire_crackle,2,
+field_187653_cW,block_ladder_step,2,
+field_187654_U,block_chest_locked,2,
+field_187655_bw,entity_generic_big_fall,2,
+field_187656_cX,block_lava_ambient,2,
+field_187657_V,block_chest_open,2,
+field_187658_bx,entity_generic_burn,2,
+field_187659_cY,block_lava_extinguish,2,
+field_187660_W,entity_chicken_ambient,2,
+field_187661_by,entity_generic_death,2,
+field_187662_cZ,block_lava_pop,2,
+field_187663_X,entity_chicken_death,2,
+field_187664_bz,entity_generic_drink,2,
+field_187665_Y,entity_chicken_egg,2,
+field_187666_Z,entity_chicken_hurt,2,
+field_187667_dA,music_end,2,
+field_187668_ca,block_gravel_step,2,
+field_187669_dB,music_game,2,
+field_187670_cb,entity_guardian_ambient,2,
+field_187671_dC,music_menu,2,
+field_187672_cc,entity_guardian_ambient_land,2,
+field_187673_dD,music_nether,2,
+field_187674_a,ambient_cave,2,
+field_187675_cd,entity_guardian_attack,2,
+field_187676_dE,block_note_basedrum,2,
+field_187677_b,block_anvil_break,2,
+field_187678_ce,entity_guardian_death,2,
+field_187679_dF,block_note_bass,2,
+field_187680_c,block_anvil_destroy,2,
+field_187681_cf,entity_guardian_death_land,2,
+field_187682_dG,block_note_harp,2,
+field_187683_d,block_anvil_fall,2,
+field_187684_cg,entity_guardian_flop,2,
+field_187685_dH,block_note_hat,2,
+field_187686_e,block_anvil_hit,2,
+field_187687_ch,entity_guardian_hurt,2,
+field_187688_dI,block_note_snare,2,
+field_187689_f,block_anvil_land,2,
+field_187690_ci,entity_guardian_hurt_land,2,
+field_187691_dJ,entity_painting_break,2,
+field_187692_g,block_anvil_place,2,
+field_187693_cj,item_hoe_till,2,
+field_187694_dK,entity_painting_place,2,
+field_187695_h,block_anvil_step,2,
+field_187696_ck,entity_horse_ambient,2,
+field_187697_dL,entity_pig_ambient,2,
+field_187698_i,block_anvil_use,2,
+field_187699_cl,entity_horse_angry,2,
+field_187700_dM,entity_pig_death,2,
+field_187701_j,entity_armorstand_break,2,
+field_187702_cm,entity_horse_armor,2,
+field_187703_dN,entity_pig_hurt,2,
+field_187704_k,entity_armorstand_fall,2,
+field_187705_cn,entity_horse_breathe,2,
+field_187706_dO,entity_pig_saddle,2,
+field_187707_l,entity_armorstand_hit,2,
+field_187708_co,entity_horse_death,2,
+field_187709_dP,entity_pig_step,2,
+field_187710_m,entity_armorstand_place,2,
+field_187711_cp,entity_horse_eat,2,
+field_187712_dQ,block_piston_contract,2,
+field_187713_n,item_armor_equip_chain,2,
+field_187714_cq,entity_horse_gallop,2,
+field_187715_dR,block_piston_extend,2,
+field_187716_o,item_armor_equip_diamond,2,
+field_187717_cr,entity_horse_hurt,2,
+field_187718_dS,entity_player_attack_crit,2,
+field_187719_p,item_armor_equip_generic,2,
+field_187720_cs,entity_horse_jump,2,
+field_187721_dT,entity_player_attack_knockback,2,
+field_187722_q,item_armor_equip_gold,2,
+field_187723_ct,entity_horse_land,2,
+field_187724_dU,entity_player_attack_nodamage,2,
+field_187725_r,item_armor_equip_iron,2,
+field_187726_cu,entity_horse_saddle,2,
+field_187727_dV,entity_player_attack_strong,2,
+field_187728_s,item_armor_equip_leather,2,
+field_187729_cv,entity_horse_step,2,
+field_187730_dW,entity_player_attack_sweep,2,
+field_187731_t,entity_arrow_hit,2,
+field_187732_cw,entity_horse_step_wood,2,
+field_187733_dX,entity_player_attack_weak,2,
+field_187734_u,entity_arrow_hit_player,2,
+field_187735_cx,entity_hostile_big_fall,2,
+field_187736_dY,entity_player_big_fall,2,
+field_187737_v,entity_arrow_shoot,2,
+field_187738_cy,entity_hostile_death,2,
+field_187739_dZ,entity_player_burp,2,
+field_187740_w,entity_bat_ambient,2,
+field_187741_cz,entity_hostile_hurt,2,
+field_187742_x,entity_bat_death,2,
+field_187743_y,entity_bat_hurt,2,
+field_187744_z,entity_bat_takeoff,2,
+field_187745_eA,block_redstone_torch_burnout,2,
+field_187746_da,entity_leashknot_break,2,
+field_187747_eB,block_sand_break,2,
+field_187748_db,entity_leashknot_place,2,
+field_187749_eC,block_sand_fall,2,
+field_187750_dc,block_lever_click,2,
+field_187751_eD,block_sand_hit,2,
+field_187752_dd,entity_lightning_impact,2,
+field_187753_eE,block_sand_place,2,
+field_187754_de,entity_lightning_thunder,2,
+field_187755_eF,block_sand_step,2,
+field_187756_df,entity_lingeringpotion_throw,2,
+field_187757_eG,entity_sheep_ambient,2,
+field_187758_dg,entity_magmacube_death,2,
+field_187759_eH,entity_sheep_death,2,
+field_187760_dh,entity_magmacube_hurt,2,
+field_187761_eI,entity_sheep_hurt,2,
+field_187762_di,entity_magmacube_jump,2,
+field_187763_eJ,entity_sheep_shear,2,
+field_187764_dj,entity_magmacube_squish,2,
+field_187765_eK,entity_sheep_step,2,
+field_187766_dk,block_metal_break,2,
+field_187767_eL,item_shield_block,2,
+field_187768_dl,block_metal_fall,2,
+field_187769_eM,item_shield_break,2,
+field_187770_dm,block_metal_hit,2,
+field_187771_eN,item_shovel_flatten,2,
+field_187772_dn,block_metal_place,2,
+field_187773_eO,entity_shulker_ambient,2,
+field_187774_do,block_metal_pressplate_click_off,2,
+field_187775_eP,entity_shulker_bullet_hit,2,
+field_187776_dp,block_metal_pressplate_click_on,2,
+field_187777_eQ,entity_shulker_bullet_hurt,2,
+field_187778_dq,block_metal_step,2,
+field_187779_eR,entity_shulker_close,2,
+field_187780_dr,entity_minecart_inside,2,
+field_187781_eS,entity_shulker_death,2,
+field_187782_ds,entity_minecart_riding,2,
+field_187783_eT,entity_shulker_hurt,2,
+field_187784_dt,entity_mooshroom_shear,2,
+field_187785_eU,entity_shulker_hurt_closed,2,
+field_187786_du,entity_mule_ambient,2,
+field_187787_eV,entity_shulker_open,2,
+field_187788_dv,entity_mule_death,2,
+field_187789_eW,entity_shulker_shoot,2,
+field_187790_dw,entity_mule_hurt,2,
+field_187791_eX,entity_shulker_teleport,2,
+field_187792_dx,music_creative,2,
+field_187793_eY,entity_silverfish_ambient,2,
+field_187794_dy,music_credits,2,
+field_187795_eZ,entity_silverfish_death,2,
+field_187796_dz,music_dragon,2,
+field_187797_fA,entity_snowball_throw,2,
+field_187798_ea,entity_player_death,2,
+field_187799_fB,entity_snowman_ambient,2,
+field_187800_eb,entity_player_hurt,2,
+field_187801_fC,entity_snowman_death,2,
+field_187802_ec,entity_player_levelup,2,
+field_187803_fD,entity_snowman_hurt,2,
+field_187804_ed,entity_player_small_fall,2,
+field_187805_fE,entity_snowman_shoot,2,
+field_187806_ee,entity_player_splash,2,
+field_187807_fF,block_snow_break,2,
+field_187808_ef,entity_player_swim,2,
+field_187809_fG,block_snow_fall,2,
+field_187810_eg,block_portal_ambient,2,
+field_187811_fH,block_snow_hit,2,
+field_187812_eh,block_portal_travel,2,
+field_187813_fI,block_snow_place,2,
+field_187814_ei,block_portal_trigger,2,
+field_187815_fJ,block_snow_step,2,
+field_187816_ej,entity_rabbit_ambient,2,
+field_187817_fK,entity_spider_ambient,2,
+field_187818_ek,entity_rabbit_attack,2,
+field_187819_fL,entity_spider_death,2,
+field_187820_el,entity_rabbit_death,2,
+field_187821_fM,entity_spider_hurt,2,
+field_187822_em,entity_rabbit_hurt,2,
+field_187823_fN,entity_spider_step,2,
+field_187824_en,entity_rabbit_jump,2,
+field_187825_fO,entity_splash_potion_break,2,
+field_187826_eo,record_11,2,
+field_187827_fP,entity_splash_potion_throw,2,
+field_187828_ep,record_13,2,
+field_187829_fQ,entity_squid_ambient,2,
+field_187830_eq,record_blocks,2,
+field_187831_fR,entity_squid_death,2,
+field_187832_er,record_cat,2,
+field_187833_fS,entity_squid_hurt,2,
+field_187834_es,record_chirp,2,
+field_187835_fT,block_stone_break,2,
+field_187836_et,record_far,2,
+field_187837_fU,block_stone_button_click_off,2,
+field_187838_eu,record_mall,2,
+field_187839_fV,block_stone_button_click_on,2,
+field_187840_ev,record_mellohi,2,
+field_187841_fW,block_stone_fall,2,
+field_187842_ew,record_stal,2,
+field_187843_fX,block_stone_hit,2,
+field_187844_ex,record_strad,2,
+field_187845_fY,block_stone_place,2,
+field_187846_ey,record_wait,2,
+field_187847_fZ,block_stone_pressplate_click_off,2,
+field_187848_ez,record_ward,2,
+field_187849_gA,entity_wither_death,2,
+field_187850_fa,entity_silverfish_hurt,2,
+field_187851_gB,entity_wither_hurt,2,
+field_187852_fb,entity_silverfish_step,2,
+field_187853_gC,entity_wither_shoot,2,
+field_187854_fc,entity_skeleton_ambient,2,
+field_187855_gD,entity_wither_spawn,2,
+field_187856_fd,entity_skeleton_death,2,
+field_187857_gE,entity_wolf_ambient,2,
+field_187858_fe,entity_skeleton_horse_ambient,2,
+field_187859_gF,entity_wolf_death,2,
+field_187860_ff,entity_skeleton_horse_death,2,
+field_187861_gG,entity_wolf_growl,2,
+field_187862_fg,entity_skeleton_horse_hurt,2,
+field_187863_gH,entity_wolf_hurt,2,
+field_187864_fh,entity_skeleton_hurt,2,
+field_187865_gI,entity_wolf_pant,2,
+field_187866_fi,entity_skeleton_shoot,2,
+field_187867_gJ,entity_wolf_shake,2,
+field_187868_fj,entity_skeleton_step,2,
+field_187869_gK,entity_wolf_step,2,
+field_187870_fk,entity_slime_attack,2,
+field_187871_gL,entity_wolf_whine,2,
+field_187872_fl,block_slime_break,2,
+field_187873_gM,block_wooden_door_close,2,
+field_187874_fm,entity_slime_death,2,
+field_187875_gN,block_wooden_door_open,2,
+field_187876_fn,block_slime_fall,2,
+field_187877_gO,block_wooden_trapdoor_close,2,
+field_187878_fo,block_slime_hit,2,
+field_187879_gP,block_wooden_trapdoor_open,2,
+field_187880_fp,entity_slime_hurt,2,
+field_187881_gQ,block_wood_break,2,
+field_187882_fq,entity_slime_jump,2,
+field_187883_gR,block_wood_button_click_off,2,
+field_187884_fr,block_slime_place,2,
+field_187885_gS,block_wood_button_click_on,2,
+field_187886_fs,entity_slime_squish,2,
+field_187887_gT,block_wood_fall,2,
+field_187888_ft,block_slime_step,2,
+field_187889_gU,block_wood_hit,2,
+field_187890_fu,entity_small_magmacube_death,2,
+field_187891_gV,block_wood_place,2,
+field_187892_fv,entity_small_magmacube_hurt,2,
+field_187893_gW,block_wood_pressplate_click_off,2,
+field_187894_fw,entity_small_magmacube_squish,2,
+field_187895_gX,block_wood_pressplate_click_on,2,
+field_187896_fx,entity_small_slime_death,2,
+field_187897_gY,block_wood_step,2,
+field_187898_fy,entity_small_slime_hurt,2,
+field_187899_gZ,entity_zombie_ambient,2,
+field_187900_fz,entity_small_slime_squish,2,
+field_187901_ga,block_stone_pressplate_click_on,2,
+field_187902_gb,block_stone_step,2,
+field_187903_gc,enchant_thorns_hit,2,
+field_187904_gd,entity_tnt_primed,2,
+field_187905_ge,block_tripwire_attach,2,
+field_187906_gf,block_tripwire_click_off,2,
+field_187907_gg,block_tripwire_click_on,2,
+field_187908_gh,block_tripwire_detach,2,
+field_187909_gi,ui_button_click,2,
+field_187910_gj,entity_villager_ambient,2,
+field_187911_gk,entity_villager_death,2,
+field_187912_gl,entity_villager_hurt,2,
+field_187913_gm,entity_villager_no,2,
+field_187914_gn,entity_villager_trading,2,
+field_187915_go,entity_villager_yes,2,
+field_187916_gp,block_waterlily_place,2,
+field_187917_gq,block_water_ambient,2,
+field_187918_gr,weather_rain,2,
+field_187919_gs,weather_rain_above,2,
+field_187920_gt,entity_witch_ambient,2,
+field_187921_gu,entity_witch_death,2,
+field_187922_gv,entity_witch_drink,2,
+field_187923_gw,entity_witch_hurt,2,
+field_187924_gx,entity_witch_throw,2,
+field_187925_gy,entity_wither_ambient,2,
+field_187926_gz,entity_wither_break_block,2,
+field_187927_ha,entity_zombie_attack_door_wood,2,
+field_187928_hb,entity_zombie_attack_iron_door,2,
+field_187929_hc,entity_zombie_break_door_wood,2,
+field_187930_hd,entity_zombie_death,2,
+field_187931_he,entity_zombie_horse_ambient,2,
+field_187932_hf,entity_zombie_horse_death,2,
+field_187933_hg,entity_zombie_horse_hurt,2,
+field_187934_hh,entity_zombie_hurt,2,
+field_187935_hi,entity_zombie_pig_ambient,2,
+field_187936_hj,entity_zombie_pig_angry,2,
+field_187937_hk,entity_zombie_pig_death,2,
+field_187938_hl,entity_zombie_pig_hurt,2,
+field_187939_hm,entity_zombie_step,2,
+field_187940_hn,entity_zombie_villager_ambient,2,
+field_187941_ho,entity_zombie_villager_converted,2,
+field_187942_hp,entity_zombie_villager_cure,2,
+field_187943_hq,entity_zombie_villager_death,2,
+field_187944_hr,entity_zombie_villager_hurt,2,
+field_187945_hs,entity_zombie_infect,2,
+field_187946_ht,entity_zombie_villager_step,2,
+field_187962_l,name,2,
+field_187968_k,overrides,0,
+field_188005_c,multipart,0,
+field_188016_c,UV_ROTATIONS,0,
+field_188017_d,UV_ROTATION_0,0,
+field_188018_e,UV_ROTATION_270,0,
+field_188019_f,UV_ROTATION_INVERSE,0,
+field_188020_g,UV_ROTATION_90,0,
+field_188022_a,NONE,0,
+field_188023_b,overrides,0,
+field_188028_a,location,0,
+field_188036_k,thirdperson_left,0,
+field_188037_l,thirdperson_right,0,
+field_188038_m,firstperson_left,0,
+field_188039_n,firstperson_right,0,
+field_188125_d,key,0,
+field_188126_e,value,0,
+field_188191_h,DRAGON_TEXTURES,0,
+field_188192_i,dragonHead,0,
+field_188211_c,RANDOM,2,
+field_188259_a,LOGGER,2,
+field_188355_a,TEXTURE_ELYTRA,0,The basic Elytra texture.
+field_188356_b,renderPlayer,0,Instance of the player renderer.
+field_188357_c,modelElytra,0,The model used by the Elytra.
+field_188406_j,flyIntoWall,2,
+field_188407_q,dragonBreath,2,
+field_188414_b,potionRegistry,2,
+field_188423_x,glowing,2,
+field_188424_y,levitation,2,
+field_188425_z,luck,2,
+field_188471_c,handName,2,
+field_188642_k,multipartVariantMap,0,
+field_188643_q,EMPTY_MODEL_RAW,0,
+field_188661_a,dragon,2,
+field_188666_d,areaEffectCloud,2,
+field_188741_a,HOLDING_PATTERN,2,
+field_188742_b,STRAFE_PLAYER,2,
+field_188743_c,LANDING_APPROACH,2,
+field_188744_d,LANDING,2,
+field_188745_e,TAKEOFF,2,
+field_188746_f,SITTING_FLAMING,2,
+field_188747_g,SITTING_SCANNING,2,
+field_188748_h,SITTING_ATTACKING,2,
+field_188749_i,CHARGING_PLAYER,2,
+field_188750_j,DYING,2,
+field_188751_k,HOVER,2,
+field_188752_l,phases,2,
+field_188753_m,clazz,2,
+field_188754_n,id,2,
+field_188755_o,name,2,
+field_188759_a,LOGGER,2,
+field_188760_b,dragon,2,
+field_188790_f,ATTACK_SPEED,2,
+field_188791_g,ARMOR,2,
+field_188792_h,LUCK,2,
+field_189105_bM,entity_ghast_scream,2,
+field_189106_R,entity_cat_hiss,2,
+field_189107_dL,block_note_pling,2,
+field_189108_z,entity_bat_loop,2,
+field_189109_ed,entity_player_breath,2,
+field_189110_fE,entity_small_slime_jump,2,
+field_189111_gN,entity_wolf_howl,2,
+field_189112_A,unluck,2,
 field_70009_b,buffer,2,RCon string buffer for log.
-field_70010_a,instance,2,Single instance of RConConsoleSource
 field_70116_cv,serverPosZ,0,
 field_70117_cu,serverPosY,0,
 field_70118_ct,serverPosX,0,
@@ -3935,14 +4918,10 @@ field_70143_R,fallDistance,2,
 field_70144_Y,entityCollisionReduction,2,Reduces the velocity applied by entity collisions by the specified percent.
 field_70145_X,noClip,2,Whether this entity won't clip with collision or not (make note it won't disable gravity)
 field_70146_Z,rand,2,
-field_70147_f,entityRiderYawDelta,2,
 field_70148_d,firstUpdate,2,
-field_70149_e,entityRiderPitchDelta,2,
 field_70150_b,nextStepDistance,2,The distance that has to be exceeded in order to triger a new step sound and an onEntityWalking event on a block
 field_70151_c,fire,2,
 field_70152_a,nextEntityID,2,
-field_70153_n,riddenByEntity,2,The entity that is riding this entity
-field_70154_o,ridingEntity,2,The entity we are currently riding
 field_70155_l,renderDistanceWeight,2,
 field_70156_m,preventEntitySpawning,2,Blocks entities from spawning when they do their AABB check to make sure the spot is clear of entities that can prevent spawning.
 field_70158_ak,ignoreFrustumCheck,2,Render entity even if it is outside the camera frustum. Only true in EntityFish for now. Used in RenderGlobal: render if ignoreFrustumCheck or in frustum.
@@ -3972,7 +4951,6 @@ field_70191_b,throwableShake,2,
 field_70192_c,thrower,2,The entity that threw this throwable item.
 field_70194_h,ticksInGround,2,
 field_70195_i,ticksInAir,2,
-field_70197_d,potionDamage,2,The damage value of the thrown potion that this EntityPotion represents.
 field_70221_f,shatterOrDrop,2,
 field_70222_d,targetZ,2,'z' location the eye should float towards.
 field_70223_e,despawnTimer,2,
@@ -3995,22 +4973,12 @@ field_70255_ao,damage,2,
 field_70256_ap,knockbackStrength,2,The amount of knockback an arrow applies when it hits a mob.
 field_70257_an,ticksInAir,2,
 field_70259_a,entityDragonObj,2,The dragon entity this dragon part belongs to
-field_70260_b,health,2,
 field_70261_a,innerRotation,2,Used to create the rotation animation when rendering the crystal.
 field_70262_b,lightningState,2,"Declares which state the lightning bolt is in. Whether it's in the air, hit the ground, etc."
 field_70263_c,boltLivingTime,2,Determines the time before the EntityLightningBolt is destroyed. It is a random integer decremented over time.
 field_70264_a,boltVertex,2,A random long that is used to change the vertex of the lightning rendered in RenderLightningBolt
-field_70272_f,boatZ,2,
 field_70273_g,boatYaw,2,
-field_70274_d,boatX,2,
-field_70275_e,boatY,2,
-field_70276_b,speedMultiplier,2,
-field_70277_c,boatPosRotationIncrements,2,
-field_70278_an,velocityZ,0,
-field_70279_a,isBoatEmpty,2,true if no player in boat
-field_70280_j,velocityY,0,
 field_70281_h,boatPitch,2,
-field_70282_i,velocityX,0,
 field_70290_d,hoverStart,2,The EntityItem's random initial float height.
 field_70291_e,health,2,"The health of this EntityItem. (For example, damage for tools)"
 field_70292_b,age,2,The age of this EntityItem (used to animate it up and down as well as expire it)
@@ -4032,6 +5000,7 @@ field_70476_a,theMerchant,2,
 field_70477_b,upperChest,2,Inventory object corresponding to double chest upper part
 field_70478_c,lowerChest,2,Inventory object corresponding to double chest lower part
 field_70479_a,name,2,Name of the chest.
+field_70480_d,changeListeners,2,Listeners notified when any item in this inventory is changed.
 field_70481_b,slotsCount,2,
 field_70482_c,inventoryContents,2,
 field_70483_a,inventoryTitle,2,
@@ -4061,7 +5030,6 @@ field_70546_d,particleAge,0,
 field_70547_e,particleMaxAge,0,
 field_70548_b,particleTextureJitterX,0,
 field_70549_c,particleTextureJitterY,0,
-field_70550_a,particleIcon,0,The icon field from which the given particle pulls its texture.
 field_70551_j,particleBlue,0,"The blue amount of color. Used as a percentage, 1.0 = 255 and 0.0 = 0."
 field_70552_h,particleRed,0,"The red amount of color. Used as a percentage, 1.0 = 255 and 0.0 = 0."
 field_70553_i,particleGreen,0,"The green amount of color. Used as a percentage, 1.0 = 255 and 0.0 = 0."
@@ -4099,11 +5067,8 @@ field_70701_bs,moveForward,2,
 field_70702_br,moveStrafing,2,
 field_70703_bu,isJumping,2,used to check whether entity is jumping.
 field_70704_bt,randomYawVelocity,2,
-field_70705_bn,newRotationPitch,2,The new yaw rotation to be applied to the entity.
 field_70708_bq,entityAge,2,The age of this EntityLiving (used to determine when it dies)
 field_70709_bj,newPosX,2,The new X position to be applied to the entity.
-field_70710_bk,newPosY,2,The new Y position to be applied to the entity.
-field_70712_bm,newRotationYaw,2,The new yaw rotation to be applied to the entity.
 field_70713_bf,activePotionsMap,2,
 field_70714_bg,tasks,2,"Passive tasks (wandering, look, idle, ...)"
 field_70715_bh,targetTasks,2,"Fighting tasks (used by monsters, wolves, ocelots)"
@@ -4112,7 +5077,6 @@ field_70717_bb,attackingPlayer,2,The most recent player that has attacked this e
 field_70718_bc,recentlyHit,2,"Set to 60 when hit by the player or the player's wolf, then decrements. Used to determine whether the entity should drop items on death."
 field_70720_be,arrowHitTimer,2,
 field_70721_aZ,limbSwingAmount,2,
-field_70722_aY,prevLimbSwingAmount,2,
 field_70723_bA,senses,2,
 field_70725_aQ,deathTime,2,"The amount of time remaining this entity should act 'dead', i.e. have a corpse in the world."
 field_70726_aT,cameraPitch,2,
@@ -4124,12 +5088,12 @@ field_70733_aJ,swingProgress,2,
 field_70737_aN,hurtTime,2,The amount of time remaining this entity should act 'hurt'. (Visual appearance of red tint)
 field_70738_aO,maxHurtTime,2,What the hurt time was max set to last.
 field_70739_aP,attackedAtYaw,2,The yaw at which this entity was last attacked from.
+field_70741_aB,unused180,2,
 field_70744_aE,scoreValue,2,"The score value of the Mob, the amount of points the mob is worth."
 field_70746_aG,landMovementFactor,2,"A factor used to determine how far this entity will move each tick if it is walking on land. Adjusted by speed, and slipperiness of the current block."
 field_70747_aH,jumpMovementFactor,2,A factor used to determine how far this entity will move each tick if it is jumping or falling.
 field_70749_g,lookHelper,2,
 field_70752_e,potionsNeedUpdate,2,Whether the DataWatcher needs to be updated with the active potions
-field_70754_ba,limbSwing,2,Only relevant when limbYaw is not 0(the entity is moving). Influences where in its swing legs and arms currently are.
 field_70755_b,entityLivingToAttack,2,"is only being set, has no uses as of MC 1.1"
 field_70756_c,revengeTimer,2,
 field_70757_a,livingSoundTime,2,Number of ticks since this EntityLiving last produced its sound
@@ -4143,6 +5107,8 @@ field_70764_aw,movedDistance,2,
 field_70765_h,moveHelper,2,
 field_70767_i,jumpHelper,2,Entity jumping helper
 field_70768_au,prevOnGroundSpeedFactor,2,
+field_70769_ao,randomUnused2,2,
+field_70770_ap,randomUnused1,2,
 field_70771_an,maxHurtResistantTime,2,
 field_70772_bD,maximumHomeDistance,2,If -1 there is no maximum distance
 field_70773_bE,jumpTicks,2,Number of ticks since last jump
@@ -4202,10 +5168,7 @@ field_70962_h,buyingPlayer,2,This villager's current customer.
 field_70963_i,buyingList,2,Initialises the MerchantRecipeList.java
 field_70976_f,ringBufferIndex,2,Index into the ring buffer. Incremented once per tick and restarts at 0 once it reaches the end of the buffer.
 field_70977_g,dragonPartArray,2,An array containing all body parts of this dragon
-field_70978_d,targetZ,2,
 field_70979_e,ringBuffer,2,Ring buffer array for the last 64 Y-positions and yaw rotations. Used to calculate offsets for the animations.
-field_70980_b,targetX,2,
-field_70981_c,targetY,2,
 field_70982_bz,dragonPartTail3,2,
 field_70983_bA,dragonPartWing1,2,
 field_70984_by,dragonPartTail2,2,
@@ -4213,11 +5176,9 @@ field_70985_j,dragonPartTail1,2,
 field_70986_h,dragonPartHead,2,The head bounding box of a dragon
 field_70987_i,dragonPartBody,2,The body bounding box of a dragon
 field_70988_bD,animTime,2,"Animation time, used to control the speed of the animation cycles (wings flapping, jaw opening, etc.)"
-field_70989_bE,forceNewTarget,2,Force selecting a new flight target at next tick if set to true.
 field_70990_bB,dragonPartWing2,2,
 field_70991_bC,prevAnimTime,2,Animation time at previous tick.
 field_70992_bH,healingEnderCrystal,2,The current endercrystal that is healing this dragon
-field_70993_bI,target,2,
 field_70994_bF,slowed,2,"Activated if the dragon is flying though obsidian, white stone or bedrock. Slows movement and animation speed."
 field_70995_bG,deathTicks,2,
 field_71067_cb,experienceTotal,2,The total amount of experience the player has. This also includes the amount of experience within their Experience Bar.
@@ -4225,9 +5186,7 @@ field_71068_ca,experienceLevel,2,The current experience level the player is on.
 field_71069_bz,inventoryContainer,2,The Container for the player's inventory (which opens when they press E)
 field_71070_bA,openContainer,2,The Container the player has open.
 field_71071_by,inventory,2,Inventory of the player
-field_71072_f,itemInUseCount,2,This field starts off equal to getMaxItemUseDuration and is decremented on each tick
 field_71073_d,startMinecartRidingCoordinate,2,Holds the coordinate of the player when enter a minecraft to ride.
-field_71074_e,itemInUse,2,"This is the item that is in use when the player is holding down the useItemButton (e.g., bow, food, sword)"
 field_71075_bZ,capabilities,2,The player's capabilities. (See class PlayerCapabilities)
 field_71076_b,sleepTimer,2,
 field_71077_c,spawnChunk,2,holds the spawn chunk of the player
@@ -4257,7 +5216,6 @@ field_71106_cc,experience,2,The current amount of experience the player has with
 field_71107_bF,prevCameraYaw,2,
 field_71108_cd,speedOnGround,2,
 field_71109_bG,cameraYaw,2,
-field_71129_f,loadedChunks,2,LinkedList that holds the loaded chunks.
 field_71130_g,destroyedItemsNetCache,2,entities added to this list will  be packet29'd to the player
 field_71131_d,managedPosX,2,player X position as seen by PlayerManager
 field_71132_e,managedPosZ,2,player Z position as seen by PlayerManager
@@ -4290,7 +5248,6 @@ field_71182_d,otherPlayerMPY,0,
 field_71183_e,otherPlayerMPZ,0,
 field_71184_b,otherPlayerMPPosRotationIncrements,0,
 field_71185_c,otherPlayerMPX,0,
-field_71186_a,isItemInUse,0,
 field_71280_D,buildLimit,2,Maximum build height.
 field_71284_A,pvpEnabled,2,Indicates whether PvP is active on the server or not.
 field_71285_B,allowFlight,2,Determines if flight is allowed or not.
@@ -4298,7 +5255,6 @@ field_71286_C,motd,2,The server MOTD string.
 field_71287_L,worldName,0,
 field_71288_M,isDemo,2,
 field_71289_N,enableBonusChest,2,
-field_71290_O,worldIsBeingDeleted,2,"If true, there is no need to save chunks or stop the server, because that is already being done."
 field_71292_I,serverKeyPair,2,
 field_71293_J,serverOwner,2,Username of the server owner (for integrated servers)
 field_71294_K,folderName,2,
@@ -4312,7 +5268,6 @@ field_71304_b,theProfiler,2,
 field_71305_c,worldServers,2,The server world instances.
 field_71307_n,usageSnooper,2,The PlayerUsageSnooper instance.
 field_71308_o,anvilFile,2,
-field_71309_l,mcServer,2,Instance of Minecraft Server.
 field_71310_m,anvilConverterForAnvilFile,2,
 field_71311_j,tickTimeArray,2,
 field_71312_k,timeOfLastDimensionTick,2,Stats are [dimension][tick%100] system.nanoTime is stored.
@@ -4395,7 +5350,7 @@ field_71510_d,crashReportFile,2,File of crash report.
 field_71511_b,cause,2,"The Throwable that is the ""cause"" for this crash and Crash Report."
 field_71512_c,crashReportSections,2,Holds the keys and values of all crash report sections.
 field_71513_a,description,2,Description of the crash report.
-field_71533_a,theAdmin,2,
+field_71533_a,commandListener,2,
 field_71561_b,commandSet,2,The set of ICommand objects currently loaded.
 field_71562_a,commandMap,2,Map of Strings to the ICommand objects they represent
 field_71567_b,allowedCharactersArray,2,Array of the special characters that are allowed in any text drawing of Minecraft.
@@ -4465,7 +5420,6 @@ field_72660_i,buffer,1,A buffer for incoming Socket data
 field_72666_a,hexDigits,1,Translation array of decimal to hex digits
 field_72673_b,output,1,ByteArrayOutputStream wrapper
 field_72674_a,byteArrayOutput,1,Output stream
-field_72696_f,xzDirectionsConst,2,"x, z direction vectors: east, south, west, north"
 field_72697_d,playerInstancesToUpdate,2,the playerInstances(chunks) that need to be updated
 field_72698_e,playerViewRadius,2,Number of chunks the server sends to the client. Valid 3<=x<=15. In server.properties.
 field_72699_b,players,2,players in the current instance
@@ -4502,9 +5456,7 @@ field_72985_G,spawnHostileMobs,2,indicates if enemies are spawned or not
 field_72986_A,worldInfo,2,"holds information about a world (size on disk, time, spawn point, seed, ...)"
 field_72987_B,findingSpawnPoint,2,"if set, this flag forces a request to load a chunk to load the chunk rather than defaulting to the world's chunkprovider's dummy if possible"
 field_72988_C,mapStorage,2,
-field_72990_M,ambientTickCountdown,2,number of ticks until the next random ambients play
 field_72992_H,spawnPeacefulMobs,2,A flag indicating whether we should spawn peaceful mobs.
-field_72993_I,activeChunkSet,2,populated by chunks that are within 9 chunks of any player
 field_72994_J,lightUpdateBlockList,2,"is a temporary list of blocks and light values used when updating light levels. Holds up to 32x32x32 blocks (the maximum influence of a light source.) Every element is a packed bit value: 0000000000LLLLzzzzzzyyyyyyxxxxxx. The 4-bit L is a light level used when darkening blocks. 6-bit numbers x, y and z represent the block's offset from the original block, plus 32 (i.e. value of 31 would mean a -1 offset"
 field_72995_K,isRemote,2,"True if the world is a 'slave' client; changes will not be saved or propagated from this world. For example, server worlds have this set to false, client worlds have this set to true."
 field_72996_f,loadedEntityList,2,A list of all Entities in all currently-loaded chunks
@@ -4533,14 +5485,12 @@ field_73036_L,entitySpawnQueue,0,Contains all entities for this client that were
 field_73037_M,mc,0,
 field_73038_N,previousActiveChunkSet,0,
 field_73058_d,disableLevelSaving,2,Whether level saving is disabled or not
-field_73059_b,theChunkProviderServer,2,
 field_73061_a,mcServer,2,
 field_73062_L,theEntityTracker,2,
 field_73063_M,thePlayerManager,2,
 field_73064_N,pendingTickListEntriesHashSet,2,
 field_73065_O,pendingTickListEntriesTreeSet,2,All work to do in future ticks.
 field_73068_P,allPlayersSleeping,2,is false if there are no players
-field_73069_S,bonusChestContent,2,
 field_73071_a,demoWorldSettings,2,
 field_73072_L,demoWorldSeed,2,
 field_73088_d,isDestroyingBlock,2,True if the player is destroying a block
@@ -4579,70 +5529,27 @@ field_73146_q,lastTrackedEntityPosY,2,
 field_73147_p,lastTrackedEntityPosX,2,
 field_73161_b,random,2,
 field_73163_a,worldObj,2,
-field_73167_f,noiseData3,2,
 field_73168_g,noiseData4,2,
-field_73169_d,noiseData1,2,
-field_73170_e,noiseData2,2,
-field_73171_b,netherNoiseGen7,2,
 field_73172_c,genNetherBridge,2,
-field_73173_a,netherNoiseGen6,2,
 field_73174_n,netherrackExculsivityNoiseGen,2,Determines whether something other than nettherack can be generated at a location
-field_73175_o,worldObj,2,Is the world that the nether is getting generated.
-field_73176_l,netherNoiseGen3,2,
 field_73177_m,slowsandGravelNoiseGen,2,Determines whether slowsand or gravel can be generated at a location
-field_73178_j,netherNoiseGen1,2,A NoiseGeneratorOctaves used in generating nether terrain
-field_73179_k,netherNoiseGen2,2,
-field_73180_h,noiseData5,2,
-field_73181_i,hellRNG,2,
-field_73182_t,netherCaveGenerator,2,
-field_73183_s,netherrackExclusivityNoise,2,Holds the noise used to determine whether something other than netherrack can be generated at a location
 field_73184_r,gravelNoise,2,
 field_73185_q,slowsandNoise,2,Holds the noise used to determine whether slowsand can be generated at a location
-field_73186_p,noiseField,2,
-field_73190_f,noiseData4,2,
-field_73191_g,noiseData5,2,
-field_73192_d,noiseData2,2,
-field_73193_e,noiseData3,2,
-field_73194_b,noiseGen5,2,
-field_73195_c,noiseData1,2,
-field_73196_a,noiseGen4,2,
-field_73197_n,densities,2,
-field_73198_o,biomesForGeneration,2,The biomes that are used to generate the chunk
-field_73199_l,noiseGen3,2,
-field_73200_m,endWorld,2,
-field_73201_j,noiseGen1,2,
-field_73202_k,noiseGen2,2,
-field_73204_i,endRNG,2,
 field_73212_b,noiseGen6,2,A NoiseGeneratorOctaves used in generating terrain
-field_73213_c,mobSpawnerNoise,2,
 field_73214_a,noiseGen5,2,A NoiseGeneratorOctaves used in generating terrain
 field_73220_k,rand,2,RNG.
-field_73223_w,mineshaftGenerator,2,Holds Mineshaft Generator
-field_73224_v,villageGenerator,2,Holds Village Generator
-field_73225_u,strongholdGenerator,2,Holds Stronghold Generator
-field_73226_t,caveGenerator,2,
-field_73227_s,stoneNoise,2,
 field_73229_q,mapFeaturesEnabled,2,are map structures going to be generated (e.g. strongholds)
 field_73230_p,worldObj,2,Reference to the World object.
 field_73231_z,biomesForGeneration,2,The biomes that are used to generate the chunk
-field_73232_y,ravineGenerator,2,Holds ravine generator
-field_73233_x,scatteredFeatureGenerator,2,
 field_73235_d,worldObj,0,Reference to the World object.
 field_73236_b,chunkMapping,0,The mapping between ChunkCoordinates and Chunks that ChunkProviderClient maintains.
-field_73237_c,chunkListing,0,"This may have been intended to be an iterable version of all currently loaded chunks (MultiplayerChunkCache), with identical contents to chunkMapping's values. However it is never actually added to."
+field_73237_c,chunkListing,0,"An iterable list of all of the currently loaded chunks (MultiplayerChunkCache), with identical contents to chunkMapping's values."
 field_73238_a,blankChunk,0,The completely empty chunk used by ChunkProviderClient when field_73236_b doesn't contain the requested coordinates.
 field_73244_f,id2ChunkMap,2,map of chunk Id's to Chunk instances
 field_73245_g,loadedChunks,2,
-field_73246_d,serverChunkGenerator,2,chunk generator object. Calls to load nonexistent chunks are forwarded to this object.
 field_73247_e,chunkLoader,2,
 field_73248_b,droppedChunksSet,2,
-field_73249_c,dummyChunk,2,"a dummy chunk, returned in place of an actual chunk."
-field_73250_a,chunkLoadOverride,2,"if set, this flag forces a request to load a chunk to load the chunk rather than defaulting to the dummy if possible"
 field_73251_h,worldObj,2,
-field_73260_f,flagsYAreasToUpdate,2,Integer field where each bit means to make update 16x16x16 division of chunk (from bottom).
-field_73262_e,numBlocksToUpdate,2,the number of blocks that need to be updated next tick
-field_73263_b,playersWatchingChunk,2,the list of all players in this instance (chunk)
-field_73264_c,chunkCoords,2,The chunk coordinates
 field_73672_b,serverProperties,1,The server properties object.
 field_73673_c,serverPropertiesFile,1,The server properties file.
 field_73692_f,banEndDate,2,
@@ -4653,6 +5560,7 @@ field_73698_a,dateFormat,2,
 field_73701_b,sender,1,
 field_73702_a,command,1,The command string.
 field_73723_d,systemTime,0,The system's time represented in milliseconds.
+field_73724_e,loadingSuccess,0,True if the loading ended with a success
 field_73725_b,mc,0,A reference to the Minecraft object.
 field_73726_c,currentlyDisplayedText,0,The text currently displayed (i.e. the argument to the last call to printText or func_73722_d)
 field_73727_a,message,0,
@@ -4681,6 +5589,7 @@ field_74281_c,renderPartialTicks,0,"How much time has elapsed since the last tic
 field_74282_a,ticksPerSecond,0,The number of timer ticks per second of real time
 field_74283_j,timeSyncAdjustment,0,"A ratio used to sync the high-resolution clock to the system clock, updated once per second"
 field_74284_h,lastSyncHRClock,0,"The time reported by the high-resolution clock at the last sync, in milliseconds"
+field_74285_i,counter,0,"Increase per 1 every tick, reset when reach 1000"
 field_74286_b,username,0,
 field_74293_b,pixelBuffer,0,A buffer to hold pixel values returned by OpenGL.
 field_74294_c,pixelValues,0,The built-up array that contains all the pixel values returned by OpenGL.
@@ -4775,7 +5684,6 @@ field_74909_b,isTallHouse,2,
 field_74910_c,tablePosition,2,
 field_74913_b,isRoofAccessible,2,
 field_74917_c,hasMadeChest,2,
-field_74918_a,villageBlacksmithChestContents,2,List of items that Village's Blacksmith chest can contain.
 field_74926_d,structVillagePieceWeight,2,
 field_74927_b,inDesert,2,Boolean that determines if the village is in a desert or not.
 field_74928_c,terrainType,2,"World terrain type, 0 for normal, 1 for flap map"
@@ -4785,8 +5693,12 @@ field_74934_a,length,2,
 field_74937_b,scatteredFeatureSizeY,2,The size of the bounding box for this feature in the Y axis
 field_74938_c,scatteredFeatureSizeZ,2,The size of the bounding box for this feature in the Z axis
 field_74939_a,scatteredFeatureSizeX,2,The size of the bounding box for this feature in the X axis
-field_74941_i,itemsToGenerateInTemple,2,List of items to generate in chests of Temples.
+field_74940_h,hasPlacedChest,2,
 field_74942_n,junglePyramidsRandomScatteredStones,2,List of random stones to be generated in the Jungle Pyramid.
+field_74945_j,placedTrap1,2,
+field_74946_k,placedTrap2,2,
+field_74947_h,placedMainChest,2,
+field_74948_i,placedHiddenChest,2,
 field_74949_a,roomsLinkedToTheRoom,2,List of other Mineshaft components linked to this room.
 field_74952_b,isMultipleFloors,2,
 field_74953_a,corridorDirection,2,
@@ -4800,12 +5712,9 @@ field_74970_a,theNetherBridgePieceWeight,2,Instance of StructureNetherBridgePiec
 field_74972_a,fillSeed,2,
 field_74976_a,hasSpawner,2,
 field_75002_c,hasMadeChest,2,
-field_75003_a,strongholdChestContents,2,List of items that Stronghold chests can contain.
 field_75005_a,hasSpawner,2,
-field_75007_b,strongholdLibraryChestContents,2,List of items that Stronghold Library chests can contain.
 field_75008_c,isLargeRoom,2,
 field_75013_b,roomType,2,
-field_75014_c,strongholdRoomCrossingChestContents,2,Items that could generate in the chest that is located in Stronghold Room Crossing.
 field_75019_b,expandsX,2,
 field_75020_c,expandsZ,2,
 field_75025_b,strongholdPortalRoom,2,
@@ -4862,7 +5771,6 @@ field_75179_f,craftResult,2,
 field_75180_g,isLocalWorld,2,Determines if inventory manipulation should be handled.
 field_75181_e,craftMatrix,2,The crafting matrix inventory.
 field_75186_f,theSlot,2,Instance of Slot.
-field_75187_g,brewTime,2,
 field_75188_e,tileBrewingStand,2,
 field_75191_d,instancesLimit,2,How many Structure Pieces of this type may spawn in a structure
 field_75192_b,pieceWeight,2,"This basically keeps track of the 'epicness' of a structure. Epic structure components have a higher 'weight', and Structures may only grow up to a certain 'weight' before generation is stopped"
@@ -4916,7 +5824,6 @@ field_75282_b,speed,2,
 field_75283_c,targetX,2,X position of player tempting this mob
 field_75284_a,temptedEntity,2,The entity using this AI that is tempted by the player.
 field_75285_l,scaredByPlayerMovement,2,Whether the entity using this AI will be scared by the tempter's sudden movement.
-field_75286_m,avoidWater,2,
 field_75287_j,isRunning,2,True if this EntityAITempt task is running
 field_75289_h,temptingPlayer,2,The player that is tempting the entity that is using this AI.
 field_75290_i,delayTemptCounter,2,A counter that is decremented each time the shouldExecute method is called. The shouldExecute method will always return false if delayTemptCounter is greater than 0.
@@ -5034,7 +5941,6 @@ field_75439_d,attackTick,2,An amount of decrementing ticks that allows the entit
 field_75440_e,speedTowardsTarget,2,The speed with which the mob will approach the target
 field_75441_b,attacker,2,
 field_75443_a,worldObj,2,
-field_75444_h,classTarget,2,
 field_75445_i,delayCounter,2,
 field_75448_d,worldObj,2,
 field_75449_e,matingTimeout,2,
@@ -5093,7 +5999,6 @@ field_75624_e,classToIDMapping,2,provides a mapping between an Entity Class and 
 field_75625_b,stringToClassMapping,2,Provides a mapping between entity classes and a string
 field_75626_c,classToStringMapping,2,Provides a mapping between a string and an entity classes
 field_75627_a,entityEggs,2,This is a HashMap of the Creative Entity Eggs/Spawners.
-field_75643_f,update,2,
 field_75644_d,posZ,2,
 field_75645_e,speed,2,The speed at which the entity should move
 field_75646_b,posX,2,
@@ -5111,14 +6016,6 @@ field_75663_a,entity,2,
 field_75666_b,rotationTickCounter,2,Used to progressively ajust the rotation of the body to the rotation of the head
 field_75667_c,prevRenderYawHead,2,
 field_75668_a,theLiving,2,Instance of EntityLiving.
-field_75675_d,watched,2,
-field_75676_b,dataValueId,2,id of max 31
-field_75677_c,watchedObject,2,
-field_75678_a,objectType,2,
-field_75694_d,lock,2,
-field_75695_b,watchedObjects,2,
-field_75696_c,objectChanged,2,true if one or more object was changed
-field_75697_a,dataTypes,2,
 field_75699_D,offsetX,2,
 field_75700_E,offsetY,2,
 field_75702_A,title,2,Painting Title.
@@ -5180,34 +6077,15 @@ field_75908_c,chunkSeed,2,"final part of the LCG prng that uses the chunk X, Z c
 field_75909_a,parent,2,parent GenLayer that was provided via the constructor
 field_75910_b,biomePatternGeneratorChain,2,
 field_75911_c,riverPatternGeneratorChain,2,
-field_75928_D,objectCraftStats,2,Tracks the number of items a given block or item has been crafted.
 field_75929_E,objectUseStats,2,Tracks the number of times a given block or item has been used.
 field_75930_F,objectBreakStats,2,Tracks the number of times a given block or item has been broken.
 field_75932_A,playerKillsStat,2,counts the number of times you've killed a player
-field_75933_B,fishCaughtStat,2,
-field_75934_C,mineBlockStatArray,2,
-field_75938_d,itemStats,2,
-field_75939_e,objectMineStats,2,Tracks the number of times a given block or item has been mined.
 field_75940_b,allStats,2,
-field_75941_c,generalStats,2,
-field_75942_a,oneShotStats,2,Tracks one-off stats.
 field_75943_n,distanceFallenStat,2,the distance you have fallen
-field_75944_o,distanceClimbedStat,2,the distance you've climbed
-field_75945_l,distanceWalkedStat,2,distance you've walked
 field_75946_m,distanceSwumStat,2,distance you have swam
 field_75947_j,leaveGameStat,2,number of times you've left a game
-field_75948_k,minutesPlayedStat,2,number of minutes you have played
-field_75951_w,damageDealtStat,2,the amount of damage you've dealt
 field_75952_v,dropStat,2,the distance you've dropped (or times you've fallen?)
 field_75953_u,jumpStat,2,the times you've jumped
-field_75954_t,distanceByPigStat,2,the distance you've traveled by pig
-field_75955_s,distanceByBoatStat,2,the distance you've traveled by boat
-field_75956_r,distanceByMinecartStat,2,the distance you've traveled by minecart
-field_75957_q,distanceDoveStat,2,the distance you've dived
-field_75958_p,distanceFlownStat,2,the distance you've flown
-field_75959_z,mobKillsStat,2,the number of mobs you have killed
-field_75960_y,deathsStat,2,the number of times you have died
-field_75961_x,damageTakenStat,2,the amount of damage you have taken
 field_75972_f,isIndependent,2,
 field_75974_d,decimalFormat,2,
 field_75975_e,statId,2,The Stat ID
@@ -5224,38 +6102,16 @@ field_75993_a,displayColumn,2,"Is the column (related to center of achievement g
 field_75994_l,statStringFormatter,0,"Holds a string formatter for the achievement, some of then needs extra dynamic info - like the key used to open the inventory."
 field_75995_m,isSpecial,2,"Special achievements have a 'spiked' (on normal texture pack) frame, special achievements are the hardest ones to achieve."
 field_75996_k,achievementDescription,2,"Holds the description of the achievement, ready to be formatted and/or displayed."
-field_75998_D,enchantments,2,Is the 'Enchanter' achievement
-field_75999_E,overkill,2,
-field_76000_F,bookcase,2,Is the 'Librarian' achievement
-field_76001_A,potion,2,Is the 'Local Brewery' achievement
 field_76002_B,theEnd,2,Is the 'The End?' achievement
-field_76003_C,theEnd2,2,Is the 'The End.' achievement
-field_76004_f,openInventory,2,Is the 'open inventory' achievement.
-field_76005_g,mineWood,2,Is the 'getting wood' achievement.
 field_76006_d,maxDisplayRow,2,Is the biggest row used to display a achievement on the GUI.
-field_76007_e,achievementList,2,The list holding all achievements
 field_76008_b,minDisplayRow,2,Is the smallest row used to display a achievement on the GUI.
 field_76009_c,maxDisplayColumn,2,Is the biggest column used to display a achievement on the GUI.
 field_76010_a,minDisplayColumn,2,Is the smallest column used to display a achievement on the GUI.
 field_76011_n,bakeCake,2,Is the 'the lie' achievement.
-field_76012_o,buildBetterPickaxe,2,Is the 'getting a upgrade' achievement.
 field_76013_l,buildHoe,2,Is the 'time to farm' achievement.
-field_76014_m,makeBread,2,Is the 'bake bread' achievement.
-field_76015_j,buildFurnace,2,Is the 'hot topic' achievement.
-field_76016_k,acquireIron,2,Is the 'acquire hardware' achievement.
-field_76017_h,buildWorkBench,2,Is the 'benchmarking' achievement.
-field_76018_i,buildPickaxe,2,Is the 'time to mine' achievement.
-field_76019_w,diamonds,2,Is the 'DIAMONDS!' achievement
-field_76020_v,snipeSkeleton,2,The achievement for killing a Skeleton from 50 meters aways.
-field_76021_u,flyPig,2,Is the 'when pig fly' achievement.
 field_76022_t,killCow,2,is the 'cow tipper' achievement.
-field_76023_s,killEnemy,2,Is the 'monster hunter' achievement.
-field_76024_r,buildSword,2,Is the 'time to strike' achievement.
-field_76025_q,onARail,2,Is the 'on a rail' achievement
 field_76026_p,cookFish,2,Is the 'delicious fish' achievement.
-field_76027_z,blazeRod,2,Is the 'Into Fire' achievement
 field_76028_y,ghast,2,Is the 'Return to Sender' achievement
-field_76029_x,portal,2,Is the 'We Need to Go Deeper' achievement
 field_76032_d,slotHash,2,The id of the hash slot computed from the hash
 field_76033_b,valueEntry,2,The object stored in this entry
 field_76034_c,nextEntry,2,The next entry in this slot
@@ -5293,7 +6149,6 @@ field_76148_b,value,2,the value held by the hash at the specified key
 field_76149_c,nextEntry,2,the next hashentry in the table
 field_76150_a,key,2,the key as a long (for playerInstances it is the x in the most significant 32 bits and then y)
 field_76165_d,percentUseable,2,percent of the hasharray that can be used without hash colliding probably
-field_76166_e,modCount,2,count of times elements have been added/removed
 field_76167_b,numHashElements,2,the number of elements in the hash array
 field_76168_c,capacity,2,the maximum amount of elements in the hash (probably 3/4 the size due to meh hashing function)
 field_76169_a,hashArray,2,the array of all elements in the hash
@@ -5329,7 +6184,7 @@ field_76302_b,enchantmentobj,2,Enchantment object associated with this Enchantme
 field_76303_c,enchantmentLevel,2,Enchantment level associated with this EnchantmentData
 field_76306_b,octaves,2,
 field_76307_a,generatorCollection,2,Collection of noise generation functions.  Output is combined to produce different octaves of noise.
-field_76312_d,permutations,2,
+field_76312_d,permutations,2,"An int[512], where the first 256 elements are the numbers 0..255, in random shuffled order,\nand the second half of the array is identical to the first half, apparently for convenience in wrapping lookups.\n \nEffectively a shuffled 0..255 that wraps once."
 field_76313_b,yCoord,2,
 field_76314_c,zCoord,2,
 field_76315_a,xCoord,2,
@@ -5361,9 +6216,7 @@ field_76385_p,isDamageAllowedInCreativeMode,2,
 field_76386_o,damageSourceEntity,2,
 field_76387_p,indirectEntity,2,
 field_76412_L,effectiveness,2,
-field_76413_M,usable,2,
 field_76414_N,liquidColor,2,Is the color of the liquid for this potion.
-field_76415_H,id,2,The Id of a Potion object.
 field_76416_I,name,2,The name of the Potion.
 field_76417_J,statusIconIndex,2,The index for the icon displayed when the potion effect is active.
 field_76418_K,isBadEffect,2,This field indicated if the effect is 'bad' - negative - for the entity.
@@ -5372,7 +6225,6 @@ field_76420_g,damageBoost,2,
 field_76421_d,moveSlowdown,2,
 field_76422_e,digSpeed,2,
 field_76424_c,moveSpeed,2,
-field_76425_a,potionTypes,2,The array of potion types.
 field_76426_n,fireResistance,2,The fire resistance Potion object.
 field_76427_o,waterBreathing,2,The water breathing Potion object.
 field_76428_l,regeneration,2,The regeneration Potion object.
@@ -5396,7 +6248,6 @@ field_76450_c,inUseSmallArrays,2,A list of pre-allocated int[256] arrays that we
 field_76451_a,intCacheSize,2,
 field_76460_b,duration,2,The duration of the potion effect
 field_76461_c,amplifier,2,The amplifier of the potion effect
-field_76462_a,potionID,2,ID value of the potion this effect matches.
 field_76476_f,syncLock,2,
 field_76477_g,isRunning,2,
 field_76478_d,playerStatsCollector,2,
@@ -5421,10 +6272,8 @@ field_76532_c,metaWood,2,The metadata value of the wood to use in tree generatio
 field_76533_a,minTreeHeight,2,The minimum height of a generated tree.
 field_76539_b,radius,2,The maximum radius used when generating a patch of blocks.
 field_76541_b,numberOfBlocks,2,The number of blocks to generate.
-field_76545_b,itemsToGenerateInBonusChest,2,Value of this int will determine how much items gonna generate in Bonus Chest.
 field_76553_a,regionsByFilename,2,A map containing Files as keys and RegionFiles as values
 field_76573_f,lightBrightnessTable,2,Light to brightness conversion table
-field_76574_g,dimensionId,2,"The id for the dimension (ex. -1: Nether, 0: Overworld, 1: The End)"
 field_76575_d,isHellWorld,2,States whether the Hell world provider is used(true) or if the normal world provider is used(false)
 field_76576_e,hasNoSky,2,A boolean that tells if a world does not have a sky. Used in calculating weather and skylight
 field_76577_b,terrainType,2,
@@ -5476,18 +6325,16 @@ field_76720_a,emptySector,2,
 field_76721_h,lastModified,2,
 field_76722_b,chunkX,2,
 field_76723_c,chunkZ,2,
-field_76748_D,minHeight,2,The minimum height of this biome. Default 0.1.
-field_76749_E,maxHeight,2,The maximum height of this biome. Default 0.3.
+field_76748_D,baseHeight,2,The base height of this biome. Default 0.1.
+field_76749_E,heightVariation,2,The variation from the base height of the biome. Default 0.3.
 field_76750_F,temperature,2,The temperature of this biome.
 field_76751_G,rainfall,2,The rainfall in this biome.
 field_76752_A,topBlock,2,The block expected to be on the top of this biome
 field_76753_B,fillerBlock,2,The block to fill spots in when not on the top
-field_76754_C,fillerBlockMetadata,2,
 field_76755_L,spawnableWaterCreatureList,2,Holds the classes of any aquatic creature that can be spawned in the water of the biome.
-field_76756_M,biomeID,2,"The id number to this biome, and its index in the biomeList array."
 field_76757_N,worldGeneratorTrees,2,The tree generator.
 field_76758_O,worldGeneratorBigTree,2,The big tree generator.
-field_76759_H,waterColorMultiplier,2,Color tint applied to water depending on biome
+field_76759_H,waterColor,2,Color tint applied to water depending on biome
 field_76760_I,theBiomeDecorator,2,The biome decorator.
 field_76761_J,spawnableMonsterList,2,Holds the classes of IMobs (hostile mobs) that can be spawned in the biome.
 field_76762_K,spawnableCreatureList,2,Holds the classes of any creature that can be spawned in the biome as friendly creature.
@@ -5500,7 +6347,6 @@ field_76769_d,desert,2,
 field_76770_e,extremeHills,2,
 field_76771_b,ocean,2,
 field_76772_c,plains,2,
-field_76773_a,biomeList,2,"An array of all the biomes, indexed by biome id."
 field_76774_n,icePlains,2,
 field_76775_o,iceMountains,2,
 field_76776_l,frozenOcean,2,
@@ -5517,7 +6363,6 @@ field_76786_s,desertHills,2,Desert Hills biome.
 field_76787_r,beach,2,Beach biome.
 field_76788_q,mushroomIslandShore,2,
 field_76789_p,mushroomIsland,2,
-field_76790_z,color,2,
 field_76791_y,biomeName,2,
 field_76792_x,jungleHills,2,
 field_76798_D,mushroomsPerChunk,2,"The number of extra mushroom patches per chunk. It generates 1/4 this number in brown mushroom patches, and 1/8 this number in red mushroom patches. These mushrooms go beyond the default base number of mushrooms."
@@ -5533,8 +6378,6 @@ field_76807_J,bigMushroomsPerChunk,2,Amount of big mushrooms per chunk
 field_76808_K,generateLakes,2,True if decorator should generate surface lava & water
 field_76809_f,clayGen,2,The clay generator.
 field_76810_g,sandGen,2,The sand generator.
-field_76813_b,randomGenerator,2,The Biome Decorator's random number generator.
-field_76815_a,currentWorld,2,The world the BiomeDecorator is currently decorating
 field_76818_l,ironGen,2,
 field_76819_m,goldGen,2,Field that holds gold WorldGenMinable
 field_76820_j,gravelGen,2,
@@ -5558,13 +6401,11 @@ field_76844_a,chunkManager,2,Reference to the WorldChunkManager
 field_76886_f,lastAccessTime,2,"The last time this BiomeCacheBlock was accessed, in milliseconds."
 field_76888_d,xPosition,2,The x coordinate of the BiomeCacheBlock.
 field_76889_e,zPosition,2,The z coordinate of the BiomeCacheBlock.
-field_76890_b,rainfallValues,2,An array of chunk rainfall values saved by this cache.
 field_76891_c,biomes,2,The array of biome types stored in this BiomeCacheBlock.
 field_76942_f,biomeCache,2,The biome list.
 field_76943_g,biomesToSpawnIn,2,A list of biomes that the player can spawn in.
 field_76944_d,genBiomes,2,
 field_76945_e,biomeIndexLayer,2,A GenLayer containing the indices into BiomeGenBase.biomeList[]
-field_76946_f,rainfall,2,The rainfall in the world
 field_76947_d,biomeGenerator,2,The biome generator object.
 field_76987_f,shadowOpaque,0,Determines the darkness of the object's shadow. Higher value makes a darker shadow.
 field_76989_e,shadowSize,0,
@@ -5616,29 +6457,12 @@ field_77286_a,isFlaming,2,whether or not the explosion sets fire to blocks aroun
 field_77287_j,worldObj,2,
 field_77288_k,playerKnockbackMap,2,"Maps players to the knockback vector applied by the explosion, to send to the client"
 field_77290_i,explosionRNG,2,
-field_77327_f,blastProtection,2,Protection against explosions
 field_77329_d,fireProtection,2,Protection against fire
-field_77331_b,enchantmentsBookList,2,
 field_77333_a,weight,2,
 field_77334_n,fireAspect,2,Lights mobs on fire
-field_77335_o,looting,2,Mobs have a chance to drop more loot
-field_77341_i,aquaAffinity,2,Increases underwater mining rate
-field_77342_w,infinity,2,"Infinity enchantment for bows. The bow will not consume arrows anymore, but will still required at least one arrow on inventory use the bow."
-field_77343_v,flame,2,Flame enchantment for bows. Arrows fired by the bow will be on fire. Any target hit will also set on fire.
-field_77344_u,punch,2,"Knockback enchantments for bows, the arrows will knockback the target when hit."
-field_77345_t,power,2,"Power enchantment for bows, add's extra damage to arrows."
-field_77346_s,fortune,2,Can multiply the drop rate of items from blocks
-field_77347_r,unbreaking,2,"Sometimes, the tool's durability will not be spent when the tool is used"
-field_77348_q,silkTouch,2,"Blocks mined will drop themselves, even if it should drop something else (e.g. stone will drop stone, not cobblestone)"
-field_77349_p,efficiency,2,Faster resource gathering while in use
 field_77350_z,name,2,Used in localisation and stats.
 field_77351_y,type,2,The EnumEnchantmentType given to this Enchantment.
-field_77352_x,effectId,2,
-field_77353_D,thresholdEnchantability,2,"Used on the formula of base enchantability, this is the 'window' factor of values to be able to use thing enchant."
-field_77354_A,protectionName,2,Holds the name to be translated of each protection type.
-field_77355_B,baseEnchantability,2,Holds the base factor of enchantability needed to be able to use the enchant.
 field_77356_a,protectionType,2,"Defines the type of protection of the enchantment, 0 = all, 1 = fire, 2 = fall (feather fall), 3 = explosion and 4 = projectile."
-field_77357_C,levelEnchantability,2,Holds how much each level increased the enchantability factor to be able to use this enchant.
 field_77358_D,thresholdEnchantability,2,"Used on the formula of base enchantability, this is the 'window' factor of values to be able to use thing enchant."
 field_77359_A,protectionName,2,Holds the name to be translated of each protection type.
 field_77360_B,baseEnchantability,2,Holds the base factor of enchantability needed to be able to use the enchant.
@@ -5695,22 +6519,17 @@ field_77700_c,containerItem,2,
 field_77701_a,tabToDisplayOn,2,
 field_77774_bZ,unlocalizedName,2,The unlocalized name of this item.
 field_77777_bU,maxStackSize,2,Maximum size of the stack.
-field_77785_bY,potionEffect,2,The string representing this item's effect on a potion when used as an ingredient.
 field_77787_bX,hasSubtypes,2,"Some items (like dyes) have multiple subtypes on same item, this is field define this behavior"
 field_77789_bW,bFull3D,2,"If true, render the object in full 3D, like weapons and tools."
-field_77835_b,SUB_ITEMS_CACHE,2,
-field_77836_a,effectCache,2,Contains a map from integers to the list of potion effects that potions with that damage value confer (to prevent recalculating it).
 field_77838_b,soilBlockID,2,BlockID of the block the seeds can be planted on.
 field_77841_a,minecartType,2,
 field_77843_a,theToolMaterial,2,
-field_77850_cb,potionDuration,2,set by setPotionEffect
 field_77851_ca,potionId,2,represents the potion effect that will occurr upon eating this food. Set by setPotionEffect
 field_77852_bZ,alwaysEdible,2,"If this field is true, the food can be consumed even if the player don't need to eat."
 field_77853_b,healAmount,2,The amount this food item heals the player.
 field_77854_c,saturationModifier,2,
 field_77855_a,itemUseDuration,2,Number of ticks to run while 'EnumAction'ing until result.
 field_77856_bY,isWolfsFavoriteMeat,2,Whether wolves like this food (true for raw and cooked porkchop).
-field_77857_cc,potionAmplifier,2,set by setPotionEffect
 field_77858_cd,potionEffectProbability,2,probably of the set potion effect occurring
 field_77862_b,toolMaterial,2,The material this tool is made from.
 field_77864_a,efficiencyOnProperMaterial,2,
@@ -5721,18 +6540,6 @@ field_77879_b,damageReduceAmount,2,Holds the amount of damage that the armor red
 field_77880_c,renderIndex,2,"Used on RenderPlayer to select the correspondent armor to be rendered on the player: 0 is cloth, 1 is chain, 2 is iron, 3 is diamond and 4 is gold."
 field_77881_a,armorType,2,"Stores the armor type: 0 is helmet, 1 is plate, 2 is legs and 3 is boots"
 field_77882_bY,maxDamageArray,2,Holds the 'base' maxDamage that each armorType have.
-field_77918_f,speckledMelonEffect,2,
-field_77919_g,blazePowderEffect,2,
-field_77920_d,spiderEyeEffect,2,
-field_77921_e,fermentedSpiderEyeEffect,2,
-field_77922_b,sugarEffect,2,
-field_77923_c,ghastTearEffect,2,
-field_77925_n,DATAVALUE_COLORS,2,
-field_77926_o,potionPrefixes,2,"An array of possible potion prefix names, as translation IDs."
-field_77929_j,glowstoneEffect,2,
-field_77930_k,gunpowderEffect,2,
-field_77931_h,magmaCreamEffect,2,
-field_77932_i,redstoneEffect,2,
 field_77934_f,rarityName,2,Rarity name.
 field_77937_e,rarityColor,2,A decimal representation of the hex color codes of a the color assigned to this rarity type. (13 becomes d as in \247d which is light purple)
 field_77990_d,stackTagCompound,2,A NBTTagMap containing data about an ItemStack. Can only be used for non stackable items
@@ -5787,9 +6594,6 @@ field_78109_a,segments,0,
 field_78115_e,bipedBody,0,
 field_78116_c,bipedHead,0,
 field_78117_n,isSneak,0,
-field_78118_o,aimedBow,0,Records whether the model should be rendered aiming a bow.
-field_78119_l,heldItemLeft,0,"Records whether the model should be rendered holding an item in the left hand, and if that item is a block."
-field_78120_m,heldItemRight,0,"Records whether the model should be rendered holding an item in the right hand, and if that item is a block."
 field_78125_b,isAttacking,0,Is the enderman attacking an entity?
 field_78126_a,isCarrying,0,Is the enderman carrying a block?
 field_78127_b,tentacles,0,
@@ -5938,10 +6742,6 @@ field_78398_a,instance,0,The static instance of the Tessellator.
 field_78436_b,imageWidth,0,
 field_78437_c,imageHeight,0,
 field_78438_a,imageData,0,
-field_78450_g,equippedItemSlot,0,"The index of the currently held item (0-8, or -1 if not yet updated)"
-field_78451_d,prevEquippedProgress,0,
-field_78453_b,itemToRender,0,
-field_78454_c,equippedProgress,0,How far the current item has been equipped (0 disequipped and 1 fully up)
 field_78455_a,mc,0,A reference to the Minecraft object.
 field_78490_B,thirdPersonDistance,0,
 field_78491_C,thirdPersonDistanceTemp,0,Third person distance temp
@@ -6056,7 +6856,7 @@ field_78900_b,moveForward,0,The speed at which the player is moving forward. Neg
 field_78901_c,jump,0,
 field_78902_a,moveStrafe,0,The speed at which the player is strafing. Postive numbers to the left and negative to the right.
 field_78903_e,gameSettings,0,
-field_78939_q,needsUpdate,0,Boolean for whether this renderer needs to be updated or not
+field_78939_q,noColor,0,None
 field_80001_f,closestPlayer,2,The closest EntityPlayer to this orb.
 field_80002_g,xpTargetColor,2,Threshold color for tracking players
 field_80004_Q,updateEntityTick,2,
@@ -6064,16 +6864,12 @@ field_80005_w,hideServerAddress,0,
 field_82151_R,distanceWalkedOnStepModified,2,
 field_82153_h,portalCounter,2,
 field_82172_bs,canPickUpLoot,2,Whether this entity can pick up items from the ground.
-field_82174_bp,equipmentDropChances,2,Chances for each equipment piece from dropping when this entity dies.
+field_82174_bp,inventoryHandsDropChances,2,Chances for equipment in hands dropping when this entity dies.
 field_82175_bq,isSwingInProgress,2,Whether an arm swing is currently in progress.
 field_82179_bU,persistenceRequired,2,Whether this entity should NOT despawn.
-field_82180_bT,previousEquipment,2,"The equipment this mob was previously wearing, used for syncing."
-field_82182_bS,equipment,2,Equipment (armor and held item) for this entity.
-field_82184_d,aiControlledByPlayer,2,AI task for player control.
 field_82189_bL,lastBuyingPlayer,2,"Last player to trade with this villager, used for aggressivity."
 field_82190_bM,isLookingForHome,2,
 field_82192_a,mobSelector,2,Entity selector for IMob types.
-field_82199_d,witchDrops,2,List of items a witch should drop on death.
 field_82200_e,witchAttackTimer,2,"Timer used as interval for a witch's attack, decremented every tick if aggressive and when reaches zero the witch will throw a potion at the target entity."
 field_82219_bJ,attackEntitySelector,2,Selector used to determine the entities a wither boss should attack.
 field_82222_j,blockBreakCounter,2,Time before the Wither tries to break blocks
@@ -6102,12 +6898,6 @@ field_82627_a,worldObj,2,
 field_82628_b,y,2,
 field_82629_c,z,2,
 field_82630_a,x,2,
-field_82635_f,maxSpeedBoostTime,2,Maximum time the entity's speed should be boosted for.
-field_82636_d,speedBoosted,2,Whether the entity's speed is boosted.
-field_82637_e,speedBoostTime,2,"Counter for speed boosting, upon reaching maxSpeedBoostTime the speed boost will be disabled"
-field_82638_b,maxSpeed,2,
-field_82639_c,currentSpeed,2,
-field_82640_a,thisEntity,2,
 field_82641_b,rangedAttackEntityHost,2,The entity (as a RangedAttackMob) the AI instance has been applied to.
 field_82642_h,maxAttackDistance,2,
 field_82643_g,targetEntitySelector,2,This filter is applied to the Entity search.  Only matching entities will be targetted.  (null -> no restrictions)
@@ -6157,13 +6947,8 @@ field_82786_e,maxTradeUses,2,Maximum times this trade can be used.
 field_82807_a,skullTypes,2,
 field_82809_c,soilId,2,Block ID of the soil this seed food should be planted on.
 field_82811_a,hangingEntityClass,2,
-field_82818_l,goldenCarrotEffect,2,
 field_82821_f,version,0,
 field_82822_g,gameVersion,0,Game version for this server.
-field_82825_d,hasColorModifier,0,
-field_82826_b,statusBarTime,0,
-field_82827_c,bossName,0,
-field_82828_a,healthScale,0,
 field_82831_U,bossColorModifier,0,
 field_82832_V,bossColorModifierPrev,0,
 field_82843_f,itemFrame,2,"Item frame this stack is on, or null if not on an item frame."
@@ -6203,6 +6988,7 @@ field_83016_L,theCalendar,2,
 field_85037_d,aiArrowAttack,2,
 field_85038_e,aiAttackOnCollide,2,
 field_85053_h,throwerName,2,
+field_85059_f,firstCategoryInCrashReport,2,Is true when the current category is the first in the crash report
 field_85060_g,stacktrace,2,
 field_85061_c,theReportCategory,2,Category of crash
 field_85075_d,stackTrace,2,
@@ -6230,7 +7016,6 @@ field_92040_ay,theEffectRenderer,0,
 field_92041_a,twinkle,0,
 field_92042_ax,fireworkAge,0,
 field_92048_ay,twinkle,0,
-field_92049_a,baseTextureIndex,0,
 field_92050_aA,fadeColourRed,0,
 field_92051_aB,fadeColourGreen,0,
 field_92052_aC,fadeColourBlue,0,
@@ -6239,7 +7024,6 @@ field_92054_ax,trail,0,
 field_92055_b,lifetime,2,The lifetime of the firework in ticks. When the age reaches the lifetime the firework explodes.
 field_92056_a,fireworkAge,2,The age of the firework in ticks.
 field_92057_e,explosionPower,2,
-field_92086_a,isBlank,2,When isBlank is true the DataWatcher is not watching any objects
 field_92091_k,thorns,2,
 field_92101_f,copyIngredientNBT,2,
 field_92117_D,heldItemTooltips,0,
@@ -6250,7 +7034,6 @@ field_94054_b,particleTextureIndexX,0,
 field_94055_c,particleTextureIndexY,0,
 field_94063_bt,_combatTracker,2,
 field_94084_b,tntPlacedBy,2,
-field_94102_c,entityName,2,
 field_94106_a,minecartTNTFuse,2,
 field_94109_b,pushZ,2,
 field_94110_c,fuel,2,
@@ -6270,14 +7053,11 @@ field_94204_c,width,0,
 field_94205_a,scaleFactor,0,
 field_94233_j,width,0,width of this icon in pixels
 field_94234_k,height,0,height of this icon in pixels
-field_94242_j,angleDelta,0,Speed and direction of compass rotation
-field_94244_i,currentAngle,0,Current compass heading in radians
 field_94249_f,missingImage,0,
 field_94252_e,mapUploadedSprites,0,
 field_94254_c,basePath,0,
 field_94258_i,listAnimatedSprites,0,
 field_94313_f,maxHeight,0,
-field_94314_g,forcePowerOf2,0,
 field_94315_d,currentHeight,0,
 field_94316_e,maxWidth,0,
 field_94317_b,stitchSlots,0,
@@ -6288,15 +7068,16 @@ field_94535_f,dragMode,2,"The current drag mode (0 : evenly split, 1 : one item 
 field_94536_g,dragEvent,2,"The current drag event (0 : start, 1 : add slot : 2 : end)"
 field_94537_h,dragSlots,2,The list of slots where the itemstack holds will be distributed
 field_94538_a,hopperInventory,2,
+field_94551_f,fallSuffix,2,
 field_94554_b,fighter,2,The entity tracked.
 field_94556_a,combatEntries,2,The CombatEntry objects that we've tracked so far.
 field_94557_a,selectAnything,2,
 field_94564_f,fallDistance,2,
 field_94565_d,health,2,
+field_94566_e,fallSuffix,2,
 field_94568_c,damage,2,
 field_94569_a,damageSrc,2,
 field_94579_S,pendingTickListEntriesThisTick,2,
-field_94601_a,bowPullIconNameArray,2,
 field_94603_a,EMPTY_SLOT_NAMES,2,
 field_96093_i,entityUniqueID,2,
 field_96113_a,isBlocked,2,Whether this hopper minecart is being blocked by an activator rail.
@@ -6316,7 +7097,6 @@ field_96542_e,teams,2,Map of teamnames to ScorePlayerTeam instances
 field_96543_b,scoreObjectiveCriterias,2,Map of IScoreObjectiveCriteria objects to ScoreObjective objects.
 field_96544_c,entitiesScoreObjectives,2,Map of entities name to ScoreObjective objects.
 field_96545_a,scoreObjectives,2,Map of objective names to ScoreObjective objects.
-field_96554_c,scoreboardSaveData,2,
 field_96555_a,scoreboardMCServer,2,
 field_96566_b,selectInventories,2,
 field_96567_c,armor,2,
@@ -6356,8 +7136,6 @@ field_98056_d,ageWidth,2,
 field_98057_e,ageHeight,2,
 field_98149_a,holder,0,
 field_98151_a,theTexture,0,
-field_98222_b,nbtData,2,
-field_98223_c,entityType,2,
 field_98224_g,minecraftStartTimeMilis,2,
 field_98282_f,randomEntity,2,
 field_98283_g,minSpawnDelay,2,
@@ -6365,7 +7143,6 @@ field_98284_d,prevMobRotation,2,the previous rotation of the mob inside the mob 
 field_98285_e,minecartToSpawn,2,List of minecart to spawn.
 field_98286_b,spawnDelay,2,The delay to spawn.
 field_98287_c,mobRotation,2,The rotation of the mob inside the mob spawner
-field_98288_a,mobID,2,
 field_98289_l,activatingRangeFromPlayer,2,The distance from which a player activates the spawner.
 field_98290_m,spawnRange,2,The range coefficient for spawning entities around.
 field_98291_j,cachedEntity,2,Cached instance of the entity to render inside the spawner.

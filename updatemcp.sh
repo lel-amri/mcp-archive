@@ -1,2 +1,2 @@
 #!/bin/bash
-python runtime/updatemcp.py "$@"
+./runtime/updatemcp.py "$@"

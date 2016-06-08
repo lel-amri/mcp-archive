@@ -1,2 +1,2 @@
 #!/bin/bash
-python runtime/updatenames.py "$@"
+./runtime/updatenames.py "$@"

@@ -1,8 +1,8 @@
 diff -r -U 3 minecraft\net\minecraft\client\particle\EffectRenderer.java minecraft_patched\net\minecraft\client\particle\EffectRenderer.java
 --- minecraft\net\minecraft\client\particle\EffectRenderer.java
 +++ minecraft_patched\net\minecraft\client\particle\EffectRenderer.java
-@@ -234,8 +234,9 @@
-       GlStateManager.func_179112_b(770, 771);
+@@ -262,8 +262,9 @@
+       GlStateManager.func_187401_a(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
        GlStateManager.func_179092_a(516, 0.003921569F);
  
 -      for(final int i = 0; i < 3; ++i) {
@@ -12,7 +12,7 @@ diff -r -U 3 minecraft\net\minecraft\client\particle\EffectRenderer.java minecra
              if(!this.field_78876_b[i][j].isEmpty()) {
                 switch(j) {
                 case 0:
-@@ -274,7 +275,7 @@
+@@ -300,7 +301,7 @@
                       });
                       crashreportcategory.func_71500_a("Particle Type", new Callable<String>() {
                          public String call() throws Exception {

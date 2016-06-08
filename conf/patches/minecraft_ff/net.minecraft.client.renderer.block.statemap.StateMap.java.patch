@@ -1,12 +1,12 @@
 diff -r -U 3 minecraft\net\minecraft\client\renderer\block\statemap\StateMap.java minecraft_patched\net\minecraft\client\renderer\block\statemap\StateMap.java
 --- minecraft\net\minecraft\client\renderer\block\statemap\StateMap.java
 +++ minecraft_patched\net\minecraft\client\renderer\block\statemap\StateMap.java
-@@ -29,7 +29,7 @@
-       if(this.field_178142_a == null) {
-          s = ((ResourceLocation)Block.field_149771_c.func_177774_c(p_178132_1_.func_177230_c())).toString();
-       } else {
--         s = this.field_178142_a.func_177702_a((Comparable)map.remove(this.field_178142_a));
-+         s = ((IProperty)this.field_178142_a).func_177702_a((Comparable)map.remove(this.field_178142_a));
-       }
+@@ -44,7 +44,7 @@
+    }
  
-       if(this.field_178141_c != null) {
+    private <T extends Comparable<T>> String func_187490_a(IProperty<T> p_187490_1_, Map<IProperty<?>, Comparable<?>> p_187490_2_) {
+-      return p_187490_1_.func_177702_a((Comparable)p_187490_2_.remove(this.field_178142_a));
++      return p_187490_1_.func_177702_a((T)p_187490_2_.remove(this.field_178142_a));
+    }
+ 
+    public static class Builder {

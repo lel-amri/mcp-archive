@@ -1,2 +1,2 @@
 #!/bin/bash
-python runtime/updateids.py "$@"
+./runtime/updateids.py "$@"

@@ -1,3 +1,4 @@
+#!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 """
 Created on Fri Apr  8 16:36:26 2011
@@ -145,7 +146,7 @@ def csv_header(csvfile):
 class Commands(object):
     """Contains the commands and initialisation for a full mcp run"""
 
-    MCPVersion = '9.18'
+    MCPVersion = '9.24'
     _default_config = 'conf/mcp.cfg'
     _version_config = 'conf/version.cfg'
 

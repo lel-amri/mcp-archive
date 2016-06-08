@@ -3,7 +3,7 @@ diff -r -U 3 minecraft_server\net\minecraft\scoreboard\Scoreboard.java minecraft
 +++ minecraft_server_patched\net\minecraft\scoreboard\Scoreboard.java
 @@ -52,7 +52,7 @@
  
-    public Collection<ScoreObjective> func_96520_a(IScoreObjectiveCriteria p_96520_1_) {
+    public Collection<ScoreObjective> func_96520_a(IScoreCriteria p_96520_1_) {
        Collection<ScoreObjective> collection = (Collection)this.field_96543_b.get(p_96520_1_);
 -      return collection == null?Lists.newArrayList():Lists.newArrayList(collection);
 +      return collection == null?Lists.<ScoreObjective>newArrayList():Lists.newArrayList(collection);

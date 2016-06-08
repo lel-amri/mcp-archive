@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\client\renderer\EntityRenderer.java minecraft_patched\net\minecraft\client\renderer\EntityRenderer.java
 --- minecraft\net\minecraft\client\renderer\EntityRenderer.java
 +++ minecraft_patched\net\minecraft\client\renderer\EntityRenderer.java
-@@ -326,7 +326,7 @@
+@@ -313,7 +313,7 @@
                    flag = true;
                 }
  

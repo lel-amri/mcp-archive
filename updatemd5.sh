@@ -1,2 +1,2 @@
 #!/bin/bash
-python runtime/updatemd5.py "$@"
+./runtime/updatemd5.py "$@"
