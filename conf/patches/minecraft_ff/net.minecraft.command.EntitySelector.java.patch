@@ -28,25 +28,25 @@ diff -r -U 3 minecraft\net\minecraft\command\EntitySelector.java minecraft_patch
              s = s.substring(1);
           }
  
--         final WorldSettings.GameType worldsettings$gametype;
-+         WorldSettings.GameType worldsettings$gametype;
+-         final GameType gametype;
++         GameType gametype;
           try {
              int i = Integer.parseInt(s);
-             worldsettings$gametype = WorldSettings.GameType.func_185329_a(i, WorldSettings.GameType.NOT_SET);
+             gametype = GameType.func_185329_a(i, GameType.NOT_SET);
 @@ -198,6 +199,7 @@
-             worldsettings$gametype = WorldSettings.GameType.func_185328_a(s, WorldSettings.GameType.NOT_SET);
+             gametype = GameType.func_185328_a(s, GameType.NOT_SET);
           }
  
-+         final WorldSettings.GameType type = worldsettings$gametype;
++         final GameType type = gametype;
           list.add(new Predicate<Entity>() {
              public boolean apply(@Nullable Entity p_apply_1_) {
                 if(!(p_apply_1_ instanceof EntityPlayerMP)) {
 @@ -205,7 +207,7 @@
                 } else {
                    EntityPlayerMP entityplayermp = (EntityPlayerMP)p_apply_1_;
-                   WorldSettings.GameType worldsettings$gametype1 = entityplayermp.field_71134_c.func_73081_b();
--                  return flag?worldsettings$gametype1 != worldsettings$gametype:worldsettings$gametype1 == worldsettings$gametype;
-+                  return flag?worldsettings$gametype1 != type:worldsettings$gametype1 == type;
+                   GameType gametype1 = entityplayermp.field_71134_c.func_73081_b();
+-                  return flag?gametype1 != gametype:gametype1 == gametype;
++                  return flag?gametype1 != type:gametype1 == type;
                 }
              }
           });
@@ -90,7 +90,7 @@ diff -r -U 3 minecraft\net\minecraft\command\EntitySelector.java minecraft_patch
 -         list.add(new Predicate<Entity>() {
 -            public boolean apply(@Nullable Entity p_apply_1_) {
 -               return p_apply_1_ != null && p_apply_1_.func_70005_c_().equals(s) != flag;
-+        final String s_f = s;
++         final String s_f = s;
 +         list.add(new Predicate<Entity>() {
 +            public boolean apply(@Nullable Entity p_apply_1_) {
 +               return p_apply_1_ != null && p_apply_1_.func_70005_c_().equals(s_f) != flag;
@@ -112,7 +112,7 @@ diff -r -U 3 minecraft\net\minecraft\command\EntitySelector.java minecraft_patch
 -         list.add(new Predicate<Entity>() {
 -            public boolean apply(@Nullable Entity p_apply_1_) {
 -               return p_apply_1_ == null?false:("".equals(s)?p_apply_1_.func_184216_O().isEmpty() != flag:p_apply_1_.func_184216_O().contains(s) != flag);
-+        final String s_f = s;
++         final String s_f = s;
 +         list.add(new Predicate<Entity>() {
 +            public boolean apply(@Nullable Entity p_apply_1_) {
 +               return p_apply_1_ == null?false:("".equals(s_f)?p_apply_1_.func_184216_O().isEmpty() != flag:p_apply_1_.func_184216_O().contains(s_f) != flag);

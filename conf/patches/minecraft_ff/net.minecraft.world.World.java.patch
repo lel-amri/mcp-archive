@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\world\World.java minecraft_patched\net\minecraft\world\World.java
 --- minecraft\net\minecraft\world\World.java
 +++ minecraft_patched\net\minecraft\world\World.java
-@@ -2170,8 +2170,8 @@
+@@ -2174,8 +2174,8 @@
        List<T> list = Lists.<T>newArrayList();
  
        for(Entity entity : this.field_72996_f) {
@@ -12,7 +12,7 @@ diff -r -U 3 minecraft\net\minecraft\world\World.java minecraft_patched\net\mine
           }
        }
  
-@@ -2182,8 +2182,8 @@
+@@ -2186,8 +2186,8 @@
        List<T> list = Lists.<T>newArrayList();
  
        for(Entity entity : this.field_73010_i) {
@@ -23,7 +23,7 @@ diff -r -U 3 minecraft\net\minecraft\world\World.java minecraft_patched\net\mine
           }
        }
  
-@@ -2219,7 +2219,7 @@
+@@ -2223,7 +2223,7 @@
        double d0 = Double.MAX_VALUE;
  
        for(int i = 0; i < list.size(); ++i) {

@@ -147,7 +147,7 @@ def csv_header(csvfile):
 class Commands(object):
     """Contains the commands and initialisation for a full mcp run"""
 
-    MCPVersion = '9.27'
+    MCPVersion = '9.30'
     _default_config = 'conf/mcp.cfg'
     _version_config = 'conf/version.cfg'
 
@@ -844,7 +844,7 @@ class Commands(object):
             for pkg in self.ignorepkg:
                 rgout.write('%s = %s\n' % ('protectedpackage', pkg))
 
-    def createsrgs(self, side, use_srg=False):
+    def createsrgs(self, side, use_srg=False, rg_update=False):
         """Write the srgs files."""
         sidelk = {CLIENT: self.srgsclient, SERVER: self.srgsserver}
         srglk = {CLIENT: self.srgsconfclient, SERVER: self.srgsconfserver}
@@ -854,6 +854,25 @@ class Commands(object):
                 self.logger.error('!! srgs not found !!')
                 sys.exit(1)
             shutil.copyfile(srglk[side], sidelk[side])
+            if rg_update:
+                self.logger.info('> Adding SideOnly to SRGs')
+                #Add SideOnly stuff, cuz i'm tired of it getting new names!
+                lines = [
+                    '',
+                    'CL: %s/Side %s/Side',
+                    'CL: %s/SideOnly %s/SideOnly',
+                    'FD: %s/Side/$VALUES %s/Side/$VALUES',
+                    'FD: %s/Side/BUKKIT %s/Side/BUKKIT',
+                    'FD: %s/Side/CLIENT %s/Side/CLIENT',
+                    'FD: %s/Side/SERVER %s/Side/SERVER',
+                    'MD: %s/Side/isClient ()Z %s/Side/isClient ()Z',
+                    'MD: %s/Side/isServer ()Z %s/Side/isServer ()Z',
+                    'MD: %s/Side/values ()[L%s/Side; %s/Side/values ()[L%s/Side;',
+                    'MD: %s/SideOnly/value ()L%s/Side; %s/SideOnly/value ()L%s/Side;'
+                ]
+                with open(sidelk[side], 'a') as f:
+                    for line in lines:
+                        f.write('%s\n' % line.replace('%s', 'net/minecraftforge/fml/relauncher'))
         else:
             if not self.has_map_csv:
                 self.logger.error('!! csvs not found !!')

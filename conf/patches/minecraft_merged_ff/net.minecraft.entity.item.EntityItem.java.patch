@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\entity\item\EntityItem.java minecraft_patched\net\minecraft\entity\item\EntityItem.java
 --- minecraft\net\minecraft\entity\item\EntityItem.java
 +++ minecraft_patched\net\minecraft\entity\item\EntityItem.java
-@@ -67,7 +67,7 @@
+@@ -70,7 +70,7 @@
     }
  
     protected void func_70088_a() {
@@ -10,7 +10,7 @@ diff -r -U 3 minecraft\net\minecraft\entity\item\EntityItem.java minecraft_patch
     }
  
     public void func_70071_h_() {
-@@ -329,7 +329,7 @@
+@@ -339,7 +339,7 @@
     }
  
     public void func_92058_a(@Nullable ItemStack p_92058_1_) {

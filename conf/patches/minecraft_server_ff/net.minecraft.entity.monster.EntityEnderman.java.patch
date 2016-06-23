@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft_server\net\minecraft\entity\monster\EntityEnderman.java minecraft_server_patched\net\minecraft\entity\monster\EntityEnderman.java
 --- minecraft_server\net\minecraft\entity\monster\EntityEnderman.java
 +++ minecraft_server_patched\net\minecraft\entity\monster\EntityEnderman.java
-@@ -108,7 +108,7 @@
+@@ -110,7 +110,7 @@
  
     protected void func_70088_a() {
        super.func_70088_a();
@@ -10,7 +10,7 @@ diff -r -U 3 minecraft_server\net\minecraft\entity\monster\EntityEnderman.java m
        this.field_70180_af.func_187214_a(field_184719_bw, Boolean.valueOf(false));
     }
  
-@@ -255,7 +255,7 @@
+@@ -265,7 +265,7 @@
     }
  
     public void func_175490_a(@Nullable IBlockState p_175490_1_) {

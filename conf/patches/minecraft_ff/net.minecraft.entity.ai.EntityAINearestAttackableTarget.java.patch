@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\entity\ai\EntityAINearestAttackableTarget.java minecraft_patched\net\minecraft\entity\ai\EntityAINearestAttackableTarget.java
 --- minecraft\net\minecraft\entity\ai\EntityAINearestAttackableTarget.java
 +++ minecraft_patched\net\minecraft\entity\ai\EntityAINearestAttackableTarget.java
-@@ -58,11 +58,11 @@
+@@ -59,11 +59,11 @@
              return false;
           } else {
              Collections.sort(list, this.field_75306_g);
@@ -15,7 +15,7 @@ diff -r -U 3 minecraft\net\minecraft\entity\ai\EntityAINearestAttackableTarget.j
              @Nullable
              public Double apply(@Nullable EntityPlayer p_apply_1_) {
                 ItemStack itemstack = p_apply_1_.func_184582_a(EntityEquipmentSlot.HEAD);
-@@ -78,7 +78,7 @@
+@@ -79,7 +79,7 @@
  
                 return Double.valueOf(1.0D);
              }

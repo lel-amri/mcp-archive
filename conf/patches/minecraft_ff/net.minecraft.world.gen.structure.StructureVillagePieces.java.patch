@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\world\gen\structure\StructureVillagePieces.java minecraft_patched\net\minecraft\world\gen\structure\StructureVillagePieces.java
 --- minecraft\net\minecraft\world\gen\structure\StructureVillagePieces.java
 +++ minecraft_patched\net\minecraft\world\gen\structure\StructureVillagePieces.java
-@@ -30,6 +30,7 @@
+@@ -39,6 +39,7 @@
  import net.minecraft.world.gen.structure.StructureComponent;
  import net.minecraft.world.storage.loot.LootTableList;
  

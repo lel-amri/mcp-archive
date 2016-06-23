@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\entity\Entity.java minecraft_patched\net\minecraft\entity\Entity.java
 --- minecraft\net\minecraft\entity\Entity.java
 +++ minecraft_patched\net\minecraft\entity\Entity.java
-@@ -526,7 +526,7 @@
+@@ -530,7 +530,7 @@
           }
  
           this.func_174826_a(this.func_174813_aQ().func_72317_d(0.0D, p_70091_3_, 0.0D));
@@ -10,7 +10,7 @@ diff -r -U 3 minecraft\net\minecraft\entity\Entity.java minecraft_patched\net\mi
           int j4 = 0;
  
           for(int k = list1.size(); j4 < k; ++j4) {
-@@ -541,7 +541,7 @@
+@@ -545,7 +545,7 @@
           }
  
           this.func_174826_a(this.func_174813_aQ().func_72317_d(0.0D, 0.0D, p_70091_5_));
@@ -19,7 +19,7 @@ diff -r -U 3 minecraft\net\minecraft\entity\Entity.java minecraft_patched\net\mi
              double d11 = p_70091_1_;
              double d7 = p_70091_3_;
              double d8 = p_70091_5_;
-@@ -2212,7 +2212,7 @@
+@@ -2256,7 +2256,7 @@
     private <T extends Entity> void func_184175_a(Class<T> p_184175_1_, Set<T> p_184175_2_) {
        for(Entity entity : this.func_184188_bt()) {
           if(p_184175_1_.isAssignableFrom(entity.getClass())) {

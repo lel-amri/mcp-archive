@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft_server\net\minecraft\entity\player\EntityPlayer.java minecraft_server_patched\net\minecraft\entity\player\EntityPlayer.java
 --- minecraft_server\net\minecraft\entity\player\EntityPlayer.java
 +++ minecraft_server_patched\net\minecraft\entity\player\EntityPlayer.java
-@@ -1152,6 +1152,7 @@
+@@ -1167,6 +1167,7 @@
        return EntityPlayer.SleepResult.OK;
     }
  

@@ -13,7 +13,7 @@ from commands import CLIENT, SIDE_NAME
 
 
 def decompile_side(commands, side, use_ff=False, use_srg=False, no_comments=False, no_reformat=False, no_renamer=False,
-                   no_patch=False, strip_comments=True, exc_update=False, keep_lvt=False, keep_generics=False, force_rg=False):
+                   no_patch=False, strip_comments=True, exc_update=False, keep_lvt=False, keep_generics=False, force_rg=False, rg_update=False):
     if not commands.checkjars(side):
         commands.logger.warning('!! Missing %s jar file. Aborting !!', SIDE_NAME[side])
         return False
@@ -26,7 +26,7 @@ def decompile_side(commands, side, use_ff=False, use_srg=False, no_comments=Fals
         decompiler = 'fernflower'
     commands.logger.info('== Decompiling %s using %s ==', SIDE_NAME[side], decompiler)
     commands.logger.info('> Creating SRGs')
-    commands.createsrgs(side, use_srg=use_srg)
+    commands.createsrgs(side, use_srg=use_srg, rg_update=rg_update)
     if force_rg:
         commands.logger.info('> Applying Retroguard')
         commands.applyrg(side)

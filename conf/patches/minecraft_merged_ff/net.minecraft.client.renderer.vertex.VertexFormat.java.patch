@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\client\renderer\vertex\VertexFormat.java minecraft_patched\net\minecraft\client\renderer\vertex\VertexFormat.java
 --- minecraft\net\minecraft\client\renderer\vertex\VertexFormat.java
 +++ minecraft_patched\net\minecraft\client\renderer\vertex\VertexFormat.java
-@@ -46,6 +46,7 @@
+@@ -45,6 +45,7 @@
        this.field_177353_d = 0;
     }
  

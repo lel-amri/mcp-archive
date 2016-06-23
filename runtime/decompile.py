@@ -136,14 +136,14 @@ def decompile(conffile, force_jad, force_csv, no_recompile, no_comments, no_refo
                 cltdecomp = decompile_side(commands, CLIENT, use_ff=use_ff, use_srg=use_srg, no_comments=no_comments,
                                            no_reformat=no_reformat, no_renamer=no_renamer, no_patch=no_patch,
                                            strip_comments=strip_comments, exc_update=exc_update,
-                                           keep_lvt=keep_lvt, keep_generics=keep_generics, force_rg=force_rg)
+                                           keep_lvt=keep_lvt, keep_generics=keep_generics, force_rg=force_rg, rg_update=rg_update)
             else:
                 cltdecomp = False
             if process_server:
                 srvdecomp = decompile_side(commands, SERVER, use_ff=use_ff, use_srg=use_srg, no_comments=no_comments,
                                            no_reformat=no_reformat, no_renamer=no_renamer, no_patch=no_patch,
                                            strip_comments=strip_comments, exc_update=exc_update,
-                                           keep_lvt=keep_lvt, keep_generics=keep_generics, force_rg=force_rg)
+                                           keep_lvt=keep_lvt, keep_generics=keep_generics, force_rg=force_rg, rg_update=rg_update)
             else:
                 srvdecomp = False
         except CalledProcessError:
