@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft_server\net\minecraft\block\BlockHugeMushroom.java minecraft_server_patched\net\minecraft\block\BlockHugeMushroom.java
 --- minecraft_server\net\minecraft\block\BlockHugeMushroom.java
 +++ minecraft_server_patched\net\minecraft\block\BlockHugeMushroom.java
-@@ -143,6 +143,7 @@
+@@ -141,6 +141,7 @@
        }
     }
  

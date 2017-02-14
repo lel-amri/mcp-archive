@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft_server\net\minecraft\tileentity\TileEntityChest.java minecraft_server_patched\net\minecraft\tileentity\TileEntityChest.java
 --- minecraft_server\net\minecraft\tileentity\TileEntityChest.java
 +++ minecraft_server_patched\net\minecraft\tileentity\TileEntityChest.java
-@@ -157,6 +157,7 @@
+@@ -102,6 +102,7 @@
        this.field_145984_a = false;
     }
  

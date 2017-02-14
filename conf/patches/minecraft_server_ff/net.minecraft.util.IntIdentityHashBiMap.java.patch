@@ -12,7 +12,7 @@ diff -r -U 3 minecraft_server\net\minecraft\util\IntIdentityHashBiMap.java minec
 +      this.field_186820_d = (K[])(new Object[p_i46830_1_]);
     }
  
-    public int func_186815_a(K p_186815_1_) {
+    public int func_186815_a(@Nullable K p_186815_1_) {
 @@ -52,9 +52,9 @@
     private void func_186807_d(int p_186807_1_) {
        K[] ak = this.field_186818_b;

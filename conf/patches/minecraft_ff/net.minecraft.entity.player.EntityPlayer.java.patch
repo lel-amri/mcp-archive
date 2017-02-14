@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\entity\player\EntityPlayer.java minecraft_patched\net\minecraft\entity\player\EntityPlayer.java
 --- minecraft\net\minecraft\entity\player\EntityPlayer.java
 +++ minecraft_patched\net\minecraft\entity\player\EntityPlayer.java
-@@ -98,6 +98,7 @@
+@@ -97,6 +97,7 @@
  import net.minecraft.world.World;
  import net.minecraft.world.WorldServer;
  

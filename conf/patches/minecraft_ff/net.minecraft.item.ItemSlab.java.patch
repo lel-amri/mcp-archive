@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\item\ItemSlab.java minecraft_patched\net\minecraft\item\ItemSlab.java
 --- minecraft\net\minecraft\item\ItemSlab.java
 +++ minecraft_patched\net\minecraft\item\ItemSlab.java
-@@ -101,6 +101,6 @@
+@@ -102,6 +102,6 @@
     }
  
     protected <T extends Comparable<T>> IBlockState func_185055_a(IProperty<T> p_185055_1_, Comparable<?> p_185055_2_) {

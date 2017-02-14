@@ -9,4 +9,4 @@ diff -r -U 3 minecraft\net\minecraft\client\renderer\entity\RenderLivingBase.jav
 +      return this.field_177097_h.add((LayerRenderer<T>)p_177094_1_);
     }
  
-    protected <V extends EntityLivingBase, U extends LayerRenderer<V>> boolean func_177089_b(U p_177089_1_) {
+    public ModelBase func_177087_b() {

@@ -20,6 +20,7 @@ def main():
     parser = OptionParser(version='MCP %s' % Commands.fullversion())
     parser.add_option('--client', dest='only_client', action='store_true', help='only process client', default=False)
     parser.add_option('--server', dest='only_server', action='store_true', help='only process server', default=False)
+    parser.add_option('--joined', dest='only_joined', action='store_true', help='only process joined [MCP dev only]', default=False)
     parser.add_option('-j', '--jad', dest='force_jad', action='store_true',
                       help='force use of JAD even if Fernflower available', default=False)
     parser.add_option('--rg', dest='force_rg', action='store_true',
@@ -50,11 +51,12 @@ def main():
     options, _ = parser.parse_args()
     decompile(options.config, options.force_jad, options.force_csv, options.no_recompile, options.no_comments,
               options.no_reformat, options.no_renamer, options.no_patch, options.only_patch, options.keep_lvt,
-              options.keep_generics, options.only_client, options.only_server, options.force_rg, options.workdir, options.json, options.nocopy)
+              options.keep_generics, options.only_client, options.only_server, options.force_rg, options.workdir, options.json, options.nocopy,
+              only_joined=options.only_joined)
 
 
 def decompile(conffile, force_jad, force_csv, no_recompile, no_comments, no_reformat, no_renamer, no_patch, only_patch,
-              keep_lvt, keep_generics, only_client, only_server, force_rg, workdir, json, nocopy):
+              keep_lvt, keep_generics, only_client, only_server, force_rg, workdir, json, nocopy, only_joined=False):
     try:
         commands = Commands(conffile, verify=True, no_patch=no_patch, workdir=workdir, json=json)
 
@@ -85,6 +87,8 @@ def decompile(conffile, force_jad, force_csv, no_recompile, no_comments, no_refo
             process_server = False
         if only_server and not only_client:
             process_client = False
+        if only_joined and not only_server and not only_client:
+            process_server = False
 
         # always strip comments by default, turn off in update mode if required
         strip_comments = True
@@ -124,7 +128,7 @@ def decompile(conffile, force_jad, force_csv, no_recompile, no_comments, no_refo
 
         if force_rg:
             commands.logger.info('> Creating Retroguard config files')
-            commands.creatergcfg(reobf=False, keep_lvt=keep_lvt, keep_generics=keep_generics, rg_update=rg_update)
+            commands.creatergcfg(reobf=False, keep_lvt=keep_lvt, keep_generics=keep_generics, rg_update=rg_update, joined_jar=only_joined)
 
         if not nocopy:
             clientCopy.copyClientAssets(commands, workdir)
@@ -136,7 +140,8 @@ def decompile(conffile, force_jad, force_csv, no_recompile, no_comments, no_refo
                 cltdecomp = decompile_side(commands, CLIENT, use_ff=use_ff, use_srg=use_srg, no_comments=no_comments,
                                            no_reformat=no_reformat, no_renamer=no_renamer, no_patch=no_patch,
                                            strip_comments=strip_comments, exc_update=exc_update,
-                                           keep_lvt=keep_lvt, keep_generics=keep_generics, force_rg=force_rg, rg_update=rg_update)
+                                           keep_lvt=keep_lvt, keep_generics=keep_generics, force_rg=force_rg, rg_update=rg_update,
+                                           joined=only_joined)
             else:
                 cltdecomp = False
             if process_server:

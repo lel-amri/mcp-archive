@@ -10,7 +10,7 @@ diff -r -U 3 minecraft_server\net\minecraft\entity\monster\EntityEnderman.java m
        this.field_70180_af.func_187214_a(field_184719_bw, Boolean.valueOf(false));
     }
  
-@@ -265,7 +265,7 @@
+@@ -263,7 +263,7 @@
     }
  
     public void func_175490_a(@Nullable IBlockState p_175490_1_) {

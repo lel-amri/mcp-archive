@@ -13,7 +13,8 @@ from commands import CLIENT, SIDE_NAME
 
 
 def decompile_side(commands, side, use_ff=False, use_srg=False, no_comments=False, no_reformat=False, no_renamer=False,
-                   no_patch=False, strip_comments=True, exc_update=False, keep_lvt=False, keep_generics=False, force_rg=False, rg_update=False):
+                   no_patch=False, strip_comments=True, exc_update=False, keep_lvt=False, keep_generics=False, force_rg=False, rg_update=False,
+                   joined=False):
     if not commands.checkjars(side):
         commands.logger.warning('!! Missing %s jar file. Aborting !!', SIDE_NAME[side])
         return False
@@ -25,6 +26,8 @@ def decompile_side(commands, side, use_ff=False, use_srg=False, no_comments=Fals
     if use_ff:
         decompiler = 'fernflower'
     commands.logger.info('== Decompiling %s using %s ==', SIDE_NAME[side], decompiler)
+    if joined:
+        commands.logger.info('> Using Joined variants')
     commands.logger.info('> Creating SRGs')
     commands.createsrgs(side, use_srg=use_srg, rg_update=rg_update)
     if force_rg:
@@ -32,7 +35,7 @@ def decompile_side(commands, side, use_ff=False, use_srg=False, no_comments=Fals
         commands.applyrg(side)
     else:
         commands.logger.info('> Applying SpecialSource')
-        commands.applyss(side, keep_lvt=keep_lvt, keep_generics=keep_generics)
+        commands.applyss(side, keep_lvt=keep_lvt, keep_generics=keep_generics,joined=joined)
     commands.logger.info('> Applying MCInjector')
     commands.applyexceptor(side, exc_update=exc_update)
     commands.logger.info('> Creating renamed srg')
@@ -63,8 +66,11 @@ def decompile_side(commands, side, use_ff=False, use_srg=False, no_comments=Fals
             commands.logger.info('> Applying OSX JAD fixes')
             commands.applypatches(side, use_ff=False, use_osx=True)
     if not no_patch:
-        commands.logger.info('> Applying patches')
-        commands.applypatches(side, use_ff=use_ff)
+        if joined:
+            commands.logger.info('> Applying Joined patches')
+        else:
+            commands.logger.info('> Applying patches')
+        commands.applypatches(side, use_ff=use_ff, use_joined=joined)
         if strip_comments:
             commands.logger.info('> Cleaning comments')
             commands.process_comments(side)

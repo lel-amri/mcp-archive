@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\client\model\ModelBiped.java minecraft_patched\net\minecraft\client\model\ModelBiped.java
 --- minecraft\net\minecraft\client\model\ModelBiped.java
 +++ minecraft_patched\net\minecraft\client\model\ModelBiped.java
-@@ -96,6 +96,7 @@
+@@ -97,6 +97,7 @@
        GlStateManager.func_179121_F();
     }
  

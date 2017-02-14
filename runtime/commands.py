@@ -147,7 +147,7 @@ def csv_header(csvfile):
 class Commands(object):
     """Contains the commands and initialisation for a full mcp run"""
 
-    MCPVersion = '9.30'
+    MCPVersion = '9.37'
     _default_config = 'conf/mcp.cfg'
     _version_config = 'conf/version.cfg'
 
@@ -524,6 +524,7 @@ class Commands(object):
         #self.dirnatives = os.path.normpath(config.get('JAR', 'DirNatives'))
         #self.jarclient = os.path.normpath(config.get('JAR', 'Client'))
         self.jarclient = os.path.join(self.dirjars, "versions", self.versionClient, "%s.jar"%self.versionClient)
+        self.jarjoined = os.path.join(self.dirjars, "versions", self.versionClient, "%s_joined.jar"%self.versionClient)
         self.jarserver = os.path.normpath(config.get('JAR', 'Server'))
         if not os.path.exists(self.jarserver):
             self.jarserver = '.'.join(self.jarserver.split('.')[0:-1]) + '.%s'%self.versionServer + '.jar'
@@ -637,6 +638,7 @@ class Commands(object):
         self.patchtemp = os.path.normpath(config.get('PATCHES', 'PatchTemp'))
         self.ffpatchclient = os.path.normpath(config.get('PATCHES', 'FFPatchClient'))
         self.ffpatchserver = os.path.normpath(config.get('PATCHES', 'FFPatchServer'))
+        self.ffpatchjoined = os.path.normpath(config.get('PATCHES', 'FFPatchJoined'))
         self.patchclient_osx = os.path.normpath(config.get('PATCHES', 'PatchClient_osx'))
         self.patchserver_osx = os.path.normpath(config.get('PATCHES', 'PatchServer_osx'))
 
@@ -752,7 +754,7 @@ class Commands(object):
 
         return True
 
-    def creatergcfg(self, reobf=False, keep_lvt=False, keep_generics=False, rg_update=False, srg_names=False):
+    def creatergcfg(self, reobf=False, keep_lvt=False, keep_generics=False, rg_update=False, srg_names=False, joined_jar=False):
         """Create the files necessary for RetroGuard"""
         if reobf:
             rgconfig_file = self.rgreobconfig
@@ -784,7 +786,10 @@ class Commands(object):
                 rgout.write('.attribute SourceFile\n')
 
         with open(rgclientconf_file, 'w') as rgout:
-            rgout.write('%s = %s\n' % ('input', self.jarclient))
+            if joined_jar:
+                rgout.write('%s = %s\n' % ('input', self.jarjoined))
+            else:
+                rgout.write('%s = %s\n' % ('input', self.jarclient))
             rgout.write('%s = %s\n' % ('output', self.rgclientout))
             rgout.write('%s = %s\n' % ('reobinput', self.cmpjarclient))
             rgout.write('%s = %s\n' % ('reoboutput', self.reobfjarclient))
@@ -1138,7 +1143,7 @@ class Commands(object):
             self.logger.error('')
             raise
             
-    def applyss(self, side, reobf=False, srg_names=False, in_jar=None, out_jar=None, keep_lvt=False, keep_generics=False):
+    def applyss(self, side, reobf=False, srg_names=False, in_jar=None, out_jar=None, keep_lvt=False, keep_generics=False, joined=False):
         """Apply ss to the given side"""
         cplk = {CLIENT: self.cpathclient, SERVER: self.cpathserver}
         cfgsrg  = {CLIENT: self.srgsclient, SERVER: self.srgsserver}
@@ -1149,6 +1154,8 @@ class Commands(object):
         if in_jar is None:
             if reobf:
                 in_jar = {CLIENT: self.cmpjarclient, SERVER: self.cmpjarserver}[side]
+            elif joined:
+                in_jar = self.jarjoined
             else:
                 in_jar = {CLIENT: self.jarclient, SERVER: self.jarserver}[side]
         if out_jar is None:
@@ -1502,11 +1509,14 @@ class Commands(object):
             elif decompDict[key] != reobfDict[key]: # and not key in ignoreErrorDict[side]:
                 raise Error("Mismatched ano class index : %s %s %s"%(key, decompDict[key],reobfDict[key]))
 
-    def applypatches(self, side, use_ff=False, use_osx=False):
+    def applypatches(self, side, use_ff=False, use_osx=False, use_joined=False):
         """Applies the patches to the src directory"""
         pathsrclk = {CLIENT: self.srcclient, SERVER: self.srcserver}
         if use_ff:
-            patchlk = {CLIENT: self.ffpatchclient, SERVER: self.ffpatchserver}
+            if use_joined:
+                patchlk = {CLIENT: self.ffpatchjoined, SERVER: self.ffpatchserver}
+            else:
+                patchlk = {CLIENT: self.ffpatchclient, SERVER: self.ffpatchserver}
         elif use_osx:
             patchlk = {CLIENT: self.patchclient_osx, SERVER: self.patchserver_osx}
         else:

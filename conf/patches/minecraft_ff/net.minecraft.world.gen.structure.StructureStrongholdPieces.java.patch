@@ -1,8 +1,8 @@
 diff -r -U 3 minecraft\net\minecraft\world\gen\structure\StructureStrongholdPieces.java minecraft_patched\net\minecraft\world\gen\structure\StructureStrongholdPieces.java
 --- minecraft\net\minecraft\world\gen\structure\StructureStrongholdPieces.java
 +++ minecraft_patched\net\minecraft\world\gen\structure\StructureStrongholdPieces.java
-@@ -26,6 +26,7 @@
- import net.minecraft.world.gen.structure.StructureComponent;
+@@ -29,6 +29,7 @@
+ import net.minecraft.world.gen.structure.template.TemplateManager;
  import net.minecraft.world.storage.loot.LootTableList;
  
 +@SuppressWarnings("incomplete-switch")

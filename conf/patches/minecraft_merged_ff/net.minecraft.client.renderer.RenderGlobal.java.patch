@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\client\renderer\RenderGlobal.java minecraft_patched\net\minecraft\client\renderer\RenderGlobal.java
 --- minecraft\net\minecraft\client\renderer\RenderGlobal.java
 +++ minecraft_patched\net\minecraft\client\renderer\RenderGlobal.java
-@@ -915,6 +915,7 @@
+@@ -919,6 +919,7 @@
        return l;
     }
  

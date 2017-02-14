@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\world\gen\structure\StructureEndCityPieces.java minecraft_patched\net\minecraft\world\gen\structure\StructureEndCityPieces.java
 --- minecraft\net\minecraft\world\gen\structure\StructureEndCityPieces.java
 +++ minecraft_patched\net\minecraft\world\gen\structure\StructureEndCityPieces.java
-@@ -59,7 +59,7 @@
+@@ -58,7 +58,7 @@
           }
        }
     };
@@ -10,7 +10,7 @@ diff -r -U 3 minecraft\net\minecraft\world\gen\structure\StructureEndCityPieces.
     private static final StructureEndCityPieces.IGenerator field_186206_f = new StructureEndCityPieces.IGenerator() {
        public void func_186184_a() {
        }
-@@ -139,7 +139,7 @@
+@@ -138,7 +138,7 @@
           return true;
        }
     };

@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\client\renderer\entity\RenderManager.java minecraft_patched\net\minecraft\client\renderer\entity\RenderManager.java
 --- minecraft\net\minecraft\client\renderer\entity\RenderManager.java
 +++ minecraft_patched\net\minecraft\client\renderer\entity\RenderManager.java
-@@ -273,19 +273,19 @@
+@@ -302,19 +302,19 @@
     public <T extends Entity> Render<T> func_78715_a(Class<? extends Entity> p_78715_1_) {
        Render<? extends Entity> render = (Render)this.field_78729_o.get(p_78715_1_);
        if(render == null && p_78715_1_ != Entity.class) {

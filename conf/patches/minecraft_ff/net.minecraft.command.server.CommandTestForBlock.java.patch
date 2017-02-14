@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\command\server\CommandTestForBlock.java minecraft_patched\net\minecraft\command\server\CommandTestForBlock.java
 --- minecraft\net\minecraft\command\server\CommandTestForBlock.java
 +++ minecraft_patched\net\minecraft\command\server\CommandTestForBlock.java
-@@ -98,6 +98,6 @@
+@@ -93,6 +93,6 @@
     }
  
     public List<String> func_184883_a(MinecraftServer p_184883_1_, ICommandSender p_184883_2_, String[] p_184883_3_, @Nullable BlockPos p_184883_4_) {

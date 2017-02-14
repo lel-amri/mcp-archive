@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\client\Minecraft.java minecraft_patched\net\minecraft\client\Minecraft.java
 --- minecraft\net\minecraft\client\Minecraft.java
 +++ minecraft_patched\net\minecraft\client\Minecraft.java
-@@ -355,9 +355,7 @@
+@@ -356,9 +356,7 @@
  
        while(true) {
           try {
@@ -12,7 +12,7 @@ diff -r -U 3 minecraft\net\minecraft\client\Minecraft.java minecraft_patched\net
  
              if(!this.field_71434_R || this.field_71433_S == null) {
                 try {
-@@ -367,10 +365,12 @@
+@@ -368,10 +366,12 @@
                    this.func_147108_a(new GuiMemoryErrorScreen());
                    System.gc();
                 }
@@ -28,7 +28,7 @@ diff -r -U 3 minecraft\net\minecraft\client\Minecraft.java minecraft_patched\net
           } catch (MinecraftError var12) {
              break;
           } catch (ReportedException reportedexception) {
-@@ -1233,6 +1233,7 @@
+@@ -1234,6 +1234,7 @@
        }
     }
  
@@ -36,21 +36,3 @@ diff -r -U 3 minecraft\net\minecraft\client\Minecraft.java minecraft_patched\net
     private void func_147121_ag() {
        if(!this.field_71442_b.func_181040_m()) {
           this.field_71467_ac = 4;
-@@ -1501,7 +1502,7 @@
-       this.field_71423_H = func_71386_F();
-    }
- 
--   private void func_184118_az() {
-+   private void func_184118_az() throws IOException {
-       while(Keyboard.next()) {
-          int i = Keyboard.getEventKey() == 0?Keyboard.getEventCharacter() + 256:Keyboard.getEventKey();
-          if(this.field_83002_am > 0L) {
-@@ -1744,7 +1745,7 @@
-       this.func_147115_a(this.field_71462_r == null && this.field_71474_y.field_74312_F.func_151470_d() && this.field_71415_G);
-    }
- 
--   private void func_184124_aB() {
-+   private void func_184124_aB() throws IOException {
-       while(Mouse.next()) {
-          int i = Mouse.getEventButton();
-          KeyBinding.func_74510_a(i - 100, Mouse.getEventButtonState());

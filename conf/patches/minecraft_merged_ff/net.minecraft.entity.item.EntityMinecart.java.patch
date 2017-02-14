@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\entity\item\EntityMinecart.java minecraft_patched\net\minecraft\entity\item\EntityMinecart.java
 --- minecraft\net\minecraft\entity\item\EntityMinecart.java
 +++ minecraft_patched\net\minecraft\entity\item\EntityMinecart.java
-@@ -350,6 +350,7 @@
+@@ -347,6 +347,7 @@
  
     }
  
