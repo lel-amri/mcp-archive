@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\client\renderer\block\statemap\StateMapperBase.java minecraft_patched\net\minecraft\client\renderer\block\statemap\StateMapperBase.java
 --- minecraft\net\minecraft\client\renderer\block\statemap\StateMapperBase.java
 +++ minecraft_patched\net\minecraft\client\renderer\block\statemap\StateMapperBase.java
-@@ -38,7 +38,7 @@
+@@ -37,7 +37,7 @@
     }
  
     private <T extends Comparable<T>> String func_187489_a(IProperty<T> p_187489_1_, Comparable<?> p_187489_2_) {

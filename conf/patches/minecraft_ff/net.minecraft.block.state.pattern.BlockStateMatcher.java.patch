@@ -1,7 +1,16 @@
 diff -r -U 3 minecraft\net\minecraft\block\state\pattern\BlockStateMatcher.java minecraft_patched\net\minecraft\block\state\pattern\BlockStateMatcher.java
 --- minecraft\net\minecraft\block\state\pattern\BlockStateMatcher.java
 +++ minecraft_patched\net\minecraft\block\state\pattern\BlockStateMatcher.java
-@@ -41,7 +41,7 @@
+@@ -33,7 +33,7 @@
+             return true;
+          } else {
+             for(Entry<IProperty<?>, Predicate<?>> entry : this.field_177640_b.entrySet()) {
+-               if (!this.func_185927_a(p_apply_1_, entry.getKey(), entry.getValue())) {
++               if (!this.func_185927_a(p_apply_1_, (IProperty)entry.getKey(), (Predicate)entry.getValue())) {
+                   return false;
+                }
+             }
+@@ -45,7 +45,7 @@
        }
     }
  

@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\client\renderer\texture\TextureManager.java minecraft_patched\net\minecraft\client\renderer\texture\TextureManager.java
 --- minecraft\net\minecraft\client\renderer\texture\TextureManager.java
 +++ minecraft_patched\net\minecraft\client\renderer\texture\TextureManager.java
-@@ -55,7 +55,7 @@
+@@ -51,7 +51,7 @@
        }
     }
  
@@ -10,8 +10,8 @@ diff -r -U 3 minecraft\net\minecraft\client\renderer\texture\TextureManager.java
        boolean flag = true;
  
        try {
-@@ -66,12 +66,13 @@
-          this.field_110585_a.put(p_110579_1_, (ITextureObject)p_110579_2_);
+@@ -65,12 +65,13 @@
+          this.field_110585_a.put(p_110579_1_, p_110579_2_);
           flag = false;
        } catch (Throwable throwable) {
 +        final ITextureObject p_110579_2_f = p_110579_2_;

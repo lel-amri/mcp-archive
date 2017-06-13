@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\command\CommandBase.java minecraft_patched\net\minecraft\command\CommandBase.java
 --- minecraft\net\minecraft\command\CommandBase.java
 +++ minecraft_patched\net\minecraft\command\CommandBase.java
-@@ -434,7 +434,7 @@
+@@ -432,7 +432,7 @@
     }
  
     private static <T extends Comparable<T>> IBlockState func_190793_a(IBlockState p_190793_0_, IProperty<T> p_190793_1_, Comparable<?> p_190793_2_) {

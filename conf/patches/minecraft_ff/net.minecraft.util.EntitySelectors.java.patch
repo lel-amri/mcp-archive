@@ -4,13 +4,13 @@ diff -r -U 3 minecraft\net\minecraft\util\EntitySelectors.java minecraft_patched
 @@ -51,7 +51,7 @@
     public static <T extends Entity> Predicate<T> func_188442_a(final Entity p_188442_0_) {
        final Team team = p_188442_0_.func_96124_cp();
-       final Team.CollisionRule team$collisionrule = team == null?Team.CollisionRule.ALWAYS:team.func_186681_k();
--      return team$collisionrule == Team.CollisionRule.NEVER?Predicates.alwaysFalse():Predicates.and(field_180132_d, new Predicate<Entity>() {
-+      Predicate<?> ret = team$collisionrule == Team.CollisionRule.NEVER?Predicates.alwaysFalse():Predicates.and(field_180132_d, new Predicate<Entity>() {
+       final Team.CollisionRule team$collisionrule = team == null ? Team.CollisionRule.ALWAYS : team.func_186681_k();
+-      return team$collisionrule == Team.CollisionRule.NEVER ? Predicates.alwaysFalse() : Predicates.and(field_180132_d, new Predicate<Entity>() {
++      Predicate<?> ret = team$collisionrule == Team.CollisionRule.NEVER ? Predicates.alwaysFalse() : Predicates.and(field_180132_d, new Predicate<Entity>() {
           public boolean apply(@Nullable Entity p_apply_1_) {
-             if(!p_apply_1_.func_70104_M()) {
+             if (!p_apply_1_.func_70104_M()) {
                 return false;
-@@ -69,6 +69,7 @@
+@@ -73,6 +73,7 @@
              }
           }
        });

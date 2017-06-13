@@ -170,8 +170,10 @@ def getLibraries(root, jsonfile, osKeyword):
         #if not os.path.exists(libFullPath):
         #    print ("Error while trying to access libraries. Couldn't find %s"%libFullPath)
         #    sys.exit()
-
-        outLibraries[libSubdir] = {'name':library['name'], 'filename':libRelativePath, 'extract':extract, 'exclude':exclude}
+        if 'natives' in library:
+            outLibraries['%s-%s' % (libSubdir, substitueString(library['natives'][osKeyword]))] = {'name':library['name'], 'filename':libRelativePath, 'extract':extract, 'exclude':exclude}
+        else:
+            outLibraries[libSubdir] = {'name':library['name'], 'filename':libRelativePath, 'extract':extract, 'exclude':exclude}
 
     return outLibraries
 

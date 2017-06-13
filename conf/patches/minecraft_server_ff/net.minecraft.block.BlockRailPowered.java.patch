@@ -1,15 +1,15 @@
 diff -r -U 3 minecraft_server\net\minecraft\block\BlockRailPowered.java minecraft_server_patched\net\minecraft\block\BlockRailPowered.java
 --- minecraft_server\net\minecraft\block\BlockRailPowered.java
 +++ minecraft_server_patched\net\minecraft\block\BlockRailPowered.java
-@@ -27,6 +27,7 @@
+@@ -25,6 +25,7 @@
        this.func_180632_j(this.field_176227_L.func_177621_b().func_177226_a(field_176568_b, BlockRailBase.EnumRailDirection.NORTH_SOUTH).func_177226_a(field_176569_M, Boolean.valueOf(false)));
     }
  
 +   @SuppressWarnings("incomplete-switch")
     protected boolean func_176566_a(World p_176566_1_, BlockPos p_176566_2_, IBlockState p_176566_3_, boolean p_176566_4_, int p_176566_5_) {
-       if(p_176566_5_ >= 8) {
+       if (p_176566_5_ >= 8) {
           return false;
-@@ -141,6 +142,7 @@
+@@ -155,6 +156,7 @@
        return i;
     }
  
@@ -17,7 +17,7 @@ diff -r -U 3 minecraft_server\net\minecraft\block\BlockRailPowered.java minecraf
     public IBlockState func_185499_a(IBlockState p_185499_1_, Rotation p_185499_2_) {
        switch(p_185499_2_) {
        case CLOCKWISE_180:
-@@ -213,6 +215,7 @@
+@@ -227,6 +229,7 @@
        }
     }
  

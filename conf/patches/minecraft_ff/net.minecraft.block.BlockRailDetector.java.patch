@@ -1,7 +1,7 @@
 diff -r -U 3 minecraft\net\minecraft\block\BlockRailDetector.java minecraft_patched\net\minecraft\block\BlockRailDetector.java
 --- minecraft\net\minecraft\block\BlockRailDetector.java
 +++ minecraft_patched\net\minecraft\block\BlockRailDetector.java
-@@ -167,6 +167,7 @@
+@@ -170,6 +170,7 @@
        return i;
     }
  
@@ -9,7 +9,7 @@ diff -r -U 3 minecraft\net\minecraft\block\BlockRailDetector.java minecraft_patc
     public IBlockState func_185499_a(IBlockState p_185499_1_, Rotation p_185499_2_) {
        switch(p_185499_2_) {
        case CLOCKWISE_180:
-@@ -239,6 +240,7 @@
+@@ -242,6 +243,7 @@
        }
     }
  

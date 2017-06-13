@@ -1,5 +1,5 @@
-Mod Coder Pack 9.37 for Minecraft 1.11.2
-========================================
+Mod Coder Pack 9.37 for Minecraft 1.12
+======================================
 MCP is (c) Copyright by the MCP Team
 
 License and terms of use.
@@ -42,7 +42,7 @@ Note: MCP versions 9.x and higher should also work properly with the Java 8 JDK
 How to use:
 ===========
 1) Prepare the files:
-- Copy the "minecraft_server.1.11.2.jar" file into the "jars" folder.
+- Copy the "minecraft_server.1.12.jar" file into the "jars" folder.
 - Either copy the folders "assets", "libraries" and "versions" from "%APPDATA$\.minecraft" folder into the "jars" folder or let the decompile scripts do it automatically for you.
 - No need to copy the folders "bin" and "resources" from your "%APPDATA$\.minecraft" folder into the "jars" folder anymore - in fact, it does not work that way anymore.
 
@@ -147,10 +147,10 @@ bspkrs
 LexManos
 * Helped Fesh0r to update MCP for Minecraft 1.0.0/1.0.1
 * Helped to update the scripts and mappings for the new structure introduced by Minecraft 1.6.x
-* Did a lot of the work required to update to Minecraft 1.7.10, 1.8.8, 1.8.9, 1.9, 1.10 and 1.11.x
+* Did most of the work required to update to Minecraft 1.7.10, 1.8.8, 1.8.9, 1.9, 1.10, 1.11.x and 1.12
 CPW
 * Helped to update the scripts and mappings for the new structure introduced by Minecraft 1.6.x
-* Did a lot of the work required to update to Minecraft 1.7.10, 1.8.8, 1.8.9, 1.9, 1.10 and 1.11.x
+* Did a lot of the work required to update to Minecraft 1.7.10, 1.8.8, 1.8.9, 1.9, 1.10, 1.11.x and 1.12
 
 == Former Contributors ==
 303
@@ -222,7 +222,8 @@ and of course:
 
 History:
 ========
-9.37 - Updated to support Minecraft 1.11 and MinecraftServer 1.11.2
+9.40 - Updated to support Minecraft 1.12 and MinecraftServer 1.12
+9.37 - Updated to support Minecraft 1.11.2 and MinecraftServer 1.11.2
 9.35 - Updated to support Minecraft 1.11 and MinecraftServer 1.11
 9.30 - Updated to support Minecraft 1.10 and MinecraftServer 1.10
 9.28 - Updated to support Minecraft 1.9.4 and MinecraftServer 1.9.4
@@ -294,7 +295,7 @@ History:
 
 Roadmap:
 ========
-9.38+ - New awesome features, improvements and updates :)
+9.41+ - New awesome features, improvements and updates :)
 
 _________________________________________________________________________________________________________________
 _________________________________________________________________________________________________________________

@@ -22,17 +22,18 @@ def copyAssets(src, dst):
         sys.exit()
 
 
-def copyLibrary(src, dst, library):
+def copyLibrary(src, dst, name, library):
     try:
-        dstPath = os.path.split(os.path.join(dst, library['filename']))[0]
-        
-        if os.path.exists(dstPath):
-            shutil.rmtree(dstPath)
-        os.makedirs(dstPath)
+        dstFile = os.path.join(dst, library['filename'])
+        dstPath = os.path.split(dstFile)[0]
+        if os.path.exists(dstFile):
+            os.remove(dstFile)
+        if not os.path.exists(dstPath):
+            os.makedirs(dstPath)
         
         shutil.copy2(os.path.join(src, library['filename']), dstPath)
     except:
-        print ("Error copying library %s"%library['name'])
+        print ("Error copying library %s"%name)
         sys.exit()
 
 #def extractLibrary(src, dst, library, version):
@@ -136,10 +137,10 @@ def copyClientAssets(commands, workDir = None):
         print("OK")
 
     print ("> Checking libraries...")
-    for library in mcLibraries.values():
+    for name, library in mcLibraries.iteritems():
         if not MinecraftDiscovery.checkLibraryExists(dstDir, library):
-            print ("\tCopying library %s..."%library['name'].split(':')[1]),
-            copyLibrary(mcDir, dstDir, library)
+            print ("\tCopying library %s..."%name),
+            copyLibrary(mcDir, dstDir, name, library)
             print ("OK")
 
     print ("> Checking Natives...")
